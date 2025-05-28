@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://growcalculator.com/sitemap.xml 

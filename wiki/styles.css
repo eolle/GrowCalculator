@@ -223,4 +223,42 @@ a:hover {
     background-color: #e8d5b7;  /* Beige medio */
     transform: translateX(8px);
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Estilos para la navegación de índice */
+.back-to-index {
+    font-size: 0.9em;
+    color: #666;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #f8f3e9;
+    border-radius: 5px;
+    border: 1px solid #d4b483;
+}
+
+.back-to-index:hover {
+    background-color: #f0e6d2;
+    text-decoration: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Estilos para la navegación anterior/siguiente */
+.nav-prev-next {
+    font-size: 0.85em;
+    color: #666;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background-color: #f8f3e9;
+    border-radius: 5px;
+    border: 1px solid #d4b483;
+    display: inline-block;
+}
+
+.nav-prev-next:hover {
+    background-color: #f0e6d2;
+    text-decoration: none;
+    transform: none;
+    box-shadow: none;
 } 
