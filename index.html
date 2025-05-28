@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLRTFTH5W6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LLRTFTH5W6');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Calculator - El Asistente de Cultivo de Cannabis Definitivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 76, 46, 0.85), rgba(45, 90, 61, 0.85), rgba(34, 139, 34, 0.8)), 
+                        url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAD6APoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9k=') center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 76, 46, 0.3);
+            backdrop-filter: blur(1px);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #90EE90;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+            to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.7)); }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #FF4500, #FF6B35, #FF8C00);
+            color: white;
+            box-shadow: 0 12px 35px rgba(255, 69, 0, 0.4);
+            animation: pulse-cta 2s infinite;
+        }
+
+        @keyframes pulse-cta {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .app-mockup {
+            width: 320px;
+            height: 640px;
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 35px;
+            padding: 25px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            50% { transform: translateY(-25px) rotateY(5deg); }
+        }
+
+        .app-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a4c2e, #2d5a3d, #228B22);
+            border-radius: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            position: relative;
+        }
+
+        .calculator-icon {
+            width: 90px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .app-features-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #1a4c2e;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.4rem;
+            color: #666;
+            margin-bottom: 70px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 45px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #228B22, #32CD32, #FFD700);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+            border-color: rgba(34, 139, 34, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            color: #1a4c2e;
+            margin-bottom: 18px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a4c2e, #2d5a3d);
+            color: white;
+            text-align: center;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .brand-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .brand-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        /* How it Works */
+        .how-it-works {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 50px;
+            margin-top: 70px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #1a4c2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+        }
+
+        .step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+
+        .step p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Download Section */
+        .download {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(50,205,50,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(255,165,0,0.1)"/></svg>');
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            min-width: 200px;
+        }
+
+        .store-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.6);
+        }
+
+        .store-icon {
+            font-size: 2.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .app-mockup {
+                width: 280px;
+                height: 560px;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Special Effects */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .floating-cannabis {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(144, 238, 144, 0.15);
+            animation: floatCannabis 8s ease-in-out infinite;
+        }
+
+        @keyframes floatCannabis {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-40px) rotate(15deg); }
+        }
+
+        .floating-cannabis:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+        .floating-cannabis:nth-child(2) { top: 70%; right: 12%; animation-delay: 3s; }
+        .floating-cannabis:nth-child(3) { top: 85%; left: 15%; animation-delay: 6s; }
+        .floating-cannabis:nth-child(4) { top: 25%; right: 8%; animation-delay: 1.5s; }
+
+        .checkmark {
+            color: #32CD32;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .development-banner {
+            background-color: #ffc107; /* Color amarillo */
+            color: #343a40; /* Color oscuro para el texto */
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            position: sticky; /* Se mantiene en la parte superior al hacer scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        }
+    </style>
+</head>
+<body>
+    <div class="development-banner">
+        Aplicación actualmente en desarrollo. Pronto disponible en Google Play y App Store.
+    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-cannabis">🌿</div>
+            <div class="floating-cannabis">🍃</div>
+            <div class="floating-cannabis">🌱</div>
+            <div class="floating-cannabis">🌾</div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-subtitle">¡Revoluciona tu cultivo!</div>
+                    <h1>GROW CALCULATOR</h1>
+                    <div class="hero-description">
+                        <strong>¿CANSADO DE CÁLCULOS MANUALES Y RESULTADOS MEDIOCRES?</strong>
+                    </div>
+                    <div class="hero-tagline">
+                        <em>Tu experto de cultivo de cannabis en el bolsillo</em>
+                    </div>
+                    <div class="cta-buttons">
+                        <a href="https://www.paypal.com/pools/c/9fayAv34Bd" class="btn btn-primary">
+                            🤝 Colaborar
+                        </a>
+                        <a href="https://ko-fi.com/growcalculator" class="btn btn-secondary">
+                            <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png" alt="Ko-fi" style="width: 20px; height: auto; margin-right: 8px;"> Ko-fi
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            🌿 Ver Características
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="app-mockup">
+                        <div class="app-screen">
+                            <div class="calculator-icon"><img src="logogrowcalculator.png" alt="Grow Calculator Logo" style="width: 90px; height: auto; margin-bottom: 10px;"></div>
+                            <h3 style="font-size: 1.4rem; margin-bottom: 15px;">GROW CALCULATOR</h3>
+                            <div class="app-features-mini">
+                                <div><span class="checkmark">✅</span> Cálculo de macetas</div>
+                                <div><span class="checkmark">✅</span> Fertilización precisa</div>
+                                <div><span class="checkmark">✅</span> Ventilación óptima</div>
+                                <div><span class="checkmark">✅</span> Calendario automático</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Cultivo Inteligente, Resultados Extraordinarios</h2>
+            <p class="section-subtitle">
+                Transforma tus datos básicos en un plan de cultivo personalizado y preciso
+            </p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏺</div>
+                    <h3>Cantidad de Macetas</h3>
+                    <p>Calcula las dimensiones óptimas de macetas y cantidad de tierra necesaria para maximizar el espacio y el crecimiento.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Fertilización Precisa</h3>
+                    <p>Tablas de riego integradas de Advanced Nutrients, BioBizz, Canna, Plagron y las mejores marcas del mercado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💨</div>
+                    <h3>Ventilación Óptima</h3>
+                    <p>Sistema de ventilación adecuado para tu espacio con control remoto y monitoreo en tiempo real de temperatura y humedad.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Calendario Automático</h3>
+                    <p>Calendario personalizado con fechas clave para tu cultivo y alertas automáticas cuando los parámetros se desvían.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3>Riego Calculado al Detalle</h3>
+                    <p>Necesidades hídricas precisas para maximizar rendimientos con control remoto de sistemas de riego.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Análisis de Datos</h3>
+                    <p>Análisis completo de datos para optimizar futuros cultivos y mejorar continuamente tus resultados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section class="brands">
+        <div class="container">
+            <h2 class="section-title">Tablas de Fertilizantes Integradas</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 20px;">
+                <strong>¡Tablas de riego de las mejores marcas integradas!</strong>
+            </p>
+            <div class="brands-grid">
+                <div class="brand-item">
+                    <h3>🧪 Advanced Nutrients</h3>
+                    <p>Tablas completas integradas</p>
+                </div>
+                <div class="brand-item">
+                    <h3>🌱 BioBizz</h3>
+                    <p>Fertilizantes orgánicos</p>
+                </div>
+                <div class="brand-item">
+                    <h3>🏆 Canna</h3>
+                    <p>Nutrición profesional</p>
+                </div>
+                <div class="brand-item">
+                    <h3>🌿 Plagron</h3>
+                    <p>Cultivo de calidad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Para Todos los Niveles</h2>
+            <p style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">
+                Desde principiantes buscando orientación hasta profesionales gestionando múltiples cultivos
+            </p>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Introduce tus Datos</h3>
+                    <p>Dimensiones de tu espacio, variedad y algunos parámetros básicos</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Cálculos Automáticos</h3>
+                    <p>La app calcula automáticamente todos los parámetros necesarios para tu cultivo</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Plan Personalizado</h3>
+                    <p>Recibe un plan de cultivo completo adaptado a tu experiencia y necesidades</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Maximiza tu Cosecha</h3>
+                    <p>¡Un toque y maximiza tu cosecha con resultados extraordinarios!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="download-content">
+            <div class="container">
+                <h2 class="section-title">¡Únete a la Revolución del Cultivo Inteligente!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 15px; font-weight: 600;">
+                    <strong></strong>
+                </p>
+                <p style="font-size: 1.1rem; opacity: 0.9;">
+                    
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <h3 style="color: #32CD32; margin-bottom: 15px;">GROW CALCULATOR</h3>
+                <p>&copy; 2025 Grow Calculator App. Todos los derechos reservados.</p>
+                <p style="margin-top: 15px; opacity: 0.7; font-style: italic;">
+                    Cultivando el futuro del cannabis, una planta a la vez 🌿
+                </p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.6;">
+                    Para uso en jurisdicciones donde el cultivo de cannabis es legal
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Animate feature cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply scroll animations to various elements
+        document.querySelectorAll('.feature-card, .step, .brand-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(40px)';
+            element.style.transition = 'all 0.8s ease';
+            observer.observe(element);
+        });
+
+        // Add dynamic background effects
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.innerHTML = '🌿';
+            element.style.position = 'fixed';
+            element.style.fontSize = '1.5rem';
+            element.style.color = 'rgba(50, 205, 50, 0.3)';
+            element.style.pointerEvents = 'none';
+            element.style.zIndex = '1';
+            element.style.left = Math.random() * window.innerWidth + 'px';
+            element.style.top = window.innerHeight + 'px';
+            element.style.animation = 'floatUp 6s linear forwards';
+            
+            document.body.appendChild(element);
+            
+            setTimeout(() => {
+                element.remove();
+            }, 6000);
+        }
+
+        // Add CSS for floating animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes floatUp {
+                to {
+                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Create floating elements periodically
+        setInterval(createFloatingElement, 3000);
+    </script>
+</body>
+</html>
