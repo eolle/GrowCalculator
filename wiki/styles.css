@@ -261,4 +261,23 @@ a:hover {
     text-decoration: none;
     transform: none;
     box-shadow: none;
+}
+
+.navigation-links {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1a4c2e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #2d5a3d;
 } 
