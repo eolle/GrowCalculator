@@ -521,6 +521,12 @@
             width: 100%;
             z-index: 1000; /* Asegura que esté por encima de otros elementos */
         }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); }
+            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 69, 0, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); }
+        }
     </style>
 </head>
 <body>
@@ -547,18 +553,33 @@
                         <em>Tu experto de cultivo en el bolsillo</em>
                     </div>
                     <div class="cta-buttons">
-                        <a href="https://www.paypal.com/pools/c/9fayAv34Bd" class="btn btn-primary">
-                            🤝 Colaborar
-                        </a>
-                        <a href="https://ko-fi.com/growcalculator" class="btn btn-secondary">
-                            <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png" alt="Ko-fi" style="width: 20px; height: auto; margin-right: 8px;"> Ko-fi
-                        </a>
-                        <a href="#features" class="btn btn-secondary">
-                            🌿 Ver Características
-                        </a>
-                        <a href="wiki/index.html" class="btn btn-secondary" target="_blank">
-                            📚 Wiki
-                        </a>
+                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" style="margin-bottom: 20px; width: 100%; max-width: 500px; display: flex; gap: 10px;">
+                            <input type="hidden" name="access_key" value="a5aedc6c-6eb9-4fac-b4d7-fd1cafba4809">
+                            <input type="email" name="email" placeholder="Tu email" required style="flex: 1; padding: 12px; border-radius: 25px; border: 2px solid rgba(255, 215, 0, 0.3); background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <button type="submit" style="padding: 12px 30px; border-radius: 25px; border: none; background: linear-gradient(45deg, #FF0000, #FF4500, #FF8C00, #FFD700); color: white; font-weight: bold; cursor: pointer; transition: all 0.3s ease; animation: pulse 2s infinite; box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);">Suscribirse</button>
+                        </form>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <span style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">Consulta nuestra</span>
+                                <a href="wiki/index.html" class="btn btn-secondary" target="_blank" style="flex: 1;">
+                                    📚 Wiki
+                                </a>
+                            </div>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <span style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">o mejor aun haz tus preguntas directamente</span>
+                                <a href="https://deepwiki.com/eolle/GrowCalculator" class="btn btn-secondary" target="_blank" style="flex: 1;">
+                                    🔍
+                                </a>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <a href="https://www.paypal.com/pools/c/9fayAv34Bd" class="btn btn-primary" style="flex: 1;">
+                                🤝 Colaborar
+                            </a>
+                            <a href="https://ko-fi.com/growcalculator" class="btn btn-secondary" style="flex: 1;">
+                                <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png" alt="Ko-fi" style="width: 20px; height: auto; margin-right: 8px;"> Ko-fi
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -575,6 +596,11 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; padding-right: 100px;">
+                <a href="#features" class="btn btn-secondary" style="margin-top: 20px; width: 100%; max-width: 320px; text-align: center;">
+                    🌿 Ver Características
+                </a>
             </div>
         </div>
     </section>
