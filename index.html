@@ -220,6 +220,75 @@
             margin-top: 15px;
             text-align: center;
         }
+        .cta-card .btn,
+        .cta-card form button {
+            width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            font-size: 1rem;
+            padding: 12px 0;
+            margin: 0;
+        }
+        .cta-card .btn + .btn {
+            margin-left: 0;
+        }
+        .cta-card .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 600px) {
+            .cta-card .btn-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .cta-card .btn,
+            .cta-card form button {
+                font-size: 1em;
+                padding: 10px 0;
+            }
+        }
+        .cta-card form {
+            width: 100%;
+        }
+        .cta-card form > div {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+        }
+        .cta-card input[type="email"] {
+            width: 0;
+            flex: 1 1 0%;
+            min-width: 0;
+            font-size: 1rem;
+            padding: 10px 12px;
+            border-radius: 50px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            box-sizing: border-box;
+        }
+        .cta-card form button {
+            flex: 0 0 auto;
+            min-width: 110px;
+            max-width: 160px;
+            white-space: nowrap;
+            font-size: 1rem;
+            padding: 10px 0;
+            border-radius: 50px;
+            margin: 0;
+        }
+        @media (max-width: 600px) {
+            .cta-card form > div {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .cta-card form button {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+            }
+        }
         .app-mockup {
             width: 320px;
             height: 640px;
@@ -669,17 +738,6 @@
         <div class="floating-element">🌾</div>
         <div class="container">
             <div class="hero-content">
-                <div class="hero-visual" style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <div style="position: relative; z-index: 2; display: flex; justify-content: center; align-items: center;">
-                        <video id="avatarVideo" autoplay playsinline muted
-                            style="width: 320px; max-width: 90vw; border-radius: 50%; box-shadow: 0 8px 32px rgba(0,0,0,0.25); background: #fff; padding: 12px; object-fit: cover; display: block;">
-                            Tu navegador no soporta video.
-                        </video>
-                        <audio id="avatarAudio" src="vozavatar.mp3" autoplay></audio>
-                    </div>
-                    <button id="replayAvatarBtn" style="margin-top: 18px; padding: 10px 28px; border-radius: 30px; background: linear-gradient(135deg, #ffc107, #ff9800); color: #222; font-weight: bold; font-size: 1.1rem; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: background 0.2s;">🔄 Repetir presentación</button>
-                    <button id="stopAvatarBtn" style="margin-top: 18px; margin-left: 10px; padding: 10px 28px; border-radius: 30px; background: #dc3545; color: #fff; font-weight: bold; font-size: 1.1rem; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: background 0.2s;">⏹️ Parar presentación</button>
-                </div>
                 <div class="hero-text">
                     <div class="hero-subtitle">¡Revoluciona tu cultivo!</div>
                     <h1 class="hero-title">GROW CALCULATOR</h1>
@@ -720,11 +778,11 @@
                         </div>
                         <div class="cta-card">
                             <p>Apoya nuestro proyecto</p>
-                            <div style="display: flex; gap: 10px; margin-top: 10px;">
-                                <a href="https://www.paypal.com/pool/9g34w4LaQM" class="btn btn-primary" style="flex: 1;" target="_blank">
+                            <div class="btn-group" style="margin-top: 10px;">
+                                <a href="https://www.paypal.com/pool/9g34w4LaQM" class="btn btn-primary" target="_blank">
                                     <i class="fas fa-hand-holding-heart"></i> Colaborar
                                 </a>
-                                <a href="https://ko-fi.com/growcalculator" class="btn btn-primary" style="flex: 1;" target="_blank">
+                                <a href="https://ko-fi.com/growcalculator" class="btn btn-primary" target="_blank">
                                     <i class="fas fa-mug-hot"></i> Ko-fi
                                 </a>
                             </div>
@@ -733,6 +791,18 @@
                     <a href="#features" class="btn btn-secondary btn-lg">
                         <i class="fas fa-leaf"></i> Ver Características
                     </a>
+                </div>
+                <div class="hero-visual" style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; margin-bottom: 18px;">
+                    <div style="position: relative; z-index: 2; display: flex; justify-content: center; align-items: center;">
+                        <video id="avatarVideo" src="avatar.mp4" autoplay playsinline loop
+                            style="width: 480px; max-width: 95vw; border-radius: 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); background: #fff; padding: 12px; object-fit: cover; display: block; margin-bottom: 16px; aspect-ratio: 9/16;" controlslist="nodownload noremoteplayback nofullscreen">
+                            Tu navegador no soporta video.
+                        </video>
+                    </div>
+                    <div style="display: flex; gap: 12px; justify-content: center; margin-bottom: 8px;">
+                        <button id="replayAvatarBtn" class="btn btn-primary" type="button"><i class="fas fa-redo"></i> Reiniciar</button>
+                        <button id="pauseAvatarBtn" class="btn btn-secondary" type="button"><i class="fas fa-pause"></i> Pausar</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -885,6 +955,10 @@
         </div>
     </div>
     <script>
+        // Redirección automática a verificación de edad si no está verificada
+        if (localStorage.getItem('ageVerified') !== 'true') {
+          window.location.href = 'age_verification.html';
+        }
         // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -940,73 +1014,29 @@
             });
         }
 
-const videoFiles = [
-  "avatar.mp4",
-  "avatar2.mp4",
-  "avatar3.mp4",
-  "avatar4.mp4",
-  "avatar5.mp4",
-  "avatar6.mp4"
-];
 const video = document.getElementById('avatarVideo');
-const audio = document.getElementById('avatarAudio');
 const replayBtn = document.getElementById('replayAvatarBtn');
-const stopBtn = document.getElementById('stopAvatarBtn');
-let currentVideo = 0;
-let audioEnded = false;
-
-function playCurrentVideo() {
-  video.src = videoFiles[currentVideo];
-  video.currentTime = 0;
-  video.play();
-}
-
-video.addEventListener('ended', () => {
-  if (!audioEnded) {
-    currentVideo = (currentVideo + 1) % videoFiles.length;
-    playCurrentVideo();
-  }
-});
-
-audio.addEventListener('ended', () => {
-  audioEnded = true;
-  video.pause();
-  video.currentTime = video.duration;
-  audio.pause();
-  audio.currentTime = audio.duration;
-});
-
-video.addEventListener('loadeddata', () => {
-  if (currentVideo === 0 && !audioEnded) {
-    audio.currentTime = 0;
-    audio.play();
-  }
-  video.play();
-});
-
-audio.addEventListener('pause', () => { if (!video.paused) video.pause(); });
+const pauseBtn = document.getElementById('pauseAvatarBtn');
 
 if (replayBtn) {
   replayBtn.addEventListener('click', () => {
-    audioEnded = false;
-    currentVideo = 0;
-    playCurrentVideo();
-    audio.currentTime = 0;
-    audio.play();
+    video.currentTime = 0;
+    video.play();
+    pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
   });
 }
 
-if (stopBtn) {
-  stopBtn.addEventListener('click', () => {
-    audioEnded = true;
-    video.pause();
-    audio.pause();
-    video.currentTime = video.duration;
-    audio.currentTime = audio.duration;
+if (pauseBtn) {
+  pauseBtn.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
+    } else {
+      video.pause();
+      pauseBtn.innerHTML = '<i class="fas fa-play"></i> Reanudar';
+    }
   });
 }
-
-playCurrentVideo();
     </script>
 </body>
 </html>
