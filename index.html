@@ -1,49 +1,132 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LLRTFTH5W6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LLRTFTH5W6');
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grow Calculator - El Asistente de Cultivo de Definitivo</title>
-    <script>
-        // Verificar si el usuario ya ha confirmado su edad
-        window.onload = function() {
-            const ageVerified = localStorage.getItem('ageVerified');
-            if (!ageVerified) {
-                window.location.href = 'age_verification.html';
-            }
-        }
-    </script>
+    <title>Grow Calculator - El Asistente de Cultivo Definitivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Variables de diseño */
+        :root {
+            --primary: #1a4c2e;
+            --primary-light: #2d5a3d;
+            --primary-dark: #0d311d;
+            --accent: #ffc107;
+            --accent-dark: #ff9800;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #28a745;
+            --danger: #dc3545;
+            --info: #17a2b8;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.2);
+            --radius: 12px;
+        }
+        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7f9;
+            color: var(--dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        section {
+            padding: 80px 0;
+        }
+        h1, h2, h3, h4, h5 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--dark);
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        .btn-lg {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        /* Banner de desarrollo */
+        .development-banner {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--dark);
+            text-align: center;
+            padding: 12px 0;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(26, 76, 46, 0.85), rgba(45, 90, 61, 0.85), rgba(34, 139, 34, 0.8)), 
+            background: linear-gradient(135deg, rgba(26, 76, 46, 0.9), rgba(45, 90, 61, 0.9)), 
                         url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAD6APoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//9k=') center center;
             background-size: cover;
             background-attachment: fixed;
@@ -53,8 +136,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 60px;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -63,112 +146,80 @@
             right: 0;
             bottom: 0;
             background: rgba(26, 76, 46, 0.3);
-            backdrop-filter: blur(1px);
         }
-
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            gap: 60px;
             position: relative;
             z-index: 2;
         }
-
-        .hero-text h1 {
-            font-size: 3.8rem;
-            font-weight: 900;
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .hero-visual {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-subtitle {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
             background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #FFD700;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .hero-description {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            opacity: 0.95;
             font-weight: 500;
+            max-width: 600px;
         }
-
         .hero-tagline {
             font-size: 1.1rem;
             font-style: italic;
-            color: #90EE90;
+            color: #c8f5c8;
             margin-bottom: 35px;
             font-weight: 400;
         }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-            to { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.7)); }
-        }
-
-        .cta-buttons {
-            display: flex;
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            flex-wrap: wrap;
+            margin-bottom: 30px;
         }
-
-        .btn {
-            padding: 18px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .cta-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
         }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #FF4500, #FF6B35, #FF8C00);
-            color: white;
-            box-shadow: 0 12px 35px rgba(255, 69, 0, 0.4);
-            animation: pulse-cta 2s infinite;
+        .cta-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
         }
-
-        @keyframes pulse-cta {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .cta-card .btn {
+            width: 100%;
+            margin-top: 15px;
+            text-align: center;
         }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 2px solid rgba(255, 215, 0, 0.5);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
         .app-mockup {
             width: 320px;
             height: 640px;
@@ -177,14 +228,12 @@
             padding: 25px;
             box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
             position: relative;
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
-
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotateY(0deg); }
-            50% { transform: translateY(-25px) rotateY(5deg); }
+            50% { transform: translateY(-20px) rotateY(5deg); }
         }
-
         .app-screen {
             width: 100%;
             height: 100%;
@@ -199,13 +248,6 @@
             padding: 30px;
             position: relative;
         }
-
-        .calculator-icon {
-            width: 90px;
-            height: auto;
-            margin-bottom: 10px;
-        }
-
         .app-features-mini {
             display: flex;
             flex-direction: column;
@@ -213,193 +255,140 @@
             margin-top: 20px;
             font-size: 0.9rem;
         }
-
+        .app-features-mini div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
         /* Features Section */
         .features {
-            padding: 120px 0;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             position: relative;
-            z-index: 1;
-            margin-top: 100px;
         }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            color: #1a4c2e;
-            margin-bottom: 20px;
-            font-weight: 800;
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.4rem;
-            color: #666;
-            margin-bottom: 70px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
-
         .feature-card {
             background: white;
-            padding: 45px;
-            border-radius: 25px;
+            padding: 40px 30px;
+            border-radius: var(--radius);
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
             position: relative;
             overflow: hidden;
-            border: 2px solid transparent;
+            border-top: 4px solid var(--primary);
         }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(45deg, #228B22, #32CD32, #FFD700);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-
         .feature-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
-            border-color: rgba(34, 139, 34, 0.2);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
         }
-
         .feature-icon {
             font-size: 3.5rem;
             margin-bottom: 25px;
             display: block;
+            color: var(--primary);
         }
-
         .feature-card h3 {
             font-size: 1.6rem;
-            color: #1a4c2e;
+            color: var(--primary);
             margin-bottom: 18px;
             font-weight: 700;
         }
-
         .feature-card p {
             color: #555;
             line-height: 1.7;
             font-size: 1.05rem;
         }
-
         /* Brands Section */
         .brands {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1a4c2e, #2d5a3d);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: white;
-            text-align: center;
         }
-
         .brands-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
-
         .brand-item {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            text-align: center;
         }
-
         .brand-item:hover {
             background: rgba(255, 255, 255, 0.15);
             transform: translateY(-5px);
         }
-
+        .brand-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
         /* How it Works */
         .how-it-works {
-            padding: 120px 0;
-            background: linear-gradient(135deg, #228B22, #32CD32);
+            background: linear-gradient(135deg, var(--primary-light), #32CD32);
             color: white;
         }
-
         .steps-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 50px;
-            margin-top: 70px;
+            gap: 40px;
+            margin-top: 50px;
         }
-
         .step {
             text-align: center;
             position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
         }
-
+        .step:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.15);
+        }
         .step-number {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(45deg, #FFD700, #FFA500);
-            color: #1a4c2e;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            color: var(--dark);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             margin: 0 auto 25px;
-            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
-
         .step h3 {
             font-size: 1.4rem;
             margin-bottom: 18px;
             font-weight: 600;
         }
-
         .step p {
             font-size: 1.1rem;
             opacity: 0.95;
         }
-
         /* Download Section */
         .download {
-            padding: 120px 0;
             background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             color: white;
             text-align: center;
             position: relative;
         }
-
-        .download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,215,0,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(50,205,50,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(255,165,0,0.1)"/></svg>');
-        }
-
         .download-content {
             position: relative;
             z-index: 2;
         }
-
         .download-buttons {
             display: flex;
             justify-content: center;
@@ -407,7 +396,6 @@
             margin-top: 50px;
             flex-wrap: wrap;
         }
-
         .store-btn {
             display: flex;
             align-items: center;
@@ -418,279 +406,314 @@
             border-radius: 20px;
             color: white;
             text-decoration: none;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(15px);
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
             min-width: 200px;
         }
-
         .store-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
             border-color: rgba(255, 215, 0, 0.6);
         }
-
         .store-icon {
             font-size: 2.5rem;
+            color: var(--accent);
         }
-
+        .store-text {
+            text-align: left;
+        }
+        .store-text span {
+            font-size: 0.9rem;
+            display: block;
+        }
+        .store-text strong {
+            font-size: 1.3rem;
+            display: block;
+        }
         /* Footer */
         .footer {
-            background: #0a0a0a;
+            background: var(--primary-dark);
             color: white;
-            text-align: center;
-            padding: 50px 0;
+            padding: 50px 0 30px;
         }
-
         .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-
-            .app-mockup {
-                width: 280px;
-                height: 560px;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--accent);
         }
-
-        /* Special Effects */
-        .floating-elements {
-            position: absolute;
+        .footer-content p {
+            max-width: 600px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            pointer-events: none;
+            max-width: 800px;
         }
-
-        .floating-plant {
+        /* Animaciones */
+        .floating-element {
             position: absolute;
             font-size: 2rem;
             opacity: 0.6;
             animation: floatPlant 8s ease-in-out infinite;
+            pointer-events: none;
         }
-
         @keyframes floatPlant {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
-
-        .floating-plant:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
-        .floating-plant:nth-child(2) { top: 70%; right: 12%; animation-delay: 3s; }
-        .floating-plant:nth-child(3) { top: 85%; left: 15%; animation-delay: 6s; }
-        .floating-plant:nth-child(4) { top: 25%; right: 8%; animation-delay: 1.5s; }
-
+        .floating-element:nth-child(1) { top: 15%; left: 8%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 70%; right: 12%; animation-delay: 3s; }
+        .floating-element:nth-child(3) { top: 85%; left: 15%; animation-delay: 6s; }
+        .floating-element:nth-child(4) { top: 25%; right: 8%; animation-delay: 1.5s; }
         .checkmark {
             color: #32CD32;
             font-weight: bold;
-            margin-right: 8px;
         }
-
-        .development-banner {
-            background-color: #ffc107; /* Color amarillo */
-            color: #343a40; /* Color oscuro para el texto */
-            text-align: center;
-            padding: 10px 0;
-            font-weight: bold;
-            position: sticky; /* Se mantiene en la parte superior al hacer scroll */
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000; /* Asegura que esté por encima de otros elementos */
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 30px 0;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+            .app-mockup {
+                width: 280px;
+                height: 560px;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(255, 69, 0, 0.8); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 69, 0, 0.5); }
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero-text {
+                text-align: center;
+            }
+            .hero-description, .hero-tagline {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Banner de desarrollo -->
     <div class="development-banner">
         Aplicación actualmente en desarrollo. Pronto disponible en Google Play y App Store.
     </div>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="floating-elements">
-            <div class="floating-plant">🌿</div>
-            <div class="floating-plant">🍃</div>
-            <div class="floating-plant">🌱</div>
-            <div class="floating-plant">🌾</div>
-        </div>
+        <div class="floating-element">🌿</div>
+        <div class="floating-element">🍃</div>
+        <div class="floating-element">🌱</div>
+        <div class="floating-element">🌾</div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
                     <div class="hero-subtitle">¡Revoluciona tu cultivo!</div>
-                    <h1>GROW CALCULATOR</h1>
+                    <h1 class="hero-title">GROW CALCULATOR</h1>
                     <div class="hero-description">
                         <strong>¿CANSADO DE CÁLCULOS MANUALES Y RESULTADOS MEDIOCRES?</strong>
                     </div>
                     <div class="hero-tagline">
                         <em>Tu experto de cultivo en el bolsillo</em>
                     </div>
-                    <div class="cta-buttons">
-                        <!-- Botón para abrir el carrusel -->
-                        <button id="openCarruselBtn" class="btn btn-primary" type="button" style="flex: 1;">
-                            📖 Ver Guías Ilustradas
-                        </button>
-                        <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" style="margin-bottom: 20px; width: 100%; max-width: 500px; display: flex; gap: 10px;">
-                            <input type="hidden" name="access_key" value="a5aedc6c-6eb9-4fac-b4d7-fd1cafba4809">
-                            <input type="email" name="email" placeholder="Tu email" required style="flex: 1; padding: 12px; border-radius: 25px; border: 2px solid rgba(255, 215, 0, 0.3); background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
-                            <button type="submit" style="padding: 12px 30px; border-radius: 25px; border: none; background: linear-gradient(45deg, #FF0000, #FF4500, #FF8C00, #FFD700); color: white; font-weight: bold; cursor: pointer; transition: all 0.3s ease; animation: pulse 2s infinite; box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);">Suscribirse</button>
-                        </form>
-                        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-                            <div style="display: flex; gap: 10px; align-items: center;">
-                                <span style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">Consulta nuestra</span>
-                                <a href="wiki/index.html" class="btn btn-secondary" target="_blank" style="flex: 1;">
-                                    📚 Wiki
-                                </a>
-                            </div>
-                            <div style="display: flex; gap: 10px; align-items: center;">
-                                <span style="color: #FFD700; font-size: 1.2rem; font-weight: bold;">o mejor aun haz tus preguntas directamente</span>
-                                <a href="https://deepwiki.com/eolle/GrowCalculator" class="btn btn-secondary" target="_blank" style="flex: 1;">
-                                    🔍
-                                </a>
-                            </div>
+                    <div class="cta-grid">
+                        <div class="cta-card">
+                            <p>Consulta nuestras guías ilustradas</p>
+                            <button id="openCarruselBtn" class="btn btn-primary">
+                                <i class="fas fa-book"></i> Ver Guías
+                            </button>
                         </div>
-                        <div style="display: flex; gap: 10px;">
-                            <a href="https://www.paypal.com/pool/9g34w4LaQM" class="btn btn-primary" style="flex: 1;">
-                                🤝 Colaborar
-                            </a>
-                            <a href="https://ko-fi.com/growcalculator" class="btn btn-secondary" style="flex: 1;">
-                                <img src="https://storage.ko-fi.com/cdn/brandasset/kofi_s_logo_nolabel.png" alt="Ko-fi" style="width: 20px; height: auto; margin-right: 8px;"> Ko-fi
+                        <div class="cta-card">
+                            <p>Accede a nuestra base de conocimiento</p>
+                            <a href="wiki/index.html" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-book-open"></i> Wiki
                             </a>
                         </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="app-mockup">
-                        <div class="app-screen">
-                            <div class="calculator-icon"><img src="logogrowcalculator.png" alt="Grow Calculator Logo" style="width: 90px; height: auto; margin-bottom: 10px;"></div>
-                            <h3 style="font-size: 1.4rem; margin-bottom: 15px;">GROW CALCULATOR</h3>
-                            <div class="app-features-mini">
-                                <div><span class="checkmark">✅</span> Cálculo de macetas</div>
-                                <div><span class="checkmark">✅</span> Fertilización precisa</div>
-                                <div><span class="checkmark">✅</span> Ventilación óptima</div>
-                                <div><span class="checkmark">✅</span> Calendario automático</div>
+                        <div class="cta-card">
+                            <p>Haz tus preguntas directamente</p>
+                            <a href="https://deepwiki.com/eolle/GrowCalculator" class="btn btn-primary" target="_blank">
+                                <i class="fas fa-search"></i> DeepWiki
+                            </a>
+                        </div>
+                        <div class="cta-card">
+                            <p>Suscríbete para recibir novedades</p>
+                            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                                <input type="hidden" name="access_key" value="a5aedc6c-6eb9-4fac-b4d7-fd1cafba4809">
+                                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                    <input type="email" name="email" placeholder="Tu email" required style="flex: 1; padding: 10px 15px; border-radius: 50px; border: 2px solid rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(5px);">
+                                    <button type="submit" style="padding: 10px 20px; border-radius: 50px; border: none; background: linear-gradient(45deg, #FF0000, #FF4500, #FF8C00, #FFD700); color: white; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 0 20px rgba(255, 69, 0, 0.5);">Suscribirse</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="cta-card">
+                            <p>Apoya nuestro proyecto</p>
+                            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                                <a href="https://www.paypal.com/pool/9g34w4LaQM" class="btn btn-primary" style="flex: 1;" target="_blank">
+                                    <i class="fas fa-hand-holding-heart"></i> Colaborar
+                                </a>
+                                <a href="https://ko-fi.com/growcalculator" class="btn btn-primary" style="flex: 1;" target="_blank">
+                                    <i class="fas fa-mug-hot"></i> Ko-fi
+                                </a>
                             </div>
                         </div>
                     </div>
+                    <a href="#features" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-leaf"></i> Ver Características
+                    </a>
                 </div>
-            </div>
-            <div style="display: flex; justify-content: flex-end; padding-right: 100px;">
-                <a href="#features" class="btn btn-secondary" style="margin-top: 20px; width: 100%; max-width: 320px; text-align: center;">
-                    🌿 Ver Características
-                </a>
+                <div class="hero-visual" style="position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <div style="position: relative; z-index: 2; display: flex; justify-content: center; align-items: center;">
+                        <video id="avatarVideo" autoplay playsinline muted
+                            style="width: 320px; max-width: 90vw; border-radius: 50%; box-shadow: 0 8px 32px rgba(0,0,0,0.25); background: #fff; padding: 12px; object-fit: cover; display: block;">
+                            Tu navegador no soporta video.
+                        </video>
+                        <audio id="avatarAudio" src="vozavatar.mp3" autoplay></audio>
+                    </div>
+                    <button id="replayAvatarBtn" style="margin-top: 18px; padding: 10px 28px; border-radius: 30px; background: linear-gradient(135deg, #ffc107, #ff9800); color: #222; font-weight: bold; font-size: 1.1rem; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: background 0.2s;">🔄 Repetir presentación</button>
+                    <button id="stopAvatarBtn" style="margin-top: 18px; margin-left: 10px; padding: 10px 28px; border-radius: 30px; background: #dc3545; color: #fff; font-weight: bold; font-size: 1.1rem; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15); cursor: pointer; transition: background 0.2s;">⏹️ Parar presentación</button>
+                </div>
             </div>
         </div>
     </section>
-
     <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Cultivo Inteligente, Resultados Extraordinarios</h2>
-            <p class="section-subtitle">
-                Transforma tus datos básicos en un plan de cultivo personalizado y preciso
-            </p>
+            <div class="section-title">
+                <h2>Cultivo Inteligente, Resultados Extraordinarios</h2>
+                <p>Transforma tus datos básicos en un plan de cultivo personalizado y preciso</p>
+            </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🏺</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
                     <h3>Cantidad de Macetas</h3>
                     <p>Calcula las dimensiones óptimas de macetas y cantidad de tierra necesaria para maximizar el espacio y el crecimiento.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🧪</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
                     <h3>Fertilización Precisa</h3>
                     <p>Tablas de riego integradas con las mejores marcas del mercado.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💨</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
                     <h3>Ventilación Óptima</h3>
                     <p>Sistema de ventilación adecuado para tu espacio con control remoto y monitoreo en tiempo real de temperatura y humedad.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📅</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
                     <h3>Calendario Automático</h3>
                     <p>Calendario personalizado con fechas clave para tu cultivo y alertas automáticas cuando los parámetros se desvían.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💧</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
                     <h3>Riego Calculado al Detalle</h3>
                     <p>Necesidades hídricas precisas para maximizar rendimientos con control remoto de sistemas de riego.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
                     <h3>Análisis de Datos</h3>
                     <p>Análisis completo de datos para optimizar futuros cultivos y mejorar continuamente tus resultados.</p>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Brands Section -->
     <section class="brands">
         <div class="container">
-            <h2 class="section-title">Tablas de Fertilizantes Integradas</h2>
-            <p style="font-size: 1.3rem; margin-bottom: 20px;">
-                <strong>¡Tablas de riego de las mejores marcas integradas!</strong>
-            </p>
+            <div class="section-title">
+                <h2>Tablas de Fertilizantes Integradas</h2>
+                <p>¡Tablas de riego de las mejores marcas integradas!</p>
+            </div>
             <div class="brands-grid">
                 <div class="brand-item">
-                    <h3>🧪 Fertilizantes</h3>
+                    <h3><i class="fas fa-flask"></i> Fertilizantes</h3>
                     <p>Tablas completas integradas</p>
                 </div>
                 <div class="brand-item">
-                    <h3>🌱 Orgánicos</h3>
+                    <h3><i class="fas fa-leaf"></i> Orgánicos</h3>
                     <p>Fertilizantes naturales</p>
                 </div>
                 <div class="brand-item">
-                    <h3>🏆 Profesional</h3>
+                    <h3><i class="fas fa-medal"></i> Profesional</h3>
                     <p>Nutrición avanzada</p>
                 </div>
                 <div class="brand-item">
-                    <h3>🌿 Premium</h3>
+                    <h3><i class="fas fa-crown"></i> Premium</h3>
                     <p>Cultivo de calidad</p>
                 </div>
             </div>
         </div>
     </section>
-
     <!-- How it Works Section -->
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">Para Todos los Niveles</h2>
-            <p style="text-align: center; font-size: 1.3rem; margin-bottom: 20px;">
-                Desde principiantes buscando orientación hasta profesionales gestionando múltiples cultivos
-            </p>
+            <div class="section-title">
+                <h2>Para Todos los Niveles</h2>
+                <p>Desde principiantes buscando orientación hasta profesionales gestionando múltiples cultivos</p>
+            </div>
             <div class="steps-container">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -715,38 +738,35 @@
             </div>
         </div>
     </section>
-
     <!-- Download Section -->
     <section class="download" id="download">
-        <div class="download-content">
-            <div class="container">
-                <h2 class="section-title">¡Únete a la Revolución del Cultivo Inteligente!</h2>
-                <p style="font-size: 1.4rem; margin-bottom: 15px; font-weight: 600;">
-                    <strong></strong>
-                </p>
-                <p style="font-size: 1.1rem; opacity: 0.9;">
-                    
-                </p>
+        <div class="container">
+            <div class="section-title">
+                <h2>¡Únete a la Revolución del Cultivo Inteligente!</h2>
             </div>
+            <!-- Botones de descarga eliminados -->
         </div>
     </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <h3 style="color: #32CD32; margin-bottom: 15px;">GROW CALCULATOR</h3>
-                <p>&copy; 2025 Grow Calculator App. Todos los derechos reservados.</p>
-                <p style="margin-top: 15px; opacity: 0.7; font-style: italic;">
-                    Cultivando el futuro 🌿
-                </p>
-                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.6;">
-                    Para uso en jurisdicciones donde el cultivo es legal
-                </p>
+                <div class="footer-logo">GROW CALCULATOR</div>
+                <p>Tu asistente de cultivo definitivo. Transforma tus datos básicos en un plan de cultivo personalizado y preciso.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2025 Grow Calculator App. Todos los derechos reservados.</p>
+                    <p>Cultivando el futuro 🌿 | Para uso en jurisdicciones donde el cultivo es legal</p>
+                </div>
             </div>
         </div>
     </footer>
-
     <!-- Modal Carrusel -->
     <div id="carruselModal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.85); align-items:center; justify-content:center;">
         <div style="position:relative; width:90vw; max-width:900px; height:90vh; background:#111; border-radius:18px; box-shadow:0 8px 40px #000; display:flex; flex-direction:column;">
@@ -754,11 +774,10 @@
             <iframe src="carrusel/carrusel.html" style="flex:1; width:100%; height:100%; border:none; border-radius:0 0 18px 18px; background:#222;"></iframe>
         </div>
     </div>
-
     <script>
-        // Smooth scrolling for navigation links
+        // Scroll suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
@@ -769,22 +788,11 @@
                 }
             });
         });
-
-        // Add scroll effect to hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-
-        // Animate feature cards on scroll
+        // Animación al hacer scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -793,50 +801,13 @@
                 }
             });
         }, observerOptions);
-
-        // Apply scroll animations to various elements
+        // Aplicar animaciones a los elementos
         document.querySelectorAll('.feature-card, .step, .brand-item').forEach(element => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(40px)';
             element.style.transition = 'all 0.8s ease';
             observer.observe(element);
         });
-
-        // Add dynamic background effects
-        function createFloatingElement() {
-            const element = document.createElement('div');
-            element.innerHTML = '🌿';
-            element.style.position = 'fixed';
-            element.style.fontSize = '1.5rem';
-            element.style.color = 'rgba(50, 205, 50, 0.3)';
-            element.style.pointerEvents = 'none';
-            element.style.zIndex = '1';
-            element.style.left = Math.random() * window.innerWidth + 'px';
-            element.style.top = window.innerHeight + 'px';
-            element.style.animation = 'floatUp 6s linear forwards';
-            
-            document.body.appendChild(element);
-            
-            setTimeout(() => {
-                element.remove();
-            }, 6000);
-        }
-
-        // Add CSS for floating animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes floatUp {
-                to {
-                    transform: translateY(-${window.innerHeight + 100}px) rotate(360deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Create floating elements periodically
-        setInterval(createFloatingElement, 3000);
-
         // Modal Carrusel
         const openCarruselBtn = document.getElementById('openCarruselBtn');
         const carruselModal = document.getElementById('carruselModal');
@@ -858,6 +829,74 @@
                 }
             });
         }
+
+const videoFiles = [
+  "avatar.mp4",
+  "avatar2.mp4",
+  "avatar3.mp4",
+  "avatar4.mp4",
+  "avatar5.mp4",
+  "avatar6.mp4"
+];
+const video = document.getElementById('avatarVideo');
+const audio = document.getElementById('avatarAudio');
+const replayBtn = document.getElementById('replayAvatarBtn');
+const stopBtn = document.getElementById('stopAvatarBtn');
+let currentVideo = 0;
+let audioEnded = false;
+
+function playCurrentVideo() {
+  video.src = videoFiles[currentVideo];
+  video.currentTime = 0;
+  video.play();
+}
+
+video.addEventListener('ended', () => {
+  if (!audioEnded) {
+    currentVideo = (currentVideo + 1) % videoFiles.length;
+    playCurrentVideo();
+  }
+});
+
+audio.addEventListener('ended', () => {
+  audioEnded = true;
+  video.pause();
+  video.currentTime = video.duration;
+  audio.pause();
+  audio.currentTime = audio.duration;
+});
+
+video.addEventListener('loadeddata', () => {
+  if (currentVideo === 0 && !audioEnded) {
+    audio.currentTime = 0;
+    audio.play();
+  }
+  video.play();
+});
+
+audio.addEventListener('pause', () => { if (!video.paused) video.pause(); });
+
+if (replayBtn) {
+  replayBtn.addEventListener('click', () => {
+    audioEnded = false;
+    currentVideo = 0;
+    playCurrentVideo();
+    audio.currentTime = 0;
+    audio.play();
+  });
+}
+
+if (stopBtn) {
+  stopBtn.addEventListener('click', () => {
+    audioEnded = true;
+    video.pause();
+    audio.pause();
+    video.currentTime = video.duration;
+    audio.currentTime = audio.duration;
+  });
+}
+
+playCurrentVideo();
     </script>
 </body>
 </html>
