@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO2 en Cultivos Indoor Profesional</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="grow_theme.css">
 </head>
 <body>
+    <div id="theme-toggle-btn" class="theme-toggle-btn">
+        <span class="theme-icon">🎨</span>
+    </div>
     <div class="container">
         <header>
             <img src="./logo_large.png" alt="Grow Calculator App Logo" class="logo-large">
@@ -28,12 +32,19 @@
         </nav>
 
         <div class="table-of-contents">
-            <h3>Índice</h3>
-            <!-- El índice se generará dinámicamente basado en los h2 y h3 del contenido -->
+            <details>
+                <summary>Índice</summary>
+                <div class="toc-content">
+                    <!-- El índice se generará dinámicamente basado en los h2 y h3 del contenido -->
+                </div>
+            </details>
         </div>
 
         <div class="content">
-            <p>El dióxido de carbono (CO2) representa uno de los elementos más cruciales y frecuentemente subestimados en la optimización de cultivos indoor profesional. Como componente fundamental de la fotosíntesis, una gestión adecuada de los niveles de CO2 puede marcar la diferencia entre un cultivo promedio y una cosecha excepcional tanto en rendimiento como en calidad.</p>
+            <h2>Introducción</h2>
+            <div class="section-content">
+                <p>El dióxido de carbono (CO2) representa uno de los elementos más cruciales y frecuentemente subestimados en la optimización de cultivos indoor profesional. Como componente fundamental de la fotosíntesis, una gestión adecuada de los niveles de CO2 puede marcar la diferencia entre un cultivo promedio y una cosecha excepcional tanto en rendimiento como en calidad.</p>
+            </div>
 
             <h2>Fundamentos del CO2 en la Fisiología de las Plantas</h2>
             <div class="info-box">
@@ -53,7 +64,6 @@
             </div>
 
             <h2>Sistemas de Enriquecimiento de CO2</h2>
-
             <h3>Tanques de CO2 Comprimido</h3>
             <div class="info-box">
                 <ul>
@@ -168,11 +178,60 @@
         </div>
     </div>
 
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+
     <script>
-        // Script para generar el índice automáticamente
+        // Funcionalidad del modo oscuro
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Verificar si hay una preferencia guardada
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeToggle.checked = true;
+            }
+        }
+
+        // Funcionalidad del cambio de tema
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle-btn');
+            const currentTheme = localStorage.getItem('theme');
+            
+            // Aplicar tema guardado
+            if (currentTheme === 'grow') {
+                document.body.classList.add('theme-grow');
+            }
+            
+            // Cambiar tema al hacer clic
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('theme-grow');
+                
+                // Guardar preferencia
+                if (document.body.classList.contains('theme-grow')) {
+                    localStorage.setItem('theme', 'grow');
+                } else {
+                    localStorage.setItem('theme', 'default');
+                }
+            });
+        });
+
+        // Contraer todos los details por defecto
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('details').forEach(function(details) {
+                details.removeAttribute('open');
+            });
+        });
+
+        // Generar el índice
         document.addEventListener('DOMContentLoaded', function() {
             const content = document.querySelector('.content');
-            const toc = document.querySelector('.table-of-contents');
+            const tocContent = document.querySelector('.table-of-contents .toc-content');
             const headings = content.querySelectorAll('h2, h3');
             
             headings.forEach((heading, index) => {
@@ -190,9 +249,9 @@
                     link.className += ' toc-sub';
                 }
                 
-                toc.appendChild(link);
+                tocContent.appendChild(link);
             });
         });
     </script>
 </body>
-</html> 
+</html>

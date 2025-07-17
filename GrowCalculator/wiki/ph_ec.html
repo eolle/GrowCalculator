@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guía de pH y EC</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="grow_theme.css">
 </head>
 <body>
+    <div id="theme-toggle-btn" class="theme-toggle-btn">
+        <span class="theme-icon">🎨</span>
+    </div>
     <div class="container">
         <header>
             <img src="./logo_large.png" alt="Grow Calculator App Logo" class="logo-large">
@@ -28,8 +32,12 @@
         </nav>
 
         <div class="table-of-contents">
-            <h3>Índice</h3>
-            <!-- El índice se generará dinámicamente basado en los h2 y h3 del contenido -->
+            <details>
+                <summary>Índice</summary>
+                <div class="toc-content">
+                    <!-- El índice se generará dinámicamente basado en los h2 y h3 del contenido -->
+                </div>
+            </details>
         </div>
 
         <div class="content">
@@ -176,23 +184,62 @@
     </div>
 
     <script>
-        // Script para generar el índice automáticamente
+        // Funcionalidad del modo oscuro
+        const themeToggle = document.getElementById('theme-toggle');
+        
+        // Verificar si hay una preferencia guardada
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            if (currentTheme === 'dark') {
+                themeToggle.checked = true;
+            }
+        }
+
+        // Funcionalidad del cambio de tema
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle-btn');
+            const currentTheme = localStorage.getItem('theme');
+            
+            // Aplicar tema guardado
+            if (currentTheme === 'grow') {
+                document.body.classList.add('theme-grow');
+            }
+            
+            // Cambiar tema al hacer clic
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('theme-grow');
+                
+                // Guardar preferencia
+                if (document.body.classList.contains('theme-grow')) {
+                    localStorage.setItem('theme', 'grow');
+                } else {
+                    localStorage.setItem('theme', 'default');
+                }
+            });
+        });
+
+        // Contraer todos los details por defecto
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('details').forEach(function(details) {
+                details.removeAttribute('open');
+            });
+        });
+
+        // Generar el índice
         document.addEventListener('DOMContentLoaded', function() {
             const content = document.querySelector('.content');
-            const toc = document.querySelector('.table-of-contents');
+            const toc = document.querySelector('.table-of-contents .toc-content');
             const headings = content.querySelectorAll('h2, h3');
             
             headings.forEach((heading, index) => {
-                // Añadir ID al heading
                 heading.id = `section-${index}`;
                 
-                // Crear enlace en el índice
                 const link = document.createElement('a');
                 link.href = `#section-${index}`;
                 link.textContent = heading.textContent;
                 link.className = 'toc-link';
                 
-                // Añadir clase para subsecciones
                 if (heading.tagName === 'H3') {
                     link.className += ' toc-sub';
                 }
@@ -202,4 +249,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
