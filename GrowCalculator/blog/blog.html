@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Cultivo</title>
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            padding: 2rem;
+            color: var(--gray-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--green-dark);
+            backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            border: 1px solid rgba(139,92,246,0.18);
+            box-shadow: 0 8px 32px 0 rgba(30,41,59,0.10);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--white);
+        }
+
+        a {
+            color: var(--yellow-accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--green-light);
+        }
+
+        .btn, button {
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            border: none;
+            border-radius: 8px;
+            padding: 0.7em 1.5em;
+            font-weight: 600;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn:hover, button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .alert, .cta {
+            background: var(--yellow-soft);
+            color: var(--green-dark);
+            padding: 1em;
+            border-radius: 8px;
+            margin: 1em 0;
+        }
+
+        .success {
+            background: var(--success);
+            color: white;
+            padding: 1em;
+            border-radius: 8px;
+            margin: 1em 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .article-card {
+            background: white;
+            backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            border: 1px solid #f3f4f6;
+            box-shadow: 0 8px 32px 0 rgba(139,92,246,0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 12px 40px 0 rgba(139,92,246,0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            background: var(--violet);
+            color: white;
+            font-weight: 600;
+        }
+
+        .article-title {
+            color: var(--navy-blue);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .article-excerpt {
+            color: var(--medium-gray);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-date {
+            color: var(--medium-gray);
+            font-size: 0.8rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(139,92,246, 0.8);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 95%;
+            max-width: 1200px;
+            margin: 1rem auto;
+            background: white;
+            padding: 1rem;
+            border-radius: 1rem;
+            max-height: 95vh;
+            overflow-y: auto;
+        }
+
+        .modal-gallery {
+            position: relative;
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 80vh;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            background: var(--cream-bg);
+        }
+
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .gallery-nav button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--violet);
+            color: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .gallery-nav button:hover {
+            background: var(--mint-green);
+            color: var(--navy-blue);
+        }
+
+        .gallery-nav button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--medium-gray);
+        }
+
+        .modal-article {
+            margin-top: 2rem;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--cream-bg);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s;
+            color: var(--navy-blue);
+            font-weight: 600;
+        }
+
+        .pagination button:hover {
+            background: var(--violet);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 1rem auto;
+            }
+        }
+
+        .quiz-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .quiz-card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 18px;
+            padding: 2.2rem 2rem 2.2rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: box-shadow 0.3s, transform 0.2s, border 0.2s, background 0.2s;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.10);
+            border: 3px solid transparent;
+            backdrop-filter: blur(10px);
+            position: relative;
+            min-height: 260px;
+            outline: none;
+            user-select: none;
+        }
+        .quiz-card:focus,
+        .quiz-card:hover {
+            transform: translateY(-8px) scale(1.04);
+            box-shadow: 0 18px 48px 0 rgba(139,92,246,0.18);
+            border-color: var(--violet);
+            background: linear-gradient(120deg, var(--mint-green) 0%, #fff 100%);
+        }
+        .quiz-card .quiz-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.2s;
+        }
+        .quiz-card:hover .quiz-icon {
+            transform: scale(1.15) rotate(-8deg);
+        }
+        .quiz-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+            color: var(--navy-blue);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .quiz-card p {
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-size: 1.08rem;
+        }
+        .quiz-card .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.98rem;
+            color: var(--medium-gray);
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        .quiz-card .difficulty {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .quiz-card .arrow {
+            position: absolute;
+            right: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2.1rem;
+            color: var(--violet);
+            opacity: 0.7;
+            transition: right 0.2s, opacity 0.2s;
+            pointer-events: none;
+        }
+        .quiz-card:hover .arrow {
+            right: 0.7rem;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            .quiz-selection {
+                grid-template-columns: 1fr;
+            }
+            .quiz-card {
+                min-height: 200px;
+                padding: 1.5rem 1rem 1.5rem 1rem;
+            }
+            .quiz-card .arrow {
+                font-size: 1.5rem;
+                right: 0.7rem;
+            }
+        }
+
+        .answer {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.1rem;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+            display: block;
+            width: 100%;
+            text-align: left;
+            font-weight: 600;
+            box-shadow: 0 2px 8px #0001;
+        }
+        .answer:hover, .answer:focus {
+            background: var(--mint-green);
+            border-color: var(--violet);
+            color: var(--navy-blue);
+            transform: scale(1.02);
+            outline: none;
+        }
+        .answer.selected {
+            background: linear-gradient(45deg, var(--violet), var(--mint-green));
+            color: white;
+            border-color: var(--violet);
+        }
+        .answer.correct {
+            background: var(--mint-green);
+            color: var(--navy-blue);
+            border-color: var(--mint-green);
+        }
+        .answer.incorrect {
+            background: #f44336;
+            color: white;
+            border-color: #f44336;
+        }
+
+        .results {
+            text-align: center;
+            display: none;
+            background: rgba(255,255,255,0.85);
+            border-radius: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(139,92,246,0.13);
+            padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            position: relative;
+            animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) 1;
+            backdrop-filter: blur(10px);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .score-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin: 1.5rem auto 1rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.7rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.10);
+            border: 6px solid #fff;
+            transition: background 0.4s;
+            background: linear-gradient(120deg, var(--mint-green), var(--violet));
+        }
+        .score-excellent { background: linear-gradient(120deg, #06D6A0 0%, #8B5CF6 100%); }
+        .score-good { background: linear-gradient(120deg, #8B5CF6 0%, #06D6A0 100%); }
+        .score-average { background: linear-gradient(120deg, #ff9800 0%, #ffc107 100%); }
+        .score-poor { background: linear-gradient(120deg, #ff5722 0%, #f44336 100%); }
+        .result-icon {
+            font-size: 3.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            animation: popIn 0.7s cubic-bezier(.23,1.01,.32,1);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            80% { transform: scale(1.15); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+        .result-title {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 0.7rem;
+            color: var(--violet);
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px #8B5CF622;
+        }
+        .result-description {
+            color: var(--navy-blue);
+            margin-bottom: 1.2rem;
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+        .result-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+        .result-badge {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            background: var(--mint-green);
+            box-shadow: 0 2px 8px #06D6A033;
+        }
+        .result-badge.incorrect {
+            background: #f44336;
+        }
+        .motivational {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--mint-green);
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            text-shadow: 0 2px 8px #06D6A033;
+        }
+
+        #openQuizBtn {
+            background: #FFE5B4 !important;
+            color: #2D5016 !important;
+            border: 2px solid #2D5016;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(45,80,22,0.08);
+            border-radius: 2rem;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        #openQuizBtn:hover {
+            background: #F59E0B !important;
+            color: #fff !important;
+            border-color: #F59E0B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blog de Cultivo</h1>
+            <button id="openQuizBtn" style="margin-top:1.5rem;background:linear-gradient(45deg, var(--violet), var(--mint-green));color:#fff;border:none;border-radius:2rem;padding:0.8rem 2rem;font-size:1.2rem;font-weight:600;box-shadow:0 2px 12px #0001;cursor:pointer;">🌱 ¿Cuánto sabes de cultivo? Haz el Quiz</button>
+        </header>
+
+        <!-- Buscador y filtros -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 2rem;">
+            <input id="searchInput" type="text" placeholder="Buscar artículos..." style="flex:1; min-width:200px; padding:0.7rem 1rem; border-radius:2rem; border:1px solid var(--medium-gray); font-size:1rem; background: #fff; color: var(--navy-blue);">
+            <select id="categoryFilter" style="padding:0.7rem 1rem; border-radius:2rem; border:1px solid var(--medium-gray); font-size:1rem; background: #fff; color: var(--navy-blue);">
+                <option value="">Todas las categorías</option>
+            </select>
+            <select id="yearFilter" style="padding:0.7rem 1rem; border-radius:2rem; border:1px solid var(--medium-gray); font-size:1rem; background: #fff; color: var(--navy-blue);">
+                <option value="">Todos los años</option>
+            </select>
+            <div id="tagsFilter" style="display:flex; gap:0.5rem; flex-wrap:wrap;"></div>
+        </div>
+
+        <div style="display: flex; gap: 2rem; align-items: flex-start;">
+            <div style="flex:3;">
+                <div class="articles-grid" id="articlesGrid"></div>
+                <div class="pagination" id="pagination"></div>
+            </div>
+            <aside style="flex:1; min-width:260px;">
+                <div style="background: #fff; border-radius:1rem; box-shadow:0 2px 12px #0001; padding:1.5rem; margin-bottom:2rem;">
+                    <h3 style="color:var(--violet); margin-bottom:1rem;">Más populares</h3>
+                    <ul id="popularArticles" style="list-style:none; padding:0; margin:0;"></ul>
+                </div>
+                <div style="background: #fff; border-radius:1rem; box-shadow:0 2px 12px #0001; padding:1.5rem;">
+                    <h3 style="color:var(--mint-green); margin-bottom:1rem;">Suscríbete</h3>
+                    <form id="newsletterForm">
+                        <input type="email" id="newsletterEmail" placeholder="Tu email" required style="width:100%; padding:0.7rem 1rem; border-radius:2rem; border:1px solid var(--medium-gray); font-size:1rem; margin-bottom:1rem;">
+                        <button type="submit" style="width:100%; background:var(--violet); color:#fff; border:none; border-radius:2rem; padding:0.7rem 1rem; font-size:1rem; font-weight:600; cursor:pointer;">Suscribirme</button>
+                    </form>
+                    <div id="newsletterMsg" style="margin-top:0.5rem; color:var(--mint-green);"></div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal Quiz -->
+    <div class="modal" id="quizModal" style="display:none;z-index:2000;">
+        <div class="modal-content" style="max-width:1000px;width:95vw;">
+            <span class="close-modal" id="closeQuizModal" style="right:2rem;top:2rem;">&times;</span>
+            <div class="container">
+                <div class="quiz-header">
+                    <h1 class="quiz-title">🌱 Quiz de Cultivo Indoor</h1>
+                    <p class="quiz-subtitle">Pon a prueba tus conocimientos sobre cultivo de cannabis indoor</p>
+                </div>
+                <!-- Selección de Quiz -->
+                <div id="quizSelection" class="quiz-selection">
+                    <div class="quiz-card" tabindex="0" onclick="startQuiz('principiante')">
+                        <div class="quiz-icon">🌱</div>
+                        <h3>Principiante</h3>
+                        <p>Conceptos básicos: pH, EC, riego, germinación, primeros pasos, equipamiento básico y cuidados iniciales.</p>
+                        <div class="quiz-meta">
+                            <span class="difficulty principiante">Principiante</span>
+                            <span>12 preguntas</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="quiz-card" tabindex="0" onclick="startQuiz('intermedio')">
+                        <div class="quiz-icon">🪴</div>
+                        <h3>Intermedio</h3>
+                        <p>Nutrición, iluminación, VPD, control ambiental, poda, técnicas de entrenamiento y sistemas hidropónicos.</p>
+                        <div class="quiz-meta">
+                            <span class="difficulty intermedio">Intermedio</span>
+                            <span>12 preguntas</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="quiz-card" tabindex="0" onclick="startQuiz('avanzado')">
+                        <div class="quiz-icon">🌿</div>
+                        <h3>Avanzado</h3>
+                        <p>Genética, breeding, VPD avanzado, plagas, hongos, técnicas SCROG/LST, flush, lockout y troubleshooting.</p>
+                        <div class="quiz-meta">
+                            <span class="difficulty avanzado">Avanzado</span>
+                            <span>12 preguntas</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                    <div class="quiz-card" tabindex="0" onclick="startQuiz('experto')">
+                        <div class="quiz-icon">🏆</div>
+                        <h3>Experto Grower</h3>
+                        <p>Técnicas avanzadas, optimización máxima, cultivo comercial, análisis de datos, y casos reales de troubleshooting.</p>
+                        <div class="quiz-meta">
+                            <span class="difficulty experto">Experto</span>
+                            <span>12 preguntas</span>
+                        </div>
+                        <span class="arrow">→</span>
+                    </div>
+                </div>
+                <!-- Contenedor del Quiz -->
+                <div id="quizContainer" class="quiz-container">
+                    <button class="back-btn" onclick="backToSelection()">← Volver a selección</button>
+                    <div class="quiz-info">
+                        <strong>💡 Tip:</strong> Lee cada pregunta cuidadosamente. Algunas tienen trucos comunes que cometen los cultivadores.
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+                    <div class="question-counter" id="questionCounter"></div>
+                    <div class="question" id="question"></div>
+                    <div class="answers" id="answers"></div>
+                    <div class="explanation" id="explanation"></div>
+                    <div class="quiz-buttons">
+                        <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>Anterior</button>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Siguiente</button>
+                    </div>
+                </div>
+                <!-- Resultados -->
+                <div id="results" class="results">
+                    <div class="score-circle" id="scoreCircle">
+                        <span id="scoreText"></span>
+                    </div>
+                    <h2 id="resultTitle"></h2>
+                    <p id="resultDescription"></p>
+                    <div class="recommendations" id="recommendations"></div>
+                    <div class="share-results">
+                        <a href="#" class="share-btn share-twitter" id="shareTwitter" target="_blank">📱 Twitter</a>
+                        <a href="#" class="share-btn share-facebook" id="shareFacebook" target="_blank">📘 Facebook</a>
+                        <a href="#" class="share-btn share-whatsapp" id="shareWhatsapp" target="_blank">💬 WhatsApp</a>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <button class="btn btn-primary" onclick="restartQuiz()">🔄 Repetir Quiz</button>
+                        <button class="btn btn-secondary" onclick="backToSelection()" style="margin-left: 1rem;">📚 Otros Quiz</button>
+                    </div>
+                </div>
+            </div>
+            <script>
+            // Pool de preguntas alineado a la wiki, agrupado por nivel
+            const quizData = {
+principiante: [
+  // Mantén solo las 10 preguntas más relevantes y variadas para principiantes
+  {question: "¿Cuál es la temperatura ideal para la germinación de semillas de cannabis?", answers: ["18-20°C", "22-26°C", "28-32°C", "15-18°C"], correct: 1, explanation: "La temperatura óptima para germinación es 22-26°C. Temperaturas más bajas ralentizan el proceso, mientras que temperaturas más altas pueden dañar las semillas."},
+  {question: "¿Cuántas horas de luz necesita una planta en fase vegetativa?", answers: ["12 horas", "16 horas", "18-24 horas", "8 horas"], correct: 2, explanation: "En vegetativo se recomienda 18-24 horas de luz. Muchos cultivadores usan 18/6 (18h luz, 6h oscuridad) para dar un descanso a las plantas y equipos."},
+  {question: "¿Qué significa NPK en los fertilizantes?", answers: ["Nitrógeno, Potasio, Calcio", "Nitrógeno, Fósforo, Potasio", "Nitrógeno, Fósforo, Calcio", "Nicotina, Fósforo, Potasio"], correct: 1, explanation: "NPK representa los tres macronutrientes principales: Nitrógeno (N), Fósforo (P) y Potasio (K). Son esenciales para el crecimiento saludable."},
+  {question: "¿Cuál es la humedad relativa ideal en vegetativo?", answers: ["30-40%", "50-70%", "80-90%", "20-30%"], correct: 1, explanation: "En vegetativo, la humedad ideal es 50-70%. Humedad muy alta puede causar hongos, muy baja puede estresar las plantas."},
+  {question: "¿Qué pH es óptimo para cultivo en tierra?", answers: ["5.5-6.0", "6.0-7.0", "7.5-8.0", "4.0-5.0"], correct: 1, explanation: "En tierra, el pH óptimo es 6.0-7.0. Este rango permite la mejor absorción de nutrientes por las raíces."},
+  {question: "¿Cuándo cambiar el fotoperiodo a floración?", answers: ["8/16 horas luz/oscuridad", "12/12 horas luz/oscuridad", "14/10 horas luz/oscuridad", "16/8 horas luz/oscuridad"], correct: 1, explanation: "Para inducir floración se cambia a 12/12 (12h luz, 12h oscuridad). Este cambio simula el otoño natural."},
+  {question: "¿Qué tipo de luz es mejor para vegetativo?", answers: ["Luz roja (2700K)", "Luz azul (6500K)", "Luz amarilla (3000K)", "Luz verde (5000K)"], correct: 1, explanation: "La luz azul (6500K) es ideal para vegetativo porque promueve crecimiento compacto y desarrollo de hojas."},
+  {question: "¿Con qué frecuencia regar plantas jóvenes?", answers: ["Diariamente", "Cuando la tierra esté seca 2-3cm", "Una vez por semana", "Cada 3 días exactos"], correct: 1, explanation: "Riega cuando los primeros 2-3cm de tierra estén secos. El exceso de riego es más peligroso que la falta de agua."},
+  {question: "¿Cuál es el primer signo de sobrefertilización?", answers: ["Hojas amarillas", "Puntas de hojas quemadas", "Crecimiento lento", "Hojas moradas"], correct: 1, explanation: "Las puntas quemadas (marrón/amarillo) son el primer signo de sobrefertilización. Reduce inmediatamente los nutrientes."},
+  {question: "¿Qué tamaño de maceta para una planta auto?", answers: ["1-3 litros", "5-7 litros", "10-15 litros", "20+ litros"], correct: 1, explanation: "Las autos necesitan 5-7 litros mínimo. Macetas pequeñas limitan el crecimiento y rendimiento final."}
+],
+intermedio: [
+  {question: "¿Qué valor de EC es recomendado para la etapa de floración en hidroponía?", answers: ["0.5-1.0", "1.2-1.6", "1.6-2.2", "2.5-3.0"], correct: 2, explanation: "En floración, la EC debe estar entre 1.6 y 2.2 mS/cm."},
+  {question: "¿Qué técnica de cultivo utiliza una malla para distribuir el crecimiento?", answers: ["SOG", "SCROG", "LST", "FIM"], correct: 1, explanation: "SCROG (Screen of Green) usa una malla para maximizar la luz."},
+  {question: "¿Cuál es el síntoma típico de la botrytis en cogollos?", answers: ["Polvo blanco", "Podredumbre gris", "Manchas amarillas", "Hojas enrolladas"], correct: 1, explanation: "Botrytis causa podredumbre gris en flores densas."},
+  {question: "¿Qué parámetro se ajusta con un controlador de extracción?", answers: ["pH", "Temperatura y humedad", "EC", "Luz"], correct: 1, explanation: "El extractor regula temperatura y humedad en el indoor."},
+  {question: "¿Qué función tienen las micorrizas en el cultivo?", answers: ["Producir flores", "Mejorar absorción de nutrientes", "Controlar plagas", "Aumentar la EC"], correct: 1, explanation: "Las micorrizas amplían la superficie radicular y mejoran la nutrición."},
+  {question: "¿Qué es el VPD y cómo se calcula?", answers: ["Relación entre luz y CO2", "Relación entre temperatura y humedad", "Relación entre pH y EC", "Relación entre nutrientes y agua"], correct: 1, explanation: "VPD = función de temperatura y humedad relativa."},
+  {question: "¿Qué ocurre si el VPD es demasiado bajo?", answers: ["Las plantas transpiran mucho", "Las plantas no transpiran lo suficiente", "Se queman las puntas", "Se acelera la floración"], correct: 1, explanation: "VPD bajo = poca transpiración, riesgo de hongos y deficiencias."},
+  {question: "¿Qué parámetro es crítico para evitar el 'nutrient lockout'?", answers: ["pH", "Temperatura", "Luz", "CO2"], correct: 0, explanation: "Un pH fuera de rango bloquea la absorción de nutrientes."},
+  {question: "¿Qué es el 'stretch' en floración?", answers: ["Cuando las hojas se estiran", "Crecimiento acelerado las primeras semanas de floración", "Problema de iluminación", "Signo de estrés"], correct: 1, explanation: "El 'stretch' es el crecimiento vertical acelerado durante las primeras 2-3 semanas de floración."},
+  {question: "¿Qué es el SCROG y cuándo aplicarlo?", answers: ["Tipo de semilla", "Screen of Green - malla para entrenar", "Sistema de riego", "Problema de plagas"], correct: 1, explanation: "SCROG (Screen of Green) usa una malla para entrenar las plantas horizontalmente."},
+  {question: "¿Qué es el DLI (Daily Light Integral)?", answers: ["Horas de luz por día", "Cantidad total de luz recibida en 24h", "Tipo de espectro lumínico", "Temperatura de color"], correct: 1, explanation: "DLI mide la cantidad total de luz fotosintéticamente activa que recibe la planta en 24 horas."},
+  {question: "¿Qué hacer si aparecen bananas/hermafroditismo?", answers: ["Ignorar", "Arrancar las bananas cuidadosamente", "Cortar toda la planta", "Aumentar nutrientes"], correct: 1, explanation: "Si aparecen pocas 'bananas', se pueden remover cuidadosamente con pinzas."}
+],
+avanzado: [
+  {question: "¿Cuál es el rango ideal de humedad en floración para evitar hongos?", answers: ["80-90%", "60-70%", "40-50%", "20-30%"], correct: 2, explanation: "Humedad baja en floración previene botrytis y oídio."},
+  {question: "¿Qué indica una EC muy alta en el drenaje?", answers: ["Deficiencia de nutrientes", "Exceso de sales/acumulación", "Buen desarrollo", "Falta de riego"], correct: 1, explanation: "EC alta en drenaje indica acumulación de sales, hay que lavar."},
+  {question: "¿Qué es el 'flush' y cuándo se realiza?", answers: ["Lavado de raíces antes de cosecha", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El flush elimina sales y mejora el sabor de la cosecha."},
+  {question: "¿Qué parámetro es crítico para evitar el 'nutrient lockout'?", answers: ["pH", "Temperatura", "Luz", "CO2"], correct: 0, explanation: "Un pH fuera de rango bloquea la absorción de nutrientes."},
+  {question: "¿Qué ocurre si el VPD es demasiado alto?", answers: ["Las plantas transpiran en exceso", "Las plantas no transpiran", "Se bloquea la absorción de nutrientes", "Se acelera la floración"], correct: 0, explanation: "VPD alto = transpiración excesiva, riesgo de estrés hídrico."},
+  {question: "¿Qué es la técnica 'Monster Cropping'?", answers: ["Cultivo de plantas gigantes", "Clones tomados en floración que revegecan", "Uso de CO2 suplementario", "Cultivo en exterior"], correct: 1, explanation: "Monster Cropping consiste en tomar clones de plantas en floración temprana."},
+  {question: "¿Cuál es la concentración ideal de CO2 en floración?", answers: ["400 ppm", "800-1000 ppm", "1200-1500 ppm", "2000+ ppm"], correct: 2, explanation: "La concentración ideal de CO2 es 1200-1500 ppm durante las horas de luz."},
+  {question: "¿Qué es el breeding y cuál es el objetivo principal?", answers: ["Reproducir plantas idénticas", "Crear nuevas variedades con características deseadas", "Aumentar el THC solamente", "Hacer plantas más grandes"], correct: 1, explanation: "El breeding busca crear nuevas variedades combinando características deseadas."},
+  {question: "¿Cuándo hacer 'reverse osmosis' del agua?", answers: ["Siempre", "Cuando el agua tenga >150 ppm", "Nunca", "Solo en hidropónico"], correct: 1, explanation: "La osmosis inversa se recomienda cuando el agua base supera 150-200 ppm."},
+  {question: "¿Qué causa la 'luz burn' y cómo identificarla?", answers: ["Exceso de nutrientes", "Luz demasiado intensa/cerca", "Falta de agua", "Temperatura baja"], correct: 1, explanation: "Light burn se causa por luz demasiado intensa."},
+  {question: "¿Qué es la técnica 'main-lining' o 'manifolding'?", answers: ["Sistema de riego principal", "Crear 8+ colas principales simétricas", "Tipo de poda de raíces", "Método de secado"], correct: 1, explanation: "Main-lining crea múltiples colas principales mediante topping y entrenamiento sistemático."},
+  {question: "¿Qué es el 'rosin' y cómo se produce?", answers: ["Tipo de fertilizante", "Extracto hecho con calor y presión", "Variedad de cannabis", "Sistema hidropónico"], correct: 1, explanation: "Rosin es un extracto sin solventes producido aplicando calor y presión."},
+  {question: "¿Qué es el 'EC drift' y cómo se maneja?", answers: ["Variación de EC en el tiempo", "Cambio de pH", "Falta de luz", "Exceso de CO2"], correct: 0, explanation: "El EC drift es la variación de EC, se maneja ajustando nutrientes y controlando el drenaje."},
+  {question: "¿Qué es el 'hermafroditismo' y cómo prevenirlo?", answers: ["Plantas con flores macho y hembra", "Falta de nutrientes", "Exceso de riego", "Falta de luz"], correct: 0, explanation: "El hermafroditismo es la aparición de flores macho y hembra, se previene evitando estrés y usando buenas genéticas."},
+  {question: "¿Qué es el 'supercropping'?", answers: ["Dañar tallos para fortalecerlos", "Poda de raíces", "Uso de CO2", "Cambio de maceta"], correct: 0, explanation: "El supercropping es una técnica de estrés controlado para mejorar la producción."}
+],
+experto: [
+  {question: "¿Qué es el 'nutrient lockout' y cómo se soluciona?", answers: ["Falta de nutrientes, se soluciona abonando más", "Exceso de sales bloquea la absorción, se soluciona lavando y ajustando pH", "Problema de luz, se soluciona bajando la lámpara", "Falta de CO2, se soluciona ventilando"], correct: 1, explanation: "El lockout es causado por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH."},
+  {question: "¿Qué es el DLI y cómo afecta el crecimiento?", answers: ["Cantidad total de luz útil recibida en 24h", "Cantidad de agua en el sustrato", "Nivel de CO2 en el ambiente", "Cantidad de nutrientes en la solución"], correct: 0, explanation: "El DLI mide la luz útil diaria y es clave para la fotosíntesis y el rendimiento."},
+  {question: "¿Qué es el 'stretch' y cómo se controla?", answers: ["Crecimiento acelerado en floración, se controla con luz y entrenamiento", "Deficiencia de nitrógeno", "Exceso de riego", "Falta de CO2"], correct: 0, explanation: "El stretch es el crecimiento acelerado al inicio de floración, se controla con luz y técnicas como SCROG/LST."},
+  {question: "¿Qué es el 'runoff' y por qué es importante medirlo?", answers: ["El agua que drena tras el riego, permite controlar EC y pH", "El agua de lluvia", "El agua evaporada", "El agua de riego inicial"], correct: 0, explanation: "El runoff es el agua que drena tras el riego, permite controlar EC y pH."},
+  {question: "¿Qué es el 'lollipopping' y para qué se usa?", answers: ["Eliminar ramas bajas para concentrar energía en la parte superior", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El lollipopping es eliminar ramas bajas para concentrar energía en la parte superior."},
+  {question: "¿Qué es el VPD óptimo en floración?", answers: ["0.5-0.8 kPa", "1.0-1.2 kPa", "1.5-2.0 kPa", "2.5-3.0 kPa"], correct: 1, explanation: "En floración el VPD óptimo es 1.0-1.2 kPa."},
+  // 14 preguntas nuevas para experto grower:
+  {question: "¿Qué es el 'foxtailing' en cogollos y cómo evitarlo?", answers: ["Formación de flores alargadas por estrés lumínico o genético", "Deficiencia de fósforo", "Exceso de riego", "Falta de CO2"], correct: 0, explanation: "El foxtailing es la formación de flores alargadas, suele deberse a estrés lumínico o genética. Se evita controlando la intensidad lumínica."},
+  {question: "¿Qué es el 'root rot' y cómo se previene?", answers: ["Podredumbre de raíces, se previene con oxigenación y control de riego", "Deficiencia de calcio", "Exceso de luz", "Falta de CO2"], correct: 0, explanation: "Root rot es podredumbre de raíces, se previene con oxigenación y evitando exceso de riego."},
+  {question: "¿Qué es el 'EC drift' y cómo se maneja?", answers: ["Variación de EC en el tiempo, se maneja ajustando nutrientes y controlando el drenaje", "Cambio de pH", "Falta de luz", "Exceso de CO2"], correct: 0, explanation: "El EC drift es la variación de EC, se maneja ajustando nutrientes y controlando el drenaje."},
+  {question: "¿Qué es el 'hermafroditismo' y cómo prevenirlo?", answers: ["Plantas con flores macho y hembra, se previene evitando estrés y genéticas estables", "Falta de nutrientes", "Exceso de riego", "Falta de luz"], correct: 0, explanation: "El hermafroditismo es la aparición de flores macho y hembra, se previene evitando estrés y usando buenas genéticas."},
+  {question: "¿Qué es el 'supercropping' y para qué sirve?", answers: ["Dañar tallos para fortalecerlos y aumentar producción", "Poda de raíces", "Uso de CO2", "Cambio de maceta"], correct: 0, explanation: "El supercropping es una técnica de estrés controlado para mejorar la producción."},
+  {question: "¿Qué es el 'main-lining' y su objetivo?", answers: ["Crear múltiples colas principales mediante poda y entrenamiento", "Aumentar la EC", "Reducir la luz", "Controlar plagas"], correct: 0, explanation: "El main-lining crea varias colas principales para maximizar el rendimiento."},
+  {question: "¿Qué es el 'Monster Cropping'?", answers: ["Clones tomados en floración que revegecan", "Uso de CO2", "Cultivo en exterior", "Poda de raíces"], correct: 0, explanation: "Monster Cropping consiste en tomar clones de plantas en floración temprana."},
+  {question: "¿Qué es el 'breeding' y su objetivo?", answers: ["Crear nuevas variedades con características deseadas", "Aumentar el THC solamente", "Hacer plantas más grandes", "Reproducir plantas idénticas"], correct: 0, explanation: "El breeding busca crear nuevas variedades combinando características deseadas."},
+  {question: "¿Qué es el 'flush' y cuándo se realiza?", answers: ["Lavado de raíces antes de cosecha", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El flush elimina sales y mejora el sabor de la cosecha."},
+  {question: "¿Qué es el 'rosin' y cómo se produce?", answers: ["Extracto hecho con calor y presión", "Tipo de fertilizante", "Variedad de cannabis", "Sistema hidropónico"], correct: 0, explanation: "Rosin es un extracto sin solventes producido aplicando calor y presión."},
+  {question: "¿Qué es el 'lollipopping' y para qué se usa?", answers: ["Eliminar ramas bajas para concentrar energía en la parte superior", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El lollipopping es eliminar ramas bajas para concentrar energía en la parte superior."},
+  {question: "¿Qué es el 'stretch' y cómo se controla?", answers: ["Crecimiento acelerado en floración, se controla con luz y entrenamiento", "Deficiencia de nitrógeno", "Exceso de riego", "Falta de CO2"], correct: 0, explanation: "El stretch es el crecimiento acelerado al inicio de floración, se controla con luz y técnicas como SCROG/LST."},
+  {question: "¿Qué es el 'runoff' y por qué es importante medirlo?", answers: ["El agua que drena tras el riego, permite controlar EC y pH", "El agua de lluvia", "El agua evaporada", "El agua de riego inicial"], correct: 0, explanation: "El runoff es el agua que drena tras el riego, permite controlar EC y pH."},
+  {question: "¿Qué es el VPD óptimo en floración?", answers: ["0.5-0.8 kPa", "1.0-1.2 kPa", "1.5-2.0 kPa", "2.5-3.0 kPa"], correct: 1, explanation: "En floración el VPD óptimo es 1.0-1.2 kPa."},
+  {question: "¿Qué es el 'reverse osmosis' y cuándo se recomienda?", answers: ["Filtrar el agua para controlar nutrientes, recomendado si el agua base supera 150 ppm", "Aumentar la EC", "Reducir la luz", "Controlar plagas"], correct: 0, explanation: "La osmosis inversa se recomienda cuando el agua base supera 150-200 ppm."},
+  {question: "¿Qué es el 'lockout' y cómo se soluciona?", answers: ["Bloqueo de nutrientes por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH", "Falta de luz", "Exceso de CO2", "Cambio de maceta"], correct: 0, explanation: "El lockout es causado por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH."}
+]
+// ... existing code ...
+};
+
+// Estado y lógica del quiz
+let quizLevel = null;
+let quizQuestions = [];
+let quizCurrent = 0;
+let quizAnswers = [];
+
+function startQuiz(level) {
+    quizLevel = level;
+    quizQuestions = quizData[level];
+    quizCurrent = 0;
+    quizAnswers = Array(quizQuestions.length).fill(null);
+    document.getElementById('quizSelection').style.display = 'none';
+    document.getElementById('quizContainer').style.display = 'block';
+    document.getElementById('results').style.display = 'none';
+    renderQuiz();
+}
+
+function backToSelection() {
+    document.getElementById('quizSelection').style.display = 'grid';
+    document.getElementById('quizContainer').style.display = 'none';
+    document.getElementById('results').style.display = 'none';
+}
+
+function renderQuiz() {
+    renderQuestion();
+    document.getElementById('progressBar').style.width = ((quizCurrent+1)/quizQuestions.length*100)+"%";
+    document.getElementById('questionCounter').textContent = `Pregunta ${quizCurrent+1} de ${quizQuestions.length}`;
+    document.getElementById('prevBtn').disabled = quizCurrent === 0;
+    document.getElementById('nextBtn').disabled = quizAnswers[quizCurrent] === null;
+}
+
+function renderQuestion() {
+    const q = quizQuestions[quizCurrent];
+    document.getElementById('question').textContent = q.question;
+    const answersDiv = document.getElementById('answers');
+    answersDiv.innerHTML = '';
+    q.answers.forEach((ans, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'answer' + (quizAnswers[quizCurrent] === idx ? ' selected' : '');
+        btn.textContent = ans;
+        btn.onclick = () => selectAnswer(idx);
+        btn.tabIndex = 0;
+        answersDiv.appendChild(btn);
+    });
+    document.getElementById('explanation').style.display = 'none';
+    document.getElementById('explanation').textContent = '';
+}
+
+function selectAnswer(idx) {
+    quizAnswers[quizCurrent] = idx;
+    renderQuiz();
+    showExplanation();
+    // Espera 1.2s y pasa a la siguiente pregunta automáticamente
+    setTimeout(() => {
+        if (quizCurrent < quizQuestions.length-1) {
+            nextQuestion();
+        } else {
+            renderResults();
+        }
+    }, 1200);
+}
+
+function showExplanation() {
+    const q = quizQuestions[quizCurrent];
+    const exp = document.getElementById('explanation');
+    exp.style.display = 'block';
+    if (quizAnswers[quizCurrent] === q.correct) {
+        exp.textContent = '✔️ ¡Correcto! ' + q.explanation;
+        markAnswer('correct');
+    } else {
+        exp.textContent = '❌ Incorrecto. ' + q.explanation;
+        markAnswer('incorrect');
+    }
+}
+
+function markAnswer(type) {
+    const answersDiv = document.getElementById('answers');
+    Array.from(answersDiv.children).forEach((el, idx) => {
+        el.classList.remove('selected','correct','incorrect');
+        if (quizAnswers[quizCurrent] === idx) el.classList.add(type);
+        if (type==='incorrect' && idx === quizQuestions[quizCurrent].correct) el.classList.add('correct');
+    });
+}
+
+function nextQuestion() {
+    if (quizCurrent < quizQuestions.length-1) {
+        quizCurrent++;
+        renderQuiz();
+    } else {
+        renderResults();
+    }
+}
+
+function prevQuestion() {
+    if (quizCurrent > 0) {
+        quizCurrent--;
+        renderQuiz();
+    }
+}
+
+function renderResults() {
+    document.getElementById('quizContainer').style.display = 'none';
+    document.getElementById('results').style.display = 'block';
+    const correct = quizAnswers.filter((a,i)=>a===quizQuestions[i].correct).length;
+    const incorrect = quizAnswers.length - correct;
+    const percent = Math.round(correct/quizQuestions.length*100);
+    let icon = '', motivational = '';
+    let circleClass = '';
+    let title = '';
+    if (percent >= 90) { icon = '🌟'; motivational = '¡Eres un auténtico Maestro Grower!'; circleClass = 'score-excellent'; title = '¡Maestro Grower!'; }
+    else if (percent >= 75) { icon = '💪'; motivational = '¡Impresionante! Tienes un gran dominio del cultivo.'; circleClass = 'score-good'; title = '¡Muy bien!'; }
+    else if (percent >= 50) { icon = '👍'; motivational = '¡Buen intento! Sigue practicando y llegarás lejos.'; circleClass = 'score-average'; title = 'Buen intento'; }
+    else { icon = '📚'; motivational = 'No te desanimes, la práctica hace al maestro.'; circleClass = 'score-poor'; title = 'Sigue practicando'; }
+    document.getElementById('scoreCircle').className = 'score-circle ' + circleClass;
+    document.getElementById('scoreCircle').innerHTML = `<span class='result-icon'>${icon}</span><span id='scoreText'>${correct}/${quizQuestions.length}</span>`;
+    document.getElementById('resultTitle').className = 'result-title';
+    document.getElementById('resultTitle').textContent = title;
+    document.getElementById('resultDescription').className = 'result-description';
+    document.getElementById('resultDescription').textContent = '';
+    document.getElementById('resultDescription').insertAdjacentHTML('beforeend', `<div class='result-badges'><span class='result-badge'>✔️ Correctas: ${correct}</span><span class='result-badge incorrect'>❌ Incorrectas: ${incorrect}</span></div>`);
+    document.getElementById('resultDescription').insertAdjacentHTML('beforeend', `<div class='motivational'>${motivational}</div>`);
+    document.getElementById('resultDescription').insertAdjacentHTML('beforeend', `${percent>=90?'¡Eres un experto en cultivo!':percent>=75?'Tienes muy buenos conocimientos, sigue perfeccionando.':percent>=50?'Vas por buen camino, repasa la wiki para mejorar.':'Te recomendamos leer la wiki de GrowCalculator.'}`);
+    document.getElementById('recommendations').innerHTML = `<h3>Recomendaciones:</h3><ul><li>Revisa la <a href='https://growcalculator.es/wiki/' target='_blank'>wiki de GrowCalculator</a> para aprender más.</li><li>Practica con los artículos destacados del blog.</li></ul>`;
+    // Compartir
+    const shareMsg = encodeURIComponent(`¡He sacado ${correct}/${quizQuestions.length} en el Quiz de Cultivo de GrowCalculator! ¿Y tú? https://growcalculator.es`);
+    document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${shareMsg}`;
+    document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=https://growcalculator.es`;
+    document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${shareMsg}`;
+}
+
+function restartQuiz() {
+    startQuiz(quizLevel);
+}
+
+// Inicialización del quiz
+backToSelection();
+            </script>
+        </div>
+    </div>
+
+    <script>
+        const articles = [
+            {
+                id: 1,
+                title: "Guía Completa de pH y Nutrientes",
+                category: "Nutrición",
+                excerpt: "Aprende todo sobre el manejo del pH y los nutrientes esenciales para tus cultivos.",
+                image: "post ph/ph1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Guía Completa de pH y Nutrientes</h3>
+                    <h4>Importancia del pH</h4>
+                    <p>El pH es fundamental para la absorción de nutrientes. Un pH óptimo (5.5-6.5) permite que las raíces absorban todos los nutrientes necesarios.</p>
+                    
+                   
+                `,
+                images: [
+                    "post ph/ph1.png",
+                    "post ph/ph2.png",
+                    "post ph/ph3.png",
+                    "post ph/ph4.png",
+                    "post ph/ph5.png",
+                    "post ph/ph6.png",
+                    "post ph/ph clave.png"
+                ],
+                tags: ["Nutrición", "Guía", "pH", "Nutrientes"],
+                featured: true,
+                views: 1200,
+                rating: 4.5,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 2,
+                title: "Manual de Hongos y Enfermedades",
+                category: "Sanidad",
+                excerpt: "Identificación y control de las principales enfermedades fúngicas en cultivos indoor.",
+                image: "guia hongos español/Botrytis cinerea.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Principales Enfermedades Fúngicas</h3>
+                    <h4>1. Botritis (Botrytis cinerea)</h4>
+                    <p>Características:
+                        <br>- Esporas: 9-15 μm, ovales-elípticas
+                        <br>- Color: Gris-marrón
+                        <br>- Ubicación: Cogollos densos, heridas
+                        <br>- Síntomas: Podredumbre gris-marrón
+                    </p>
+                    <h4>2. Oídio (Podosphaera macularis)</h4>
+                    <p>Características:
+                        <br>- Conidios: 25-35 μm, en cadenas
+                        <br>- Aspecto: Polvo blanco harinoso
+                        <br>- Ubicación: Haz foliar, tallos tiernos
+                        <br>- Síntomas: Manchas blancas y deformación
+                    </p>
+                    <h4>Prevención y Control</h4>
+                    <ul>
+                        <li>Mantener humedad controlada</li>
+                        <li>Buena ventilación</li>
+                        <li>Eliminar material infectado</li>
+                        <li>Usar fungicidas preventivos</li>
+                    </ul>
+                `,
+                images: [
+                    "guia hongos español/Botrytis cinerea.png",
+                    "guia hongos español/Podosphaera macularis.png",
+                    "guia hongos español/Fusarium oxysporum.png",
+                    "guia hongos español/Peronospora sparsa.png",
+                    "guia hongos español/Enfermedades Fúngicas .png",
+                    "guia hongos español/Pythium ultimum.png"
+                ],
+                tags: ["Sanidad", "Hongos", "Enfermedades", "Control"],
+                featured: false,
+                views: 850,
+                rating: 4.0,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 3,
+                title: "Control de Plagas",
+                category: "Sanidad",
+                excerpt: "Guía definitiva para identificar y controlar plagas en tus cultivos.",
+                image: "guia plagas español/plaga 1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Control Integrado de Plagas</h3>
+
+                    <h4>Identificación de Plagas Comunes</h4>
+                    
+                    <h5>1. Trips (Frankliniella occidentalis)</h5>
+                    <p>- Tamaño: 1-2 mm
+                    <br>- Color: Amarillo-marrón claro
+                    <br>- Daños: Manchas plateadas en hojas
+                    <br>- Control: Insecticidas específicos y control biológico</p>
+
+                    <h5>2. Araña Roja</h5>
+                    <p>- Tamaño: 0.5 mm
+                    <br>- Síntomas: Manchas amarillas y telarañas
+                    <br>- Control: Acaricidas y control ambiental</p>
+
+                    <h4>Métodos de Control</h4>
+                    <ul>
+                        <li>Control Biológico:
+                            <ul>
+                                <li>Depredadores naturales</li>
+                                <li>Parasitoides</li>
+                            </ul>
+                        </li>
+                        <li>Control Químico:
+                            <ul>
+                                <li>Insecticidas selectivos</li>
+                                <li>Aceites esenciales</li>
+                            </ul>
+                        </li>
+                    </ul>
+                `,
+                images: [
+                    "guia plagas español/plaga 1.png",
+                    "guia plagas español/plaga 2.png",
+                    "guia plagas español/plaga 3.png",
+                    "guia plagas español/plaga 4.png",
+                    "guia plagas español/plaga 5.png"
+                ],
+                tags: ["Sanidad", "Plagas", "Control", "Insecticidas"],
+                featured: false,
+                views: 950,
+                rating: 4.2,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 4,
+                title: "Sistemas Hidropónicos",
+                category: "Técnicas",
+                excerpt: "Todo lo que necesitas saber sobre cultivo hidropónico.",
+                image: "guia sitemas hidroponicos/1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Sistemas Hidropónicos Avanzados</h3>
+
+                    <h4>Tipos de Sistemas</h4>
+                    <ul>
+                        <li><strong>NFT (Nutrient Film Technique)</strong>
+                            <br>- Flujo continuo de solución
+                            <br>- Ideal para lechugas y hierbas
+                        </li>
+                        <li><strong>DWC (Deep Water Culture)</strong>
+                            <br>- Raíces sumergidas
+                            <br>- Alta oxigenación
+                        </li>
+                        <li><strong>Aeroponia</strong>
+                            <br>- Nebulización de nutrientes
+                            <br>- Máxima oxigenación
+                        </li>
+                    </ul>
+
+                    <h4>Mantenimiento del Sistema</h4>
+                    <p>1. Control diario:
+                        <br>- pH: 5.5-6.5
+                        <br>- EC: según etapa
+                        <br>- Temperatura: 18-24°C
+                    </p>
+                    <p>2. Mantenimiento semanal:
+                        <br>- Limpieza de filtros
+                        <br>- Ajuste de solución
+                        <br>- Revisión de bombas
+                    </p>
+                `,
+                images: [
+                    "guia sitemas hidroponicos/1.png",
+                    "guia sitemas hidroponicos/2.png",
+                    "guia sitemas hidroponicos/3.png",
+                    "guia sitemas hidroponicos/4.png",
+                    "guia sitemas hidroponicos/5.png",
+                    "guia sitemas hidroponicos/6.png",
+                    "guia sitemas hidroponicos/7.png"
+                ],
+                tags: ["Técnicas", "Hidropónico", "Sistemas", "Nutrientes"],
+                featured: true,
+                views: 1100,
+                rating: 4.8,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 5,
+                title: "Técnicas Avanzadas de Cultivo",
+                category: "Técnicas",
+                excerpt: "Métodos y técnicas profesionales para optimizar tu cultivo.",
+                image: "guia tecnicas de cultivo/tecnicas 1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Técnicas Avanzadas de Cultivo</h3>
+
+                    <h4>1. SCROG (Screen of Green)</h4>
+                    <p>- Uso de mallas para distribuir el dosel
+                    <br>- Maximización de puntos de crecimiento
+                    <br>- Mayor aprovechamiento de luz</p>
+
+                    <h4>2. LST (Low Stress Training)</h4>
+                    <p>- Doblado suave de ramas
+                    <br>- Control de altura
+                    <br>- Mejor distribución de energía</p>
+
+                    <h4>3. Defoliación Estratégica</h4>
+                    <p>- Eliminación selectiva de hojas
+                    <br>- Mejor penetración de luz
+                    <br>- Mayor ventilación</p>
+
+                    <h4>Calendario de Aplicación</h4>
+                    <ul>
+                        <li>Semana 1-2: LST inicial</li>
+                        <li>Semana 3-4: Instalación SCROG</li>
+                        <li>Semana 5-6: Defoliación</li>
+                        <li>Semana 7+: Mantenimiento</li>
+                    </ul>
+                `,
+                images: [
+                    "guia tecnicas de cultivo/tecnicas 1.png",
+                    "guia tecnicas de cultivo/tecnicas 2.png",
+                    "guia tecnicas de cultivo/tecnicas 3.png",
+                    "guia tecnicas de cultivo/tecnicas 4.png",
+                    "guia tecnicas de cultivo/tecnicas 5.png",
+                    "guia tecnicas de cultivo/tecnicas 6 (2).png",
+                    "guia tecnicas de cultivo/tecnicas 6a.png",
+                    "guia tecnicas de cultivo/tecnicas 7.png",
+                    "guia tecnicas de cultivo/tecnicas 8.png"
+                ],
+                tags: ["Técnicas", "Cultivo", "SCROG", "LST"],
+                featured: false,
+                views: 1050,
+                rating: 4.3,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 6,
+                title: "VPD, Extracción y CO2",
+                category: "Ambiente",
+                excerpt: "Optimización del ambiente de cultivo y manejo de variables.",
+                image: "guia vpd ,extraccion,co2/1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Control Ambiental Avanzado</h3>
+
+                    <h4>VPD (Déficit de Presión de Vapor)</h4>
+                    <p>Rangos óptimos:
+                    <br>- Vegetativo: 0.8-1.0 kPa
+                    <br>- Floración: 1.0-1.2 kPa</p>
+
+                    <h4>Sistema de Extracción</h4>
+                    <p>Cálculos:
+                    <br>- Renovación cada 3-5 minutos
+                    <br>- CFM = (Volumen sala × 0.3)</p>
+
+                    <h4>Enriquecimiento con CO2</h4>
+                    <ul>
+                        <li>Niveles recomendados:
+                            <br>- Normal: 400 ppm
+                            <br>- Enriquecido: 800-1200 ppm
+                        </li>
+                        <li>Beneficios:
+                            <br>- +30-50% crecimiento
+                            <br>- Mayor resistencia al calor
+                        </li>
+                    </ul>
+
+                    <h4>Monitoreo</h4>
+                    <p>Equipos necesarios:
+                    <br>- Medidor de CO2
+                    <br>- Termo-higrómetro
+                    <br>- Controlador climático</p>
+                `,
+                images: [
+                    "guia vpd ,extraccion,co2/1.png",
+                    "guia vpd ,extraccion,co2/2.png",
+                    "guia vpd ,extraccion,co2/3.png",
+                    "guia vpd ,extraccion,co2/4.png",
+                    "guia vpd ,extraccion,co2/5.png",
+                    "guia vpd ,extraccion,co2/6.png",
+                    "guia vpd ,extraccion,co2/extract7.png"
+                ],
+                tags: ["Ambiente", "VPD", "CO2", "Monitoreo"],
+                featured: true,
+                views: 1250,
+                rating: 4.9,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 7,
+                title: "Guía de Clonación",
+                category: "Reproducción",
+                excerpt: "Aprende las técnicas correctas para clonar tus plantas.",
+                image: "post clones/clone1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Guía Completa de Clonación</h3>
+
+                    <h4>Selección de Material</h4>
+                    <ul>
+                        <li>Características madre:
+                            <br>- Salud óptima
+                            <br>- 2-3 meses edad
+                            <br>- Vegetativo vigoroso
+                        </li>
+                        <li>Cortes:
+                            <br>- 10-15 cm longitud
+                            <br>- Tallo firme
+                            <br>- Hojas sanas
+                        </li>
+                    </ul>
+
+                    <h4>Proceso de Clonación</h4>
+                    <ol>
+                        <li>Preparación:
+                            <br>- Esterilizar herramientas
+                            <br>- Hormona de enraizamiento
+                            <br>- Medio de cultivo a 22-24°C
+                        </li>
+                        <li>Corte:
+                            <br>- Ángulo 45°
+                            <br>- Bajo nudo
+                            <br>- Eliminación hojas bajas
+                        </li>
+                    </ol>
+
+                    <h4>Condiciones Ambientales</h4>
+                    <p>- Humedad: 80-90%
+                    <br>- Temperatura: 22-24°C
+                    <br>- Luz: 18/6 suave</p>
+                `,
+                images: [
+                    "post clones/clone1.png",
+                    "post clones/clone2.png",
+                    "post clones/clone3.png",
+                    "post clones/clone4.png",
+                    "post clones/clone5.png",
+                    "post clones/clone6.png",
+                    "post clones/clone7.png",
+                    "post clones/clone8.png"
+                ],
+                tags: ["Reproducción", "Clonación", "Hormona", "Medio de cultivo"],
+                featured: false,
+                views: 900,
+                rating: 4.1,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 8,
+                title: "Cultivo Lunar",
+                category: "Avanzado",
+                excerpt: "Influencia de los ciclos lunares en el cultivo.",
+                image: "POST LUNA/LUNA1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Cultivo Según Fases Lunares</h3>
+
+                    <h4>Luna Nueva</h4>
+                    <p>- Ideal para germinar
+                    <br>- Mayor energía radicular
+                    <br>- Absorción nutrientes óptima</p>
+
+                    <h4>Cuarto Creciente</h4>
+                    <p>- Desarrollo foliar
+                    <br>- Trasplantes
+                    <br>- Podas formativas</p>
+
+                    <h4>Luna Llena</h4>
+                    <p>- Máximo desarrollo
+                    <br>- Mayor fotosíntesis
+                    <br>- Cosecha de frutos</p>
+
+                    <h4>Cuarto Menguante</h4>
+                    <p>- Mantenimiento
+                    <br>- Control plagas
+                    <br>- Preparación terreno</p>
+
+                    <h4>Calendario Lunar 2025</h4>
+                    <p>Incluye fechas óptimas para:
+                    <br>- Siembra
+                    <br>- Trasplante
+                    <br>- Podas
+                    <br>- Cosecha</p>
+                `,
+                images: [
+                    "POST LUNA/LUNA1.png",
+                    "POST LUNA/LUNA2.png",
+                    "POST LUNA/LUNA3.png",
+                    "POST LUNA/LUNA4.png",
+                    "POST LUNA/LUNA5.png",
+                    "POST LUNA/LUNA6.png",
+                    "POST LUNA/LUNA7.png"
+                ],
+                tags: ["Avanzado", "Luna", "Ciclos", "Cultivo"],
+                featured: true,
+                views: 1300,
+                rating: 4.7,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            },
+            {
+                id: 9,
+                title: "Micorrizas y Trichodermas",
+                category: "Biología",
+                excerpt: "Uso de microorganismos beneficiosos en el cultivo.",
+                image: "post mico trico/mic1.png",
+                date: "23 Jul 2025",
+                content: `
+                    <h3>Microorganismos Beneficiosos</h3>
+
+                    <h4>Micorrizas</h4>
+                    <ul>
+                        <li>Beneficios:
+                            <br>- Aumenta absorción nutrientes
+                            <br>- Mejora resistencia sequía
+                            <br>- Protección patógenos
+                        </li>
+                        <li>Aplicación:
+                            <br>- Durante trasplante
+                            <br>- En riego
+                            <br>- Dosis según fabricante
+                        </li>
+                    </ul>
+
+                    <h4>Trichoderma</h4>
+                    <ul>
+                        <li>Funciones:
+                            <br>- Control hongos patógenos
+                            <br>- Estimula crecimiento
+                            <br>- Mejora sistema inmune
+                        </li>
+                        <li>Uso:
+                            <br>- Preventivo
+                            <br>- Curativo
+                            <br>- Aplicación foliar/radicular
+                        </li>
+                    </ul>
+
+                    <h4>Sinergia</h4>
+                    <p>La combinación de ambos:
+                    <br>- Potencia beneficios
+                    <br>- Mayor resistencia
+                    <br>- Mejor desarrollo</p>
+                `,
+                images: [
+                    "post mico trico/mic1.png",
+                    "post mico trico/mic2.png",
+                    "post mico trico/mic3.png",
+                    "post mico trico/mic4.png",
+                    "post mico trico/mic5.png"
+                ],
+                tags: ["Biología", "Micorrizas", "Trichoderma", "Sinergia"],
+                featured: false,
+                views: 1000,
+                rating: 4.4,
+                author: "growie",
+                datePublished: "23 Jul 2025"
+            }
+        ];
+
+        const ITEMS_PER_PAGE = 8;
+        let currentPage = 1;
+
+        const categoryColors = {
+            'Nutrición': 'var(--mint-green)', // crecimiento
+            'Sanidad': 'var(--violet)', // innovación
+            'Técnicas': 'var(--violet)', // innovación
+            'Ambiente': 'var(--mint-green)', // crecimiento
+            'Reproducción': 'var(--mint-green)', // crecimiento
+            'Avanzado': 'var(--navy-blue)', // seriedad
+            'Biología': 'var(--navy-blue)' // seriedad
+        };
+
+        function getArticleImages(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (article.images && Array.isArray(article.images)) {
+                return article.images;
+            }
+            
+            // Configurar patrones de nombres de archivo según la carpeta
+            let namePatterns;
+            const articleFolder = article.image.split('/')[0];
+            switch(articleFolder) {
+                case 'post ph':
+                    namePatterns = ['ph1', 'ph2', 'ph3', 'ph4', 'ph5', 'ph6', 'ph clave'];
+                    break;
+                case 'post mico trico':
+                    namePatterns = ['mic1', 'mic2', 'mic3', 'mic4', 'mic5'];
+                    break;
+                case 'POST LUNA':
+                    namePatterns = ['LUNA1', 'LUNA2', 'LUNA3', 'LUNA4', 'LUNA5', 'LUNA6', 'LUNA7'];
+                    break;
+                case 'post clones':
+                    namePatterns = Array.from({length: 8}, (_, i) => `clone${i + 1}`);
+                    break;
+                case 'guia vpd ,extraccion,co2':
+                    namePatterns = Array.from({length: 8}, (_, i) => `${i + 1}`);
+                    break;
+                case 'guia tecnicas de cultivo':
+                    namePatterns = Array.from({length: 8}, (_, i) => `tecnicas ${i + 1}`);
+                    break;
+                case 'guia sitemas hidroponicos':
+                    namePatterns = Array.from({length: 8}, (_, i) => `${i + 1}`);
+                    break;
+                case 'guia plagas español':
+                    namePatterns = ['plaga 1', 'plaga 2', 'plaga 3', 'plaga 4', 'plaga 5', '6'];
+                    break;
+                case 'guia hongos español':
+                    namePatterns = ['🍄 BOTRITIS - Botrytis cinerea 🔍 IDENTIFICACIÓN - Esporas 9-15 μm, ovales-elípticas - Conidios Gris-marrón en racimos - Ubicación Cogollos densos, heridas - Síntomas Podredumbre gris-marrón + pol',
+                                  '🍄 GUÍA TÉCNICA 6 Enfermedades Fúngicas Cannabis Indoor 🔬 Manual profesional para identificación y control 🍄 BOTRITIS - Hasta 80% pérdida rendimiento 🦠 OÍDIO - Reducción fotosíntesis 60% 🔴 FUS',
+                                  '🔴 FUSARIOSIS - Fusarium oxysporum 🔍 IDENTIFICACIÓN  - Macroconidios 25-60 μm, curvados - Microconidios 5-12 μm, ovales - Ubicación Sistema vascular, raíces - Síntomas Marchitez + oscurecimiento ',
+                                  '🔵 MILDIU - Peronospora sparsa 🔍 IDENTIFICACIÓN - Esporangios 18-25 μm, piriformes - Zoosporas 8-12 μm, biflageladas - Ubicación Envés foliar, tallos jóvenes - Síntomas Manchas amarillas + pelusa',
+                                  '🦠 OÍDIO - Podosphaera macularis 🔍 IDENTIFICACIÓN - Conidios 25-35 μm, en cadenas - Aspecto Polvo blanco harinoso - Ubicación Haz foliar, tallos tiernos - Síntomas Manchas blancas + deformación '];
+                    break;
+                case 'guia tecnicas de cultivo':
+                    namePatterns = ['tecnicas 1', 'tecnicas 2', 'tecnicas 3', 'tecnicas 4', 'tecnicas 5', 'tecnicas 6 (2)', 'tecnicas 6a', 'tecnicas 7', 'tecnicas 8'];
+                    break;
+                case 'post clones':
+                    namePatterns = Array.from({length: 8}, (_, i) => `clone${i + 1}`);
+                    break;
+                case 'POST LUNA':
+                    namePatterns = ['LUNA1', 'LUNA2', 'LUNA3', 'LUNA4', 'LUNA5', 'LUNA6', 'LUNA7'];
+                    break;
+                case 'post mico trico':
+                    namePatterns = ['mic1', 'mic2', 'mic3', 'mic4', 'mic5'];
+                    break;
+                default:
+                    namePatterns = Array.from({length: 8}, (_, i) => `${i + 1}`);
+            }
+            
+            // Generar las rutas de las imágenes
+            const images = [];
+            namePatterns.forEach(pattern => {
+                images.push(`${articleFolder}/${pattern}.png`);
+            });
+            
+            return images;
+        }
+
+        // Estado global para filtros y búsqueda
+        let searchQuery = '';
+        let selectedCategory = '';
+        let selectedYear = '';
+        let selectedTag = '';
+        let filteredArticles = [];
+        let activeTag = '';
+
+        // Utilidades
+        function getReadingTime(html) {
+            // Aproximadamente 200 palabras por minuto
+            const text = html.replace(/<[^>]+>/g, '');
+            const words = text.trim().split(/\s+/).length;
+            return Math.max(1, Math.round(words / 200));
+        }
+
+        function getAllTags() {
+            const tags = new Set();
+            articles.forEach(a => a.tags && a.tags.forEach(t => tags.add(t)));
+            return Array.from(tags).sort();
+        }
+
+        function getAllYears() {
+            const years = new Set();
+            articles.forEach(a => {
+                if (a.datePublished) {
+                    const y = a.datePublished.split(' ')[2];
+                    years.add(y);
+                }
+            });
+            return Array.from(years).sort((a,b)=>b-a);
+        }
+
+        function getAllCategories() {
+            const cats = new Set();
+            articles.forEach(a => cats.add(a.category));
+            return Array.from(cats).sort();
+        }
+
+        function filterArticles() {
+            let arr = [...articles];
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                arr = arr.filter(a =>
+                    a.title.toLowerCase().includes(q) ||
+                    a.category.toLowerCase().includes(q) ||
+                    a.excerpt.toLowerCase().includes(q) ||
+                    (a.tags && a.tags.some(t => t.toLowerCase().includes(q))) ||
+                    (a.content && a.content.toLowerCase().includes(q))
+                );
+            }
+            if (selectedCategory) arr = arr.filter(a => a.category === selectedCategory);
+            if (selectedYear) arr = arr.filter(a => a.datePublished && a.datePublished.endsWith(selectedYear));
+            if (selectedTag) arr = arr.filter(a => a.tags && a.tags.includes(selectedTag));
+            return arr;
+        }
+
+        function sortArticles(arr) {
+            // Destacados primero, luego por fecha (más reciente primero)
+            return arr.slice().sort((a, b) => {
+                if (a.featured && !b.featured) return -1;
+                if (!a.featured && b.featured) return 1;
+                // Por fecha
+                return (b.datePublished || '').localeCompare(a.datePublished || '');
+            });
+        }
+
+        function renderTags(tags, clickable = false) {
+            return tags.map(tag => `<span class="tag-chip" style="display:inline-block; background:var(--mint-green); color:var(--navy-blue); border-radius:1rem; padding:0.2rem 0.8rem; margin:0 0.2rem 0.2rem 0; font-size:0.85em; cursor:${clickable?'pointer':'default'}; font-weight:600;${activeTag===tag?'box-shadow:0 0 0 2px var(--violet);':''}" ${clickable?`onclick="onTagClick('${tag}')"`:''}>#${tag}</span>`).join('');
+        }
+
+        function renderArticles(page = 1) {
+            filteredArticles = sortArticles(filterArticles());
+            const start = (page - 1) * ITEMS_PER_PAGE;
+            const end = start + ITEMS_PER_PAGE;
+            const articlesGrid = document.getElementById('articlesGrid');
+            articlesGrid.innerHTML = '';
+            filteredArticles.slice(start, end).forEach(article => {
+                const articleElement = document.createElement('article');
+                articleElement.className = 'article-card';
+                let badge = article.featured ? `<span style="background:var(--violet);color:#fff;padding:0.2rem 0.7rem;border-radius:1rem;font-size:0.8em;position:absolute;top:1rem;right:1rem;z-index:2;box-shadow:0 2px 8px #0002;">★ Destacado</span>` : '';
+                let tagsHtml = article.tags ? `<div style="margin:0.5rem 0 0.2rem 0;">${renderTags(article.tags)}</div>` : '';
+                let readingTime = getReadingTime(article.content);
+                articleElement.innerHTML = `
+                    <div style="position:relative;">
+                        <img src="${encodeURI(article.image)}" alt="${article.title}" class="article-image">
+                        ${badge}
+                    </div>
+                    <div class="article-content">
+                        <span class="article-category" style="background-color: ${categoryColors[article.category]}">
+                            ${article.category}
+                        </span>
+                        <h2 class="article-title">${article.title}</h2>
+                        ${tagsHtml}
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <p class="article-date">${article.datePublished} &bull; ${readingTime} min lectura</p>
+                        <div style="display:flex;align-items:center;gap:0.5rem;">
+                            <span style="color:var(--violet);font-size:1.1em;">${renderStars(article.rating)}</span>
+                            <span style="color:var(--medium-gray);font-size:0.9em;">(${article.rating.toFixed(1)})</span>
+                            <span style="color:var(--mint-green);font-size:0.9em;">👁️ ${article.views}</span>
+                        </div>
+                    </div>
+                `;
+                articleElement.addEventListener('click', () => openModal(article));
+                articlesGrid.appendChild(articleElement);
+            });
+            renderPagination();
+        }
+
+        function renderStars(rating) {
+            let html = '';
+            for (let i = 1; i <= 5; i++) {
+                html += `<span style="cursor:pointer;" onclick="event.stopPropagation();rateArticle(${i})">${i <= Math.round(rating) ? '★' : '☆'}</span>`;
+            }
+            return html;
+        }
+
+        function renderPagination() {
+            const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.textContent = i;
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    renderArticles(currentPage);
+                });
+                if (i === currentPage) {
+                    button.style.backgroundColor = 'var(--violet)';
+                    button.style.color = 'white';
+                }
+                pagination.appendChild(button);
+            }
+        }
+
+        function renderFilters() {
+            // Categorías
+            const catSel = document.getElementById('categoryFilter');
+            catSel.innerHTML = '<option value="">Todas las categorías</option>' + getAllCategories().map(c => `<option value="${c}">${c}</option>`).join('');
+            catSel.value = selectedCategory;
+            // Años
+            const yearSel = document.getElementById('yearFilter');
+            yearSel.innerHTML = '<option value="">Todos los años</option>' + getAllYears().map(y => `<option value="${y}">${y}</option>`).join('');
+            yearSel.value = selectedYear;
+            // Tags
+            const tagsDiv = document.getElementById('tagsFilter');
+            tagsDiv.innerHTML = getAllTags().map(tag => `<span class="tag-chip" style="background:var(--mint-green);color:var(--navy-blue);border-radius:1rem;padding:0.2rem 0.8rem;font-size:0.9em;cursor:pointer;font-weight:600;${activeTag===tag?'box-shadow:0 0 0 2px var(--violet);':''}" onclick="onTagClick('${tag}')">#${tag}</span>`).join('');
+        }
+
+        window.onTagClick = function(tag) {
+            if (activeTag === tag) {
+                activeTag = '';
+                selectedTag = '';
+            } else {
+                activeTag = tag;
+                selectedTag = tag;
+            }
+            currentPage = 1;
+            renderArticles(currentPage);
+            renderFilters();
+        };
+
+        // Buscador y filtros
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', e => {
+            searchQuery = e.target.value;
+            currentPage = 1;
+            renderArticles(currentPage);
+        });
+        document.getElementById('categoryFilter').addEventListener('change', e => {
+            selectedCategory = e.target.value;
+            currentPage = 1;
+            renderArticles(currentPage);
+        });
+        document.getElementById('yearFilter').addEventListener('change', e => {
+            selectedYear = e.target.value;
+            currentPage = 1;
+            renderArticles(currentPage);
+        });
+
+        // Newsletter
+        const newsletterForm = document.getElementById('newsletterForm');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('newsletterMsg').textContent = '¡Gracias por suscribirte!';
+            newsletterForm.reset();
+        });
+
+        // Populares
+        function renderPopularArticles() {
+            const ul = document.getElementById('popularArticles');
+            const sorted = articles.slice().sort((a,b)=>b.views-a.views).slice(0,5);
+            ul.innerHTML = sorted.map(a => `<li style="margin-bottom:0.7rem;"><a href="#" style="color:var(--navy-blue);font-weight:600;text-decoration:none;" onclick="openModalFromSidebar(${a.id});return false;">${a.title}</a><br><span style="color:var(--mint-green);font-size:0.9em;">👁️ ${a.views}</span></li>`).join('');
+        }
+        window.openModalFromSidebar = function(id) {
+            const art = articles.find(a=>a.id===id);
+            if (art) openModal(art);
+        };
+
+        // Modal y artículos relacionados
+        function openModal(article) {
+            // Incrementar vistas
+            article.views = (article.views || 0) + 1;
+            renderPopularArticles();
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modalContent');
+            const images = getArticleImages(article.id);
+            let currentImageIndex = 0;
+            let readingTime = getReadingTime(article.content);
+            // Artículos relacionados
+            const related = articles.filter(a => a.id !== article.id && (a.category === article.category || (a.tags && article.tags && a.tags.some(t=>article.tags.includes(t))))).slice(0,3);
+            // Compartir
+            const shareUrl = encodeURIComponent(window.location.href.split('#')[0]);
+            const shareText = encodeURIComponent(article.title);
+            // Valoración
+            let userRating = localStorage.getItem('rating_' + article.id) || 0;
+            function updateGallery() {
+                let imgSrc = images[currentImageIndex];
+                if (!/^https?:\/\//.test(imgSrc) && !imgSrc.startsWith('/')) {
+                    imgSrc = './' + imgSrc;
+                }
+                return `
+                    <div class="modal-gallery">
+                        <img src="${encodeURI(imgSrc)}" alt="${article.title}" class="gallery-image" onerror="this.style.display='none'">
+                        <div class="gallery-nav">
+                            <button onclick="prevImage()" ${currentImageIndex === 0 ? 'disabled' : ''}>Anterior</button>
+                            <span>${currentImageIndex + 1} / ${images.length}</span>
+                            <button onclick="nextImage()" ${currentImageIndex === images.length - 1 ? 'disabled' : ''}>Siguiente</button>
+                        </div>
+                    </div>
+                `;
+            }
+            modalContent.innerHTML = `
+                <h2>${article.title}</h2>
+                <span class="article-category" style="background-color: ${categoryColors[article.category]}">${article.category}</span>
+                <span style="margin-left:1rem;color:var(--medium-gray);font-size:0.95em;">${article.author ? 'Por ' + article.author + ' · ' : ''}${article.datePublished} · ${readingTime} min lectura</span>
+                <div style="margin:0.7rem 0 0.2rem 0;">${renderTags(article.tags)}</div>
+                ${updateGallery()}
+                <div class="modal-article">${article.content}</div>
+                <div style="margin:1.5rem 0 0.5rem 0;">
+                    <strong>Valoración:</strong> <span id="modalStars">${renderStars(userRating || article.rating)}</span>
+                    <span style="color:var(--medium-gray);font-size:0.9em;">(${(userRating || article.rating).toFixed(1)})</span>
+                    <span style="color:var(--mint-green);font-size:0.9em;">👁️ ${article.views}</span>
+                </div>
+                <div style="margin:1rem 0;">
+                    <strong>Compartir:</strong>
+                    <a href="https://wa.me/?text=${shareText}%20${shareUrl}" target="_blank" style="margin:0 0.5rem; color:var(--mint-green);font-size:1.3em;">WhatsApp</a>
+                    <a href="https://twitter.com/intent/tweet?text=${shareText}&url=${shareUrl}" target="_blank" style="margin:0 0.5rem; color:var(--violet);font-size:1.3em;">Twitter</a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank" style="margin:0 0.5rem; color:var(--navy-blue);font-size:1.3em;">Facebook</a>
+                </div>
+                <div style="margin:2rem 0 0.5rem 0;">
+                    <strong>Artículos relacionados:</strong>
+                    <ul style="list-style:none;padding:0;">
+                        ${related.map(r => `<li style="margin:0.5rem 0;"><a href="#" style="color:var(--violet);font-weight:600;text-decoration:none;" onclick="openModalFromSidebar(${r.id});return false;">${r.title}</a></li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            // Valoración interactiva
+            document.getElementById('modalStars').querySelectorAll('span').forEach((star, idx) => {
+                star.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    localStorage.setItem('rating_' + article.id, idx+1);
+                    article.rating = idx+1;
+                    openModal(article);
+                });
+            });
+            // Galería navegación
+            window.prevImage = () => {
+                if (currentImageIndex > 0) {
+                    currentImageIndex--;
+                    updateModalImage();
+                }
+            };
+            window.nextImage = () => {
+                if (currentImageIndex < images.length - 1) {
+                    currentImageIndex++;
+                    updateModalImage();
+                }
+            };
+            function updateModalImage() {
+                const img = modalContent.querySelector('.gallery-image');
+                img.src = images[currentImageIndex];
+                img.style.display = 'block';
+                const nav = modalContent.querySelector('.gallery-nav');
+                const prevBtn = nav.querySelector('button:first-child');
+                const nextBtn = nav.querySelector('button:last-child');
+                prevBtn.disabled = currentImageIndex === 0;
+                nextBtn.disabled = currentImageIndex === images.length - 1;
+                nav.querySelector('span').textContent = `${currentImageIndex + 1} / ${images.length}`;
+            }
+            modalContent.querySelector('.gallery-image').addEventListener('error', function(e) {
+                this.style.display = 'none';
+                if (currentImageIndex < images.length - 1) {
+                    currentImageIndex++;
+                    updateModalImage();
+                }
+            });
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('modal').style.display = 'none';
+        });
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Inicializar
+        renderFilters();
+        renderArticles(currentPage);
+        renderPopularArticles();
+
+        document.getElementById('openQuizBtn').onclick = function() {
+            document.getElementById('quizModal').style.display = 'block';
+        };
+        document.getElementById('closeQuizModal').onclick = function() {
+            document.getElementById('quizModal').style.display = 'none';
+        };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Cultivo Cannabis Indoor - GrowCalculator</title>
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--gray-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .quiz-header {
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+        .quiz-title {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(45,80,22,0.10);
+            color: var(--white);
+        }
+        .quiz-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            color: var(--gray-dark);
+        }
+        .quiz-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .quiz-card {
+            background: rgba(255,255,255,0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.10);
+            border: 3px solid transparent;
+            backdrop-filter: blur(8px);
+        }
+        .quiz-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 40px rgba(34,197,94,0.15);
+            border-color: var(--yellow-accent);
+        }
+        .quiz-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.07);
+        }
+        .quiz-card.bg-light h3 {
+            color: #111;
+        }
+        .quiz-card p {
+            color: var(--gray-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .quiz-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        .difficulty {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            color: white;
+            font-size: 0.8rem;
+        }
+        .difficulty.principiante { background: var(--green-light); color: var(--green-dark); }
+        .difficulty.intermedio { background: var(--green-medium); color: var(--white); }
+        .difficulty.avanzado { background: var(--yellow-accent); color: var(--green-dark); }
+        .difficulty.experto { background: var(--green-dark); color: var(--white); }
+        .quiz-container {
+            background: rgba(255,255,255,0.7);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(139,92,246,0.10);
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+        .quiz-info {
+            background: var(--green-soft);
+            border-left: 4px solid var(--green-medium);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            color: var(--gray-dark);
+        }
+        .quiz-progress {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .progress-bar {
+            background: linear-gradient(45deg, var(--green-light), var(--yellow-accent));
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            width: 0%;
+        }
+        .question-counter {
+            text-align: center;
+            color: var(--gray-dark);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        .question {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--gray-dark);
+            line-height: 1.6;
+            font-weight: 600;
+        }
+        .question-image {
+            width: 100%;
+            max-width: 400px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 1rem auto;
+            display: block;
+        }
+        .answers {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .answer {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 1.1rem;
+            color: var(--gray-dark);
+        }
+        .answer:hover {
+            background: var(--green-light);
+            border-color: var(--yellow-accent);
+            color: var(--green-dark);
+        }
+        .answer.selected {
+            background: var(--green-medium);
+            color: var(--white);
+            border-color: var(--green-medium);
+        }
+        .answer.correct {
+            background: var(--green-light);
+            color: var(--green-dark);
+            border-color: var(--green-light);
+        }
+        .answer.incorrect {
+            background: #ef4444;
+            color: var(--white);
+            border-color: #ef4444;
+        }
+        .explanation {
+            background: var(--green-soft);
+            border-left: 4px solid var(--green-medium);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            display: none;
+            font-style: italic;
+            color: var(--gray-dark);
+        }
+        .quiz-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+        .btn-primary {
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+        }
+        .btn-primary:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+        .btn-secondary {
+            background: var(--yellow-accent-alt);
+            color: var(--green-dark);
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .results {
+            text-align: center;
+            display: none;
+        }
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(139,92,246,0.10);
+        }
+        .score-circle.score-excellent {
+            background: linear-gradient(45deg, var(--green-light), var(--yellow-accent));
+            color: var(--green-dark);
+        }
+        .score-circle.score-good {
+            background: linear-gradient(45deg, var(--green-medium), var(--yellow-accent));
+            color: var(--white);
+        }
+        .score-circle.score-average {
+            background: linear-gradient(45deg, var(--yellow-accent), var(--green-soft));
+            color: var(--green-dark);
+        }
+        .score-circle.score-poor {
+            background: linear-gradient(45deg, #ef4444, var(--yellow-accent));
+            color: var(--white);
+        }
+        .results h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+        .results p {
+            color: var(--gray-dark);
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        .recommendations {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+            border: 2px solid #e9ecef;
+            color: var(--gray-dark);
+        }
+        .recommendations h3 {
+            color: var(--green-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+        }
+        .recommendations ul {
+            color: var(--gray-dark);
+            padding-left: 1.5rem;
+        }
+        .recommendations li {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+        .share-results {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .share-btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        .share-twitter { background: var(--yellow-accent); }
+        .share-linkedin { background: #0077b5; }
+        .share-facebook { background: var(--green-light); }
+        .share-whatsapp { background: var(--green-light); }
+        .back-btn {
+            background: transparent;
+            color: var(--yellow-accent);
+            border: 2px solid var(--yellow-accent);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .back-btn:hover {
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+        }
+        @media (max-width: 768px) {
+            .quiz-title {
+                font-size: 2rem;
+            }
+            .quiz-selection {
+                grid-template-columns: 1fr;
+            }
+            .quiz-buttons {
+                flex-direction: column;
+            }
+            .share-results {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-header">
+            <h1 class="quiz-title">🌱 Quiz de Cultivo Indoor</h1>
+            <p class="quiz-subtitle">Pon a prueba tus conocimientos sobre cultivo de cannabis indoor</p>
+        </div>
+
+        <!-- Selección de Quiz -->
+        <div id="quizSelection" class="quiz-selection">
+            <div class="quiz-card" onclick="startQuiz('principiante')">
+                <div class="quiz-icon">🌱</div>
+                <h3>Principiante</h3>
+                <p>Conceptos básicos: germinación, primeros pasos, equipamiento básico y cuidados iniciales.</p>
+                <div class="quiz-meta">
+                    <span class="difficulty principiante">Principiante</span>
+                    <span>10 preguntas</span>
+                </div>
+            </div>
+
+            <div class="quiz-card" onclick="startQuiz('intermedio')">
+                <div class="quiz-icon">🪴</div>
+                <h3>Intermedio</h3>
+                <p>Nutrición, iluminación, control ambiental, poda y técnicas de entrenamiento.</p>
+                <div class="quiz-meta">
+                    <span class="difficulty intermedio">Intermedio</span>
+                    <span>12 preguntas</span>
+                </div>
+            </div>
+
+            <div class="quiz-card" onclick="startQuiz('avanzado')">
+                <div class="quiz-icon">🌿</div>
+                <h3>Avanzado</h3>
+                <p>Genética, breeding, sistemas hidropónicos, control de plagas y enfermedades.</p>
+                <div class="quiz-meta">
+                    <span class="difficulty avanzado">Avanzado</span>
+                    <span>15 preguntas</span>
+                </div>
+            </div>
+
+            <div class="quiz-card" onclick="startQuiz('experto')">
+                <div class="quiz-icon">🏆</div>
+                <h3>Experto Grower</h3>
+                <p>Técnicas avanzadas, optimización máxima, troubleshooting y cultivo comercial.</p>
+                <div class="quiz-meta">
+                    <span class="difficulty experto">Experto</span>
+                    <span>20 preguntas</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor del Quiz -->
+        <div id="quizContainer" class="quiz-container">
+            <button class="back-btn" onclick="backToSelection()">← Volver a selección</button>
+            
+            <div class="quiz-info">
+                <strong>💡 Tip:</strong> Lee cada pregunta cuidadosamente. Algunas tienen trucos comunes que cometen los cultivadores.
+            </div>
+
+            <div class="quiz-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="question-counter" id="questionCounter"></div>
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+            <div class="explanation" id="explanation"></div>
+
+            <div class="quiz-buttons">
+                <button class="btn btn-secondary" id="prevBtn" onclick="prevQuestion()" disabled>Anterior</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Resultados -->
+        <div id="results" class="results">
+            <div class="score-circle" id="scoreCircle">
+                <span id="scoreText"></span>
+            </div>
+            <h2 id="resultTitle"></h2>
+            <p id="resultDescription"></p>
+            
+            <div class="recommendations" id="recommendations"></div>
+
+            <div class="share-results">
+                <a href="#" class="share-btn share-twitter" id="shareTwitter" target="_blank">📱 Twitter</a>
+                <a href="#" class="share-btn share-facebook" id="shareFacebook" target="_blank">📘 Facebook</a>
+                <a href="#" class="share-btn share-whatsapp" id="shareWhatsapp" target="_blank">💬 WhatsApp</a>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="restartQuiz()">🔄 Repetir Quiz</button>
+                <button class="btn btn-secondary" onclick="backToSelection()" style="margin-left: 1rem;">📚 Otros Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Base de datos de preguntas por nivel
+        const quizData = {
+            principiante: [
+                {
+                    question: "¿Cuál es la temperatura ideal para la germinación de semillas de cannabis?",
+                    answers: ["18-20°C", "22-26°C", "28-32°C", "15-18°C"],
+                    correct: 1,
+                    explanation: "La temperatura óptima para germinación es 22-26°C. Temperaturas más bajas ralentizan el proceso, mientras que temperaturas más altas pueden dañar las semillas."
+                },
+                {
+                    question: "¿Cuántas horas de luz necesita una planta en fase vegetativa?",
+                    answers: ["12 horas", "16 horas", "18-24 horas", "8 horas"],
+                    correct: 2,
+                    explanation: "En vegetativo se recomienda 18-24 horas de luz. Muchos cultivadores usan 18/6 (18h luz, 6h oscuridad) para dar un descanso a las plantas y equipos."
+                },
+                {
+                    question: "¿Qué significa NPK en los fertilizantes?",
+                    answers: ["Nitrógeno, Potasio, Calcio", "Nitrógeno, Fósforo, Potasio", "Nitrógeno, Fósforo, Calcio", "Nicotina, Fósforo, Potasio"],
+                    correct: 1,
+                    explanation: "NPK representa los tres macronutrientes principales: Nitrógeno (N), Fósforo (P) y Potasio (K). Son esenciales para el crecimiento saludable."
+                },
+                {
+                    question: "¿Cuál es la humedad relativa ideal en vegetativo?",
+                    answers: ["30-40%", "50-70%", "80-90%", "20-30%"],
+                    correct: 1,
+                    explanation: "En vegetativo, la humedad ideal es 50-70%. Humedad muy alta puede causar hongos, muy baja puede estresar las plantas."
+                },
+                {
+                    question: "¿Qué pH es óptimo para cultivo en tierra?",
+                    answers: ["5.5-6.0", "6.0-7.0", "7.5-8.0", "4.0-5.0"],
+                    correct: 1,
+                    explanation: "En tierra, el pH óptimo es 6.0-7.0. Este rango permite la mejor absorción de nutrientes por las raíces."
+                },
+                {
+                    question: "¿Cuándo cambiar el fotoperiodo a floración?",
+                    answers: ["8/16 horas luz/oscuridad", "12/12 horas luz/oscuridad", "14/10 horas luz/oscuridad", "16/8 horas luz/oscuridad"],
+                    correct: 1,
+                    explanation: "Para inducir floración se cambia a 12/12 (12h luz, 12h oscuridad). Este cambio simula el otoño natural."
+                },
+                {
+                    question: "¿Qué tipo de luz es mejor para vegetativo?",
+                    answers: ["Luz roja (2700K)", "Luz azul (6500K)", "Luz amarilla (3000K)", "Luz verde (5000K)"],
+                    correct: 1,
+                    explanation: "La luz azul (6500K) es ideal para vegetativo porque promueve crecimiento compacto y desarrollo de hojas."
+                },
+                {
+                    question: "¿Con qué frecuencia regar plantas jóvenes?",
+                    answers: ["Diariamente", "Cuando la tierra esté seca 2-3cm", "Una vez por semana", "Cada 3 días exactos"],
+                    correct: 1,
+                    explanation: "Riega cuando los primeros 2-3cm de tierra estén secos. El exceso de riego es más peligroso que la falta de agua."
+                },
+                {
+                    question: "¿Cuál es el primer signo de sobrefertilización?",
+                    answers: ["Hojas amarillas", "Puntas de hojas quemadas", "Crecimiento lento", "Hojas moradas"],
+                    correct: 1,
+                    explanation: "Las puntas quemadas (marrón/amarillo) son el primer signo de sobrefertilización. Reduce inmediatamente los nutrientes."
+                },
+                {
+                    question: "¿Qué tamaño de maceta para una planta auto?",
+                    answers: ["1-3 litros", "5-7 litros", "10-15 litros", "20+ litros"],
+                    correct: 1,
+                    explanation: "Las autos necesitan 5-7 litros mínimo. Macetas pequeñas limitan el crecimiento y rendimiento final."
+                }
+            ],
+            intermedio: [
+                {
+                    question: "¿Cuál es la diferencia entre LST y HST?",
+                    answers: ["LST es para vegetativo, HST para floración", "LST no daña la planta, HST sí", "No hay diferencia", "LST es más efectivo"],
+                    correct: 1,
+                    explanation: "LST (Low Stress Training) no daña la planta, solo la dobla. HST (High Stress Training) implica cortes o daños controlados como topping, FIM, etc."
+                },
+                {
+                    question: "¿Cuándo hacer el primer topping?",
+                    answers: ["Cuando tenga 2 nudos", "Cuando tenga 4-6 nudos", "En floración", "Nunca en autos"],
+                    correct: 1,
+                    explanation: "El primer topping se hace cuando la planta tiene 4-6 nudos, cortando por encima del 3er o 4to nudo. Nunca en autos a menos que sean muy vigorosas."
+                },
+                {
+                    question: "¿Qué es el DLI (Daily Light Integral)?",
+                    answers: ["Horas de luz por día", "Cantidad total de luz recibida en 24h", "Tipo de espectro lumínico", "Temperatura de color"],
+                    correct: 1,
+                    explanation: "DLI mide la cantidad total de luz fotosintéticamente activa que recibe la planta en 24 horas. Es clave para optimizar crecimiento."
+                },
+                {
+                    question: "¿Cuál es el ratio NPK ideal en floración?",
+                    answers: ["Alto N, bajo P-K", "Bajo N, alto P-K", "NPK equilibrado", "Solo P y K"],
+                    correct: 1,
+                    explanation: "En floración se necesita bajo Nitrógeno y alto Fósforo-Potasio. Algo como 1-3-2 o 1-4-3 es ideal para desarrollo de flores."
+                },
+                {
+                    question: "¿Qué es el 'stretch' en floración?",
+                    answers: ["Cuando las hojas se estiran", "Crecimiento acelerado las primeras semanas de floración", "Problema de iluminación", "Signo de estrés"],
+                    correct: 1,
+                    explanation: "El 'stretch' es el crecimiento vertical acelerado durante las primeras 2-3 semanas de floración. Las plantas pueden duplicar su altura."
+                },
+                {
+                    question: "¿Cuándo hacer defoliación en floración?",
+                    answers: ["Nunca", "Día 1 de floración", "Semana 3 y 6 aproximadamente", "Cada semana"],
+                    correct: 2,
+                    explanation: "La defoliación se hace típicamente en semana 3 (después del stretch) y semana 6 de floración para mejorar penetración lumínica."
+                },
+                {
+                    question: "¿Qué es el VPD y por qué importa?",
+                    answers: ["Tipo de nutriente", "Relación entre temperatura y humedad", "Sistema de riego", "Variedad de planta"],
+                    correct: 1,
+                    explanation: "VPD (Vapor Pressure Deficit) es la relación entre temperatura y humedad que afecta la transpiración y absorción de nutrientes."
+                },
+                {
+                    question: "¿Cuál es la EC ideal en hidropónico para floración?",
+                    answers: ["0.8-1.2", "1.4-1.8", "2.0-2.5", "0.3-0.6"],
+                    correct: 1,
+                    explanation: "En hidropónico, la EC ideal para floración es 1.4-1.8. Más alta puede causar quemaduras, más baja limita el potencial."
+                },
+                {
+                    question: "¿Qué hacer si aparecen bananas/hermafroditismo?",
+                    answers: ["Ignorar", "Arrancar las bananas cuidadosamente", "Cortar toda la planta", "Aumentar nutrientes"],
+                    correct: 1,
+                    explanation: "Si aparecen pocas 'bananas', se pueden remover cuidadosamente con pinzas. Si son muchas, considera si vale la pena mantener la planta."
+                },
+                {
+                    question: "¿Cuándo empezar el flush pre-cosecha?",
+                    answers: ["1 semana antes", "2-3 semanas antes", "El día de cosecha", "No es necesario"],
+                    correct: 1,
+                    explanation: "El flush se inicia 1-2 semanas antes de cosecha, dependiendo del medio de cultivo. En hidro 1 semana, en tierra 2 semanas suele ser suficiente."
+                },
+                {
+                    question: "¿Qué es el SCROG y cuándo aplicarlo?",
+                    answers: ["Tipo de semilla", "Screen of Green - malla para entrenar", "Sistema de riego", "Problema de plagas"],
+                    correct: 1,
+                    explanation: "SCROG (Screen of Green) usa una malla para entrenar las plantas horizontalmente, maximizando la superficie de cogollos bajo la luz."
+                },
+                {
+                    question: "¿Cuál es la diferencia entre tinturas y resinas?",
+                    answers: ["No hay diferencia", "Las tinturas son líquidas, las resinas sólidas", "Las tinturas tienen más THC", "Las resinas duran más"],
+                    correct: 1,
+                    explanation: "Las tinturas son extractos líquidos (generalmente en alcohol), mientras que las resinas son extractos más concentrados y sólidos como el hash o rosin."
+                }
+            ],
+            avanzado: [
+                {
+                    question: "¿Qué es la técnica 'Monster Cropping'?",
+                    answers: ["Cultivo de plantas gigantes", "Clones tomados en floración que revegecan", "Uso de CO2 suplementario", "Cultivo en exterior"],
+                    correct: 1,
+                    explanation: "Monster Cropping consiste en tomar clones de plantas en floración temprana. Al revegetar, desarrollan múltiples puntas de crecimiento."
+                },
+                {
+                    question: "¿Cuál es la concentración ideal de CO2 en floración?",
+                    answers: ["400 ppm", "800-1000 ppm", "1200-1500 ppm", "2000+ ppm"],
+                    correct: 2,
+                    explanation: "La concentración ideal de CO2 es 1200-1500 ppm durante las horas de luz. Requiere sellado del espacio y control preciso de temperatura."
+                },
+                {
+                    question: "¿Qué es el breeding y cuál es el objetivo principal?",
+                    answers: ["Reproducir plantas idénticas", "Crear nuevas variedades con características deseadas", "Aumentar el THC solamente", "Hacer plantas más grandes"],
+                    correct: 1,
+                    explanation: "El breeding busca crear nuevas variedades combinando características deseadas como potencia, sabor, resistencia, tiempo de floración, etc."
+                },
+                {
+                    question: "¿Cuándo hacer 'reverse osmosis' del agua?",
+                    answers: ["Siempre", "Cuando el agua tenga >150 ppm", "Nunca", "Solo en hidropónico"],
+                    correct: 1,
+                    explanation: "La osmosis inversa se recomienda cuando el agua base supera 150-200 ppm, permitiendo control total sobre los nutrientes añadidos."
+                },
+                {
+                    question: "¿Qué causa la 'luz burn' y cómo identificarla?",
+                    answers: ["Exceso de nutrientes", "Luz demasiado intensa/cerca", "Falta de agua", "Temperatura baja"],
+                    correct: 1,
+                    explanation: "Light burn se causa por luz demasiado intensa. Se identifica por hojas superiores amarillas/blancas, especialmente cerca de la fuente de luz."
+                },
+                {
+                    question: "¿Qué es la técnica 'main-lining' o 'manifolding'?",
+                    answers: ["Sistema de riego principal", "Crear 8+ colas principales simétricas", "Tipo de poda de raíces", "Método de secado"],
+                    correct: 1,
+                    explanation: "Main-lining crea múltiples colas principales (típicamente 8, 16 o 32) mediante topping y entrenamiento sistemático, maximizando rendimiento."
+                },
+                {
+                    question: "¿Cuál es el problema del 'nutrient lockout'?",
+                    answers: ["Falta de nutrientes", "Exceso de un nutriente bloquea otros", "pH perfecto", "Problema de luz"],
+                    correct: 1,
+                    explanation: "Nutrient lockout ocurre cuando el exceso de ciertos nutrientes impide la absorción de otros, causando deficiencias aparentes."
+                },
+                {
+                    question: "¿Qué es el 'rosin' y cómo se produce?",
+                    answers: ["Tipo de fertilizante", "Extracto hecho con calor y presión", "Variedad de cannabis", "Sistema hidropónico"],
+                    correct: 1,
+                    explanation: "Rosin es un extracto sin solventes producido aplicando calor y presión a flores o hash, creando un concentrado limpio y potente."
+                },
+                {
+                    question: "¿Cuándo usar 'beneficial bacteria' en las raíces?",
+                    answers: ["Nunca", "Solo en problemas", "Desde el inicio, especialmente en orgánico", "Solo en exterior"],
+                    correct: 2,
+                    explanation: "Las bacterias beneficiosas (como Bacillus, Mycorrhizae) mejoran absorción de nutrientes y protegen contra patógenos desde el inicio, especialmente en cultivos orgánicos."
+                }
+            ]
+        };
+
+        // Estado del quiz
+        let currentQuiz = null;
+        let currentQuestions = [];
+        let currentIndex = 0;
+        let userAnswers = [];
+        let score = 0;
+
+        // Elementos del DOM
+        const quizSelection = document.getElementById('quizSelection');
+        const quizContainer = document.getElementById('quizContainer');
+        const questionCounter = document.getElementById('questionCounter');
+        const questionEl = document.getElementById('question');
+        const answersEl = document.getElementById('answers');
+        const explanationEl = document.getElementById('explanation');
+        const progressBar = document.getElementById('progressBar');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const resultsEl = document.getElementById('results');
+        const scoreCircle = document.getElementById('scoreCircle');
+        const scoreText = document.getElementById('scoreText');
+        const resultTitle = document.getElementById('resultTitle');
+        const resultDescription = document.getElementById('resultDescription');
+        const recommendations = document.getElementById('recommendations');
+
+        function startQuiz(level) {
+            currentQuiz = level;
+            currentQuestions = quizData[level];
+            currentIndex = 0;
+            userAnswers = [];
+            score = 0;
+            quizSelection.style.display = 'none';
+            quizContainer.style.display = 'block';
+            resultsEl.style.display = 'none';
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = currentQuestions[currentIndex];
+            questionCounter.textContent = `Pregunta ${currentIndex + 1} de ${currentQuestions.length}`;
+            questionEl.textContent = q.question;
+            answersEl.innerHTML = '';
+            explanationEl.style.display = 'none';
+            progressBar.style.width = `${((currentIndex + 1) / currentQuestions.length) * 100}%`;
+            q.answers.forEach((ans, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'answer';
+                btn.textContent = ans;
+                btn.onclick = () => selectAnswer(i);
+                if (userAnswers[currentIndex] !== undefined) {
+                    btn.disabled = true;
+                    if (i === q.correct) btn.classList.add('correct');
+                    if (i === userAnswers[currentIndex] && i !== q.correct) btn.classList.add('incorrect');
+                }
+                answersEl.appendChild(btn);
+            });
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = userAnswers[currentIndex] === undefined;
+        }
+
+        function selectAnswer(i) {
+            if (userAnswers[currentIndex] !== undefined) return;
+            userAnswers[currentIndex] = i;
+            const q = currentQuestions[currentIndex];
+            if (i === q.correct) score++;
+            renderQuestion();
+            explanationEl.textContent = q.explanation;
+            explanationEl.style.display = 'block';
+            nextBtn.disabled = false;
+        }
+
+        function nextQuestion() {
+            if (currentIndex < currentQuestions.length - 1) {
+                currentIndex++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            quizContainer.style.display = 'none';
+            resultsEl.style.display = 'block';
+            let percent = Math.round((score / currentQuestions.length) * 100);
+            scoreText.textContent = `${score} / ${currentQuestions.length}`;
+            if (percent >= 90) {
+                scoreCircle.className = 'score-circle score-excellent';
+                resultTitle.textContent = '¡Excelente!';
+                resultDescription.textContent = '¡Eres un maestro del cultivo indoor!';
+            } else if (percent >= 70) {
+                scoreCircle.className = 'score-circle score-good';
+                resultTitle.textContent = '¡Muy bien!';
+                resultDescription.textContent = 'Tienes muy buenos conocimientos, sigue perfeccionando tu técnica.';
+            } else if (percent >= 50) {
+                scoreCircle.className = 'score-circle score-average';
+                resultTitle.textContent = '¡Bien!';
+                resultDescription.textContent = 'Tienes una buena base, pero puedes mejorar.';
+            } else {
+                scoreCircle.className = 'score-circle score-poor';
+                resultTitle.textContent = '¡Ánimo!';
+                resultDescription.textContent = 'Sigue estudiando y practicando para mejorar tus resultados.';
+            }
+            recommendations.innerHTML = '<h3>Recomendaciones:</h3><ul><li>Revisa las guías de la Wiki para reforzar tus conocimientos.</li><li>Practica con diferentes escenarios de cultivo.</li><li>Consulta foros y comunidades para aprender de otros cultivadores.</li></ul>';
+
+            // Lógica para compartir en redes sociales
+            const quizUrl = window.location.href.split('#')[0];
+            const shareText = `¡He sacado ${score} de ${currentQuestions.length} en el Quiz de Cultivo Indoor de GrowCalculator! 🌱\n¿Te atreves a superarme?`;
+            document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(quizUrl)}`;
+            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}&quote=${encodeURIComponent(shareText)}`;
+            document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + quizUrl)}`;
+        }
+
+        function backToSelection() {
+            quizSelection.style.display = 'grid';
+            quizContainer.style.display = 'none';
+            resultsEl.style.display = 'none';
+        }
+
+        function restartQuiz() {
+            startQuiz(currentQuiz);
+        }
+    </script>
+</body>
+</html>
