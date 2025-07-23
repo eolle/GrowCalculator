@@ -583,14 +583,19 @@
                 bottom: 1rem;
                 right: 1rem;
             }
-            /* Oculta el aside (columna derecha) en móviles */
             aside {
                 display: none !important;
             }
-            /* Haz que el contenedor principal sea 100% */
             .container > div[style*="display: flex"] {
                 flex-direction: column !important;
                 gap: 0 !important;
+                width: 100% !important;
+                align-items: stretch !important;
+            }
+            .container > div[style*="display: flex"] > div {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 100% !important;
             }
         }
     </style>
