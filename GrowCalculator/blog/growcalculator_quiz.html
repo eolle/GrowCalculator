@@ -375,8 +375,8 @@
                 <a href="#" class="share-btn share-instagram" id="shareInstagramTop" target="_blank">📸 Instagram</a>
             </div>
         </div>
-        <div id="quiz-global-counter" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
-          <span id="superadosCount">...</span> personas han superado este quiz · <span id="intentosCount">...</span> intentos · <span id="porcentajeCount">...</span>% de acierto global 🌱
+        <div id="visitorCount" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
+          Cargando visitas...
         </div>
 
         <!-- Selección de Quiz -->
@@ -915,9 +915,9 @@
             let percent = Math.round((score / currentQuestions.length) * 100);
             scoreText.textContent = `${score} / ${currentQuestions.length}`;
             // Llama aquí:
-            checkAndIncrementGlobalCounter(score, currentQuestions.length);
+            // checkAndIncrementGlobalCounter(score, currentQuestions.length);
             // Mostrar el contador y porcentaje global en resultados
-            fetchSheetCounter(true);
+            // fetchSheetCounter(true);
             if (percent >= 90) {
                 scoreCircle.className = 'score-circle score-excellent';
                 resultTitle.textContent = '¡Excelente!';
@@ -1007,6 +1007,7 @@
         });
 
         // --- Sheet.best config ---
+        /*
         const SHEET_URL = "https://api.sheetbest.com/sheets/24535213-39ca-4fa8-a099-31d85b1ed547";
 
         function animateCounter(element, to, duration = 1200) {
@@ -1098,5 +1099,19 @@
             const superado = score >= required;
             updateSheetCounter(superado);
         }
+        */
+    </script>
+    <script>
+      // Contador de visitantes únicos con CountAPI
+      fetch('https://api.countapi.xyz/hit/growcalculator/quiz')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('visitorCount').textContent =
+            `👀 Este quiz ha sido visitado ${data.value} veces`;
+        })
+        .catch(() => {
+          document.getElementById('visitorCount').textContent =
+            'No se pudo cargar el contador de visitas';
+        });
     </script>
 </body>

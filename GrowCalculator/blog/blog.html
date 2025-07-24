@@ -1815,6 +1815,34 @@ backToSelection();
             document.getElementById('quizModal').style.display = 'none';
         };
 
+        // Contador de visitantes únicos para el blog con CountAPI
+        fetch('https://api.countapi.xyz/hit/growcalculator/blog')
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById('visitorCountBlog').textContent =
+              `👀 Este blog ha sido visitado ${data.value} veces`;
+          })
+          .catch(() => {
+            document.getElementById('visitorCountBlog').textContent =
+              'No se pudo cargar el contador de visitas';
+          });
+    </script>
+    <div id="visitorCountBlog" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
+      Cargando visitas...
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('https://api.countapi.xyz/hit/growcalculator/blog')
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById('visitorCountBlog').textContent =
+              `👀 Este blog ha sido visitado ${data.value} veces`;
+          })
+          .catch(() => {
+            document.getElementById('visitorCountBlog').textContent =
+              'No se pudo cargar el contador de visitas';
+          });
+      });
     </script>
 </body>
 </html>

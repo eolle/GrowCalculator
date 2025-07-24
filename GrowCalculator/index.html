@@ -999,6 +999,9 @@
             <iframe src="carrusel/carrusel.html" style="flex:1; width:100%; height:100%; border:none; border-radius:0 0 18px 18px; background:#222;"></iframe>
         </div>
     </div>
+    <div id="visitorCountWeb" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
+      Cargando visitas...
+    </div>
     <script>
         // Redirección automática a verificación de edad si no está verificada
         if (localStorage.getItem('ageVerified') !== 'true') {
@@ -1082,6 +1085,19 @@ if (pauseBtn) {
     }
   });
 }
+  // Contador de visitantes únicos para la web principal con CountAPI
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://api.countapi.xyz/hit/growcalculator/web')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('visitorCountWeb').textContent =
+          `👀 Esta web ha sido visitada ${data.value} veces`;
+      })
+      .catch(() => {
+        document.getElementById('visitorCountWeb').textContent =
+          'No se pudo cargar el contador de visitas';
+      });
+  });
     </script>
 </body>
 </html>

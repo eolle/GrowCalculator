@@ -17,6 +17,10 @@
             <h1>Guías de Cultivo</h1>
         </header>
 
+        <div id="visitorCountWiki" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
+          Cargando visitas...
+        </div>
+
         <div class="content">
             <div class="collapsible-section">
                 <details>
@@ -179,6 +183,20 @@
                 }
             });
         });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('https://api.countapi.xyz/hit/growcalculator/wiki')
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById('visitorCountWiki').textContent =
+              `👀 Esta wiki ha sido visitada ${data.value} veces`;
+          })
+          .catch(() => {
+            document.getElementById('visitorCountWiki').textContent =
+              'No se pudo cargar el contador de visitas';
+          });
+      });
     </script>
 </body>
 </html>
