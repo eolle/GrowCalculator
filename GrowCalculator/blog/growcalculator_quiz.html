@@ -1027,7 +1027,9 @@
         }
 
         function fetchSheetCounter(showStatsInResults = false) {
-            fetch(SHEET_URL)
+            fetch(SHEET_URL, {
+              headers: { "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi" }
+            })
               .then(res => res.json())
               .then(data => {
                 const row = data[0];
@@ -1052,7 +1054,9 @@
         }
 
         function updateSheetCounter(superado) {
-            fetch(SHEET_URL)
+            fetch(SHEET_URL, {
+              headers: { "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi" }
+            })
               .then(res => res.json())
               .then(data => {
                 const row = data[0];
@@ -1060,10 +1064,13 @@
                 let total = parseInt(row.intentos) || 0;
                 if (superado) count++;
                 total++;
-                // Actualiza la primera fila
+                // Actualiza la primera fila de datos (después del encabezado)
                 fetch(SHEET_URL + "/1", {
                   method: "PUT",
-                  headers: { "Content-Type": "application/json" },
+                  headers: {
+                    "Content-Type": "application/json",
+                    "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi"
+                  },
                   body: JSON.stringify({ superados: count, intentos: total })
                 }).then(() => fetchSheetCounter(true));
               });
