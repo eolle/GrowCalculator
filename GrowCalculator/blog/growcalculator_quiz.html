@@ -1027,9 +1027,7 @@
         }
 
         function fetchSheetCounter(showStatsInResults = false) {
-            fetch(SHEET_URL, {
-              headers: { "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL" }
-            })
+            fetch(SHEET_URL)
               .then(res => res.json())
               .then(data => {
                 const row = data[0];
@@ -1054,9 +1052,7 @@
         }
 
         function updateSheetCounter(superado) {
-            fetch(SHEET_URL, {
-              headers: { "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL" }
-            })
+            fetch(SHEET_URL)
               .then(res => res.json())
               .then(data => {
                 const row = data[0];
@@ -1068,8 +1064,7 @@
                 fetch(SHEET_URL + "/1", {
                   method: "PUT",
                   headers: {
-                    "Content-Type": "application/json",
-                    "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL"
+                    "Content-Type": "application/json"
                   },
                   body: JSON.stringify({ superados: count, intentos: total })
                 }).then(() => fetchSheetCounter(true));
