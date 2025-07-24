@@ -1064,8 +1064,8 @@
                 let total = parseInt(row.intentos) || 0;
                 if (superado) count++;
                 total++;
-                // Actualiza la segunda fila de datos (después del encabezado)
-                fetch(SHEET_URL + "/2", {
+                // Actualiza la primera fila de datos (después del encabezado)
+                fetch(SHEET_URL + "/1", {
                   method: "PUT",
                   headers: {
                     "Content-Type": "application/json",
