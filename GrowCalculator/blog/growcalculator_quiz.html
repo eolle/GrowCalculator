@@ -1007,7 +1007,7 @@
         });
 
         // --- Sheet.best config ---
-        const SHEET_URL = "https://api.sheetbest.com/sheets/13e362a2-32bf-4c43-adba-b5adf5c12938";
+        const SHEET_URL = "https://api.sheetbest.com/sheets/24535213-39ca-4fa8-a099-31d85b1ed547";
 
         function animateCounter(element, to, duration = 1200) {
             if (!element) return;
@@ -1028,7 +1028,7 @@
 
         function fetchSheetCounter(showStatsInResults = false) {
             fetch(SHEET_URL, {
-              headers: { "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi" }
+              headers: { "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL" }
             })
               .then(res => res.json())
               .then(data => {
@@ -1055,7 +1055,7 @@
 
         function updateSheetCounter(superado) {
             fetch(SHEET_URL, {
-              headers: { "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi" }
+              headers: { "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL" }
             })
               .then(res => res.json())
               .then(data => {
@@ -1069,7 +1069,7 @@
                   method: "PUT",
                   headers: {
                     "Content-Type": "application/json",
-                    "X-Api-Key": "ewkO1dTzwl1qUJZruJk0@cqlg9C-A%TqK%rTYPqVLwmRY7nRZ32$%DfyULuY-bSi"
+                    "X-Api-Key": "ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL"
                   },
                   body: JSON.stringify({ superados: count, intentos: total })
                 }).then(() => fetchSheetCounter(true));
