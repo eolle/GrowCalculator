@@ -945,8 +945,11 @@
             // Lógica para compartir en redes sociales
             const quizUrl = window.location.origin + window.location.pathname;
             const shareText = `¡He sacado ${score} de ${currentQuestions.length} en el Quiz de Cultivo Indoor de GrowCalculator! 🌱\n¿Te atreves a superarme?`;
+            const fbShareUrl = isMobile()
+              ? `https://m.facebook.com/sharer.php?u=${encodeURIComponent(quizUrl)}`
+              : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}&quote=${encodeURIComponent(shareText)}`;
+            document.getElementById('shareFacebook').href = fbShareUrl;
             document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(quizUrl)}`;
-            document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}&quote=${encodeURIComponent(shareText)}`;
             document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + quizUrl)}`;
             document.getElementById('shareReddit').href = `https://www.reddit.com/submit?url=${encodeURIComponent(quizUrl)}&title=${encodeURIComponent(shareText)}`;
             // Instagram no permite compartir enlaces directos, sugerimos copiar el texto
@@ -974,6 +977,30 @@
         function restartQuiz() {
             startQuiz(currentQuiz);
         }
+
+        function isMobile() {
+          return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+        }
+
+        // Compartir arriba (pantalla de selección)
+        document.addEventListener('DOMContentLoaded', function() {
+            const quizUrl = window.location.origin + window.location.pathname;
+            const shareText = '¡Pon a prueba tus conocimientos sobre cultivo indoor en el Quiz de GrowCalculator! 🌱';
+            const fbShareUrlTop = isMobile()
+              ? `https://m.facebook.com/sharer.php?u=${encodeURIComponent(quizUrl)}`
+              : `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}&quote=${encodeURIComponent(shareText)}`;
+            if (document.getElementById('shareFacebookTop')) {
+                document.getElementById('shareFacebookTop').href = fbShareUrlTop;
+            }
+            // Botón oficial de Facebook
+            var fbBtnTop = document.getElementById('fbShareTop');
+            if (fbBtnTop) {
+                fbBtnTop.setAttribute('data-href', quizUrl);
+                if (window.FB && FB.XFBML) {
+                    FB.XFBML.parse();
+                }
+            }
+        });
     </script>
 </body>
 <!-- SDK de Facebook -->
