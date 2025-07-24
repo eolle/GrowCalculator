@@ -1077,13 +1077,10 @@
                   body: JSON.stringify({ superados: count, intentos: total })
                 })
                 .then(async res => {
-                  if (!res.ok) {
-                    const text = await res.text();
-                    console.error("Sheet.best PUT error:", res.status, text);
-                    // alert eliminado para no interrumpir el test
-                  } else {
+                  if (res.ok) {
                     fetchSheetCounter(true);
                   }
+                  // Si falla, no hacer nada ni mostrar nada
                 });
               });
         }
