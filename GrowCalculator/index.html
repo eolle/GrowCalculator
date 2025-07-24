@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grow Calculator - El Asistente de Cultivo Definitivo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLRTFTH5W6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LLRTFTH5W6');
+    </script>
     <style>
         /* Variables de diseño */
         :root {
@@ -999,9 +1007,6 @@
             <iframe src="carrusel/carrusel.html" style="flex:1; width:100%; height:100%; border:none; border-radius:0 0 18px 18px; background:#222;"></iframe>
         </div>
     </div>
-    <div id="visitorCountWeb" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
-      Cargando visitas...
-    </div>
     <script>
         // Redirección automática a verificación de edad si no está verificada
         if (localStorage.getItem('ageVerified') !== 'true') {
@@ -1085,19 +1090,7 @@ if (pauseBtn) {
     }
   });
 }
-  // Contador de visitantes únicos para la web principal con CountAPI
-  document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://api.countapi.xyz/hit/growcalculator/web')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('visitorCountWeb').textContent =
-          `👀 Esta web ha sido visitada ${data.value} veces`;
-      })
-      .catch(() => {
-        document.getElementById('visitorCountWeb').textContent =
-          'No se pudo cargar el contador de visitas';
-      });
-  });
     </script>
+    <script type="text/javascript" src="https://contador.websiteout.com/js/6/6/1205/0"></script>
 </body>
 </html>
