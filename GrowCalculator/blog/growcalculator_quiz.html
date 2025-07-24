@@ -375,6 +375,9 @@
                 <a href="#" class="share-btn share-instagram" id="shareInstagramTop" target="_blank">📸 Instagram</a>
             </div>
         </div>
+        <div id="quiz-global-counter" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">
+          <span id="superadosCount">...</span> personas han superado este quiz · <span id="intentosCount">...</span> intentos · <span id="porcentajeCount">...</span>% de acierto global 🌱
+        </div>
 
         <!-- Selección de Quiz -->
         <div id="quizSelection" class="quiz-selection">
@@ -449,9 +452,7 @@
             </div>
             <h2 id="resultTitle"></h2>
             <p id="resultDescription"></p>
-            
             <div class="recommendations" id="recommendations"></div>
-
             <div class="share-results">
                 <a href="#" class="share-btn share-twitter" id="shareTwitter" target="_blank">🐦 X</a>
                 <a href="#" class="share-btn share-facebook" id="shareFacebook" target="_blank">📘 Facebook</a>
@@ -459,7 +460,7 @@
                 <a href="#" class="share-btn share-reddit" id="shareReddit" target="_blank">👽 Reddit</a>
                 <a href="#" class="share-btn share-instagram" id="shareInstagram" target="_blank">📸 Instagram</a>
             </div>
-
+            <div id="globalSuccessStats" style="margin:2rem 0 1.5rem 0; font-size:1.1rem; color:#2D5016; font-weight:bold;"></div>
             <div style="margin-top: 2rem;">
                 <button class="btn btn-primary" onclick="restartQuiz()">🔄 Repetir Quiz</button>
                 <button class="btn btn-secondary" onclick="backToSelection()" style="margin-left: 1rem;">📚 Otros Quiz</button>
@@ -913,6 +914,10 @@
             resultsEl.style.display = 'block';
             let percent = Math.round((score / currentQuestions.length) * 100);
             scoreText.textContent = `${score} / ${currentQuestions.length}`;
+            // Llama aquí:
+            checkAndIncrementGlobalCounter(score, currentQuestions.length);
+            // Mostrar el contador y porcentaje global en resultados
+            fetchSuperadosCount(true);
             if (percent >= 90) {
                 scoreCircle.className = 'score-circle score-excellent';
                 resultTitle.textContent = '¡Excelente!';
@@ -1000,5 +1005,98 @@
                 };
             }
         });
+
+        // Configuración jsonbin.io
+        const JSONBIN_API_KEY = "$2a$10$eQKcyBEXXbrQh16j4L0QBOt83kWNYABpebuLobm8yZYMmtQuZbNGa";
+        const JSONBIN_BIN_ID = "6882193b7b4b8670d8a69596";
+        const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+        let globalSuperados = 0;
+        let globalIntentos = 0;
+
+        function animateCounter(element, to, duration = 1200) {
+            if (!element) return;
+            const from = parseInt(element.textContent.replace(/\D/g, "")) || 0;
+            const start = performance.now();
+            function animate(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const value = Math.floor(from + (to - from) * progress);
+                element.textContent = value;
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    element.textContent = to;
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        // Mostrar el contador global al cargar
+        function fetchSuperadosCount(showStatsInResults = false) {
+            fetch(JSONBIN_URL + "/latest", {
+                headers: { "X-Access-Key": JSONBIN_API_KEY }
+            })
+            .then(res => res.json())
+            .then(data => {
+                const count = data.record.superados || 0;
+                const total = data.record.intentos || 0;
+                globalSuperados = count;
+                globalIntentos = total;
+                let percent = total > 0 ? Math.round((count / total) * 100) : 0;
+                if (document.getElementById('superadosCount')) animateCounter(document.getElementById('superadosCount'), count);
+                if (document.getElementById('intentosCount')) animateCounter(document.getElementById('intentosCount'), total);
+                if (document.getElementById('porcentajeCount')) animateCounter(document.getElementById('porcentajeCount'), percent);
+                if (showStatsInResults && document.getElementById('globalSuccessStats')) {
+                    document.getElementById('globalSuccessStats').textContent = `${count} personas han superado este quiz · ${total} intentos · ${percent}% de acierto global`;
+                }
+            })
+            .catch(() => {
+                if (document.getElementById('superadosCount')) document.getElementById('superadosCount').textContent = "…";
+                if (document.getElementById('intentosCount')) document.getElementById('intentosCount').textContent = "…";
+                if (document.getElementById('porcentajeCount')) document.getElementById('porcentajeCount').textContent = "…";
+                if (showStatsInResults && document.getElementById('globalSuccessStats')) {
+                    document.getElementById('globalSuccessStats').textContent = "No disponible";
+                }
+            });
+        }
+
+        // Incrementar el contador global si el usuario supera el test
+        function incrementSuperadosCount(superado) {
+            fetch(JSONBIN_URL + "/latest", {
+                headers: { "X-Access-Key": JSONBIN_API_KEY }
+            })
+            .then(res => res.json())
+            .then(data => {
+                let count = data.record.superados || 0;
+                let intentos = data.record.intentos || 0;
+                if (superado) count++;
+                intentos++;
+                // Actualizar el bin
+                return fetch(JSONBIN_URL, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Access-Key": JSONBIN_API_KEY,
+                        "X-Bin-Versioning": "false"
+                    },
+                    body: JSON.stringify({ superados: count, intentos: intentos })
+                });
+            })
+            .then(() => fetchSuperadosCount(true))
+            .catch(() => {});
+        }
+
+        // Llama a esto al cargar la página
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => fetchSuperadosCount(false));
+        } else {
+            fetchSuperadosCount(false);
+        }
+
+        // Llama a esto SOLO al mostrar resultados
+        function checkAndIncrementGlobalCounter(score, total) {
+            const required = Math.floor(total / 2) + 1;
+            const superado = score >= required;
+            incrementSuperadosCount(superado);
+        }
     </script>
 </body>
