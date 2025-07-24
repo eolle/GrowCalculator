@@ -1080,7 +1080,7 @@
                   if (!res.ok) {
                     const text = await res.text();
                     console.error("Sheet.best PUT error:", res.status, text);
-                    alert("Error al actualizar el contador: " + text);
+                    // alert eliminado para no interrumpir el test
                   } else {
                     fetchSheetCounter(true);
                   }
