@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz de Cultivo Cannabis Indoor - GrowCalculator</title>
+    <meta name="description" content="Pon a prueba tus conocimientos sobre cultivo de cannabis indoor. Responde el quiz y descubre tu nivel de experto.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Quiz de Cultivo Cannabis Indoor - GrowCalculator">
+    <meta property="og:description" content="Pon a prueba tus conocimientos sobre cultivo de cannabis indoor. Responde el quiz y descubre tu nivel de experto.">
+    <meta property="og:image" content="https://growcalculator.es/logogrowcalculator.png">
+    <meta property="og:url" content="https://growcalculator.es/blog/growcalculator_quiz.html">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quiz de Cultivo Cannabis Indoor - GrowCalculator">
+    <meta name="twitter:description" content="Pon a prueba tus conocimientos sobre cultivo de cannabis indoor. Responde el quiz y descubre tu nivel de experto.">
+    <meta name="twitter:image" content="https://growcalculator.es/logogrowcalculator.png">
     <style>
         :root {
             --green-dark: #2D5016;
@@ -467,6 +479,7 @@
                 <a href="#" class="share-btn share-whatsapp" id="shareWhatsapp" target="_blank">💬 WhatsApp</a>
                 <a href="#" class="share-btn share-reddit" id="shareReddit" target="_blank">👽 Reddit</a>
                 <a href="#" class="share-btn share-instagram" id="shareInstagram" target="_blank">📸 Instagram</a>
+                <button class="share-btn" id="copyResultBtn" type="button" style="background:#2D5016;">📋 Copiar resultado</button>
             </div>
             <div id="globalSuccessStats" style="margin:2rem 0 1.5rem 0; font-size:1.1rem; color:#2D5016; font-weight:bold;"></div>
             <div style="margin-top: 2rem;">
@@ -1012,6 +1025,20 @@
                     alert('¡Texto copiado! Ahora puedes pegarlo en tu historia o mensaje de Instagram.');
                 };
             }
+        });
+
+        // Copiar resultado para Facebook
+        document.addEventListener('DOMContentLoaded', function() {
+          const copyBtn = document.getElementById('copyResultBtn');
+          if (copyBtn) {
+            copyBtn.onclick = function() {
+              const score = document.getElementById('scoreText') ? document.getElementById('scoreText').textContent : '';
+              const msg = `¡He sacado ${score} en el Quiz de Cultivo Indoor de GrowCalculator! 🌱 ¿Te atreves a superarme? https://growcalculator.es/blog/growcalculator_quiz.html`;
+              navigator.clipboard.writeText(msg);
+              copyBtn.textContent = '✅ Copiado';
+              setTimeout(()=>{copyBtn.textContent = '📋 Copiar resultado';}, 2000);
+            };
+          }
         });
 
         // --- Sheet.best config ---
