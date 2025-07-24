@@ -461,218 +461,354 @@
         const quizData = {
             principiante: [
                 {
-                    question: "¿Cuál es la temperatura ideal para la germinación de semillas de cannabis?",
-                    answers: ["18-20°C", "22-26°C", "28-32°C", "15-18°C"],
+                    question: "Según las guías técnicas, ¿cuál es el rango óptimo de pH para cultivo hidropónico o en coco?",
+                    answers: ["6.0 - 6.8", "5.5 - 6.5", "6.5 - 7.0", "5.0 - 6.0"],
                     correct: 1,
-                    explanation: "La temperatura óptima para germinación es 22-26°C. Temperaturas más bajas ralentizan el proceso, mientras que temperaturas más altas pueden dañar las semillas."
+                    explanation: "El rango óptimo de pH para hidroponía o coco es 5.5 - 6.5, permitiendo la mejor absorción de nutrientes."
                 },
                 {
-                    question: "¿Cuántas horas de luz necesita una planta en fase vegetativa?",
-                    answers: ["12 horas", "16 horas", "18-24 horas", "8 horas"],
+                    question: "¿Cuál es el valor de EC recomendado para esquejes y plántulas según parámetros técnicos?",
+                    answers: ["0.5 - 1.0 EC", "1.0 - 1.5 EC", "1.5 - 2.0 EC", "2.0 - 2.5 EC"],
+                    correct: 0,
+                    explanation: "Para esquejes y plántulas, el valor recomendado de EC es 0.5 - 1.0 EC para evitar estrés y quemaduras."
+                },
+                {
+                    question: "Durante la propagación de esquejes/semillas, ¿qué temperatura se recomienda?",
+                    answers: ["18-20°C", "22-24°C", "26-28°C", "30-32°C"],
+                    correct: 1,
+                    explanation: "La temperatura ideal para propagación es 22-24°C, favoreciendo el enraizamiento y germinación."
+                },
+                {
+                    question: "¿Cuál es el VPD recomendado para la propagación según la tabla VPD?",
+                    answers: ["0.4-0.6 kPa", "0.8-1.2 kPa", "1.2-1.6 kPa", "1.6-2.0 kPa"],
+                    correct: 0,
+                    explanation: "El VPD óptimo para propagación es 0.4-0.6 kPa, lo que favorece la transpiración y el enraizamiento."
+                },
+                {
+                    question: "Según las guías de deficiencias, el amarillamiento de hojas viejas que avanza hacia arriba indica deficiencia de:",
+                    answers: ["Fósforo", "Nitrógeno", "Potasio", "Calcio"],
+                    correct: 1,
+                    explanation: "El amarillamiento de hojas viejas que avanza hacia arriba es típico de deficiencia de nitrógeno."
+                },
+                {
+                    question: "¿Qué humedad relativa se recomienda durante la propagación?",
+                    answers: ["45-55% HR", "65-70% HR", "75-85% HR", "85-95% HR"],
                     correct: 2,
-                    explanation: "En vegetativo se recomienda 18-24 horas de luz. Muchos cultivadores usan 18/6 (18h luz, 6h oscuridad) para dar un descanso a las plantas y equipos."
+                    explanation: "Durante la propagación, la humedad ideal es 75-85% HR para evitar deshidratación."
                 },
                 {
-                    question: "¿Qué significa NPK en los fertilizantes?",
-                    answers: ["Nitrógeno, Potasio, Calcio", "Nitrógeno, Fósforo, Potasio", "Nitrógeno, Fósforo, Calcio", "Nicotina, Fósforo, Potasio"],
-                    correct: 1,
-                    explanation: "NPK representa los tres macronutrientes principales: Nitrógeno (N), Fósforo (P) y Potasio (K). Son esenciales para el crecimiento saludable."
+                    question: "El síntoma de puntas y bordes de hojas amarillos/marrones indica deficiencia de:",
+                    answers: ["Nitrógeno", "Fósforo", "Potasio", "Magnesio"],
+                    correct: 2,
+                    explanation: "Puntas y bordes amarillos/marrones suelen indicar deficiencia de potasio."
                 },
                 {
-                    question: "¿Cuál es la humedad relativa ideal en vegetativo?",
-                    answers: ["30-40%", "50-70%", "80-90%", "20-30%"],
-                    correct: 1,
-                    explanation: "En vegetativo, la humedad ideal es 50-70%. Humedad muy alta puede causar hongos, muy baja puede estresar las plantas."
+                    question: "¿Cuál es la temperatura recomendada para el calentamiento del sustrato durante la propagación?",
+                    answers: ["20-22°C", "22-24°C", "24-26°C", "26-28°C"],
+                    correct: 2,
+                    explanation: "El sustrato debe mantenerse a 24-26°C para favorecer el desarrollo radicular."
                 },
                 {
-                    question: "¿Qué pH es óptimo para cultivo en tierra?",
-                    answers: ["5.5-6.0", "6.0-7.0", "7.5-8.0", "4.0-5.0"],
+                    question: "Según la tabla de deficiencias, el amarillamiento entre las venas de hojas viejas indica deficiencia de:",
+                    answers: ["Hierro", "Magnesio", "Calcio", "Zinc"],
                     correct: 1,
-                    explanation: "En tierra, el pH óptimo es 6.0-7.0. Este rango permite la mejor absorción de nutrientes por las raíces."
+                    explanation: "El amarillamiento entre venas de hojas viejas es típico de deficiencia de magnesio."
                 },
                 {
-                    question: "¿Cuándo cambiar el fotoperiodo a floración?",
-                    answers: ["8/16 horas luz/oscuridad", "12/12 horas luz/oscuridad", "14/10 horas luz/oscuridad", "16/8 horas luz/oscuridad"],
-                    correct: 1,
-                    explanation: "Para inducir floración se cambia a 12/12 (12h luz, 12h oscuridad). Este cambio simula el otoño natural."
-                },
-                {
-                    question: "¿Qué tipo de luz es mejor para vegetativo?",
-                    answers: ["Luz roja (2700K)", "Luz azul (6500K)", "Luz amarilla (3000K)", "Luz verde (5000K)"],
-                    correct: 1,
-                    explanation: "La luz azul (6500K) es ideal para vegetativo porque promueve crecimiento compacto y desarrollo de hojas."
-                },
-                {
-                    question: "¿Con qué frecuencia regar plantas jóvenes?",
-                    answers: ["Diariamente", "Cuando la tierra esté seca 2-3cm", "Una vez por semana", "Cada 3 días exactos"],
-                    correct: 1,
-                    explanation: "Riega cuando los primeros 2-3cm de tierra estén secos. El exceso de riego es más peligroso que la falta de agua."
-                },
-                {
-                    question: "¿Cuál es el primer signo de sobrefertilización?",
-                    answers: ["Hojas amarillas", "Puntas de hojas quemadas", "Crecimiento lento", "Hojas moradas"],
-                    correct: 1,
-                    explanation: "Las puntas quemadas (marrón/amarillo) son el primer signo de sobrefertilización. Reduce inmediatamente los nutrientes."
-                },
-                {
-                    question: "¿Qué tamaño de maceta para una planta auto?",
-                    answers: ["1-3 litros", "5-7 litros", "10-15 litros", "20+ litros"],
-                    correct: 1,
-                    explanation: "Las autos necesitan 5-7 litros mínimo. Macetas pequeñas limitan el crecimiento y rendimiento final."
+                    question: "¿Qué fase lunar es ideal para comenzar la germinación de semillas según el calendario lunar?",
+                    answers: ["Luna llena", "Luna creciente", "Luna nueva", "Luna menguante"],
+                    correct: 2,
+                    explanation: "La luna nueva es la fase ideal para iniciar la germinación según el calendario lunar."
                 }
             ],
             intermedio: [
                 {
-                    question: "¿Cuál es la diferencia entre LST y HST?",
-                    answers: ["LST es para vegetativo, HST para floración", "LST no daña la planta, HST sí", "No hay diferencia", "LST es más efectivo"],
+                    question: "¿Cuál es el valor de EC recomendado para floración media según parámetros técnicos?",
+                    answers: ["2.0 - 2.5 EC", "2.2 - 2.7 EC", "1.5 - 2.0 EC", "2.5 - 3.0 EC"],
                     correct: 1,
-                    explanation: "LST (Low Stress Training) no daña la planta, solo la dobla. HST (High Stress Training) implica cortes o daños controlados como topping, FIM, etc."
+                    explanation: "En floración media, el valor recomendado de EC es 2.2 - 2.7 EC para un desarrollo óptimo de flores."
                 },
                 {
-                    question: "¿Cuándo hacer el primer topping?",
-                    answers: ["Cuando tenga 2 nudos", "Cuando tenga 4-6 nudos", "En floración", "Nunca en autos"],
+                    question: "Durante el vegetativo medio (semanas 3-4), ¿qué VPD se recomienda?",
+                    answers: ["0.7-0.9 kPa", "0.9-1.1 kPa", "1.1-1.3 kPa", "1.3-1.5 kPa"],
                     correct: 1,
-                    explanation: "El primer topping se hace cuando la planta tiene 4-6 nudos, cortando por encima del 3er o 4to nudo. Nunca en autos a menos que sean muy vigorosas."
+                    explanation: "El VPD recomendado en vegetativo medio es 0.9-1.1 kPa para un crecimiento equilibrado."
                 },
                 {
-                    question: "¿Qué es el DLI (Daily Light Integral)?",
-                    answers: ["Horas de luz por día", "Cantidad total de luz recibida en 24h", "Tipo de espectro lumínico", "Temperatura de color"],
+                    question: "¿Qué intensidad de luz es recomendable para vegetativo medio?",
+                    answers: ["Luz baja", "Luz media-alta", "Luz muy alta", "Luz mínima"],
                     correct: 1,
-                    explanation: "DLI mide la cantidad total de luz fotosintéticamente activa que recibe la planta en 24 horas. Es clave para optimizar crecimiento."
+                    explanation: "En vegetativo medio se recomienda luz media-alta para estimular el crecimiento sin estrés."
                 },
                 {
-                    question: "¿Cuál es el ratio NPK ideal en floración?",
-                    answers: ["Alto N, bajo P-K", "Bajo N, alto P-K", "NPK equilibrado", "Solo P y K"],
+                    question: "Para prevenir botrytis durante la floración, la humedad relativa nocturna debe mantenerse por debajo de:",
+                    answers: ["50%", "45%", "40%", "35%"],
                     correct: 1,
-                    explanation: "En floración se necesita bajo Nitrógeno y alto Fósforo-Potasio. Algo como 1-3-2 o 1-4-3 es ideal para desarrollo de flores."
+                    explanation: "Para evitar botrytis, la humedad nocturna debe estar por debajo del 45%."
                 },
                 {
-                    question: "¿Qué es el 'stretch' en floración?",
-                    answers: ["Cuando las hojas se estiran", "Crecimiento acelerado las primeras semanas de floración", "Problema de iluminación", "Signo de estrés"],
+                    question: "¿Cuál es la diferencia de temperatura recomendada entre día y noche durante vegetativo tardío?",
+                    answers: ["4-6°C", "6-8°C", "8-10°C", "10-12°C"],
                     correct: 1,
-                    explanation: "El 'stretch' es el crecimiento vertical acelerado durante las primeras 2-3 semanas de floración. Las plantas pueden duplicar su altura."
+                    explanation: "La diferencia recomendada es de 6-8°C (26-28°C día, 18-20°C noche)."
                 },
                 {
-                    question: "¿Cuándo hacer defoliación en floración?",
-                    answers: ["Nunca", "Día 1 de floración", "Semana 3 y 6 aproximadamente", "Cada semana"],
+                    question: "Los síntomas de hojas nuevas deformes y puntas ganchudas indican deficiencia de:",
+                    answers: ["Potasio", "Calcio", "Magnesio", "Hierro"],
+                    correct: 1,
+                    explanation: "Hojas nuevas deformes y puntas ganchudas suelen indicar deficiencia de calcio."
+                },
+                {
+                    question: "¿Qué plaga se caracteriza por punteado fino amarillo en hojas y telarañas finas?",
+                    answers: ["Trips", "Mosca blanca", "Ácaros (araña roja)", "Pulgones"],
                     correct: 2,
-                    explanation: "La defoliación se hace típicamente en semana 3 (después del stretch) y semana 6 de floración para mejorar penetración lumínica."
+                    explanation: "Los ácaros (araña roja) dejan punteado amarillo y telarañas finas en las hojas."
                 },
                 {
-                    question: "¿Qué es el VPD y por qué importa?",
-                    answers: ["Tipo de nutriente", "Relación entre temperatura y humedad", "Sistema de riego", "Variedad de planta"],
+                    question: "¿Cómo se calcula el volumen de extracción necesario para un cultivo indoor?",
+                    answers: ["Solo el volumen de la sala", "Volumen de la sala × renovaciones por hora deseadas", "Área de cultivo × altura", "Número de plantas × 10 m³/h"],
                     correct: 1,
-                    explanation: "VPD (Vapor Pressure Deficit) es la relación entre temperatura y humedad que afecta la transpiración y absorción de nutrientes."
+                    explanation: "El volumen de extracción se calcula multiplicando el volumen de la sala por las renovaciones por hora deseadas."
                 },
                 {
-                    question: "¿Cuál es la EC ideal en hidropónico para floración?",
-                    answers: ["0.8-1.2", "1.4-1.8", "2.0-2.5", "0.3-0.6"],
-                    correct: 1,
-                    explanation: "En hidropónico, la EC ideal para floración es 1.4-1.8. Más alta puede causar quemaduras, más baja limita el potencial."
+                    question: "¿Qué fase lunar es óptima para hacer esquejes/clones?",
+                    answers: ["Luna nueva", "Luna creciente (segundo cuarto)", "Luna llena", "Luna menguante"],
+                    correct: 2,
+                    explanation: "La luna llena es la fase óptima para hacer esquejes/clones."
                 },
                 {
-                    question: "¿Qué hacer si aparecen bananas/hermafroditismo?",
-                    answers: ["Ignorar", "Arrancar las bananas cuidadosamente", "Cortar toda la planta", "Aumentar nutrientes"],
+                    question: "El margen de error recomendado para sensores de humedad en cultivos profesionales es:",
+                    answers: ["<±1% HR", "<±3% HR", "<±5% HR", "<±7% HR"],
                     correct: 1,
-                    explanation: "Si aparecen pocas 'bananas', se pueden remover cuidadosamente con pinzas. Si son muchas, considera si vale la pena mantener la planta."
+                    explanation: "El margen de error recomendado es <±3% HR para sensores de humedad en cultivos profesionales."
                 },
                 {
-                    question: "¿Cuándo empezar el flush pre-cosecha?",
-                    answers: ["1 semana antes", "2-3 semanas antes", "El día de cosecha", "No es necesario"],
+                    question: "¿Qué deficiencia causa amarillamiento entre venas de hojas nuevas manteniendo las venas verdes?",
+                    answers: ["Magnesio", "Hierro", "Zinc", "Manganeso"],
                     correct: 1,
-                    explanation: "El flush se inicia 1-2 semanas antes de cosecha, dependiendo del medio de cultivo. En hidro 1 semana, en tierra 2 semanas suele ser suficiente."
+                    explanation: "La deficiencia de hierro causa amarillamiento entre venas de hojas nuevas, manteniendo las venas verdes."
                 },
                 {
-                    question: "¿Qué es el SCROG y cuándo aplicarlo?",
-                    answers: ["Tipo de semilla", "Screen of Green - malla para entrenar", "Sistema de riego", "Problema de plagas"],
+                    question: "Durante la floración tardía (semanas 7-9), ¿qué humedad se recomienda?",
+                    answers: ["40-45% HR", "35-40% HR", "30-35% HR", "25-30% HR"],
                     correct: 1,
-                    explanation: "SCROG (Screen of Green) usa una malla para entrenar las plantas horizontalmente, maximizando la superficie de cogollos bajo la luz."
-                },
-                {
-                    question: "¿Cuál es la diferencia entre tinturas y resinas?",
-                    answers: ["No hay diferencia", "Las tinturas son líquidas, las resinas sólidas", "Las tinturas tienen más THC", "Las resinas duran más"],
-                    correct: 1,
-                    explanation: "Las tinturas son extractos líquidos (generalmente en alcohol), mientras que las resinas son extractos más concentrados y sólidos como el hash o rosin."
+                    explanation: "En floración tardía, la humedad recomendada es 35-40% HR para evitar hongos."
                 }
             ],
             avanzado: [
                 {
-                    question: "¿Qué es la técnica 'Monster Cropping'?",
-                    answers: ["Cultivo de plantas gigantes", "Clones tomados en floración que revegecan", "Uso de CO2 suplementario", "Cultivo en exterior"],
-                    correct: 1,
-                    explanation: "Monster Cropping consiste en tomar clones de plantas en floración temprana. Al revegetar, desarrollan múltiples puntas de crecimiento."
-                },
-                {
-                    question: "¿Cuál es la concentración ideal de CO2 en floración?",
-                    answers: ["400 ppm", "800-1000 ppm", "1200-1500 ppm", "2000+ ppm"],
+                    question: "¿Cuál es la capacidad adicional recomendada para el equipo HVAC sobre el volumen de la sala?",
+                    answers: ["10%", "15%", "20%", "25%"],
                     correct: 2,
-                    explanation: "La concentración ideal de CO2 es 1200-1500 ppm durante las horas de luz. Requiere sellado del espacio y control preciso de temperatura."
+                    explanation: "Se recomienda un 20% de capacidad adicional en HVAC para asegurar el control ambiental."
                 },
                 {
-                    question: "¿Qué es el breeding y cuál es el objetivo principal?",
-                    answers: ["Reproducir plantas idénticas", "Crear nuevas variedades con características deseadas", "Aumentar el THC solamente", "Hacer plantas más grandes"],
+                    question: "Las variedades índicas requieren un ajuste de VPD de cuánto respecto al estándar?",
+                    answers: ["+0.1 kPa", "-0.1 kPa", "+0.2 kPa", "-0.2 kPa"],
                     correct: 1,
-                    explanation: "El breeding busca crear nuevas variedades combinando características deseadas como potencia, sabor, resistencia, tiempo de floración, etc."
+                    explanation: "Las índicas requieren un ajuste de -0.1 kPa en el VPD respecto al estándar."
                 },
                 {
-                    question: "¿Cuándo hacer 'reverse osmosis' del agua?",
-                    answers: ["Siempre", "Cuando el agua tenga >150 ppm", "Nunca", "Solo en hidropónico"],
+                    question: "Los cambios ambientales graduales no deben superar por día:",
+                    answers: ["3% HR o 1°C", "5% HR o 2°C", "7% HR o 3°C", "10% HR o 4°C"],
                     correct: 1,
-                    explanation: "La osmosis inversa se recomienda cuando el agua base supera 150-200 ppm, permitiendo control total sobre los nutrientes añadidos."
+                    explanation: "No se deben superar 5% HR o 2°C de cambio ambiental por día para evitar estrés."
                 },
                 {
-                    question: "¿Qué causa la 'luz burn' y cómo identificarla?",
-                    answers: ["Exceso de nutrientes", "Luz demasiado intensa/cerca", "Falta de agua", "Temperatura baja"],
+                    question: "¿Cuál es el ciclo de vida típico de los ácaros (araña roja)?",
+                    answers: ["5-10 días", "7-14 días", "15-21 días", "21-28 días"],
                     correct: 1,
-                    explanation: "Light burn se causa por luz demasiado intensa. Se identifica por hojas superiores amarillas/blancas, especialmente cerca de la fuente de luz."
+                    explanation: "El ciclo de vida de los ácaros es de 7-14 días, lo que requiere monitoreo frecuente."
                 },
                 {
-                    question: "¿Qué es la técnica 'main-lining' o 'manifolding'?",
-                    answers: ["Sistema de riego principal", "Crear 8+ colas principales simétricas", "Tipo de poda de raíces", "Método de secado"],
+                    question: "Para la deshumidificación durante floración tardía, ¿qué sistema de alerta se recomienda para desviaciones de parámetros?",
+                    answers: [">5%", ">10%", ">15%", ">20%"],
                     correct: 1,
-                    explanation: "Main-lining crea múltiples colas principales (típicamente 8, 16 o 32) mediante topping y entrenamiento sistemático, maximizando rendimiento."
+                    explanation: "Se recomienda un sistema de alerta para desviaciones superiores al 10% en parámetros críticos."
                 },
                 {
-                    question: "¿Cuál es el problema del 'nutrient lockout'?",
-                    answers: ["Falta de nutrientes", "Exceso de un nutriente bloquea otros", "pH perfecto", "Problema de luz"],
+                    question: "El oídio se caracteriza por:",
+                    answers: ["Moho gris-marrón en cogollos", "Manchas blancas polvorientas en hojas", "Raíces marrones y blandas", "Marchitamiento rápido"],
                     correct: 1,
-                    explanation: "Nutrient lockout ocurre cuando el exceso de ciertos nutrientes impide la absorción de otros, causando deficiencias aparentes."
+                    explanation: "El oídio se identifica por manchas blancas polvorientas en hojas."
                 },
                 {
-                    question: "¿Qué es el 'rosin' y cómo se produce?",
-                    answers: ["Tipo de fertilizante", "Extracto hecho con calor y presión", "Variedad de cannabis", "Sistema hidropónico"],
+                    question: "La deficiencia de manganeso se diferencia de la de hierro por:",
+                    answers: ["Afecta hojas viejas vs nuevas", "Causa manchas necróticas adicionales", "Solo afecta las venas", "No hay diferencia"],
                     correct: 1,
-                    explanation: "Rosin es un extracto sin solventes producido aplicando calor y presión a flores o hash, creando un concentrado limpio y potente."
+                    explanation: "La deficiencia de manganeso causa manchas necróticas adicionales, a diferencia del hierro."
                 },
                 {
-                    question: "¿Cuándo usar 'beneficial bacteria' en las raíces?",
-                    answers: ["Nunca", "Solo en problemas", "Desde el inicio, especialmente en orgánico", "Solo en exterior"],
+                    question: "¿Qué tratamiento NO es efectivo contra la araña roja?",
+                    answers: ["Acaricidas específicos", "Aceite de neem", "Jabón potásico", "Phytoseiulus persimilis"],
                     correct: 2,
-                    explanation: "Las bacterias beneficiosas (como Bacillus, Mycorrhizae) mejoran absorción de nutrientes y protegen contra patógenos desde el inicio, especialmente en cultivos orgánicos."
+                    explanation: "El jabón potásico no es efectivo contra la araña roja, a diferencia de los otros métodos."
+                },
+                {
+                    question: "El pythium (pudrición de raíz) se trata principalmente con:",
+                    answers: ["Fungicidas cúpricos", "Oxigenación y Trichoderma", "Bicarbonato de potasio", "Eliminación total de plantas"],
+                    correct: 1,
+                    explanation: "El tratamiento principal para pythium es la oxigenación y el uso de Trichoderma."
+                },
+                {
+                    question: "¿Qué margen de error se recomienda para sensores de temperatura en cultivos profesionales?",
+                    answers: ["<±0.3°C", "<±0.5°C", "<±0.7°C", "<±1.0°C"],
+                    correct: 1,
+                    explanation: "El margen de error recomendado es <±0.5°C para sensores de temperatura."
+                },
+                {
+                    question: "Los trips se identifican por:",
+                    answers: ["Telarañas finas", "Manchas plateadas y excrementos negros", "Melaza pegajosa", "Insectos blancos voladores"],
+                    correct: 1,
+                    explanation: "Los trips dejan manchas plateadas y excrementos negros en las hojas."
+                },
+                {
+                    question: "¿Qué fase lunar es óptima para trasplantes?",
+                    answers: ["Luna nueva", "Luna creciente (segundo cuarto)", "Luna llena", "Luna menguante"],
+                    correct: 1,
+                    explanation: "La luna creciente (segundo cuarto) es óptima para trasplantes."
+                },
+                {
+                    question: "Para prevenir fusarium es fundamental:",
+                    answers: ["Baja humedad", "Alta temperatura", "Sustrato limpio y buen drenaje", "Fertilización alta"],
+                    correct: 2,
+                    explanation: "Para prevenir fusarium es fundamental un sustrato limpio y buen drenaje."
+                },
+                {
+                    question: "La deficiencia de zinc causa:",
+                    answers: ["Amarillamiento uniforme", "Acortamiento de entrenudos y hojas retorcidas", "Puntas quemadas", "Manchas concéntricas"],
+                    correct: 1,
+                    explanation: "La deficiencia de zinc causa acortamiento de entrenudos y hojas retorcidas."
+                },
+                {
+                    question: "¿Cuál es el tratamiento más efectivo para mosca del sustrato (fungus gnats)?",
+                    answers: ["Acaricidas", "Bacillus thuringiensis israelensis (BTI)", "Fungicidas", "Jabón potásico"],
+                    correct: 1,
+                    explanation: "El tratamiento más efectivo es Bacillus thuringiensis israelensis (BTI)."
                 }
             ],
             experto: [
-  {question: "¿Qué es el 'nutrient lockout' y cómo se soluciona?", answers: ["Falta de nutrientes, se soluciona abonando más", "Exceso de sales bloquea la absorción, se soluciona lavando y ajustando pH", "Problema de luz, se soluciona bajando la lámpara", "Falta de CO2, se soluciona ventilando"], correct: 1, explanation: "El lockout es causado por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH."},
-  {question: "¿Qué es el DLI y cómo afecta el crecimiento?", answers: ["Cantidad total de luz útil recibida en 24h", "Cantidad de agua en el sustrato", "Nivel de CO2 en el ambiente", "Cantidad de nutrientes en la solución"], correct: 0, explanation: "El DLI mide la luz útil diaria y es clave para la fotosíntesis y el rendimiento."},
-  {question: "¿Qué es el 'stretch' y cómo se controla?", answers: ["Crecimiento acelerado en floración, se controla con luz y entrenamiento", "Deficiencia de nitrógeno", "Exceso de riego", "Falta de CO2"], correct: 0, explanation: "El stretch es el crecimiento acelerado al inicio de floración, se controla con luz y técnicas como SCROG/LST."},
-  {question: "¿Qué es el 'runoff' y por qué es importante medirlo?", answers: ["El agua que drena tras el riego, permite controlar EC y pH", "El agua de lluvia", "El agua evaporada", "El agua de riego inicial"], correct: 0, explanation: "El runoff es el agua que drena tras el riego, permite controlar EC y pH."},
-  {question: "¿Qué es el 'lollipopping' y para qué se usa?", answers: ["Eliminar ramas bajas para concentrar energía en la parte superior", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El lollipopping es eliminar ramas bajas para concentrar energía en la parte superior."},
-  {question: "¿Qué es el VPD óptimo en floración?", answers: ["0.5-0.8 kPa", "1.0-1.2 kPa", "1.5-2.0 kPa", "2.5-3.0 kPa"], correct: 1, explanation: "En floración el VPD óptimo es 1.0-1.2 kPa."},
-  {question: "¿Qué es el 'foxtailing' en cogollos y cómo evitarlo?", answers: ["Formación de flores alargadas por estrés lumínico o genético", "Deficiencia de fósforo", "Exceso de riego", "Falta de CO2"], correct: 0, explanation: "El foxtailing es la formación de flores alargadas, suele deberse a estrés lumínico o genética. Se evita controlando la intensidad lumínica."},
-  {question: "¿Qué es el 'root rot' y cómo se previene?", answers: ["Podredumbre de raíces, se previene con oxigenación y control de riego", "Deficiencia de calcio", "Exceso de luz", "Falta de CO2"], correct: 0, explanation: "Root rot es podredumbre de raíces, se previene con oxigenación y evitando exceso de riego."},
-  {question: "¿Qué es el 'EC drift' y cómo se maneja?", answers: ["Variación de EC en el tiempo, se maneja ajustando nutrientes y controlando el drenaje", "Cambio de pH", "Falta de luz", "Exceso de CO2"], correct: 0, explanation: "El EC drift es la variación de EC, se maneja ajustando nutrientes y controlando el drenaje."},
-  {question: "¿Qué es el 'hermafroditismo' y cómo prevenirlo?", answers: ["Plantas con flores macho y hembra, se previene evitando estrés y genéticas estables", "Falta de nutrientes", "Exceso de riego", "Falta de luz"], correct: 0, explanation: "El hermafroditismo es la aparición de flores macho y hembra, se previene evitando estrés y usando buenas genéticas."},
-  {question: "¿Qué es el 'supercropping' y para qué sirve?", answers: ["Dañar tallos para fortalecerlos y aumentar producción", "Poda de raíces", "Uso de CO2", "Cambio de maceta"], correct: 0, explanation: "El supercropping es una técnica de estrés controlado para mejorar la producción."},
-  {question: "¿Qué es el 'main-lining' y su objetivo?", answers: ["Crear múltiples colas principales mediante poda y entrenamiento", "Aumentar la EC", "Reducir la luz", "Controlar plagas"], correct: 0, explanation: "El main-lining crea varias colas principales para maximizar el rendimiento."},
-  {question: "¿Qué es el 'Monster Cropping'?", answers: ["Clones tomados en floración que revegecan", "Uso de CO2", "Cultivo en exterior", "Poda de raíces"], correct: 0, explanation: "Monster Cropping consiste en tomar clones de plantas en floración temprana."},
-  {question: "¿Qué es el 'breeding' y su objetivo?", answers: ["Crear nuevas variedades con características deseadas", "Aumentar el THC solamente", "Hacer plantas más grandes", "Reproducir plantas idénticas"], correct: 0, explanation: "El breeding busca crear nuevas variedades combinando características deseadas."},
-  {question: "¿Qué es el 'flush' y cuándo se realiza?", answers: ["Lavado de raíces antes de cosecha", "Poda de raíces", "Cambio de maceta", "Aplicación de CO2"], correct: 0, explanation: "El flush elimina sales y mejora el sabor de la cosecha."},
-  {question: "¿Qué es el 'rosin' y cómo se produce?", answers: ["Extracto hecho con calor y presión", "Tipo de fertilizante", "Variedad de cannabis", "Sistema hidropónico"], correct: 0, explanation: "Rosin es un extracto sin solventes producido aplicando calor y presión."},
-  {question: "¿Qué es el 'luz burn' y cómo se identifica?", answers: ["Hojas superiores amarillas/blancas por luz intensa", "Falta de riego", "Exceso de CO2", "Deficiencia de calcio"], correct: 0, explanation: "El light burn se identifica por hojas superiores amarillas/blancas, especialmente cerca de la fuente de luz."},
-  {question: "¿Qué es el 'lockout' y cómo se soluciona?", answers: ["Bloqueo de nutrientes por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH", "Falta de luz", "Exceso de CO2", "Cambio de maceta"], correct: 0, explanation: "El lockout es causado por exceso de sales o pH fuera de rango, se soluciona lavando y corrigiendo pH."},
-  {question: "¿Qué es el 'CO2 enrichment' y cuándo es útil?", answers: ["Aumentar CO2 en floración para mayor producción", "Reducir la luz", "Controlar plagas", "Aumentar la EC"], correct: 0, explanation: "El enriquecimiento de CO2 es útil en floración para aumentar la producción."},
-  {question: "¿Qué es el 'defoliation' y su objetivo?", answers: ["Eliminar hojas para mejorar penetración de luz y ventilación", "Aumentar la EC", "Reducir la luz", "Controlar plagas"], correct: 0, explanation: "La defoliación mejora la penetración de luz y la ventilación en el cultivo."}
-],
+                {
+                    question: "¿Cuáles son los 4 tipos principales de variedades según su perfil de cannabinoides?",
+                    answers: ["Solo THC, CBD, CBG, CBN", "Alto THC, Mixto THC/CBD, Alto CBD, Cannabinoides minoritarios", "Indica, Sativa, Híbrido, Ruderalis", "Temprana, Media, Tardía, Automática"],
+                    correct: 1,
+                    explanation: "Los 4 tipos principales son Alto THC, Mixto THC/CBD, Alto CBD y Cannabinoides minoritarios."
+                },
+                {
+                    question: "¿Qué terpeno tiene propiedades únicas al interactuar directamente con el sistema endocannabinoide?",
+                    answers: ["Mirceno", "Limoneno", "Cariofileno", "Pineno"],
+                    correct: 2,
+                    explanation: "El cariofileno interactúa directamente con el sistema endocannabinoide."
+                },
+                {
+                    question: "¿Cuál es la concentración de CO₂ recomendada durante la floración con suplementación?",
+                    answers: ["800-1000 ppm", "1200-1500 ppm", "1500-1800 ppm", "2000+ ppm"],
+                    correct: 1,
+                    explanation: "La concentración recomendada de CO₂ en floración con suplementación es 1200-1500 ppm."
+                },
+                {
+                    question: "¿Qué es RDWC en hidroponía?",
+                    answers: ["Rapid Deep Water Culture", "Recirculating Deep Water Culture", "Root Development Water Culture", "Recycled Drip Water Culture"],
+                    correct: 1,
+                    explanation: "RDWC significa Recirculating Deep Water Culture."
+                },
+                {
+                    question: "En aeroponia de alta presión, ¿cada cuánto tiempo se activan los nebulizadores?",
+                    answers: ["Cada 2-3 minutos", "Cada 5 minutos", "Cada 10 minutos", "Continuamente"],
+                    correct: 1,
+                    explanation: "En aeroponia de alta presión, los nebulizadores se activan cada 5 minutos."
+                },
+                {
+                    question: "¿Cuál es la mejor estrategia de iluminación para floración?",
+                    answers: ["Luz azul predominante", "Luz roja predominante", "Espectro completo con luz intensa", "Solo luz verde"],
+                    correct: 2,
+                    explanation: "La mejor estrategia es espectro completo con luz intensa."
+                },
+                {
+                    question: "¿Qué significa DLI en iluminación?",
+                    answers: ["Direct Light Index", "Daily Light Integral (integral de luz diaria)", "Distributed Light Integration", "Deep Light Intensity"],
+                    correct: 1,
+                    explanation: "DLI significa Daily Light Integral (integral de luz diaria)."
+                },
+                {
+                    question: "¿Cuál es la diferencia principal entre cultivo en tierra y en coco?",
+                    answers: ["El coco crece más rápido", "El coco permite mayor control nutricional", "La tierra es más cara", "No hay diferencias"],
+                    correct: 1,
+                    explanation: "El coco permite mayor control nutricional respecto a la tierra."
+                },
+                {
+                    question: "¿Qué es el 'flushing' o lavado de raíces?",
+                    answers: ["Limpiar las hojas con agua", "Regar solo con agua para eliminar nutrientes acumulados", "Cambiar el sustrato", "Aplicar más fertilizante"],
+                    correct: 1,
+                    explanation: "El flushing es regar solo con agua para eliminar nutrientes acumulados."
+                },
+                {
+                    question: "¿Qué busca conseguir la técnica MainLining?",
+                    answers: ["Múltiples colas principales simétricas", "Una sola cola central grande", "Crecimiento horizontal", "Floración acelerada"],
+                    correct: 0,
+                    explanation: "MainLining busca múltiples colas principales simétricas."
+                },
+                {
+                    question: "¿Cuál es un ejemplo de bacteria promotora del crecimiento vegetal?",
+                    answers: ["E.coli", "Pseudomonas", "Salmonella", "Streptococcus"],
+                    correct: 1,
+                    explanation: "Pseudomonas es una bacteria promotora del crecimiento vegetal."
+                },
+                {
+                    question: "¿Cuál es la temperatura ideal para la zona radicular?",
+                    answers: ["15-18°C", "18-24°C", "24-28°C", "28-32°C"],
+                    correct: 1,
+                    explanation: "La temperatura ideal para la zona radicular es 18-24°C."
+                },
+                {
+                    question: "¿Qué miden los tensiómetros en cultivo de precisión?",
+                    answers: ["Humedad del aire", "Tensión hídrica del sustrato", "Presión atmosférica", "Concentración de nutrientes"],
+                    correct: 1,
+                    explanation: "Los tensiómetros miden la tensión hídrica del sustrato."
+                },
+                {
+                    question: "¿Cuándo es más efectivo aplicar CO₂ suplementario?",
+                    answers: ["Solo durante la noche", "Durante las horas de luz", "Las 24 horas", "Solo al amanecer"],
+                    correct: 1,
+                    explanation: "El CO₂ suplementario es más efectivo durante las horas de luz."
+                },
+                {
+                    question: "En la técnica SoG (Sea of Green), ¿cuál es la densidad máxima recomendada?",
+                    answers: ["10-15 plantas/m²", "16-25 plantas/m²", "25-30 plantas/m²", "30-40 plantas/m²"],
+                    correct: 1,
+                    explanation: "La densidad máxima recomendada en SoG es 16-25 plantas/m²."
+                },
+                {
+                    question: "¿Qué son las IBL en genética cannábica?",
+                    answers: ["Líneas híbridas F1", "Líneas consanguíneas estables", "Variedades landrace", "Líneas polihíbridas"],
+                    correct: 1,
+                    explanation: "IBL son líneas consanguíneas estables."
+                },
+                {
+                    question: "¿Cuál es el efecto principal de la luz UV-B en las plantas?",
+                    answers: ["Acelera el crecimiento", "Aumenta la producción de tricomas", "Mejora la absorción de nutrientes", "Reduce el tiempo de floración"],
+                    correct: 1,
+                    explanation: "La luz UV-B aumenta la producción de tricomas."
+                },
+                {
+                    question: "¿Cuántas renovaciones de aire necesita un cuarto de cultivo?",
+                    answers: ["Pocas renovaciones", "Renovación constante moderada-alta", "Solo renovación nocturna", "Una renovación por día"],
+                    correct: 1,
+                    explanation: "Se recomienda renovación constante moderada-alta de aire en el cuarto de cultivo."
+                },
+                {
+                    question: "¿Qué es el 'stretch' en cannabis?",
+                    answers: ["Una enfermedad", "Crecimiento acelerado al inicio de floración", "Una técnica de poda", "Un tipo de sustrato"],
+                    correct: 1,
+                    explanation: "El stretch es el crecimiento acelerado al inicio de la floración."
+                },
+                {
+                    question: "¿Cuál es el mejor momento para cosechar según los tricomas?",
+                    answers: ["Cuando están transparentes", "Cuando están lechosos/turbios", "Cuando están todos ámbar", "No importa el color"],
+                    correct: 1,
+                    explanation: "El mejor momento para cosechar es cuando los tricomas están lechosos/turbios."
+                }
+            ]
         };
 
         // Estado del quiz
