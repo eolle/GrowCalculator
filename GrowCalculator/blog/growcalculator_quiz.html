@@ -329,6 +329,8 @@
         .share-linkedin { background: #0077b5; }
         .share-facebook { background: var(--green-light); }
         .share-whatsapp { background: var(--green-light); }
+        .share-reddit { background: #FF4500; }
+        .share-instagram { background: #E1306C; }
         .back-btn {
             background: transparent;
             color: var(--yellow-accent);
@@ -365,6 +367,18 @@
         <div class="quiz-header">
             <h1 class="quiz-title">🌱 Quiz de Cultivo Indoor</h1>
             <p class="quiz-subtitle">Pon a prueba tus conocimientos sobre cultivo de cannabis indoor</p>
+            <div class="share-results" style="margin-bottom: 2rem;">
+                <a href="#" class="share-btn share-twitter" id="shareTwitterTop" target="_blank">🐦 X</a>
+                <a href="#" class="share-btn share-facebook" id="shareFacebookTop" target="_blank">📘 Facebook</a>
+                <a href="#" class="share-btn share-whatsapp" id="shareWhatsappTop" target="_blank">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-reddit" id="shareRedditTop" target="_blank">👽 Reddit</a>
+                <a href="#" class="share-btn share-instagram" id="shareInstagramTop" target="_blank">📸 Instagram</a>
+                <!-- Botón oficial de Facebook -->
+                <div class="fb-share-button" id="fbShareTop"
+                     data-href=""
+                     data-layout="button_count">
+                </div>
+            </div>
         </div>
 
         <!-- Selección de Quiz -->
@@ -444,9 +458,16 @@
             <div class="recommendations" id="recommendations"></div>
 
             <div class="share-results">
-                <a href="#" class="share-btn share-twitter" id="shareTwitter" target="_blank">📱 Twitter</a>
+                <a href="#" class="share-btn share-twitter" id="shareTwitter" target="_blank">🐦 X</a>
                 <a href="#" class="share-btn share-facebook" id="shareFacebook" target="_blank">📘 Facebook</a>
                 <a href="#" class="share-btn share-whatsapp" id="shareWhatsapp" target="_blank">💬 WhatsApp</a>
+                <a href="#" class="share-btn share-reddit" id="shareReddit" target="_blank">👽 Reddit</a>
+                <a href="#" class="share-btn share-instagram" id="shareInstagram" target="_blank">📸 Instagram</a>
+                <!-- Botón oficial de Facebook -->
+                <div class="fb-share-button" 
+                     data-href="" 
+                     data-layout="button_count">
+                </div>
             </div>
 
             <div style="margin-top: 2rem;">
@@ -927,6 +948,21 @@
             document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(quizUrl)}`;
             document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(quizUrl)}&quote=${encodeURIComponent(shareText)}`;
             document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + quizUrl)}`;
+            document.getElementById('shareReddit').href = `https://www.reddit.com/submit?url=${encodeURIComponent(quizUrl)}&title=${encodeURIComponent(shareText)}`;
+            // Instagram no permite compartir enlaces directos, sugerimos copiar el texto
+            document.getElementById('shareInstagram').onclick = function(e) {
+                e.preventDefault();
+                navigator.clipboard.writeText(shareText + ' ' + quizUrl);
+                alert('¡Texto copiado! Ahora puedes pegarlo en tu historia o mensaje de Instagram.');
+            };
+            // Actualizar el data-href del botón oficial de Facebook
+            var fbBtn = document.querySelector('.fb-share-button');
+            if (fbBtn) {
+                fbBtn.setAttribute('data-href', quizUrl);
+                if (window.FB && FB.XFBML) {
+                    FB.XFBML.parse();
+                }
+            }
         }
 
         function backToSelection() {
@@ -940,4 +976,6 @@
         }
     </script>
 </body>
-</html>
+<!-- SDK de Facebook -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v19.0"></script>
