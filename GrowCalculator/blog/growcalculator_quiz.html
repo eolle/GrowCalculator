@@ -1067,7 +1067,16 @@
                     "Content-Type": "application/json"
                   },
                   body: JSON.stringify({ superados: count, intentos: total })
-                }).then(() => fetchSheetCounter(true));
+                })
+                .then(async res => {
+                  if (!res.ok) {
+                    const text = await res.text();
+                    console.error("Sheet.best PUT error:", res.status, text);
+                    alert("Error al actualizar el contador: " + text);
+                  } else {
+                    fetchSheetCounter(true);
+                  }
+                });
               });
         }
 
