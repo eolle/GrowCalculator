@@ -395,6 +395,8 @@
                 <a href="#" class="share-btn share-instagram" id="shareInstagramTop" target="_blank">📸 Instagram</a>
             </div>
         </div>
+        <!-- Contadores globales de estadísticas -->
+        <!-- Panel eliminado -->
         <!-- Selección de Quiz -->
         <div id="quizSelection" class="quiz-selection">
             <div class="quiz-card" onclick="startQuiz('principiante')">
@@ -477,7 +479,7 @@
                 <a href="#" class="share-btn share-instagram" id="shareInstagram" target="_blank">📸 Instagram</a>
                 <button class="share-btn" id="copyResultBtn" type="button" style="background:#2D5016;">📋 Copiar resultado</button>
             </div>
-            <div id="globalSuccessStats" style="margin:2rem 0 1.5rem 0; font-size:1.1rem; color:#2D5016; font-weight:bold;"></div>
+            <!-- Panel de contadores eliminado -->
             <div style="margin-top: 2rem;">
                 <button class="btn btn-primary" onclick="restartQuiz()">🔄 Repetir Quiz</button>
                 <button class="btn btn-secondary" onclick="backToSelection()" style="margin-left: 1rem;">📚 Otros Quiz</button>
@@ -931,10 +933,7 @@
             resultsEl.style.display = 'block';
             let percent = Math.round((score / currentQuestions.length) * 100);
             scoreText.textContent = `${score} / ${currentQuestions.length}`;
-            // Llama aquí:
-            // checkAndIncrementGlobalCounter(score, currentQuestions.length);
-            // Mostrar el contador y porcentaje global en resultados
-            // fetchSheetCounter(true);
+            // Panel de contadores eliminado
             if (percent >= 90) {
                 scoreCircle.className = 'score-circle score-excellent';
                 resultTitle.textContent = '¡Excelente!';
@@ -1036,101 +1035,6 @@
             };
           }
         });
-
-        // --- Sheet.best config ---
-        /*
-        const SHEET_URL = "https://api.sheetbest.com/sheets/24535213-39ca-4fa8-a099-31d85b1ed547";
-
-        function animateCounter(element, to, duration = 1200) {
-            if (!element) return;
-            const from = parseInt(element.textContent.replace(/\D/g, "")) || 0;
-            const start = performance.now();
-            function animate(now) {
-                const progress = Math.min((now - start) / duration, 1);
-                const value = Math.floor(from + (to - from) * progress);
-                element.textContent = value;
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    element.textContent = to;
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        function fetchSheetCounter(showStatsInResults = false) {
-            fetch(SHEET_URL, {
-              headers: {
-                'X-Api-Key': 'ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL'
-              }
-            })
-              .then(res => res.json())
-              .then(data => {
-                const row = data[0];
-                const count = parseInt(row.superados) || 0;
-                const total = parseInt(row.intentos) || 0;
-                let percent = total > 0 ? Math.round((count / total) * 100) : 0;
-                if (document.getElementById('superadosCount')) animateCounter(document.getElementById('superadosCount'), count);
-                if (document.getElementById('intentosCount')) animateCounter(document.getElementById('intentosCount'), total);
-                if (document.getElementById('porcentajeCount')) animateCounter(document.getElementById('porcentajeCount'), percent);
-                if (showStatsInResults && document.getElementById('globalSuccessStats')) {
-                    document.getElementById('globalSuccessStats').textContent = `${count} personas han superado este quiz · ${total} intentos · ${percent}% de acierto global`;
-                }
-              })
-              .catch(() => {
-                if (document.getElementById('superadosCount')) document.getElementById('superadosCount').textContent = "…";
-                if (document.getElementById('intentosCount')) document.getElementById('intentosCount').textContent = "…";
-                if (document.getElementById('porcentajeCount')) document.getElementById('porcentajeCount').textContent = "…";
-                if (showStatsInResults && document.getElementById('globalSuccessStats')) {
-                    document.getElementById('globalSuccessStats').textContent = "No disponible";
-                }
-              });
-        }
-
-        function updateSheetCounter(superado) {
-            fetch(SHEET_URL, {
-              headers: {
-                'X-Api-Key': 'ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL'
-              }
-            })
-              .then(res => res.json())
-              .then(data => {
-                const row = data[0];
-                let count = parseInt(row.superados) || 0;
-                let total = parseInt(row.intentos) || 0;
-                if (superado) count++;
-                total++;
-                fetch(SHEET_URL + "/1", {
-                  method: "PUT",
-                  headers: {
-                    "Content-Type": "application/json",
-                    'X-Api-Key': 'ospw1ml8bIiu5R7A_a_6YC!LY%6-T6i_vem0g1Iuo3ACOIA9u!d%EyjQoTBaKwZL'
-                  },
-                  body: JSON.stringify({ superados: count, intentos: total })
-                })
-                .then(async res => {
-                  if (res.ok) {
-                    fetchSheetCounter(true);
-                  }
-                  // Si falla, no hacer nada ni mostrar nada
-                });
-              });
-        }
-
-        // Llama a esto al cargar la página
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => fetchSheetCounter(false));
-        } else {
-            fetchSheetCounter(false);
-        }
-
-        // Llama a esto SOLO al mostrar resultados
-        function checkAndIncrementGlobalCounter(score, total) {
-            const required = Math.floor(total / 2) + 1;
-            const superado = score >= required;
-            updateSheetCounter(superado);
-        }
-        */
     </script>
     <script>
       // Contador de visitantes únicos con CountAPI
