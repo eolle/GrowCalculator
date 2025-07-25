@@ -938,6 +938,8 @@
             resultsEl.style.display = 'block';
             let percent = Math.round((score / currentQuestions.length) * 100);
             scoreText.textContent = `${score} / ${currentQuestions.length}`;
+            checkAndIncrementGlobalCounter(score, currentQuestions.length);
+            fetchSheetCounter(true);
             // Panel de contadores eliminado
             if (percent >= 90) {
                 scoreCircle.className = 'score-circle score-excellent';
@@ -1082,6 +1084,32 @@ function fetchSheetCounter(showStatsInResults = false) {
       document.getElementById('porcentajeCount').textContent = "…";
       document.getElementById('globalSuccessStats').textContent = "No disponible";
     });
+}
+
+function updateSheetCounter(superado) {
+  fetch(GOOGLE_SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      let count = parseInt(data.superados) || 0;
+      let total = parseInt(data.intentos) || 0;
+      if (superado) count++;
+      total++;
+      return fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ superados: count, intentos: total })
+      });
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "ok") fetchSheetCounter(true);
+    });
+}
+
+function checkAndIncrementGlobalCounter(score, total) {
+  const required = Math.floor(total / 2) + 1;
+  const superado = score >= required;
+  updateSheetCounter(superado);
 }
 
 if (document.readyState === 'loading') {
