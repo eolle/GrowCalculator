@@ -1042,15 +1042,52 @@
         });
     </script>
     <script>
-      // Contador de visitantes únicos con CountAPI
-      fetch('https://api.countapi.xyz/hit/growcalculator/quiz')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('visitorCount').textContent =
-            `👀 Este quiz ha sido visitado ${data.value} veces`;
-        })
-        .catch(() => {
-          // Elimino el script del contador de visitas (CountAPI)
-        });
-    </script>
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx5PSN6wR5hVoYaTdj70Fq-tQiw1s8R9EG5kRqCVYOcfuLBe-_mstCu_-buFqQWOSTo/exec";
+
+function animateCounter(element, to, duration = 1200) {
+  if (!element) return;
+  const from = parseInt(element.textContent.replace(/\D/g, "")) || 0;
+  const start = performance.now();
+  function animate(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const value = Math.floor(from + (to - from) * progress);
+    element.textContent = value;
+    if (progress < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      element.textContent = to;
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+function fetchSheetCounter(showStatsInResults = false) {
+  fetch(GOOGLE_SCRIPT_URL)
+    .then(res => res.json())
+    .then(data => {
+      const count = parseInt(data.superados) || 0;
+      const total = parseInt(data.intentos) || 0;
+      const percent = total > 0 ? Math.round((count / total) * 100) : 0;
+      animateCounter(document.getElementById('superadosCount'), count);
+      animateCounter(document.getElementById('intentosCount'), total);
+      animateCounter(document.getElementById('porcentajeCount'), percent);
+      if (showStatsInResults && document.getElementById('globalSuccessStats')) {
+        document.getElementById('globalSuccessStats').textContent =
+          `${count} personas han superado este quiz · ${total} intentos · ${percent}% de acierto global`;
+      }
+    })
+    .catch(() => {
+      document.getElementById('superadosCount').textContent = "…";
+      document.getElementById('intentosCount').textContent = "…";
+      document.getElementById('porcentajeCount').textContent = "…";
+      document.getElementById('globalSuccessStats').textContent = "No disponible";
+    });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => fetchSheetCounter(false));
+} else {
+  fetchSheetCounter(false);
+}
+</script>
 </body>
