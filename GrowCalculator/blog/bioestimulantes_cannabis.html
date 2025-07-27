@@ -575,15 +575,15 @@
         // Google Translate initialization (for web servers)
         function googleTranslateElementInit() {
             if (typeof google !== 'undefined' && google.translate) {
-                new google.translate.TranslateElement({
+            new google.translate.TranslateElement({
                     pageLanguage: TRANSLATION_CONFIG.pageLanguage,
                     includedLanguages: Object.keys(TRANSLATION_CONFIG.supportedLanguages).join(','),
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false,
-                    gaTrack: true,
-                    gaId: 'G-LLRTFTH5W6',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
                     multilanguagePage: true
-                }, 'google_translate_element');
+            }, 'google_translate_element');
                 
                 TRANSLATION_CONFIG.fallbackEnabled = false;
                 console.log('Google Translate initialized successfully');
@@ -593,7 +593,7 @@
                 TRANSLATION_CONFIG.fallbackEnabled = true;
             }
         }
-
+        
         // Enhanced translation functionality
         function enhanceTranslation() {
             setTimeout(() => {

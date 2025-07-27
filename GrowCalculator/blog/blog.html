@@ -32,7 +32,7 @@
     <script>
         // Translation configuration
         const TRANSLATION_CONFIG = {
-            pageLanguage: 'es',
+                pageLanguage: 'es',
             supportedLanguages: {
                 'en': 'English',
                 'fr': 'Français', 
@@ -318,7 +318,8 @@
                     'Automatización': 'Automation',
                     'Análisis de Cannabinoides': 'Cannabinoid Analysis',
                     'Variedades Autoflorecientes': 'Autoflowering Varieties',
-                    'Micorrizas y Microorganismos': 'Mycorrhizae and Microorganisms'
+                    'Micorrizas y Microorganismos': 'Mycorrhizae and Microorganisms',
+                    'Guía de Cultivo': 'Cultivation Guide'
                 },
                 'fr': {
                     'Nutrición': 'Nutrition',
@@ -340,7 +341,8 @@
                     'Guías profesionales, técnicas avanzadas y consejos expertos para cultivadores': 'Guides professionnels, techniques avancées et conseils d\'experts pour les cultivateurs',
                     '25+ Artículos': '25+ Articles',
                     '10K+ Lectores': '10K+ Lecteurs',
-                    '4.8/5 Rating': '4.8/5 Note'
+                    '4.8/5 Rating': '4.8/5 Note',
+                    'Guía de Cultivo': 'Guide de Culture'
                 },
                 'de': {
                     'Nutrición': 'Ernährung',
@@ -362,7 +364,8 @@
                     'Guías profesionales, técnicas avanzadas y consejos expertos para cultivadores': 'Professionelle Anleitungen, fortschrittliche Techniken und Expertenberatung für Züchter',
                     '25+ Artículos': '25+ Artikel',
                     '10K+ Lectores': '10K+ Leser',
-                    '4.8/5 Rating': '4.8/5 Bewertung'
+                    '4.8/5 Rating': '4.8/5 Bewertung',
+                    'Guía de Cultivo': 'Anbau-Anleitung'
                 },
                 'it': {
                     'Nutrición': 'Nutrizione',
@@ -384,7 +387,8 @@
                     'Guías profesionales, técnicas avanzadas y consejos expertos para cultivadores': 'Guide professionali, tecniche avanzate e consigli di esperti per i coltivatori',
                     '25+ Artículos': '25+ Articoli',
                     '10K+ Lectores': '10K+ Lettori',
-                    '4.8/5 Rating': '4.8/5 Valutazione'
+                    '4.8/5 Rating': '4.8/5 Valutazione',
+                    'Guía de Cultivo': 'Guida alla Coltivazione'
                 },
                 'pt': {
                     'Nutrición': 'Nutrição',
@@ -406,7 +410,8 @@
                     'Guías profesionales, técnicas avanzadas y consejos expertos para cultivadores': 'Guias profissionais, técnicas avançadas e conselhos de especialistas para cultivadores',
                     '25+ Artículos': '25+ Artigos',
                     '10K+ Lectores': '10K+ Leitores',
-                    '4.8/5 Rating': '4.8/5 Avaliação'
+                    '4.8/5 Rating': '4.8/5 Avaliação',
+                    'Guía de Cultivo': 'Guia de Cultivo'
                 }
             };
             
@@ -450,7 +455,7 @@
             document.body.appendChild(notice);
             
             // Auto-remove after 5 seconds
-            setTimeout(() => {
+                setTimeout(() => {
                 if (notice.parentElement) {
                     notice.remove();
                 }
@@ -478,7 +483,7 @@
                 TRANSLATION_CONFIG.fallbackEnabled = true;
             }
         }
-
+        
         // Enhanced translation functionality
         function enhanceTranslation() {
             setTimeout(() => {
@@ -541,7 +546,7 @@
                 console.log('Running on local file system, using fallback translation');
                 createFallbackWidget();
                 TRANSLATION_CONFIG.fallbackEnabled = true;
-            } else {
+                } else {
                 console.log('Running on web server, attempting Google Translate');
                 // Try to load Google Translate
                 const script = document.createElement('script');
@@ -2271,7 +2276,7 @@
                     <h4>Recursos</h4>
                     <ul>
                         <li><a href="../index.html">Calculadora Principal</a></li>
-                        <li><a href="../wiki/indexwiki.html">Wiki de Cultivo</a></li>
+                        <li><a href="../wiki/indexwiki.html" data-original-text="Guía de Cultivo">Guía de Cultivo</a></li>
                         <li><a href="../web3forms_contact.html">Contacto</a></li>
                         <li><a href="../sitemap.xml">Sitemap</a></li>
                     </ul>
