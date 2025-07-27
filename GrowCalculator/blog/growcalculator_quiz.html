@@ -16,6 +16,115 @@
     <meta name="twitter:title" content="Quiz de Cultivo Cannabis Indoor - GrowCalculator">
     <meta name="twitter:description" content="Pon a prueba tus conocimientos sobre cultivo de cannabis indoor. Responde el quiz y descubre tu nivel de experto.">
     <meta name="twitter:image" content="https://growcalculator.es/logogrowcalculator.png">
+    
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
     <style>
         :root {
             --green-dark: #2D5016;
@@ -63,6 +172,173 @@
             opacity: 0.9;
             margin-bottom: 1rem;
             color: var(--gray-dark);
+        }
+
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)) !important;
+            border: 2px solid var(--yellow-accent) !important;
+            border-radius: 50px !important;
+            padding: 0.8rem 1.5rem !important;
+            font-size: 1rem !important;
+            color: var(--gray-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            backdrop-filter: blur(10px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2) !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        .translate-widget .goog-te-gadget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .translate-widget .goog-te-gadget:hover::before {
+            left: 100%;
+        }
+
+        .translate-widget .goog-te-gadget:hover {
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3) !important;
+            border-color: var(--yellow-accent-alt) !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--gray-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(245, 158, 11, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Custom flag icons for languages */
+        .translate-widget .goog-te-gadget a::before {
+            content: '🌐';
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Language-specific flags */
+        .translate-widget .goog-te-gadget[data-language="en"] a::before {
+            content: '🇺🇸';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="fr"] a::before {
+            content: '🇫🇷';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="de"] a::before {
+            content: '🇩🇪';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="it"] a::before {
+            content: '🇮🇹';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="pt"] a::before {
+            content: '🇵🇹';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="ru"] a::before {
+            content: '🇷🇺';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="ja"] a::before {
+            content: '🇯🇵';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="ko"] a::before {
+            content: '🇰🇷';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="zh-CN"] a::before {
+            content: '🇨🇳';
+        }
+
+        .translate-widget .goog-te-gadget[data-language="ar"] a::before {
+            content: '🇸🇦';
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
         }
         .quiz-selection {
             display: grid;
@@ -386,6 +662,10 @@
     <div class="container">
         <div class="quiz-header">
             <h1 class="quiz-title">🌱 Quiz de Cultivo Indoor</h1>
+            
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+            
             <p class="quiz-subtitle">Pon a prueba tus conocimientos sobre cultivo de cannabis indoor</p>
             <div class="share-results" style="margin-bottom: 2rem;">
                 <a href="#" class="share-btn share-twitter" id="shareTwitterTop" target="_blank">🐦 X</a>
@@ -393,7 +673,7 @@
                 <a href="#" class="share-btn share-whatsapp" id="shareWhatsappTop" target="_blank">💬 WhatsApp</a>
                 <a href="#" class="share-btn share-reddit" id="shareRedditTop" target="_blank">👽 Reddit</a>
                 <a href="#" class="share-btn share-instagram" id="shareInstagramTop" target="_blank">📸 Instagram</a>
-            </div>
+        </div>
         </div>
         <!-- Contadores globales de estadísticas -->
         <div id="statsPanel" style="text-align:center; margin-bottom:1.5rem; font-size:1.1rem; color:#2D5016; font-weight:bold;">

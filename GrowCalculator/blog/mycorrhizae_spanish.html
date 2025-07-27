@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Micorrizas y Microbiología: El Ecosistema Invisible que Revoluciona tu Cultivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Micorrizas y Microbiología</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Descubre el Ecosistema Invisible que Puede Transformar tu Cultivo y Aumentar tu Rendimiento hasta un 300%</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 18 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>🧬</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+                <div class="meta-item">
+                    <span>🔬</span>
+                    <span>Categoría: Microbiología</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción: La Revolución Invisible -->
+        <section class="content-section">
+            <h2 class="section-title">La Revolución Microbiana en el Cultivo</h2>
+            
+            <p class="content-text">
+                Durante décadas, los cultivadores se han enfocado exclusivamente en los macronutrientes visibles: nitrógeno, fósforo, potasio. Sin embargo, bajo nuestros pies existe un mundo intrincado y fascinante que ha estado orquestando silenciosamente la salud de las plantas durante millones de años. Este <span class="emphasis-text">ecosistema microbiano invisible</span> que rodea las raíces representa una de las fronteras más emocionantes y prometedoras en la ciencia del cultivo moderno.
+            </p>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/micorrizas.jpg" alt="Red de hifas micorrícicas en raíces" class="content-image">
+                <p class="image-caption">Microscopía: red de hifas micorrícicas envolviendo raíces de cannabis</p>
+            </div>
+
+            <p class="content-text">
+                La investigación científica de las últimas dos décadas ha revelado una verdad asombrosa: una rizosfera saludable y bien establecida puede incrementar la absorción de nutrientes hasta en un impresionante 300%. Pero esto es solo la punta del iceberg. Este ecosistema subterráneo no solo mejora la nutrición de las plantas, sino que también fortalece su sistema inmunológico, mejora su resistencia al estrés y puede incluso influir en la producción de compuestos bioactivos como terpenos y cannabinoides.
+            </p>
+
+            <div class="discovery-box">
+                <h3>Descubrimiento Revolucionario</h3>
+                <p>Estudios recientes han demostrado que las plantas con redes micorrícicas establecidas pueden comunicarse entre sí, compartiendo nutrientes e incluso señales de alerta sobre ataques de plagas. Esta "red mundial del bosque" representa un nivel de inteligencia vegetal que apenas estamos comenzando a comprender.</p>
+            </div>
+
+            <p class="content-text">
+                Entender este ecosistema microscópico requiere que pensemos más allá de los modelos tradicionales de nutrición. Imagina que cada planta es como una ciudad, y las raíces son solo el centro urbano. La red micorrícica extiende el alcance de esta ciudad creando autopistas y redes de comunicación que pueden extenderse por kilómetros bajo tierra, conectando no solo una planta, sino comunidades enteras de plantas en una sofisticada red de apoyo mutuo e intercambio de recursos.
+            </p>
+        </section>
+
+        <!-- Los Hongos Micorrícicos -->
+        <section class="content-section">
+            <h2 class="section-title">Hongos Micorrícicos: Los Socios Simbióticos Ancestrales</h2>
+            
+            <p class="content-text">
+                Las micorrizas representan una de las asociaciones simbióticas más antiguas y exitosas del planeta Tierra. Esta asociación entre hongos y plantas ha estado evolucionando durante más de 400 millones de años, mucho antes de que los humanos caminaran por la tierra. Para comprender verdaderamente su importancia, debemos pensar en términos de escala y eficiencia.
+            </p>
+
+            <div class="highlight-box">
+                <h3>La Matemática de la Simbiosis</h3>
+                <p>Las hifas fúngicas tienen un diámetro promedio de solo 2-5 micrómetros, mientras que los pelos radiculares miden entre 15-50 micrómetros. Esta diferencia aparentemente pequeña se traduce en una capacidad exponencialmente mayor para explorar el suelo. Una sola planta colonizada por micorrizas puede tener acceso a <span class="emphasis-text">1000 veces más volumen de suelo</span> que una planta sin estas asociaciones.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/comparacion micorrizas.jpg" alt="Comparativa de raíces desnudas vs. raíces con micorrizas" class="content-image">
+                <p class="image-caption">Comparativa visual: raíces desnudas frente a raíces con red micorrícica</p>
+            </div>
+
+            <h3 class="subsection-title">Anatomía de la Asociación Micorrícica</h3>
+            
+            <p class="content-text">
+                Para apreciar completamente cómo funcionan las micorrizas, necesitamos examinar esta relación a nivel celular. Cuando las esporas micorrícicas encuentran raíces de plantas, no simplemente se adhieren a la superficie. En su lugar, forman estructuras especializadas que se integran tan completamente con la biología de la planta que se vuelve difícil determinar dónde termina el hongo y dónde comienza la planta.
+            </p>
+
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Reconocimiento Químico</h4>
+                    <p>Las raíces liberan exudados específicos que atraen esporas fúngicas compatibles mediante señales químicas precisas.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Germinación y Contacto</h4>
+                    <p>Las esporas germinan y las hifas crecen hacia la raíz, iniciando el contacto físico y químico.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Penetración Controlada</h4>
+                    <p>El hongo penetra la corteza radicular sin dañar la planta, formando estructuras especializadas.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Establecimiento Simbiótico</h4>
+                    <p>Se forman arbúsculos y vesículas donde ocurre el intercambio de nutrientes entre ambos organismos.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Tipos de Micorrizas y Sus Especializaciones</h3>
+            
+            <p class="content-text">
+                No todas las micorrizas son iguales. Diferentes tipos de hongos micorrícicos han evolucionado estrategias especializadas para diferentes familias de plantas y condiciones del suelo. Para el cannabis y la mayoría de plantas de cultivo, las endomicorrizas o micorrizas arbusculares (VAM - Micorrizas Vesículo Arbusculares) son las más relevantes y beneficiosas.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Micorriza</th>
+                        <th>Mecanismo de Colonización</th>
+                        <th>Plantas Compatibles</th>
+                        <th>Beneficios Específicos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Endomicorrizas (VAM)</strong></td>
+                        <td>Penetran células radiculares formando arbúsculos</td>
+                        <td>Cannabis, tomates, la mayoría de cultivos anuales</td>
+                        <td>Absorción de fósforo mejorada en 40-80%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ectomicorrizas</strong></td>
+                        <td>Envuelven raíces sin penetrar células</td>
+                        <td>Árboles forestales (pinos, robles)</td>
+                        <td>Absorción de nitrógeno y protección contra patógenos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ericoides</strong></td>
+                        <td>Colonización específica de pelos radiculares</td>
+                        <td>Plantas acidófilas (arándanos, rododendros)</td>
+                        <td>Tolerancia a suelos ácidos y pobres</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Especies Clave para el Cultivo de Cannabis</h3>
+            
+            <p class="content-text">
+                Aunque existen miles de especies micorrícicas en la naturaleza, la investigación ha identificado cepas específicas que muestran compatibilidad excepcional y beneficios para el cultivo de cannabis. Estas cepas han sido aisladas, estudiadas y ahora están disponibles en formulaciones comerciales de inoculantes.
+            </p>
+
+            <div class="bacteria-grid">
+                <div class="bacteria-card">
+                    <h4>Glomus intraradices</h4>
+                    <div class="function">Especialista en absorción de fósforo</div>
+                    <p>Esta especie forma colonizaciones densas y estables, siendo particularmente efectiva en suelos con deficiencia de fósforo. Los estudios muestran hasta un 85% de mejora en la absorción de fósforo en plantas colonizadas.</p>
+                </div>
+                <div class="bacteria-card">
+                    <h4>Gigaspora margarita</h4>
+                    <div class="function">Resistencia a estrés hídrico</div>
+                    <p>Desarrolla redes de hifas externas extensas que mejoran significativamente la absorción de agua. Ideal para cultivos en condiciones de estrés hídrico moderado.</p>
+                </div>
+                <div class="bacteria-card">
+                    <h4>Rhizophagus irregularis</h4>
+                    <div class="function">Mejora general del crecimiento</div>
+                    <p>Considerado el "estándar de oro" de los inoculantes micorrícicos debido a su amplia compatibilidad, colonización rápida y rendimiento consistente en diferentes condiciones de cultivo.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Consejo Profesional:</strong> La combinación de estas tres especies en un consorcio micorrícico proporciona beneficios sinérgicos superiores al uso de especies individuales. Muchos inoculantes comerciales ahora incluyen esta combinación probada.
+            </div>
+        </section>
+
+        <!-- Bacterias Promotoras del Crecimiento -->
+        <section class="content-section">
+            <h2 class="section-title">Bacterias Promotoras del Crecimiento: Los Guardianes Microscópicos</h2>
+            
+            <p class="content-text">
+                Mientras que los hongos micorrícicos a menudo se llevan toda la atención en las discusiones sobre microbios beneficiosos del suelo, las bacterias juegan roles igualmente importantes y complementarios en la salud de las plantas. Estos organismos microscópicos, conocidos como Rizobacterias Promotoras del Crecimiento Vegetal (RPCV), forman el segundo pilar de un ecosistema rizosferico saludable.
+            </p>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/rizosfera.jpg" alt="Bacterias beneficiosas colonizando raíces" class="content-image">
+                <p class="image-caption">Colonización de bacterias beneficiosas en la superficie radicular</p>
+            </div>
+
+            <p class="content-text">
+                Entender las funciones bacterianas requiere que pensemos sobre las plantas de manera diferente. Si imaginamos la planta como una fortaleza, estas bacterias beneficiosas sirven tanto como la cadena de suministro que trae recursos como el ejército que defiende contra invasores. Logran esto a través de un sofisticado arsenal de armas y herramientas bioquímicas que han sido refinadas durante millones de años de evolución.
+            </p>
+
+            <h3 class="subsection-title">Las Bacterias Estrella del Cannabis</h3>
+            
+            <div class="bacteria-grid">
+                <div class="bacteria-card">
+                    <h4>Bacillus subtilis</h4>
+                    <div class="function">Productor de antibióticos naturales</div>
+                    <p>Esta bacteria extraordinaria produce más de 20 compuestos antimicrobianos diferentes, creando una barrera protectora alrededor de las raíces contra hongos patógenos como Pythium y Fusarium. También forma endosporas resistentes que pueden permanecer viables durante años.</p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">Produce surfactina, un potente antifúngico natural</div>
+                        <div class="benefit-item">Estimula las defensas naturales de la planta</div>
+                        <div class="benefit-item">Mejora la disponibilidad de nutrientes en el suelo</div>
+                    </div>
+                </div>
+                
+                <div class="bacteria-card">
+                    <h4>Pseudomonas fluorescens</h4>
+                    <div class="function">Solubilizador de fosfatos y productor de sideróforos</div>
+                    <p>Esta bacteria versátil actúa como un "químico molecular" que transforma nutrientes no disponibles en formas que las plantas pueden absorber fácilmente. Produce sideróforos que quelan hierro, haciéndolo disponible para la planta mientras lo mantiene fuera del alcance de patógenos.</p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">Solubiliza fosfatos insolubles aumentando disponibilidad de P</div>
+                        <div class="benefit-item">Produce fitohormonas que estimulan el crecimiento radicular</div>
+                        <div class="benefit-item">Compite agresivamente con patógenos por espacio y nutrientes</div>
+                    </div>
+                </div>
+                
+                <div class="bacteria-card">
+                    <h4>Azospirillum brasilense</h4>
+                    <div class="function">Fijador asociativo de nitrógeno</div>
+                    <p>Aunque no es tan eficiente como los fijadores simbióticos de nitrógeno encontrados en leguminosas, Azospirillum puede proporcionar una fuente suplementaria de nitrógeno convirtiendo N2 atmosférico en amoníaco. Esta bacteria también produce auxinas y citoquininas que promueven el desarrollo radicular.</p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">Fija 15-30 kg de nitrógeno por hectárea anualmente</div>
+                        <div class="benefit-item">Incrementa la densidad y longitud de raíces laterales</div>
+                        <div class="benefit-item">Mejora la tolerancia al estrés salino y por sequía</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/trichoderma-cannabis-anbau-125.webp" alt="Mecanismos de acción de bacterias en la rizosfera" class="content-image">
+                <p class="image-caption">Mecanismos de acción de bacterias promotoras del crecimiento en la rizosfera</p>
+            </div>
+
+            <h3 class="subsection-title">Mecanismos de Acción Bacteriana</h3>
+            
+            <p class="content-text">
+                La belleza de las bacterias beneficiosas radica en su enfoque multifacético del apoyo a las plantas. A diferencia de los fertilizantes sintéticos que proporcionan un solo nutriente, estos microorganismos emplean múltiples estrategias simultáneamente, creando efectos sinérgicos que amplifican sus beneficios individuales.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Mecanismo</th>
+                        <th>Proceso Bioquímico</th>
+                        <th>Beneficio para la Planta</th>
+                        <th>Impacto Medible</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Producción de Fitohormonas</strong></td>
+                        <td>Síntesis de auxinas, citoquininas y giberelinas</td>
+                        <td>Estimulación del crecimiento y desarrollo</td>
+                        <td>15-25% aumento en biomasa radicular</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Solubilización de Nutrientes</strong></td>
+                        <td>Producción de ácidos orgánicos y enzimas</td>
+                        <td>Mayor disponibilidad de P, K, Zn, Fe</td>
+                        <td>40-60% mejora en absorción mineral</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Biocontrol</strong></td>
+                        <td>Antibióticos, competencia, parasitismo</td>
+                        <td>Protección contra patógenos radiculares</td>
+                        <td>70-90% reducción en incidencia de enfermedades</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inducción de Resistencia</strong></td>
+                        <td>Activación de genes de defensa</td>
+                        <td>Respuesta inmune mejorada</td>
+                        <td>50-80% incremento en compuestos de defensa</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="discovery-box">
+                <h3>Investigación Reciente</h3>
+                <p>Estudios de 2023 han demostrado que algunas cepas de Pseudomonas pueden incrementar la producción de terpenos en cannabis hasta un 35% mediante la modulación de rutas metabólicas específicas. Este descubrimiento abre nuevas posibilidades para optimizar perfiles aromáticos mediante microbiología.</p>
+            </div>
+        </section>
+
+        <!-- Implementación Práctica -->
+        <section class="content-section">
+            <h2 class="section-title">Implementación Práctica: De la Teoría al Cultivo</h2>
+            
+            <p class="content-text">
+                Entender la ciencia detrás de los microorganismos beneficiosos es solo el primer paso. El verdadero desafío radica en establecer y mantener exitosamente estas comunidades microscópicas en tu ambiente de cultivo. Esto requiere un enfoque sistemático que considere el timing, las condiciones ambientales y las prácticas de manejo continuo.
+            </p>
+
+            <h3 class="subsection-title">Protocolo de Inoculación del Sustrato</h3>
+            
+            <p class="content-text">
+                La inoculación exitosa no es simplemente cuestión de añadir microbios al sustrato y esperar resultados. Requiere crear condiciones óptimas para el establecimiento microbiano mientras se asegura la compatibilidad entre diferentes especies microbianas y tu medio de cultivo.
+            </p>
+
+            <div class="process-flow">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Preparación del Sustrato</h4>
+                    <p>Asegúrate de que el pH esté entre 6.0-6.8 y la humedad al 60-70%. Un sustrato demasiado seco o alcalino inhibirá el establecimiento microbiano.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Dosificación Precisa</h4>
+                    <p>Mezcla 5-10g de inoculante comercial por litro de sustrato. Distribuye uniformemente para asegurar colonización uniforme en toda la zona radicular.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Activación Inicial</h4>
+                    <p>Riega inmediatamente después de la inoculación con agua sin cloro para activar esporas y promover la germinación inicial.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Período de Establecimiento</h4>
+                    <p>Mantén humedad constante durante las primeras 2-3 semanas. Este es el período crítico para la colonización radicular.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/humus.jpg" alt="Secuencia de inoculación de sustrato" class="content-image">
+                <p class="image-caption">Secuencia paso a paso del proceso de inoculación y riego inicial</p>
+            </div>
+
+            <div class="tip-box">
+                <strong>Timing Óptimo:</strong> El mejor momento para inocular es durante el trasplante o al inicio del período vegetativo cuando las raíces están creciendo activamente. Evita inocular plantas bajo estrés o durante la fase de floración cuando el crecimiento radicular es mínimo.
+            </div>
+
+            <h3 class="subsection-title">Alimentación y Mantenimiento Microbiano</h3>
+            
+            <p class="content-text">
+                Los microorganismos beneficiosos son entidades vivas que requieren nutrición continua y condiciones ambientales adecuadas para prosperar. Piensa en el manejo microbiano como alimentar y cuidar mascotas invisibles que resultan tremendamente beneficiosas para tus plantas.
+            </p>
+
+            <div class="bacteria-grid">
+                <div class="bacteria-card">
+                    <h4>Melaza: El Combustible Microbiano</h4>
+                    <div class="function">Fuente de carbohidratos complejos</div>
+                    <p>La melaza sin sulfitos proporciona azúcares simples y complejos que alimentan tanto bacterias como hongos. Usa 5ml por litro de agua de riego semanalmente. Evita melazas con compuestos de azufre ya que inhiben las bacterias beneficiosas.</p>
+                </div>
+                
+                <div class="bacteria-card">
+                    <h4>Ácidos Húmicos y Fúlvicos</h4>
+                    <div class="function">Estimulantes del crecimiento microbiano</div>
+                    <p>Estos compuestos orgánicos no solo alimentan microorganismos sino que también mejoran la retención de nutrientes en la zona radicular. Aplica 0.5-1ml/L cada dos semanas para mantener la actividad microbiana.</p>
+                </div>
+                
+                <div class="bacteria-card">
+                    <h4>Enzimas Digestivas</h4>
+                    <div class="function">Reciclaje de materia orgánica</div>
+                    <p>Las enzimas ayudan a descomponer raíces muertas y materia orgánica, creando más alimento para los microbios beneficiosos mientras previenen la acumulación de material vegetal muerto que podría albergar patógenos.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Tés de Compost Oxigenados: La Fórmula Avanzada</h3>
+            
+            <p class="content-text">
+                Los tés de compost representan la cúspide de las técnicas de cultivo biológico. Cuando se preparan adecuadamente, estas soluciones vivas pueden contener miles de millones de microorganismos beneficiosos por mililitro, proporcionando un impulso inmediato a la biología del suelo.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Receta Profesional de Té Microbiano</h3>
+                <div class="measurement-grid">
+                    <div class="measurement-card">
+                        <div class="measurement-value">10L</div>
+                        <div class="measurement-label">Agua desclorada</div>
+                    </div>
+                    <div class="measurement-card">
+                        <div class="measurement-value">500g</div>
+                        <div class="measurement-label">Compost de calidad</div>
+                    </div>
+                    <div class="measurement-card">
+                        <div class="measurement-value">50ml</div>
+                        <div class="measurement-label">Melaza sin sulfitos</div>
+                    </div>
+                    <div class="measurement-card">
+                        <div class="measurement-value">24-48h</div>
+                        <div class="measurement-label">Tiempo de oxigenación</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Precaución Crítica:</strong> Nunca apliques té de compost que huela mal o que haya estado sin aireación por más de 4 horas. Las condiciones anaeróbicas promueven bacterias dañinas que pueden dañar las plantas y causar pudrición de raíces.
+            </div>
+        </section>
+
+        <!-- Monitoreo y Diagnóstico -->
+        <section class="content-section">
+            <h2 class="section-title">Monitoreo de la Salud Microbiana</h2>
+            
+            <p class="content-text">
+                El cultivo microbiano exitoso requiere la capacidad de evaluar y monitorear la salud de tu fuerza de trabajo invisible. A diferencia de los parámetros tradicionales de cultivo que pueden medirse con medidores simples, evaluar la salud microbiana requiere una combinación de inspección visual, monitoreo ambiental y comprensión de los indicadores de respuesta de las plantas.
+            </p>
+
+            <h3 class="subsection-title">Indicadores Visuales de Salud Radicular</h3>
+            
+            <p class="content-text">
+                Las raíces son la ventana a tu mundo microbiano. Las raíces sanas y colonizadas muestran colores, texturas y aromas característicos que los cultivadores experimentados aprenden a reconocer instantáneamente.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Indicador</th>
+                        <th>Condición Saludable</th>
+                        <th>Señales de Alerta</th>
+                        <th>Acción Requerida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Color de Raíces</strong></td>
+                        <td>Blanco perlado a crema claro</td>
+                        <td>Marrón, negro, o amarillo</td>
+                        <td>Revisar drenaje y oxigenación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Textura</strong></td>
+                        <td>Firmes y turgentes al tacto</td>
+                        <td>Blandas, viscosas, o quebradizas</td>
+                        <td>Evaluar patógenos radiculares</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aroma</strong></td>
+                        <td>Terroso, fresco, similar al bosque</td>
+                        <td>Fétido, putrefacto, o químico</td>
+                        <td>Aplicar tratamiento microbiano</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Densidad Radicular</strong></td>
+                        <td>Abundantes raíces finas y pelos</td>
+                        <td>Pocas raíces, sin ramificación</td>
+                        <td>Optimizar nutrición microbiana</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/clones/successful-cloning-roots.jpg" alt="Raíces sanas vs. raíces con problemas microbianos" class="content-image">
+                <p class="image-caption">Comparativa: raíces sanas colonizadas frente a raíces con problemas microbianos</p>
+            </div>
+
+            <h3 class="subsection-title">Condiciones Ambientales Óptimas</h3>
+            
+            <div class="measurement-grid">
+                <div class="measurement-card">
+                    <div class="measurement-value">6.0-6.8</div>
+                    <div class="measurement-label">pH Óptimo</div>
+                    <p>Rango ideal para máxima actividad de enzimas microbianas y disponibilidad de nutrientes.</p>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">60-70%</div>
+                    <div class="measurement-label">Humedad del Sustrato</div>
+                    <p>Mantiene actividad microbiana sin crear condiciones anaeróbicas perjudiciales.</p>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">20-25°C</div>
+                    <div class="measurement-label">Temperatura del Sustrato</div>
+                    <p>Temperatura ideal para crecimiento tanto de hongos micorrícicos como bacterias beneficiosas.</p>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">>5ppm</div>
+                    <div class="measurement-label">Oxígeno Disuelto</div>
+                    <p>Concentración mínima necesaria para mantener microorganismos aeróbicos activos.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Señales de Alerta Temprana:</strong> Crecimiento lento inexplicable, amarillamiento de hojas inferiores, aumento en susceptibilidad a plagas, desarrollo de olores inusuales en el sustrato, o formación de películas bacterianas en la superficie del agua de riego.
+            </div>
+
+            <div class="benefits-list">
+                <div class="benefit-item"><strong>Síntoma:</strong> Raíces marrones con olor fétido - <strong>Causa probable:</strong> Pythium o Fusarium</div>
+                <div class="benefit-item"><strong>Síntoma:</strong> Crecimiento detenido con hojas amarillas - <strong>Causa probable:</strong> Desequilibrio nutricional por disbiosis</div>
+                <div class="benefit-item"><strong>Síntoma:</strong> Película viscosa en superficie del sustrato - <strong>Causa probable:</strong> Sobrecrecimiento bacteriano anaeróbico</div>
+                <div class="benefit-item"><strong>Síntoma:</strong> Plantas marchitas con sustrato húmedo - <strong>Causa probable:</strong> Daño radicular por patógenos</div>
+            </div>
+        </section>
+
+        <!-- Resultados y Beneficios Cuantificables -->
+        <section class="content-section">
+            <h2 class="section-title">Resultados Esperados y Beneficios Cuantificables</h2>
+            
+            <p class="content-text">
+                La inversión en establecer un ecosistema microbiano saludable paga dividendos que se extienden mucho más allá de la simple absorción de nutrientes. La investigación de instituciones agrícolas líderes ha cuantificado muchos de estos beneficios, proporcionando expectativas concretas para los cultivadores que implementan un manejo microbiano adecuado.
+            </p>
+
+            <h3 class="subsection-title">Mejoras en Absorción de Nutrientes</h3>
+            
+            <div class="measurement-grid">
+                <div class="measurement-card">
+                    <div class="measurement-value">300%</div>
+                    <div class="measurement-label">Incremento en Absorción General</div>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">80%</div>
+                    <div class="measurement-label">Mejora en Absorción de Fósforo</div>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">150%</div>
+                    <div class="measurement-label">Aumento en Absorción de Agua</div>
+                </div>
+                <div class="measurement-card">
+                    <div class="measurement-value">200%</div>
+                    <div class="measurement-label">Incremento en Micronutrientes</div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Impacto en la Producción de Metabolitos Secundarios</h3>
+            
+            <p class="content-text">
+                Uno de los descubrimientos más emocionantes en la investigación reciente del cannabis es la capacidad de los microorganismos beneficiosos para influir en la producción de terpenos y cannabinoides. Esto representa un cambio de paradigma de ver a los microbios meramente como proveedores de nutrientes a reconocerlos como participantes activos en el metabolismo de las plantas.
+            </p>
+
+            <div class="discovery-box">
+                <h3>Investigación Pionera 2024</h3>
+                <p>Un estudio colaborativo entre universidades europeas demostró que plantas de cannabis inoculadas con consorcios microbianos específicos produjeron un 25% más de terpenos totales y un 15% más de cannabinoides comparado con plantas cultivadas convencionalmente. Los mecanismos propuestos incluyen la modulación de rutas metabólicas y el estrés benéfico controlado.</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro de Calidad</th>
+                        <th>Cultivo Convencional</th>
+                        <th>Con Micorrizas</th>
+                        <th>Mejora Porcentual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Concentración de Terpenos</strong></td>
+                        <td>1.2-1.8%</td>
+                        <td>1.8-2.4%</td>
+                        <td>+25-35%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contenido de THC</strong></td>
+                        <td>18-22%</td>
+                        <td>21-26%</td>
+                        <td>+12-18%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perfil de Cannabinoides Menores</strong></td>
+                        <td>Limitado</td>
+                        <td>Enriquecido</td>
+                        <td>+40-60%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Densidad de Tricomas</strong></td>
+                        <td>Estándar</td>
+                        <td>Superior</td>
+                        <td>+20-30%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Resistencia a Estrés y Enfermedades</h3>
+            
+            <p class="content-text">
+                Quizás el beneficio más valioso de un ecosistema microbiano saludable es la resistencia mejorada que proporciona a las plantas. Esta póliza de seguro biológica puede marcar la diferencia entre el éxito y el fracaso del cultivo durante condiciones de crecimiento desafiantes.
+            </p>
+
+            <div class="benefits-list">
+                <div class="benefit-item">Resistencia incrementada a estrés hídrico de hasta 40% más tolerancia a sequía</div>
+                <div class="benefit-item">Protección contra patógenos radiculares con 70-90% reducción en incidencia</div>
+                <div class="benefit-item">Mejor tolerancia a fluctuaciones de temperatura y pH del sustrato</div>
+                <div class="benefit-item">Recuperación más rápida de estrés por trasplante o poda</div>
+                <div class="benefit-item">Sistema inmune vegetal fortalecido con mayor producción de fitoalexinas</div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Retorno de Inversión</h3>
+                <p>Considerando el costo típico de inoculantes microbianos (€20-50 por cultivo) versus los beneficios obtenidos (incremento de 15-30% en rendimiento y calidad), el retorno de inversión es típicamente de 5:1 a 10:1. Adicionalmente, la reducción en la necesidad de fertilizantes sintéticos y pesticidas mejora aún más la rentabilidad.</p>
+            </div>
+        </section>
+
+        <!-- Resolución de Problemas -->
+        <section class="content-section">
+            <h2 class="section-title">Resolución de Problemas Microbianos</h2>
+            
+            <p class="content-text">
+                Incluso con las mejores intenciones y manejo cuidadoso, los sistemas microbianos a veces pueden desequilibrarse o fallar en establecerse adecuadamente. Entender los problemas comunes y sus soluciones es esencial para mantener la salud microbiana a largo plazo.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Síntomas Principales</th>
+                        <th>Causa Probable</th>
+                        <th>Solución Recomendada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Falta de Colonización</strong></td>
+                        <td>Sin cambios visibles 4+ semanas post-inoculación</td>
+                        <td>pH inadecuado, sustrato estéril, temperatura incorrecta</td>
+                        <td>Ajustar pH a 6.0-6.8, re-inocular con té microbiano activo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sobrecrecimiento Patógeno</strong></td>
+                        <td>Raíces marrones, olor fétido, marchitez</td>
+                        <td>Exceso de humedad, mala oxigenación, contaminación</td>
+                        <td>Mejorar drenaje, aplicar Bacillus subtilis, reducir riego</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disbiosis Nutricional</strong></td>
+                        <td>Deficiencias inexplicables, crecimiento lento</td>
+                        <td>Desequilibrio microbiano, competencia excesiva</td>
+                        <td>Aplicar melaza, enzimas digestivas, re-equilibrar consorcio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inhibición Química</strong></td>
+                        <td>Mortalidad microbiana tras aplicaciones</td>
+                        <td>Fungicidas, cloro en agua, pH extremo</td>
+                        <td>Desclorar agua, suspender químicos, inocular tras 48h</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Protocolo de Emergencia:</strong> Si detectas colapso microbiano (raíces marrones con olor pútrido), actúa inmediatamente: suspende riegos, mejora aireación, aplica peróxido de hidrógeno diluido (1ml/L) seguido de re-inoculación con Bacillus subtilis a las 24 horas.
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: Hacia una Agricultura Biológicamente Inteligente</h2>
+            
+            <p class="content-text">
+                El dominio de la microbiología del suelo representa más que una simple técnica de cultivo; es un cambio fundamental hacia una comprensión más profunda y holística de cómo funcionan realmente los ecosistemas de plantas. Al reconocer y trabajar con estos organismos microscópicos, no solo mejoramos nuestros resultados de cultivo, sino que también participamos en prácticas agrícolas más sostenibles y ecológicamente responsables.
+            </p>
+
+            <p class="content-text">
+                El futuro del cultivo no radica en luchar contra la naturaleza, sino en entender y aprovechar los sofisticados sistemas biológicos que han evolucionado durante millones de años. Las micorrizas y bacterias beneficiosas ofrecen una ventana hacia esta nueva era de agricultura biológicamente inteligente, donde la tecnología y la biología trabajan en perfecta armonía.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Puntos Clave para el Éxito</h3>
+                <div class="benefits-list">
+                    <div class="benefit-item">La inoculación temprana es crucial para el establecimiento exitoso</div>
+                    <div class="benefit-item">El mantenimiento continuo con nutrientes microbianos es esencial</div>
+                    <div class="benefit-item">El monitoreo visual de las raíces proporciona información valiosa</div>
+                    <div class="benefit-item">Los beneficios se acumulan con el tiempo y mejoran con cada ciclo</div>
+                    <div class="benefit-item">La inversión en microbiología del suelo siempre se paga a sí misma</div>
+                </div>
+            </div>
+
+            <p class="content-text">
+                Recuerda que trabajar con microorganismos beneficiosos es tanto un arte como una ciencia. Mientras que los principios descritos en esta guía proporcionan una base sólida, cada ambiente de cultivo es único y puede requerir ajustes basados en condiciones específicas y observaciones. La paciencia, la observación cuidadosa y la voluntad de experimentar dentro de parámetros seguros te llevarán hacia el dominio de este fascinante campo.
+            </p>
+
+            <div class="tip-box">
+                <strong>Próximos Pasos:</strong> Comienza con inoculación simple usando productos comerciales, avanzando gradualmente a tés de compost y consorcios microbianos personalizados a medida que tu experiencia y confianza crezcan. Documenta tus resultados para construir una base de conocimiento específica para tus condiciones de cultivo.
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(45, 90, 39, 0.1), rgba(74, 124, 89, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis. Siempre consulta con expertos en microbiología agrícola para implementaciones específicas.
+            </p>
+            <div style="border-top: 2px solid rgba(45, 90, 39, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50; margin-bottom: 15px;">
+                    Para más guías científicas de cultivo avanzado, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #2d5a27; text-decoration: none; font-weight: bold;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="font-size: 0.8em; color: #6c757d;">
+                    🔬 Artículo basado en investigación científica actual | 📚 Referencias disponibles bajo petición | 🌱 Actualizado con los últimos avances en microbiología del cannabis
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

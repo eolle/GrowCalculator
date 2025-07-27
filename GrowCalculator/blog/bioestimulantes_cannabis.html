@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioestimulantes y Aditivos: Potenciando el Rendimiento Natural</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .fallback-translate-widget {
+                max-width: 250px !important;
+                padding: 0.75rem !important;
+            }
+            
+            .language-selector select {
+                padding: 0.6rem !important;
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Loading state for translation widget */
+        .translate-loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            color: var(--green-dark);
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid var(--green-medium);
+            border-radius: 12px;
+            margin: 1rem auto;
+            max-width: 300px;
+        }
+
+        .translate-loading i {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+    </style>
+
+    <!-- Enhanced Translation System with Fallback -->
+    <script>
+        // Translation configuration
+        const TRANSLATION_CONFIG = {
+            pageLanguage: 'es',
+            supportedLanguages: {
+                'en': 'English',
+                'fr': 'Français', 
+                'de': 'Deutsch',
+                'it': 'Italiano',
+                'pt': 'Português',
+                'ru': 'Русский',
+                'ja': '日本語',
+                'ko': '한국어',
+                'zh-CN': '中文',
+                'ar': 'العربية'
+            },
+            fallbackEnabled: false
+        };
+
+        // Check if we're running on a web server or local file
+        function isLocalFile() {
+            return window.location.protocol === 'file:';
+        }
+
+        // Create fallback translation widget
+        function createFallbackWidget() {
+            const translateElement = document.getElementById('google_translate_element');
+            if (!translateElement) return;
+
+            translateElement.innerHTML = `
+                <div class="fallback-translate-widget">
+                    <div class="translate-header">
+                        <i class="fas fa-language"></i>
+                        <span>Traducir página</span>
+                    </div>
+                    <div class="language-selector">
+                        <select id="languageSelect" onchange="translatePage(this.value)">
+                            <option value="es">Español (Original)</option>
+                            ${Object.entries(TRANSLATION_CONFIG.supportedLanguages)
+                                .map(([code, name]) => `<option value="${code}">${name}</option>`)
+                                .join('')}
+                        </select>
+                    </div>
+                    <div class="translate-info">
+                        <small>Para traducción completa, abre esta página en un servidor web</small>
+                    </div>
+                </div>
+            `;
+
+            // Add fallback styles
+            const style = document.createElement('style');
+            style.textContent = `
+                .fallback-translate-widget {
+                    background: rgba(255, 255, 255, 0.95);
+                    border: 2px solid var(--green-medium);
+                    border-radius: 12px;
+                    padding: 1rem;
+                    margin: 1rem auto;
+                    max-width: 300px;
+                    text-align: center;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                }
+                
+                .translate-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    margin-bottom: 1rem;
+                    color: var(--green-dark);
+                    font-weight: 600;
+                }
+                
+                .language-selector select {
+                    width: 100%;
+                    padding: 0.75rem;
+                    border: 1px solid var(--green-medium);
+                    border-radius: 8px;
+                    background: white;
+                    color: var(--green-dark);
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+                
+                .language-selector select:hover {
+                    border-color: var(--green-dark);
+                    box-shadow: 0 2px 8px rgba(64, 145, 108, 0.2);
+                }
+                
+                .translate-info {
+                    margin-top: 0.75rem;
+                    color: #6c757d;
+                    font-size: 0.8rem;
+                }
+                
+                .translate-info small {
+                    display: block;
+                    line-height: 1.4;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Simple translation function for fallback
+        function translatePage(languageCode) {
+            if (languageCode === 'es') {
+                // Reset to original
+                document.body.style.fontFamily = '';
+                return;
+            }
+            
+            // Simple font change to indicate translation (visual feedback)
+            const fonts = {
+                'en': 'Arial, sans-serif',
+                'fr': 'Arial, sans-serif', 
+                'de': 'Arial, sans-serif',
+                'it': 'Arial, sans-serif',
+                'pt': 'Arial, sans-serif',
+                'ru': 'Arial, sans-serif',
+                'ja': 'Arial, sans-serif',
+                'ko': 'Arial, sans-serif',
+                'zh-CN': 'Arial, sans-serif',
+                'ar': 'Arial, sans-serif'
+            };
+            
+            document.body.style.fontFamily = fonts[languageCode] || 'Arial, sans-serif';
+            
+            // Show translation notice
+            showTranslationNotice(languageCode);
+        }
+
+        // Show translation notice
+        function showTranslationNotice(languageCode) {
+            const notice = document.createElement('div');
+            notice.id = 'translationNotice';
+            notice.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--yellow-accent);
+                    color: var(--green-dark);
+                    padding: 1rem;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                    z-index: 10000;
+                    max-width: 300px;
+                    font-size: 0.9rem;
+                ">
+                    <strong>Traducción simulada</strong><br>
+                    Idioma: ${TRANSLATION_CONFIG.supportedLanguages[languageCode]}<br>
+                    <small>Para traducción completa, abre en un servidor web</small>
+                    <button onclick="this.parentElement.remove()" style="
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+                        background: none;
+                        border: none;
+                        font-size: 1.2rem;
+                        cursor: pointer;
+                        color: var(--green-dark);
+                    ">×</button>
+                </div>
+            `;
+            document.body.appendChild(notice);
+            
+            // Auto-remove after 5 seconds
+            setTimeout(() => {
+                if (notice.parentElement) {
+                    notice.remove();
+                }
+            }, 5000);
+        }
+
+        // Google Translate initialization (for web servers)
+        function googleTranslateElementInit() {
+            if (typeof google !== 'undefined' && google.translate) {
+                new google.translate.TranslateElement({
+                    pageLanguage: TRANSLATION_CONFIG.pageLanguage,
+                    includedLanguages: Object.keys(TRANSLATION_CONFIG.supportedLanguages).join(','),
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false,
+                    gaTrack: true,
+                    gaId: 'G-LLRTFTH5W6',
+                    multilanguagePage: true
+                }, 'google_translate_element');
+                
+                TRANSLATION_CONFIG.fallbackEnabled = false;
+                console.log('Google Translate initialized successfully');
+            } else {
+                console.log('Google Translate API not available, using fallback');
+                createFallbackWidget();
+                TRANSLATION_CONFIG.fallbackEnabled = true;
+            }
+        }
+
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            setTimeout(() => {
+                if (TRANSLATION_CONFIG.fallbackEnabled) {
+                    return; // Fallback already active
+                }
+                
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) {
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started');
+        }
+        
+        // Initialize translation system
+        function initializeTranslation() {
+            console.log('Initializing translation system...');
+            
+            if (isLocalFile()) {
+                console.log('Running on local file system, using fallback translation');
+                createFallbackWidget();
+                TRANSLATION_CONFIG.fallbackEnabled = true;
+            } else {
+                console.log('Running on web server, attempting Google Translate');
+                // Try to load Google Translate
+                const script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+                script.onerror = function() {
+                    console.log('Google Translate failed to load, using fallback');
+                    createFallbackWidget();
+                    TRANSLATION_CONFIG.fallbackEnabled = true;
+                };
+                document.head.appendChild(script);
+            }
+            
+            enhanceTranslation();
+            ensureTranslatableContent();
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing translation...');
+            initializeTranslation();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Bioestimulantes y Aditivos</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget">
+                <div class="translate-loading">
+                    <i class="fas fa-language"></i>
+                    <span>Cargando traductor...</span>
+                </div>
+            </div>
+
+            <p class="subtitle">Potenciando el Rendimiento Natural de tu Cultivo</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 15 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                Los bioestimulantes representan la vanguardia de la agricultura moderna, permitiendo incrementar rendimientos del 15-30% mientras se mantiene una calidad superior. Estas sustancias naturales estimulan procesos fisiológicos específicos, mejorando el crecimiento, desarrollo y resistencia al estrés sin aportar nutrientes directamente.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/comparacion micorrizas.jpg" alt="Comparativa visual de plantas con y sin bioestimulantes mostrando diferencias en vigor" class="content-image">
+                <p class="image-caption">Comparativa visual de plantas con y sin bioestimulantes mostrando diferencias en vigor</p>
+            </div>
+
+            <p class="content-text">
+                Su uso estratégico puede transformar un cultivo promedio en una producción excepcional. A diferencia de los fertilizantes convencionales que alimentan directamente la planta, los bioestimulantes actúan como "amplificadores biológicos", optimizando la utilización de recursos disponibles y desbloqueando el potencial genético completo de tus plantas.
+            </p>
+
+            <div class="success-box">
+                <strong>Clave del éxito:</strong> Una estrategia de bioestimulantes bien ejecutada puede generar retornos de 200-400% sobre la inversión adicional mediante incrementos en rendimiento y calidad del producto final.
+            </div>
+        </section>
+
+        <!-- Ciencia de los bioestimulantes -->
+        <section class="content-section">
+            <h2 class="section-title">La Ciencia de los Bioestimulantes</h2>
+            
+            <p class="content-text">
+                Los bioestimulantes funcionan mediante la activación de rutas metabólicas específicas que las plantas ya poseen naturalmente. No introducen elementos nutritivos nuevos, sino que optimizan la eficiencia con la que la planta utiliza los recursos disponibles en su entorno.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Estimulación Hormonal</h4>
+                    <p>Activan la producción endógena de auxinas, citoquininas y giberelinas, promoviendo crecimiento equilibrado y desarrollo óptimo de estructuras vegetativas y reproductivas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Mejora de Absorción</h4>
+                    <p>Incrementan la permeabilidad de membranas celulares y optimizan el transporte de nutrientes, resultando en una utilización 20-40% más eficiente de fertilizantes.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Resistencia al Estrés</h4>
+                    <p>Inducen la síntesis de compuestos protectores (osmoprotectores, antioxidantes) que permiten a las plantas mantener productividad bajo condiciones adversas.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/rizosfera.jpg" alt="Diagrama de flujo mostrando mecanismos de acción de bioestimulantes a nivel celular" class="content-image">
+                <p class="image-caption">Diagrama de flujo mostrando mecanismos de acción de bioestimulantes a nivel celular</p>
+            </div>
+        </section>
+
+        <!-- Clasificación de bioestimulantes -->
+        <section class="content-section">
+            <h2 class="section-title">Clasificación de Bioestimulantes</h2>
+            
+            <h3 class="subsection-title">Extractos de Algas Marinas</h3>
+            
+            <p class="content-text">
+                Los extractos de algas marinas contienen una compleja matriz de compuestos bioactivos que han evolucionado para sobrevivir en ambientes extremos. Esta resistencia natural se transfiere a las plantas terrestres cuando se aplican correctamente.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Especie de Alga</th>
+                        <th>Compuestos Activos</th>
+                        <th>Beneficio Principal</th>
+                        <th>Dosis Recomendada</th>
+                        <th>Frecuencia de Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ascophyllum nodosum</strong></td>
+                        <td>Citoquininas, auxinas, betaínas</td>
+                        <td>Estimula crecimiento radicular</td>
+                        <td>2-5 mL/L</td>
+                        <td>Cada 7-14 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ecklonia maxima</strong></td>
+                        <td>Manitol, alginatos</td>
+                        <td>Resistencia a salinidad</td>
+                        <td>3-6 mL/L</td>
+                        <td>Semanal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sargassum</strong></td>
+                        <td>Fucanes, polisacáridos</td>
+                        <td>Mejora calidad aromática</td>
+                        <td>1-3 mL/L</td>
+                        <td>Durante floración</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Protocolo de Aplicación de Extractos de Algas</h3>
+                <p><strong>Momento óptimo:</strong> Aplicación foliar temprano en la mañana o al atardecer</p>
+                <p><strong>pH de solución:</strong> Ajustar a 6.0-6.5 para máxima absorción</p>
+                <p><strong>Compatibilidad:</strong> Excelente sinergia con ácidos húmicos y aminoácidos</p>
+                <p><strong>Almacenamiento:</strong> Refrigeración prolonga vida útil hasta 12 meses</p>
+            </div>
+
+            <h3 class="subsection-title">Ácidos Húmicos y Fúlvicos</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Ácidos Húmicos</h4>
+                    <p><strong>Origen:</strong> Leonardita, turba madura<br>
+                    <strong>Mecanismo:</strong> Mejora CIC del sustrato<br>
+                    <strong>Concentración:</strong> 10-50 ppm<br>
+                    <strong>Efecto:</strong> Quelación de nutrientes, estructura del suelo</p>
+                </div>
+                <div class="info-card">
+                    <h4>Ácidos Fúlvicos</h4>
+                    <p><strong>Origen:</strong> Materia orgánica joven<br>
+                    <strong>Mecanismo:</strong> Transporte trans-membrana<br>
+                    <strong>Concentración:</strong> 5-25 ppm<br>
+                    <strong>Efecto:</strong> +40% absorción nutricional</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/humus.jpg" alt="Estructura molecular de ácidos húmicos y fúlvicos con sitios de quelación" class="content-image">
+                <p class="image-caption">Estructura molecular de ácidos húmicos y fúlvicos con sitios de quelación</p>
+            </div>
+
+            <p class="content-text">
+                La aplicación continua de ácidos húmicos y fúlvicos mediante fertirrigación representa una de las estrategias más efectivas para optimizar la nutrición vegetal. Su capacidad para formar complejos estables con micronutrientes previene deficiencias y mejora la uniformidad del cultivo.
+            </p>
+
+            <h3 class="subsection-title">Hidrolizados Proteicos</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Proteínas Vegetales Hidrolizadas</h4>
+                    <p><strong>Fuentes:</strong> Soja, girasol, colza fermentados enzimáticamente<br>
+                    <strong>Ventajas:</strong> 100% vegano, compatible agricultura ecológica<br>
+                    <strong>Aminoácidos libres:</strong> Espectro completo con énfasis en prolina y glicina<br>
+                    <strong>Aplicación:</strong> 1-2 mL/L semanal durante crecimiento activo</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Hidrolizados de Pescado</h4>
+                    <p><strong>Composición:</strong> 18-20 aminoácidos esenciales y no esenciales<br>
+                    <strong>Especialidad:</strong> Alto contenido en triptófano (precursor auxinas)<br>
+                    <strong>Resistencia:</strong> Excepcional para estrés térmico y sequía<br>
+                    <strong>Dosificación:</strong> 2-5 mL/L según concentración del producto</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Gelatina Hidrolizada</h4>
+                    <p><strong>Aminoácidos específicos:</strong> Glicina, prolina, hidroxiprolina<br>
+                    <strong>Función:</strong> Fortalecimiento de paredes celulares<br>
+                    <strong>Timing crítico:</strong> Pre-floración y momentos de estrés ambiental<br>
+                    <strong>Concentración:</strong> 0.5-2 mL/L en aplicaciones dirigidas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bioestimulantes microbianos -->
+        <section class="content-section">
+            <h2 class="section-title">Bioestimulantes Microbianos</h2>
+            
+            <p class="content-text">
+                Los microorganismos beneficiosos representan la frontera más avanzada en bioestimulación. Estos organismos vivos establecen relaciones simbióticas con el sistema radicular, creando una "internet biológica" que multiplica exponencialmente la capacidad de absorción y resistencia de las plantas.
+            </p>
+
+            <h3 class="subsection-title">Micorrizas Arbusculares</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Glomus intraradices</h4>
+                    <p><strong>Extensión radicular:</strong> 100-1000x superficie original<br>
+                    <strong>Especialidad:</strong> Absorción de fósforo y micronutrientes<br>
+                    <strong>Establecimiento:</strong> 14-21 días post-inoculación<br>
+                    <strong>Persistencia:</strong> Todo el ciclo si condiciones favorables</p>
+                </div>
+                <div class="info-card">
+                    <h4>Rhizophagus irregularis</h4>
+                    <p><strong>Tolerancia:</strong> Amplio rango de pH (5.5-8.0)<br>
+                    <strong>Producción:</strong> Glomalina (mejora estructura sustrato)<br>
+                    <strong>Eficiencia:</strong> Suelos pobres en fósforo disponible<br>
+                    <strong>Inoculación:</strong> 1-5g por litro de sustrato durante trasplante</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Precauciones críticas:</strong> Las micorrizas son extremadamente sensibles al cloro, fungicidas y exceso de fósforo soluble. Usar agua declorada y evitar fertilizantes con más de 50 ppm de P2O5 durante las primeras 3 semanas.
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma ,microorganismos sustrato/micorrizas.jpg" alt="Microscopía electrónica mostrando hifas micorrícicas colonizando raíces" class="content-image">
+                <p class="image-caption">Microscopía electrónica mostrando hifas micorrícicas colonizando raíces</p>
+            </div>
+
+            <h3 class="subsection-title">Rizobacterias Promotoras del Crecimiento (PGPR)</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Especie Bacteriana</th>
+                        <th>Mecanismo Principal</th>
+                        <th>Beneficio Específico</th>
+                        <th>Concentración de Uso</th>
+                        <th>Modo de Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bacillus subtilis</strong></td>
+                        <td>Biocontrol + solubilización fosfatos</td>
+                        <td>Protección radicular activa</td>
+                        <td>10⁶-10⁸ UFC/mL</td>
+                        <td>Fertirrigación quincenal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pseudomonas fluorescens</strong></td>
+                        <td>Producción sideróforos + auxinas</td>
+                        <td>Mejora absorción hierro</td>
+                        <td>10⁷-10⁸ UFC/mL</td>
+                        <td>Aplicación semanal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Azospirillum brasilense</strong></td>
+                        <td>Fijación nitrógeno asociativa</td>
+                        <td>Reducción necesidades N</td>
+                        <td>10⁶-10⁷ UFC/mL</td>
+                        <td>Mensual en agua de riego</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Trichoderma spp.</h3>
+            
+            <p class="content-text">
+                Los hongos del género Trichoderma ofrecen una doble funcionalidad excepcional: protección activa contra patógenos del suelo y estimulación directa del crecimiento mediante la producción de metabolitos bioactivos.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>T. harzianum</h4>
+                    <p><strong>Especialidad:</strong> Control biológico de Fusarium, Pythium y Rhizoctonia<br>
+                    <strong>Aplicación:</strong> 10⁴-10⁶ esporas por gramo de sustrato<br>
+                    <strong>Beneficio adicional:</strong> +15% incremento en masa radicular<br>
+                    <strong>Persistencia:</strong> 8-12 semanas en condiciones óptimas de humedad</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>T. viride</h4>
+                    <p><strong>Modo de acción:</strong> Antibiosis mediante producción de enzimas líticas<br>
+                    <strong>Producción:</strong> Quitinasas y glucanasas que degradan patógenos<br>
+                    <strong>Uso preventivo:</strong> Aplicación al inicio del ciclo de cultivo<br>
+                    <strong>Sinergia:</strong> Excelente combinación con Bacillus subtilis</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>T. atroviride</h4>
+                    <p><strong>Característica única:</strong> Mayor agresividad contra hongos patógenos<br>
+                    <strong>Condiciones:</strong> Óptimo en temperaturas 20-25°C<br>
+                    <strong>Aplicación:</strong> Sustrato húmedo, evitar encharcamiento<br>
+                    <strong>Monitoreo:</strong> Desarrollo de halo verdoso indica colonización exitosa</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reguladores naturales -->
+        <section class="content-section">
+            <h2 class="section-title">Reguladores de Crecimiento Naturales</h2>
+            
+            <h3 class="subsection-title">Extracto de Sauce (Ácido Salicílico Natural)</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Preparación Artesanal</h4>
+                    <p><strong>Material:</strong> Corteza de sauce joven (Salix alba)<br>
+                    <strong>Proceso:</strong> Remojo 24-48h en agua destilada<br>
+                    <strong>Proporción:</strong> 100g corteza por litro de agua<br>
+                    <strong>Filtrado:</strong> Malla fina + reposo 24h adicionales</p>
+                </div>
+                <div class="info-card">
+                    <h4>Aplicación Profesional</h4>
+                    <p><strong>Concentración:</strong> 0.1-0.5 mM ácido salicílico equivalente<br>
+                    <strong>Timing:</strong> Cambios ambientales o post-poda<br>
+                    <strong>Método:</strong> Pulverización foliar fina al atardecer<br>
+                    <strong>Frecuencia:</strong> 1-2 aplicaciones por ciclo según necesidad</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Mecanismo de Acción del Ácido Salicílico</h3>
+                <p><strong>Resistencia sistémica:</strong> Activa genes de defensa en toda la planta</p>
+                <p><strong>Proteínas PR:</strong> Induce síntesis de proteínas relacionadas con patogenesis</p>
+                <p><strong>Antioxidantes:</strong> Incrementa producción de catalasa y peroxidasa</p>
+                <p><strong>Señalización:</strong> Mejora comunicación intercelular ante estrés</p>
+            </div>
+
+            <h3 class="subsection-title">Aloe Vera</h3>
+            
+            <p class="content-text">
+                El Aloe vera contiene más de 75 compuestos bioactivos incluyendo polisacáridos, glicoproteínas y enzimas que estimulan naturalmente los procesos de reparación y crecimiento celular. Su gel transparente es uno de los bioestimulantes más versátiles disponibles.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Extracción del Gel</h4>
+                    <p><strong>Selección:</strong> Hojas maduras de plantas de 3+ años<br>
+                    <strong>Proceso:</strong> Corte limpio, extracción gel evitando aloína de la piel<br>
+                    <strong>Purificación:</strong> Licuado + filtrado con malla 200 micras<br>
+                    <strong>Conservación:</strong> Uso inmediato o congelación en cubitos</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Protocolos de Aplicación</h4>
+                    <p><strong>Enraizamiento:</strong> Inmersión esquejes 15-30 minutos al 50%<br>
+                    <strong>Estrés hídrico:</strong> Pulverización foliar 1-5% concentración<br>
+                    <strong>Post-trasplante:</strong> Riego 1% primera semana para reducir shock<br>
+                    <strong>Cicatrización:</strong> Aplicación directa pura sobre heridas de poda</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/humus.jpg" alt="Proceso paso a paso de extracción y preparación de gel de Aloe vera" class="content-image">
+                <p class="image-caption">Proceso paso a paso de extracción y preparación de gel de Aloe vera</p>
+            </div>
+
+            <h3 class="subsection-title">Quitosano</h3>
+            
+            <p class="content-text">
+                Derivado del exoesqueleto de crustáceos y paredes celulares de hongos, el quitosano actúa como un potente elicitor de defensas naturales. Su capacidad para inducir respuestas de resistencia lo convierte en una herramienta preventiva excepcional.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Propiedades del Quitosano</h4>
+                    <p><strong>Peso molecular:</strong> 50-190 kDa para máxima bioactividad<br>
+                    <strong>Grado desacetilación:</strong> >75% para solubilidad óptima<br>
+                    <strong>pH de trabajo:</strong> 5.5-6.0 para estabilidad en solución<br>
+                    <strong>Vida útil:</strong> 48 horas máximo una vez preparado</p>
+                </div>
+                <div class="info-card">
+                    <h4>Aplicaciones Específicas</h4>
+                    <p><strong>Resistencia patógenos:</strong> 50-200 ppm pulverización preventiva<br>
+                    <strong>Fortalecimiento celular:</strong> Aplicación semanal durante vegetativo<br>
+                    <strong>Pre-cosecha:</strong> Tratamiento 7 días antes para mejorar conservación<br>
+                    <strong>Formulación:</strong> Ácido acético 0.1% para solubilizar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aminoácidos específicos -->
+        <section class="content-section">
+            <h2 class="section-title">Aminoácidos Específicos</h2>
+            
+            <p class="content-text">
+                Los aminoácidos individuales ofrecen efectos muy específicos cuando se aplican en momentos precisos del desarrollo. Su uso estratégico permite modular aspectos concretos del crecimiento y la fisiología vegetal con precisión quirúrgica.
+            </p>
+
+            <h3 class="subsection-title">Triptófano</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Función Bioquímica</h4>
+                    <p><strong>Precursor:</strong> Ácido indolacético (auxina principal)<br>
+                    <strong>Ruta metabólica:</strong> Triptófano → Triptamina → IAA<br>
+                    <strong>Concentración:</strong> 10-50 ppm según fase de desarrollo<br>
+                    <strong>Absorción:</strong> Rápida via foliar y radicular</p>
+                </div>
+                <div class="info-card">
+                    <h4>Efectos Observables</h4>
+                    <p><strong>Enraizamiento:</strong> +40% densidad radicular en esquejes<br>
+                    <strong>Dominancia apical:</strong> Control natural del crecimiento vertical<br>
+                    <strong>Desarrollo foliar:</strong> Hojas más grandes y consistentes<br>
+                    <strong>Timing:</strong> Máxima efectividad en crecimiento activo</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Prolina</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Función Osmoprotectora</h4>
+                    <p><strong>Mecanismo:</strong> Estabilización de membranas celulares bajo estrés<br>
+                    <strong>Acumulación:</strong> Se concentra en tejidos sometidos a estrés<br>
+                    <strong>Protección:</strong> Mantiene integridad proteínas y enzimas<br>
+                    <strong>Concentración:</strong> 25-100 ppm según intensidad del estrés</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Aplicaciones Preventivas</h4>
+                    <p><strong>Estrés térmico:</strong> Aplicación 24-48h antes de olas de calor<br>
+                    <strong>Sequía:</strong> Pulverización foliar cuando humedad del sustrato <30%<br>
+                    <strong>Salinidad:</strong> Uso preventivo en aguas con EC >1.0 mS/cm<br>
+                    <strong>Trasplante:</strong> Aplicación post-trasplante para reducir shock</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Glicina</h3>
+            
+            <p class="content-text">
+                La glicina actúa como quelante natural de micronutrientes y precursor de clorofila. Su pequeño tamaño molecular permite una absorción excepcionalmente rápida y eficiente, siendo ideal para correcciones nutricionales rápidas.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Función</th>
+                        <th>Mecanismo</th>
+                        <th>Concentración</th>
+                        <th>Combinación Óptima</th>
+                        <th>Momento de Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Quelante Natural</strong></td>
+                        <td>Forma complejos estables con Fe, Mn, Zn</td>
+                        <td>20-50 ppm</td>
+                        <td>Con micronutrientes</td>
+                        <td>Deficiencias detectadas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Precursor Clorofila</strong></td>
+                        <td>Síntesis del anillo porfirínico</td>
+                        <td>30-75 ppm</td>
+                        <td>Con magnesio y hierro</td>
+                        <td>Clorosis incipiente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transporte Membrana</strong></td>
+                        <td>Facilita paso de nutrientes</td>
+                        <td>15-40 ppm</td>
+                        <td>Formulaciones NPK</td>
+                        <td>Aplicación rutinaria</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Extractos vegetales especializados -->
+        <section class="content-section">
+            <h2 class="section-title">Extractos Vegetales Especializados</h2>
+            
+            <h3 class="subsection-title">Extracto de Ortiga</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Preparación Tradicional</h4>
+                    <p><strong>Material:</strong> Hojas frescas de Urtica dioica<br>
+                    <strong>Fermentación:</strong> 7-14 días en recipiente plástico<br>
+                    <strong>Proporción:</strong> 1kg ortiga / 10L agua no clorada<br>
+                    <strong>Indicador:</strong> Cese de burbujas = fermentación completa</p>
+                </div>
+                <div class="info-card">
+                    <h4>Dilución y Aplicación</h4>
+                    <p><strong>Dilución estándar:</strong> 1:10 para riego, 1:20 foliar<br>
+                    <strong>Filtrado:</strong> Malla fina para evitar obstrucciones<br>
+                    <strong>Frecuencia:</strong> Cada 2-3 semanas durante vegetativo<br>
+                    <strong>Almacenamiento:</strong> Refrigeración hasta 6 meses</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Precaución olfativa:</strong> El purín de ortiga desarrolla un olor muy intenso durante la fermentación. Usar en exteriores o espacios bien ventilados, y considerar a los vecinos.
+            </div>
+
+            <h3 class="subsection-title">Té de Compost Oxigenado</h3>
+            
+            <p class="content-text">
+                El té de compost oxigenado (ACT - Actively Aerated Compost Tea) representa una de las biotecnologías más sofisticadas disponibles para cultivadores domésticos. Este proceso multiplica exponencialmente la población de microorganismos beneficiosos presentes en compost de calidad.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Ingredientes Base</h4>
+                    <p><strong>Compost maduro:</strong> 200-300g de compost termofílico de 12+ meses<br>
+                    <strong>Nutrientes microbianos:</strong> 15-30ml melaza sin sulfitos<br>
+                    <strong>Agua de calidad:</strong> 10L agua declorada, pH 6.0-7.0<br>
+                    <strong>Activadores:</strong> Opcional - harina pescado, algas</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Proceso de Elaboración</h4>
+                    <p><strong>Oxigenación:</strong> Bomba aire 20-40L/min durante 24-48h<br>
+                    <strong>Temperatura:</strong> Mantener 18-25°C para actividad óptima<br>
+                    <strong>Monitoreo:</strong> Espuma abundante = actividad microbiana intensa<br>
+                    <strong>Filtrado final:</strong> Malla 400 micras antes de aplicación</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Control de Calidad</h4>
+                    <p><strong>Microscopía:</strong> Verificar diversidad bacteriana y fúngica<br>
+                    <strong>Olor:</strong> Debe ser terroso, nunca putrefacto<br>
+                    <strong>Aplicación:</strong> Máximo 4 horas post-finalización<br>
+                    <strong>Dilución:</strong> 50-200 mL/L según concentración microbiana</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/comparacion%20micorrizas.jpg" alt="Setup completo para preparación de té de compost con sistema de oxigenación" class="content-image">
+                <p class="image-caption">Setup completo para preparación de té de compost con sistema de oxigenación</p>
+            </div>
+
+            <h3 class="subsection-title">Fermentados de Frutas</h3>
+            
+            <p class="content-text">
+                Los fermentados de frutas aportan una compleja mezcla de ácidos orgánicos, enzimas y levaduras beneficiosas que mejoran significativamente la calidad organoléptica del producto final. Su aplicación durante floración es especialmente valiosa.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Fruta</th>
+                        <th>Compuestos Principales</th>
+                        <th>Beneficio Específico</th>
+                        <th>Proporción Base</th>
+                        <th>Tiempo Fermentación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Plátano</strong></td>
+                        <td>Alto K, enzimas amilasa</td>
+                        <td>Potencia floración</td>
+                        <td>1:1:3 (fruta:azúcar:agua)</td>
+                        <td>15-21 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manzana</strong></td>
+                        <td>Pectinas, ácido málico</td>
+                        <td>Mejora aromática</td>
+                        <td>1:0.5:2 (fruta:azúcar:agua)</td>
+                        <td>10-14 días</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Papaya</strong></td>
+                        <td>Papaína, vitaminas</td>
+                        <td>Digestión nutrientes</td>
+                        <td>1:0.3:2 (fruta:azúcar:agua)</td>
+                        <td>7-10 días</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Protocolos de aplicación -->
+        <section class="content-section">
+            <h2 class="section-title">Protocolos de Aplicación por Fases</h2>
+            
+            <p class="content-text">
+                El timing de aplicación de bioestimulantes es crucial para maximizar su efectividad. Cada fase de desarrollo requiere un enfoque específico adaptado a las necesidades fisiológicas predominantes del momento.
+            </p>
+
+            <h3 class="subsection-title">Germinación y Plántulas</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Semana 1-2</h4>
+                    <p><strong>Prioridad:</strong> Establecimiento sistema radicular<br>
+                    <strong>Micorrizas:</strong> Inoculación directa en sustrato<br>
+                    <strong>Triptófano:</strong> 25 ppm para estimular raíces<br>
+                    <strong>Algas:</strong> 2 mL/L cada 7 días Ascophyllum</p>
+                </div>
+                <div class="info-card">
+                    <h4>Semana 3-4</h4>
+                    <p><strong>Objetivo:</strong> Fortalecimiento estructura celular<br>
+                    <strong>Ácidos húmicos:</strong> 15 ppm continuo fertirrigación<br>
+                    <strong>Quitosano:</strong> 50 ppm preventivo foliar<br>
+                    <strong>Glicina:</strong> 20 ppm con micronutrientes</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Fase Vegetativa</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Crecimiento Vegetativo Intenso</h4>
+                    <p><strong>Ácidos húmicos/fúlvicos:</strong> 25-50 ppm base continua en fertirrigación<br>
+                    <strong>PGPR rotacional:</strong> Bacillus subtilis semana 1-3, Pseudomonas semana 2-4<br>
+                    <strong>Hidrolizados proteicos:</strong> 1-2 mL/L aplicación semanal<br>
+                    <strong>Extracto ortiga:</strong> Dilución 1:10 cada 15 días</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Preparación Pre-Floración</h4>
+                    <p><strong>Prolina:</strong> 50 ppm aplicación preventiva ante cambio fotoperiodo<br>
+                    <strong>Quitosano:</strong> 100 ppm foliar para inducir resistencias<br>
+                    <strong>Trichoderma:</strong> Refuerzo inoculación 10⁶ esporas/g sustrato<br>
+                    <strong>Aloe vera:</strong> 2% concentración para preparar ante estrés</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Floración</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Semanas 1-3 Floración</h4>
+                    <p><strong>Extractos algas:</strong> Cambio a formulaciones ricas en K<br>
+                    <strong>Fermentados frutas:</strong> Inicio 20 mL/L plátano<br>
+                    <strong>Aminoácidos:</strong> Reducir triptófano, mantener glicina<br>
+                    <strong>Microbiología:</strong> Mantener poblaciones establecidas</p>
+                </div>
+                <div class="info-card">
+                    <h4>Semanas 4-6 Floración</h4>
+                    <p><strong>Enfoque calidad:</strong> Énfasis en terpenos y resinas<br>
+                    <strong>Fermentados:</strong> 30 mL/L mix frutas variadas<br>
+                    <strong>Ácidos húmicos:</strong> Mantener 25 ppm base<br>
+                    <strong>Estrés controlado:</strong> Prolina si necesario</p>
+                </div>
+                <div class="info-card">
+                    <h4>Últimas 2 Semanas</h4>
+                    <p><strong>Reducción progresiva:</strong> Disminuir aplicaciones<br>
+                    <strong>Solo esenciales:</strong> Ácidos húmicos y microbiología<br>
+                    <strong>Lavado inteligente:</strong> Agua + húmicos 15 ppm<br>
+                    <strong>Calidad final:</strong> Fermentados solo si necesario</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/rizosfera.jpg" alt="Cronograma visual de aplicaciones de bioestimulantes por semanas de cultivo" class="content-image">
+                <p class="image-caption">Cronograma visual de aplicaciones de bioestimulantes por semanas de cultivo</p>
+            </div>
+        </section>
+
+        <!-- Combinaciones sinérgicas -->
+        <section class="content-section">
+            <h2 class="section-title">Combinaciones Sinérgicas</h2>
+            
+            <p class="content-text">
+                La sinergia entre diferentes bioestimulantes puede potenciar significativamente los resultados. Sin embargo, es crucial entender las interacciones para evitar antagonismos y optimizar la inversión económica.
+            </p>
+
+            <h3 class="subsection-title">Stack Básico (€15-25 por ciclo)</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Base Microbiana</h4>
+                    <p><strong>Micorrizas:</strong> Inoculación inicial sustrato<br>
+                    <strong>Ácidos húmicos:</strong> 25 ppm continuo fertirrigación<br>
+                    <strong>Costo:</strong> €8-12 por m² ciclo completo<br>
+                    <strong>ROI esperado:</strong> 150-200% mediante mejor absorción nutritiva</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Estimulación Foliar</h4>
+                    <p><strong>Extractos algas:</strong> 3 mL/L cada 10 días<br>
+                    <strong>Quitosano:</strong> 75 ppm aplicación mensual preventiva<br>
+                    <strong>Beneficio:</strong> +20% vigor general, resistencia mejorada<br>
+                    <strong>Aplicación:</strong> Foliar temprano mañana o atardecer</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Stack Avanzado (€40-60 por ciclo)</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Categoría</th>
+                        <th>Productos</th>
+                        <th>Frecuencia</th>
+                        <th>Beneficio Principal</th>
+                        <th>Costo Aproximado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Base Microbiana</strong></td>
+                        <td>Trichoderma + PGPR rotacional</td>
+                        <td>Quincenal alternando</td>
+                        <td>Rizósfera saludable</td>
+                        <td>€15-20</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bioestimulación</strong></td>
+                        <td>Hidrolizados + aminoácidos específicos</td>
+                        <td>Semanal dirigido</td>
+                        <td>Optimización fisiológica</td>
+                        <td>€12-18</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extractos Premium</strong></td>
+                        <td>Algas + ortiga + fermentados</td>
+                        <td>Según protocolo fase</td>
+                        <td>Calidad superior</td>
+                        <td>€13-22</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cost-box">
+                <strong>Análisis ROI:</strong> El stack avanzado puede generar incrementos de 25-35% en rendimiento y 40-60% mejora en calidad, justificando ampliamente la inversión adicional para cultivadores enfocados en excelencia.
+            </div>
+        </section>
+
+        <!-- Control de calidad -->
+        <section class="content-section">
+            <h2 class="section-title">Control de Calidad y Monitoreo</h2>
+            
+            <h3 class="subsection-title">Verificación de Productos</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Certificaciones Esenciales</h4>
+                    <p><strong>Análisis microbiológicos:</strong> UFC garantizadas en productos vivos<br>
+                    <strong>Contenido declarado:</strong> Verificación N-P-K y elementos traza<br>
+                    <strong>Pureza:</strong> Ausencia metales pesados y contaminantes<br>
+                    <strong>Caducidad:</strong> Fechas realistas y condiciones almacenamiento</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tests de Viabilidad</h4>
+                    <p><strong>Microorganismos:</strong> Recuento placas agar nutritivo<br>
+                    <strong>Extractos:</strong> pH estable, ausencia precipitados<br>
+                    <strong>Aminoácidos:</strong> Solubilidad completa, color consistente<br>
+                    <strong>Almacenamiento:</strong> Condiciones según especificaciones fabricante</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Monitoreo de Efectos</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Parámetros de Crecimiento</h4>
+                    <p><strong>Vigor vegetativo:</strong> Medición altura, número entrenudos semanalmente<br>
+                    <strong>Desarrollo radicular:</strong> Inspección visual durante trasplantes<br>
+                    <strong>Resistencia estrés:</strong> Respuesta a variaciones ambientales<br>
+                    <strong>Uniformidad:</strong> Consistencia entre plantas del mismo lote</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Indicadores Bioquímicos</h4>
+                    <p><strong>Contenido clorofila:</strong> Medidor SPAD o análisis foliar<br>
+                    <strong>Actividad enzimática:</strong> Tests catalasa y peroxidasa<br>
+                    <strong>Compuestos secundarios:</strong> Análisis cannabinoides y terpenos post-cosecha<br>
+                    <strong>Calidad nutricional:</strong> Análisis N-P-K tejidos cada 3-4 semanas</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Evaluación Económica</h4>
+                    <p><strong>Rendimiento:</strong> Peso seco por m² comparado con control<br>
+                    <strong>Calidad premium:</strong> Porcentaje producto categoría superior<br>
+                    <strong>Eficiencia nutritiva:</strong> g producidos / € invertido nutrientes<br>
+                    <strong>ROI total:</strong> Beneficio neto vs inversión bioestimulantes</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/micorrizas.jpg" alt="Dashboard de monitoreo mostrando métricas de rendimiento con y sin bioestimulantes" class="content-image">
+                <p class="image-caption">Dashboard de monitoreo mostrando métricas de rendimiento con y sin bioestimulantes</p>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Maximizando el Potencial Natural</h2>
+            
+            <p class="content-text">
+                Los bioestimulantes representan mucho más que simples aditivos: son la clave para desbloquear el potencial genético completo de tus plantas. Una estrategia bien ejecutada puede transformar un cultivo ordinario en una producción excepcional, con incrementos medibles tanto en cantidad como en calidad.
+            </p>
+
+            <p class="content-text">
+                La inversión adicional de €20-80 por m² que representan los bioestimulantes se justifica ampliamente mediante los retornos de 200-400% que pueden generar. Sin embargo, el éxito requiere comprensión, planificación y ejecución disciplinada de los protocolos.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Principios para el Éxito</h3>
+                <p><strong>Conocimiento primero:</strong> Entender cada producto antes de aplicar</p>
+                <p><strong>Timing preciso:</strong> El momento de aplicación es tan importante como la dosis</p>
+                <p><strong>Sinergia inteligente:</strong> Combinar productos compatibles, evitar antagonismos</p>
+                <p><strong>Monitoreo constante:</strong> Registrar resultados para optimizar protocolos futuros</p>
+                <p><strong>Calidad garantizada:</strong> Invertir en productos certificados y probados</p>
+            </div>
+
+            <div class="success-box">
+                <strong>Resultado final:</strong> Los cultivadores que dominan el uso de bioestimulantes consistentemente producen cannabis de calidad superior, con mayor resistencia a problemas y rendimientos que superan las expectativas genéticas de sus variedades.
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Para Principiantes</h4>
+                    <p>Comienza con el stack básico: micorrizas + ácidos húmicos + extractos de algas. Domina estos fundamentos antes de agregar complejidad.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Para Avanzados</h4>
+                    <p>Experimenta con formulaciones específicas por fase, microbiología rotacional y fermentados artesanales para maximizar la diferenciación.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Para Comerciales</h4>
+                    <p>Implementa protocolos estandarizados con control de calidad riguroso. La consistencia es clave para operaciones a escala.</p>
+                </div>
+            </div>
+
+            <p class="content-text">
+                El futuro de la agricultura del cannabis está en la integración inteligente de bioestimulantes con técnicas de cultivo avanzadas. Aquellos que adopten este enfoque holístico hoy tendrán una ventaja competitiva significativa en el mercado de mañana.
+            </p>
+
+            <div class="warning-box">
+                <strong>Compromiso necesario:</strong> Los bioestimulantes no son una solución mágica instantánea. Requieren paciencia, observación detallada y ajustes continuos para optimizar los resultados según tus condiciones específicas de cultivo.
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #6c757d;">
+                    📚 <strong>Próximos artículos:</strong> Cannabis Medicinal • Clonación Avanzada • Control Biológico • Nutrición de Precisión
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
+                

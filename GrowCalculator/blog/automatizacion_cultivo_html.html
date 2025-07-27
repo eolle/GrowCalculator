@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatización del Cultivo: Tecnología al Servicio del Cannabis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Automatización del Cultivo</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Tecnología al Servicio del Cannabis: La Revolución Digital del Cultivo Indoor</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 10 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>🔧</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                Los sistemas automatizados han transformado el cultivo indoor de un arte intuitivo a una ciencia precisa. La integración de sensores, controladores y actuadores permite optimizar cada parámetro ambiental con precisión milimétrica, revolucionando la forma en que cultivamos cannabis.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/extraccionvpdco2/can-lcd-ec-fan-controller-eu.jpg" alt="Sistema de cultivo automatizado" class="content-image">
+                <p class="image-caption">Sistema de cultivo automatizado con controladores avanzados</p>
+            </div>
+
+            <p class="content-text">
+                Esta revolución digital no solo mejora los rendimientos y la calidad, sino que también libera tiempo valioso del cultivador, permitiendo un control más preciso y consistente que el que sería posible manualmente.
+            </p>
+
+            <div class="automation-flow">
+                <div class="flow-step">
+                    <span class="step-icon">📊</span>
+                    <strong>Sensores</strong><br>
+                    <small>Recolección de datos</small>
+                </div>
+                <div class="flow-step">
+                    <span class="step-icon">🧠</span>
+                    <strong>Controlador</strong><br>
+                    <small>Procesamiento</small>
+                </div>
+                <div class="flow-step">
+                    <span class="step-icon">⚡</span>
+                    <strong>Actuadores</strong><br>
+                    <small>Acciones automáticas</small>
+                </div>
+                <div class="flow-step">
+                    <span class="step-icon">🌱</span>
+                    <strong>Optimización</strong><br>
+                    <small>Crecimiento mejorado</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sensores Fundamentales -->
+        <section class="content-section">
+            <h2 class="section-title">Sensores Fundamentales: Los Ojos del Sistema</h2>
+            
+            <p class="content-text">
+                Los sensores son la base de cualquier sistema automatizado. La calidad y precisión de estos dispositivos determina directamente la efectividad de todo el sistema de control ambiental.
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4><span class="icon">🌡️</span>Temperatura y Humedad</h4>
+                    <p><strong>Modelo recomendado:</strong> Sensores SHT30<br>
+                    <strong>Precisión:</strong> ±0.3°C temperatura, ±2% HR<br>
+                    <strong>Rango:</strong> -40°C a +125°C<br>
+                    <strong>Comunicación:</strong> I2C digital</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🧪</span>pH y Conductividad</h4>
+                    <p><strong>Tipo:</strong> Sondas industriales<br>
+                    <strong>Calibración:</strong> Automática con soluciones buffer<br>
+                    <strong>Precisión pH:</strong> ±0.1 unidades<br>
+                    <strong>Precisión EC:</strong> ±2% de la lectura</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">💨</span>CO₂ Atmosférico</h4>
+                    <p><strong>Tecnología:</strong> Sensores NDIR<br>
+                    <strong>Rango:</strong> 0-5000 ppm<br>
+                    <strong>Precisión:</strong> ±50 ppm<br>
+                    <strong>Compensación:</strong> Temperatura y presión</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">💧</span>Humedad del Sustrato</h4>
+                    <p><strong>Tipo:</strong> Sensores capacitivos<br>
+                    <strong>Ventaja:</strong> No se corroen<br>
+                    <strong>Salida:</strong> 0-3V analógica<br>
+                    <strong>Aplicación:</strong> Riego automático</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">💡</span>Intensidad Lumínica</h4>
+                    <p><strong>Medición:</strong> PPFD (μmol/m²/s)<br>
+                    <strong>Sensor:</strong> Quantum PAR<br>
+                    <strong>Rango:</strong> 0-3000 PPFD<br>
+                    <strong>Espectro:</strong> 400-700nm</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🏃‍♂️</span>Flujo de Aire</h4>
+                    <p><strong>Tipo:</strong> Anemómetros digitales<br>
+                    <strong>Rango:</strong> 0.1-30 m/s<br>
+                    <strong>Aplicación:</strong> Control de ventilación<br>
+                    <strong>Salida:</strong> Pulsos digitales</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/room.jpg" alt="Cuarto de cultivo con sensores" class="content-image">
+                <p class="image-caption">Cuarto de cultivo con sensores y sistemas de monitoreo</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Calibración y Mantenimiento</h3>
+                <p>Los sensores requieren calibración regular para mantener su precisión. Los sensores de pH deben calibrarse semanalmente, mientras que los de temperatura y humedad pueden calibrarse mensualmente. La inversión en sensores de calidad se traduce en datos más confiables y mejores decisiones automatizadas.</p>
+            </div>
+        </section>
+
+        <!-- Controladores Inteligentes -->
+        <section class="content-section">
+            <h2 class="section-title">Controladores Inteligentes: El Cerebro del Sistema</h2>
+            
+            <p class="content-text">
+                Los controladores modernos integran múltiples funciones en una sola unidad: control climático, fertirrigación, iluminación y seguridad. La conectividad WiFi permite monitoreo remoto y alertas en tiempo real.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Básico</th>
+                        <th>Profesional</th>
+                        <th>Industrial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Entradas analógicas</strong></td>
+                        <td>4-8 canales</td>
+                        <td>16-32 canales</td>
+                        <td>64+ canales</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Salidas de control</strong></td>
+                        <td>4-6 relés</td>
+                        <td>12-16 relés</td>
+                        <td>32+ relés</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conectividad</strong></td>
+                        <td>WiFi</td>
+                        <td>WiFi + Ethernet</td>
+                        <td>WiFi + Ethernet + Modbus</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Almacenamiento de datos</strong></td>
+                        <td>30 días</td>
+                        <td>1 año</td>
+                        <td>Ilimitado (cloud)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo aproximado</strong></td>
+                        <td>€300-800</td>
+                        <td>€1,200-2,500</td>
+                        <td>€3,000-8,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Funciones Clave del Controlador</h3>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Control Climático:</strong> Mantiene temperatura, humedad y ventilación dentro de rangos programados mediante algoritmos PID avanzados.
+                </div>
+                <div class="step-item">
+                    <strong>Gestión de CO₂:</strong> Inyección automática durante horas de luz, con cut-off durante ventilación para optimizar eficiencia.
+                </div>
+                <div class="step-item">
+                    <strong>Fertirrigación:</strong> Mezcla automática de nutrientes basada en EC/pH objetivo, con compensación de temperatura.
+                </div>
+                <div class="step-item">
+                    <strong>Control de Iluminación:</strong> Gestión de espectros, intensidad y ciclos de luz con transiciones graduales.
+                </div>
+                <div class="step-item">
+                    <strong>Sistema de Alertas:</strong> Notificaciones inmediatas por desviaciones críticas via SMS, email o app móvil.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Redundancia crítica:</strong> Siempre implementa sistemas de respaldo para funciones críticas como ventilación y temperatura. Un fallo del controlador principal no debe comprometer la supervivencia del cultivo.
+            </div>
+        </section>
+
+        <!-- Automatización del Riego -->
+        <section class="content-section">
+            <h2 class="section-title">Automatización del Riego: Precisión Hidropónica</h2>
+            
+            <p class="content-text">
+                Los sistemas de riego automatizados transforman la fertirrigación de una tarea manual repetitiva en un proceso preciso y consistente. La clave está en la integración de sensores de humedad del sustrato con bombas dosificadoras de nutrientes.
+            </p>
+
+            <div class="image-container">
+                <img src="images/extraccionvpdco2/extractor_en_linea_de_conducto_para_cultivo_cannabis_barato.jpg" alt="Sistema de riego por goteo automatizado" class="content-image">
+                <p class="image-caption">Sistema de riego por goteo automatizado con control de flujo</p>
+            </div>
+
+            <h3 class="subsection-title">Componentes del Sistema de Riego</h3>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4><span class="icon">🚰</span>Bombas Dosificadoras</h4>
+                    <p><strong>Tipo:</strong> Peristálticas o diafragma<br>
+                    <strong>Precisión:</strong> ±1% del caudal<br>
+                    <strong>Control:</strong> Señal 4-20mA<br>
+                    <strong>Capacidad:</strong> 0.1-10 L/h típico</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">💧</span>Sensores de Sustrato</h4>
+                    <p><strong>Ubicación:</strong> Zona radicular media<br>
+                    <strong>Umbral de riego:</strong> 30-40% humedad<br>
+                    <strong>Tiempo de respuesta:</strong> < 1 segundo<br>
+                    <strong>Durabilidad:</strong> 2-3 años típico</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">⚖️</span>Mezclado de Nutrientes</h4>
+                    <p><strong>Tanque madre:</strong> Concentrados separados<br>
+                    <strong>Dilución:</strong> 1:100 - 1:200<br>
+                    <strong>pH automático:</strong> Ácido/base dosificado<br>
+                    <strong>Homogeneización:</strong> Bomba recirculante</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">📊</span>Monitoreo Continuo</h4>
+                    <p><strong>EC objetivo:</strong> 1.2-2.0 mS/cm<br>
+                    <strong>pH objetivo:</strong> 5.5-6.5<br>
+                    <strong>Frecuencia:</strong> Medición cada 15 min<br>
+                    <strong>Corrección:</strong> Automática en tiempo real</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Programación del Riego Inteligente</h3>
+                <p><strong>Modo sensor:</strong> Riego activado por humedad del sustrato</p>
+                <p><strong>Modo temporal:</strong> Intervalos fijos con ajuste estacional</p>
+                <p><strong>Modo híbrido:</strong> Combinación de ambos con límites de seguridad</p>
+                <p><strong>Drenaje objetivo:</strong> 10-20% del volumen aplicado para lavado de sales</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Fase de Cultivo</th>
+                        <th>Frecuencia</th>
+                        <th>Volumen por Evento</th>
+                        <th>EC Objetivo</th>
+                        <th>pH Objetivo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Plántulas</strong></td>
+                        <td>Cada 2-3 días</td>
+                        <td>50-100ml</td>
+                        <td>0.8-1.0 mS/cm</td>
+                        <td>6.0-6.3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vegetativo</strong></td>
+                        <td>Diario</td>
+                        <td>200-500ml</td>
+                        <td>1.2-1.6 mS/cm</td>
+                        <td>5.8-6.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Floración</strong></td>
+                        <td>1-2 veces/día</td>
+                        <td>300-800ml</td>
+                        <td>1.6-2.0 mS/cm</td>
+                        <td>6.0-6.5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lavado Final</strong></td>
+                        <td>Diario</td>
+                        <td>500-1000ml</td>
+                        <td>0.0-0.3 mS/cm</td>
+                        <td>6.0-6.5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Control Lumínico Avanzado -->
+        <section class="content-section">
+            <h2 class="section-title">Control Lumínico Avanzado: Simulando el Sol</h2>
+            
+            <p class="content-text">
+                Los controladores LED modernos van más allá del simple encendido y apagado. Permiten simular amanecer y atardecer gradualmente, programar espectros específicos para cada fase de crecimiento y reducir significativamente el estrés lumínico en las plantas.
+            </p>
+
+            <div class="image-placeholder">
+                <img src="luz/panel_control_led.jpg" alt="Panel de control LED" class="content-image">
+            </div>
+
+            <h3 class="subsection-title">Espectros Optimizados por Fase</h3>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4><span class="icon">🔵</span>Fase Vegetativa</h4>
+                    <p><strong>Espectro dominante:</strong> Azul (400-500nm)<br>
+                    <strong>Beneficios:</strong> Crecimiento compacto, hojas gruesas<br>
+                    <strong>PPFD objetivo:</strong> 200-400 μmol/m²/s<br>
+                    <strong>Fotoperiodo:</strong> 18/6 horas luz/oscuridad</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🔴</span>Fase de Floración</h4>
+                    <p><strong>Espectro dominante:</strong> Rojo (600-700nm)<br>
+                    <strong>Beneficios:</strong> Desarrollo de flores, resina<br>
+                    <strong>PPFD objetivo:</strong> 400-800 μmol/m²/s<br>
+                    <strong>Fotoperiodo:</strong> 12/12 horas luz/oscuridad</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🟣</span>Espectro UV-A</h4>
+                    <p><strong>Rango:</strong> 315-400nm<br>
+                    <strong>Efecto:</strong> Incrementa producción de tricomas<br>
+                    <strong>Dosificación:</strong> 2-4 horas durante floración<br>
+                    <strong>Precaución:</strong> Puede causar estrés excesivo</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🟢</span>Luz Verde</h4>
+                    <p><strong>Rango:</strong> 500-600nm<br>
+                    <strong>Función:</strong> Penetración en el dosel<br>
+                    <strong>Ventaja:</strong> Ilumina hojas inferiores<br>
+                    <strong>Porcentaje:</strong> 10-15% del espectro total</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Programación de Transiciones Graduales</h3>
+                <p><strong>Amanecer (30 min):</strong> Incremento gradual de intensidad del 0% al 100%</p>
+                <p><strong>Mediodía:</strong> Máxima intensidad con espectro completo</p>
+                <p><strong>Atardecer (30 min):</strong> Reducción gradual con tonos rojizos</p>
+                <p><strong>Beneficio:</strong> Reduce el shock lumínico y imita condiciones naturales</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Hora del Día</th>
+                        <th>Intensidad (%)</th>
+                        <th>Espectro Dominante</th>
+                        <th>Temperatura Color (K)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>06:00 - 07:00</strong></td>
+                        <td>0% → 100%</td>
+                        <td>Azul + Verde</td>
+                        <td>5000K → 4000K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>07:00 - 17:00</strong></td>
+                        <td>100%</td>
+                        <td>Espectro completo</td>
+                        <td>4000K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>17:00 - 18:00</strong></td>
+                        <td>100% → 0%</td>
+                        <td>Rojo + Infrarrojo</td>
+                        <td>4000K → 2700K</td>
+                    </tr>
+                    <tr>
+                        <td><strong>18:00 - 06:00</strong></td>
+                        <td>0%</td>
+                        <td>Oscuridad completa</td>
+                        <td>N/A</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Monitoreo y Alertas -->
+        <section class="content-section">
+            <h2 class="section-title">Monitoreo y Alertas: Prevención 24/7</h2>
+            
+            <p class="content-text">
+                El monitoreo continuo es la clave para prevenir pérdidas totales por fallos del sistema. Configurar alertas apropiadas para condiciones críticas puede salvar una cosecha completa.
+            </p>
+
+            <h3 class="subsection-title">Tipos de Alertas Críticas</h3>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Temperaturas Extremas:</strong> Alertas inmediatas si la temperatura supera 30°C o baja de 16°C durante más de 15 minutos.
+                </div>
+                <div class="step-item">
+                    <strong>Fallos de Ventilación:</strong> Detección de parada de extractores mediante sensores de flujo de aire o corriente eléctrica.
+                </div>
+                <div class="step-item">
+                    <strong>Niveles Bajos de Agua:</strong> Sensores de nivel en depósitos de nutrientes y agua para prevenir funcionamiento en seco de bombas.
+                </div>
+                <div class="step-item">
+                    <strong>Desviaciones de pH/EC:</strong> Alertas cuando los valores se salen del rango objetivo por más de 2 horas.
+                </div>
+                <div class="step-item">
+                    <strong>Fallos de Iluminación:</strong> Detección de LEDs quemados o controladores defectuosos mediante monitoreo de consumo eléctrico.
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                <img src="armario/dashboard_monitoreo.jpg" alt="Dashboard de monitoreo" class="content-image">
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4><span class="icon">📱</span>Notificaciones Móviles</h4>
+                    <p><strong>Apps nativas:</strong> iOS/Android dedicadas<br>
+                    <strong>Push notifications:</strong> Instantáneas<br>
+                    <strong>Configuración:</strong> Por tipo y severidad<br>
+                    <strong>Historial:</strong> Log completo de eventos</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">📧</span>Alertas por Email</h4>
+                    <p><strong>Múltiples destinatarios:</strong> Lista de contactos<br>
+                    <strong>Formato:</strong> HTML con gráficos<br>
+                    <strong>Adjuntos:</strong> Reportes automáticos<br>
+                    <strong>Frecuencia:</strong> Configurable por evento</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">💬</span>SMS de Emergencia</h4>
+                    <p><strong>Uso:</strong> Solo eventos críticos<br>
+                    <strong>Ventaja:</strong> No requiere internet<br>
+                    <strong>Costo:</strong> €0.05-0.15 por SMS<br>
+                    <strong>Límites:</strong> 160 caracteres por mensaje</p>
+                </div>
+                <div class="tech-card">
+                    <h4><span class="icon">🔊</span>Alarmas Locales</h4>
+                    <p><strong>Sirenas:</strong> 85-120 dB<br>
+                    <strong>Luces estroboscópicas:</strong> Señalización visual<br>
+                    <strong>Activación:</strong> Eventos críticos locales<br>
+                    <strong>Alimentación:</strong> UPS de respaldo</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Configuración de umbrales:</strong> Ajusta los niveles de alerta según tu experiencia. Demasiadas alertas menores pueden causar "fatiga de alarma", mientras que muy pocas pueden pasar por alto problemas reales.
+            </div>
+        </section>
+
+        <!-- Análisis de Datos -->
+        <section class="content-section">
+            <h2 class="section-title">Análisis de Datos: Inteligencia del Cultivo</h2>
+            
+            <p class="content-text">
+                Los datos históricos revelan patrones de crecimiento y permiten optimizar protocolos de cultivo. El análisis de correlaciones entre condiciones ambientales y desarrollo de las plantas es clave para refinar continuamente el sistema.
+            </p>
+
+            <h3 class="subsection-title">Métricas Clave para Analizar</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Métrica</th>
+                        <th>Frecuencia de Medición</th>
+                        <th>Valores Objetivo</th>
+                        <th>Impacto en Rendimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>VPD (Déficit de Presión de Vapor)</strong></td>
+                        <td>Cada 5 minutos</td>
+                        <td>0.8-1.2 kPa vegetativo, 1.0-1.4 kPa floración</td>
+                        <td>Optimiza transpiración y absorción de nutrientes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DLI (Integral de Luz Diaria)</strong></td>
+                        <td>Acumulativa diaria</td>
+                        <td>35-50 mol/m²/día</td>
+                        <td>Maximiza fotosíntesis sin saturación lumínica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Consumo de Agua</strong></td>
+                        <td>Cada evento de riego</td>
+                        <td>Incremento gradual hasta floración</td>
+                        <td>Indica salud y tasa de crecimiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>pH Drift</strong></td>
+                        <td>Continua</td>
+                        <td>Variación < 0.3 unidades/día</td>
+                        <td>Estabilidad de absorción de nutrientes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-placeholder">
+                <img src="extraccionvpdco2/graficos_analisis.jpg" alt="Gráficos de análisis" class="content-image">
+            </div>
+
+            <div class="highlight-box">
+                <h3>Algoritmos de Optimización Automática</h3>
+                <p><strong>Machine Learning:</strong> Los sistemas avanzados pueden aprender de patrones históricos para ajustar automáticamente parámetros como frecuencia de riego y intensidad lumínica.</p>
+                <p><strong>Predicción:</strong> Anticipar necesidades de la planta basándose en fase de crecimiento y condiciones ambientales.</p>
+                <p><strong>Benchmarking:</strong> Comparar rendimientos entre ciclos para identificar mejores prácticas.</p>
+            </div>
+        </section>
+
+        <!-- ROI de la Automatización -->
+        <section class="content-section">
+            <h2 class="section-title">ROI de la Automatización: Análisis Financiero</h2>
+            
+            <p class="content-text">
+                Aunque la inversión inicial puede ser significativa, la automatización genera retornos measurables a través de múltiples vías: incremento en rendimientos, reducción de tiempo de mantenimiento, y minimización de pérdidas por errores humanos.
+            </p>
+
+            <div class="roi-box">
+                <h3>💰 Beneficios Económicos Comprobados</h3>
+                <div class="roi-stats">
+                    <div class="roi-stat">
+                        <span class="number">15-30%</span>
+                        <span class="label">Incremento en Rendimiento</span>
+                    </div>
+                    <div class="roi-stat">
+                        <span class="number">70%</span>
+                        <span class="label">Reducción Tiempo Mantenimiento</span>
+                    </div>
+                    <div class="roi-stat">
+                        <span class="number">85%</span>
+                        <span class="label">Reducción Pérdidas por Error</span>
+                    </div>
+                    <div class="roi-stat">
+                        <span class="number">12-18</span>
+                        <span class="label">Meses de Amortización</span>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Análisis de Inversión por Nivel</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nivel de Automatización</th>
+                        <th>Inversión Inicial</th>
+                        <th>Área Cubierta</th>
+                        <th>ROI Esperado</th>
+                        <th>Tiempo Amortización</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Básico</strong></td>
+                        <td>€800-1,500</td>
+                        <td>2-4 m²</td>
+                        <td>150-200%</td>
+                        <td>8-12 meses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Intermedio</strong></td>
+                        <td>€2,000-4,000</td>
+                        <td>4-10 m²</td>
+                        <td>200-300%</td>
+                        <td>12-16 meses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Profesional</strong></td>
+                        <td>€5,000-12,000</td>
+                        <td>10-25 m²</td>
+                        <td>300-400%</td>
+                        <td>15-20 meses</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Industrial</strong></td>
+                        <td>€15,000-50,000</td>
+                        <td>25+ m²</td>
+                        <td>400-600%</td>
+                        <td>18-24 meses</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-placeholder">
+                <img src="armario/grafico_roi.jpg" alt="Gráfico de ROI" class="content-image">
+            </div>
+
+            <div class="highlight-box">
+                <h3>Beneficios Intangibles</h3>
+                <p><strong>Tranquilidad:</strong> Monitoreo 24/7 reduce el estrés del cultivador</p>
+                <p><strong>Consistencia:</strong> Resultados más predecibles ciclo tras ciclo</p>
+                <p><strong>Escalabilidad:</strong> Facilita el crecimiento de la operación</p>
+                <p><strong>Documentación:</strong> Trazabilidad completa para auditorías</p>
+            </div>
+        </section>
+
+        <!-- Implementación Paso a Paso -->
+        <section class="content-section">
+            <h2 class="section-title">Guía de Implementación</h2>
+            
+            <p class="content-text">
+                La transición hacia un cultivo automatizado debe ser gradual y bien planificada. Comenzar con los sistemas más críticos y expandir progresivamente es la estrategia más segura.
+            </p>
+
+            <h3 class="subsection-title">Fase 1: Fundamentos (Mes 1-2)</h3>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Control Climático Básico:</strong> Instalar sensores de temperatura y humedad conectados a ventiladores y calefacción.
+                </div>
+                <div class="step-item">
+                    <strong>Monitoreo Remoto:</strong> Configurar alertas básicas por SMS/email para condiciones extremas.
+                </div>
+                <div class="step-item">
+                    <strong>Iluminación Temporizadas:</strong> Controladores simples para ciclos de luz automáticos.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Fase 2: Integración (Mes 3-4)</h3>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Riego Automatizado:</strong> Sensores de humedad de sustrato con riego por goteo programable.
+                </div>
+                <div class="step-item">
+                    <strong>Control de CO₂:</strong> Inyección automática durante horas de luz con sensores NDIR.
+                </div>
+                <div class="step-item">
+                    <strong>Dashboard Centralizado:</strong> Plataforma única para monitorear todos los parámetros.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Fase 3: Optimización (Mes 5-6)</h3>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Análisis de Datos:</strong> Implementar herramientas de análisis para identificar patrones y optimizaciones.
+                </div>
+                <div class="step-item">
+                    <strong>Automatización Avanzada:</strong> Algoritmos adaptativos que ajustan parámetros según feedback de las plantas.
+                </div>
+                <div class="step-item">
+                    <strong>Redundancia y Backup:</strong> Sistemas de respaldo para componentes críticos.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consejo de implementación:</strong> Mantén siempre un sistema manual de respaldo durante las primeras semanas de cada nueva automatización. La familiarización con los sistemas es crucial antes de depender completamente de ellos.
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: El Futuro del Cultivo</h2>
+            
+            <p class="content-text">
+                La automatización del cultivo de cannabis representa mucho más que una simple conveniencia tecnológica. Es una evolución hacia la precisión, consistencia y optimización que transforma el cultivo de un arte intuitivo en una ciencia exacta.
+            </p>
+
+            <p class="content-text">
+                Los beneficios van desde el incremento measurable en rendimientos y calidad hasta la liberación de tiempo para que el cultivador se enfoque en aspectos más estratégicos como la selección genética, el desarrollo de técnicas de entrenamiento o la expansión de operaciones.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Puntos Clave para el Éxito</h3>
+                <p><strong>Implementación gradual:</strong> Comienza con lo básico y expande progresivamente</p>
+                <p><strong>Calidad en sensores:</strong> La precisión de los datos determina la efectividad del sistema</p>
+                <p><strong>Redundancia crítica:</strong> Siempre ten backup para funciones vitales</p>
+                <p><strong>Análisis continuo:</strong> Los datos solo son valiosos si se analizan y actúan</p>
+                <p><strong>Mantenimiento preventivo:</strong> Calibración regular asegura precisión a largo plazo</p>
+            </div>
+
+            <p class="content-text">
+                La inversión en automatización no es solo financiera; es una inversión en conocimiento, eficiencia y futuro. Los cultivadores que adopten estas tecnologías hoy estarán mejor posicionados para los desafíos y oportunidades del mañana.
+            </p>
+
+            <p class="content-text">
+                El futuro del cultivo de cannabis es inteligente, conectado y automatizado. Las herramientas están disponibles, la tecnología está madura, y los beneficios están comprobados. Solo queda dar el primer paso hacia la transformación digital de tu cultivo.
+            </p>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo tecnológico, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

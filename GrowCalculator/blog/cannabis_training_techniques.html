@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de Cultivo: LST, SCROG y Supercropping | GrowCalculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>🌿 Técnicas de Cultivo</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">LST, SCROG y Supercropping: Maximizando el Rendimiento por Metro Cuadrado</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 12 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Botones de compartir -->
+        <div class="share-buttons">
+            <a href="#" class="share-btn share-whatsapp" onclick="shareWhatsApp()">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="#" class="share-btn share-facebook" onclick="shareFacebook()">
+                <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a href="#" class="share-btn share-twitter" onclick="shareTwitter()">
+                <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="#" class="share-btn share-telegram" onclick="shareTelegram()">
+                <i class="fab fa-telegram"></i> Telegram
+            </a>
+        </div>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                Las técnicas de cultivo representan una de las herramientas más poderosas en el arsenal de cualquier cultivador moderno. Estas metodologías permiten modificar la estructura natural de las plantas de cannabis para optimizar la distribución lumínica y maximizar la producción en espacios limitados.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/tecnica-LST.jpg" alt="Técnicas de cultivo aplicadas en diferentes etapas" class="content-image">
+
+            <p class="content-text">
+                A través del control preciso del crecimiento y la manipulación estratégica de la arquitectura de la planta, estas técnicas pueden incrementar significativamente el rendimiento por metro cuadrado, mejorando la eficiencia lumínica y creando doseles uniformes que aprovechan al máximo cada fotón disponible.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Beneficios Fundamentales del Entrenamiento</h3>
+                <p><strong>Incremento del rendimiento:</strong> Aumentos del 20% al 80% según la técnica aplicada</p>
+                <p><strong>Optimización del espacio:</strong> Máximo aprovechamiento de la altura disponible</p>
+                <p><strong>Uniformidad lumínica:</strong> Distribución equitativa de la luz en todo el dosel</p>
+                <p><strong>Control de altura:</strong> Especialmente crucial en espacios con limitaciones verticales</p>
+            </div>
+        </section>
+
+        <!-- Low Stress Training (LST) -->
+        <section class="technique-card">
+            <h2 class="technique-title">Low Stress Training (LST)</h2>
+            
+            <p class="content-text">
+                El Low Stress Training es la técnica de entrenamiento más suave y accesible, ideal para principiantes que buscan incrementar su rendimiento sin someter las plantas a estrés significativo. Esta metodología utiliza ataduras suaves para redirigir el crecimiento, creando múltiples puntas principales a la misma altura.
+            </p>
+
+            <h3 class="subsection-title">Principios Científicos del LST</h3>
+            
+            <p class="content-text">
+                El LST funciona manipulando la dominancia apical de la planta. Al doblar la punta principal hacia un lado, se redistribuyen las auxinas (hormonas de crecimiento) hacia las ramas laterales, estimulando su desarrollo y creando múltiples colas principales de tamaño similar.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/lst.webp" alt="Diagrama paso a paso del proceso LST mostrando la evolución de la planta" class="content-image">
+
+            <h3 class="subsection-title">Implementación Paso a Paso</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Timing inicial:</strong> Comienza cuando las plantas tienen 4-6 nudos desarrollados y muestran crecimiento vigoroso. La planta debe tener suficiente flexibilidad en el tallo principal.
+                </div>
+                <div class="step-item">
+                    <strong>Primer atado:</strong> Utilizando alambre suave recubierto o ataduras de jardín, dobla suavemente la punta principal hacia un lado, formando un ángulo de aproximadamente 90 grados.
+                </div>
+                <div class="step-item">
+                    <strong>Ajustes progresivos:</strong> Revisa y ajusta las ataduras cada 2-3 días durante el crecimiento vegetativo, manteniendo todas las puntas a la misma altura.
+                </div>
+                <div class="step-item">
+                    <strong>Estructura final:</strong> Continúa el proceso hasta crear una estructura horizontal en forma de "araña", con múltiples puntas principales distribuidas uniformemente.
+                </div>
+            </div>
+
+            <div class="benefits-list">
+                <h4>Ventajas del LST</h4>
+                <ul>
+                    <li>Mínimo estrés para la planta, sin interrumpir el crecimiento</li>
+                    <li>Incremento del rendimiento entre 20-40% comparado con crecimiento natural</li>
+                    <li>Control preciso de la altura, ideal para espacios limitados</li>
+                    <li>Aplicable durante todo el período vegetativo</li>
+                    <li>Técnica reversible sin daño permanente</li>
+                    <li>Compatible con todas las variedades y genéticas</li>
+                </ul>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Consejos Profesionales para LST</h3>
+                <p><strong>Timing perfecto:</strong> Realiza ajustes durante las primeras horas del día cuando los tallos están más hidratados y flexibles</p>
+                <p><strong>Materiales ideales:</strong> Utiliza alambre recubierto o ataduras blandas que no corten la corteza</p>
+                <p><strong>Monitoreo continuo:</strong> Las plantas en crecimiento rápido pueden requerir ajustes diarios</p>
+            </div>
+        </section>
+
+        <!-- Screen of Green (SCROG) -->
+        <section class="technique-card">
+            <h2 class="technique-title">Screen of Green (SCROG)</h2>
+            
+            <p class="content-text">
+                El SCROG representa la evolución natural del LST, utilizando una malla horizontal para crear un dosel perfectamente uniforme. Esta técnica es especialmente efectiva para maximizar el rendimiento en cultivos de interior con iluminación artificial, distribuyendo los puntos de floración de manera óptima bajo las fuentes de luz.
+            </p>
+
+            <h3 class="subsection-title">Concepto y Beneficios Fundamentales</h3>
+            
+            <p class="content-text">
+                El sistema SCROG funciona como una guía física que obliga a las plantas a crecer horizontalmente en lugar de verticalmente. Las ramas se entrelazan a través de una malla, creando una superficie de floración uniforme que maximiza la penetración lumínica y elimina las zonas de sombra.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/scrog-deep-water-culture-dwc-marijuana.jpg" alt="Sistema SCROG con malla y plantas entrenadas" class="content-image">
+
+            <h3 class="subsection-title">Instalación del Sistema SCROG</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Posicionamiento de la malla:</strong> Instala la malla a 20-30cm de la base de las plantas, utilizando un marco rígido que soporte el peso de las ramas cargadas de flores.
+                </div>
+                <div class="step-item">
+                    <strong>Selección de malla:</strong> Utiliza mallas con cuadros de 5-10cm. Las mallas más grandes permiten mayor flexibilidad, mientras que las más pequeñas ofrecen mayor control.
+                </div>
+                <div class="step-item">
+                    <strong>Entrelazado inicial:</strong> Durante el crecimiento vegetativo, guía suavemente las ramas a través de los cuadros, manteniéndolas en posición horizontal.
+                </div>
+                <div class="step-item">
+                    <strong>Llenado del dosel:</strong> Continúa dirigiendo el crecimiento hasta llenar aproximadamente el 70-80% de la superficie de la malla antes de cambiar a floración.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Manejo Durante la Floración</h3>
+            
+            <p class="content-text">
+                Una vez iniciada la floración, el manejo del SCROG se vuelve más delicado. Las ramas desarrollan rigidez y fragilidad, por lo que se debe evitar la manipulación excesiva. El enfoque se centra en el soporte de las colas en desarrollo y el mantenimiento de la uniformidad del dosel.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>SCROG para Sativas</h4>
+                    <p>Especialmente efectivo con genéticas sativas altas, el SCROG limita el crecimiento vertical descontrolado mientras aprovecha su tendencia natural al crecimiento lateral extenso.</p>
+                </div>
+                <div class="info-card">
+                    <h4>SCROG para Índicas</h4>
+                    <p>Con índicas compactas, el SCROG maximiza el número de colas principales, compensando su menor altura natural con mayor densidad de puntos de floración.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Control Ambiental</h4>
+                    <p>El dosel uniforme del SCROG mejora la circulación de aire y facilita el control de humedad, reduciendo el riesgo de problemas de hongos.</p>
+                </div>
+            </div>
+
+            <div class="benefits-list">
+                <h4>Resultados Esperados del SCROG</h4>
+                <ul>
+                    <li>Incremento del rendimiento del 50-80% comparado con crecimiento natural</li>
+                    <li>Uniformidad excepcional en el tamaño y desarrollo de las colas</li>
+                    <li>Optimización máxima de la iluminación artificial</li>
+                    <li>Reducción significativa de las flores popcorn de menor calidad</li>
+                    <li>Facilita el manejo y mantenimiento del cultivo</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Supercropping -->
+        <section class="technique-card">
+            <h2 class="technique-title">Supercropping</h2>
+            
+            <p class="content-text">
+                El supercropping es una técnica de alto estrés controlado que implica el daño intencional y calculado de las fibras internas de las ramas sin comprometer la corteza externa. Esta metodología avanzada estimula respuestas hormonales específicas que resultan en mayor producción de resina y fortalecimiento estructural.
+            </p>
+
+            <h3 class="subsection-title">Mecanismo Fisiológico</h3>
+            
+            <p class="content-text">
+                El supercropping activa la respuesta de estrés natural de la planta, estimulando la producción de auxinas y citoquininas. El daño controlado crea nudos de cicatrización que se vuelven más fuertes que la rama original, mientras redirige la energía hacia la producción de metabolitos secundarios como cannabinoides y terpenos.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/suoercropping.webp" alt="Supercropping y técnicas de doblado de tallos" class="content-image">
+
+            <h3 class="subsection-title">Ejecución Técnica Correcta</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Selección del punto:</strong> Localiza el punto óptimo en el internudo medio-alto de la rama, evitando nudos y áreas con hojas principales.
+                </div>
+                <div class="step-item">
+                    <strong>Técnica de pellizco:</strong> Aplica presión gradual con pulgar e índice, comprimiendo hasta sentir el característico "crack" de las fibras internas rompiéndose.
+                </div>
+                <div class="step-item">
+                    <strong>Doblez controlado:</strong> Una vez roto el interior, dobla suavemente la rama formando un ángulo de 90°, sin forzar la corteza externa.
+                </div>
+                <div class="step-item">
+                    <strong>Recuperación:</strong> La planta iniciará el proceso de cicatrización inmediatamente, con recuperación visible en 24-48 horas y fortalecimiento completo en una semana.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Timing Estratégico</h3>
+            
+            <p class="content-text">
+                El timing del supercropping es crucial para maximizar beneficios y minimizar riesgos. La técnica es más efectiva durante las primeras 2-3 semanas de floración, cuando las plantas mantienen capacidad de recuperación pero ya han iniciado la producción de cannabinoides.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Beneficios del Supercropping</h3>
+                <p><strong>Incremento de potencia:</strong> El estrés controlado puede aumentar la producción de THC hasta un 15%</p>
+                <p><strong>Fortalecimiento estructural:</strong> Las ramas desarrollan nudos más fuertes capaces de soportar colas más pesadas</p>
+                <p><strong>Redistribución energética:</strong> Redirige la energía hacia colas secundarias, equilibrando la producción</p>
+                <p><strong>Control de altura:</strong> Efectivo para controlar ramas que crecen demasiado cerca de las luces</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Indicadores de Éxito</h4>
+                    <p>Una técnica exitosa muestra recuperación rápida, desarrollo de un nudo de cicatrización visible y crecimiento vigoroso de brotes laterales en la zona tratada.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Señales de Alerta</h4>
+                    <p>Marchitamiento prolongado, decoloración o muerte de la rama indica daño excesivo. En estos casos, corta la rama dañada inmediatamente.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Técnicas Adicionales de Poda</h3>
+            
+            <p class="content-text">
+                Además de las técnicas principales, existen métodos adicionales de poda que pueden complementar el entrenamiento y maximizar los resultados del cultivo.
+            </p>
+
+            <h4>Lollipopping</h4>
+            <p class="content-text">
+                El lollipopping consiste en eliminar las ramas y hojas inferiores de la planta, concentrando toda la energía en las colas superiores. Esta técnica es especialmente efectiva en cultivos de alta densidad donde la luz no llega a las zonas bajas.
+            </p>
+            <img src="images/imagenes articulos/tecnicas de cultivo/lollipoping.jpg" alt="Técnica de lollipopping aplicada" class="content-image">
+
+            <h4>FIM (Fuck I Missed)</h4>
+            <p class="content-text">
+                La técnica FIM es una variación del topping que consiste en cortar solo una parte de la punta apical, creando múltiples puntas principales en lugar de solo dos. Es menos agresiva que el topping tradicional y puede producir hasta 4-6 colas principales.
+            </p>
+            <img src="images/imagenes articulos/tecnicas de cultivo/fim.jpg" alt="Técnica FIM de poda apical" class="content-image">
+        </section>
+
+        <!-- Combinación de técnicas -->
+        <section class="content-section">
+            <h2 class="section-title">Estrategias Avanzadas: Combinación de Técnicas</h2>
+            
+            <p class="content-text">
+                Los cultivadores expertos frecuentemente combinan múltiples técnicas de cultivo para crear sistemas híbridos que maximizan las ventajas de cada metodología. Estas combinaciones requieren mayor experiencia pero pueden resultar en incrementos extraordinarios del rendimiento.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/lst2.webp" alt="Combinación de técnicas de cultivo avanzadas" class="content-image">
+
+            <h3 class="subsection-title">LST + SCROG: La Combinación Clásica</h3>
+            
+            <p class="content-text">
+                La combinación de LST con SCROG representa el estándar dorado para cultivos de interior. El LST prepara la estructura básica de la planta, mientras que el SCROG refina y perfecciona el dosel final, resultando en una superficie de floración excepcionalmente uniforme.
+            </p>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Fase LST (Semanas 1-4 vegetativo):</strong> Aplica LST básico para crear múltiples puntas principales y una estructura horizontal inicial.
+                </div>
+                <div class="step-item">
+                    <strong>Instalación SCROG (Semana 4-5):</strong> Instala la malla cuando las plantas hayan desarrollado suficiente masa vegetal para comenzar a llenar el espacio.
+                </div>
+                <div class="step-item">
+                    <strong>Llenado del dosel (Semanas 5-7):</strong> Combina el LST continuado con el entrelazado SCROG para lograr cobertura completa de la malla.
+                </div>
+                <div class="step-item">
+                    <strong>Supercropping selectivo (Semanas 1-2 floración):</strong> Aplica supercropping a ramas dominantes para equilibrar el dosel final.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Resultados de la Combinación Avanzada</h3>
+                <p>Los cultivadores experimentados reportan incrementos del rendimiento de hasta 100-150% comparado con crecimiento natural, junto con uniformidad excepcional en la calidad y potencia de las flores producidas.</p>
+            </div>
+
+            <h3 class="subsection-title">Consideraciones para Técnicas Combinadas</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Gestión del Estrés</h4>
+                    <p>Las técnicas combinadas acumulan estrés. Monitorea signos de sobre-entrenamiento como crecimiento ralentizado, amarillamiento o marchitamiento.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Timing Crítico</h4>
+                    <p>Cada técnica tiene ventanas óptimas de aplicación. La coordinación temporal es crucial para evitar interferencias negativas entre métodos.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Recuperación Extendida</h4>
+                    <p>Las plantas entrenadas intensivamente pueden requerir períodos vegetativos más largos para recuperarse completamente antes de la floración.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: Dominando el Arte del Entrenamiento</h2>
+            
+            <p class="content-text">
+                Las técnicas de cultivo representan herramientas fundamentales para cualquier cultivador serio que busque maximizar la eficiencia y productividad de su espacio de cultivo. Desde el LST accesible para principiantes hasta las combinaciones avanzadas para expertos, cada metodología ofrece beneficios únicos que pueden transformar completamente los resultados de tu cultivo.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/scrog2.jpg" alt="Resultados de técnicas de cultivo aplicadas" class="content-image">
+            <img src="images/imagenes articulos/tecnicas de cultivo/sog.jpg" alt="Aplicación práctica de técnicas de cultivo" class="content-image">
+
+            <p class="content-text">
+                La clave del éxito radica en comprender que estas técnicas no son simplemente métodos de manipulación física, sino formas sofisticadas de comunicarse con la biología natural de la planta. Al trabajar en armonía con los procesos hormonales y fisiológicos, podemos guiar el desarrollo de nuestras plantas hacia configuraciones que maximicen tanto la cantidad como la calidad del producto final.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Principios Fundamentales para el Éxito</h3>
+                <p><strong>Comienza gradualmente:</strong> Domina una técnica antes de combinar múltiples métodos</p>
+                <p><strong>Observa y adapta:</strong> Cada variedad responde de manera diferente al entrenamiento</p>
+                <p><strong>Paciencia es clave:</strong> Los mejores resultados requieren tiempo y dedicación constante</p>
+                <p><strong>Documenta tu proceso:</strong> Mantén registros detallados para replicar éxitos futuros</p>
+                <p><strong>Respeta las plantas:</strong> El entrenamiento debe trabajar con la naturaleza, no contra ella</p>
+            </div>
+
+            <p class="content-text">
+                Recuerda que el dominio de estas técnicas es un proceso evolutivo. Cada cultivo proporciona nuevas lecciones y oportunidades para refinar tu enfoque. Los cultivadores más exitosos son aquellos que mantienen una mentalidad de aprendizaje continuo, experimentando con diferentes combinaciones y adaptando sus métodos según las respuestas específicas de sus plantas.
+            </p>
+
+            <img src="images/imagenes articulos/tecnicas de cultivo/sog2.jpg" alt="Proceso evolutivo de técnicas de cultivo" class="content-image">
+            <img src="images/imagenes articulos/tecnicas de cultivo/sog3.webp" alt="Aplicación práctica de técnicas avanzadas" class="content-image">
+
+            <p class="content-text">
+                Con la práctica consistente y la aplicación cuidadosa de estos principios, podrás transformar cualquier espacio de cultivo en un sistema de producción altamente eficiente, maximizando cada centímetro cuadrado disponible y cada fotón de luz invertido en tu proyecto.
+            </p>
+        </section>
+
+        <!-- Tabla comparativa de técnicas -->
+        <section class="content-section">
+            <h2 class="section-title">Comparativa Técnica Detallada</h2>
+            
+            <table style="width: 100%; border-collapse: collapse; margin: 30px 0; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);">
+                <thead>
+                    <tr style="background: linear-gradient(135deg, #667eea, #764ba2); color: white;">
+                        <th style="padding: 20px; text-align: left; font-weight: 600; font-size: 1.1em;">Técnica</th>
+                        <th style="padding: 20px; text-align: left; font-weight: 600; font-size: 1.1em;">Dificultad</th>
+                        <th style="padding: 20px; text-align: left; font-weight: 600; font-size: 1.1em;">Incremento Rendimiento</th>
+                        <th style="padding: 20px; text-align: left; font-weight: 600; font-size: 1.1em;">Tiempo Requerido</th>
+                        <th style="padding: 20px; text-align: left; font-weight: 600; font-size: 1.1em;">Mejor Para</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 20px; font-size: 1em; color: #495057;"><strong>LST</strong></td>
+                        <td style="padding: 20px; color: #28a745;">Principiante</td>
+                        <td style="padding: 20px; color: #495057;">20-40%</td>
+                        <td style="padding: 20px; color: #495057;">5-10 min/día</td>
+                        <td style="padding: 20px; color: #495057;">Nuevos cultivadores</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 20px; font-size: 1em; color: #495057;"><strong>SCROG</strong></td>
+                        <td style="padding: 20px; color: #ffc107;">Intermedio</td>
+                        <td style="padding: 20px; color: #495057;">50-80%</td>
+                        <td style="padding: 20px; color: #495057;">15-30 min/día</td>
+                        <td style="padding: 20px; color: #495057;">Espacios con altura limitada</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #e9ecef;">
+                        <td style="padding: 20px; font-size: 1em; color: #495057;"><strong>Supercropping</strong></td>
+                        <td style="padding: 20px; color: #dc3545;">Avanzado</td>
+                        <td style="padding: 20px; color: #495057;">15-30%</td>
+                        <td style="padding: 20px; color: #495057;">10-20 min/sesión</td>
+                        <td style="padding: 20px; color: #495057;">Control de altura/potencia</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 20px; font-size: 1em; color: #495057;"><strong>Combinado</strong></td>
+                        <td style="padding: 20px; color: #dc3545;">Experto</td>
+                        <td style="padding: 20px; color: #495057;">100-150%</td>
+                        <td style="padding: 20px; color: #495057;">30-60 min/día</td>
+                        <td style="padding: 20px; color: #495057;">Máximo rendimiento</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Consejos finales -->
+        <section class="content-section">
+            <h2 class="section-title">Consejos Finales y Mejores Prácticas</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Selección de Variedades</h4>
+                    <p>Las sativas altas responden excepcionalmente bien al SCROG, mientras que las índicas compactas se benefician más del LST intensivo. Las híbridas ofrecen versatilidad para experimentar con múltiples técnicas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Herramientas Esenciales</h4>
+                    <p>Invierte en ataduras de calidad, alambres recubiertos, mallas resistentes y tijeras de precisión. Las herramientas adecuadas hacen la diferencia entre el éxito y la frustración.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Monitoreo Constante</h4>
+                    <p>Las plantas entrenadas requieren observación diaria. Los cambios rápidos pueden requerir ajustes inmediatos para evitar daños o crecimiento descontrolado.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Documentación Detallada</h4>
+                    <p>Fotografía el progreso semanalmente y mantén notas sobre técnicas aplicadas, timing y resultados. Esta información es invaluable para optimizar cultivos futuros.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Errores Más Comunes a Evitar</h3>
+                <p><strong>Entrenamiento tardío:</strong> Iniciar técnicas demasiado tarde en la fase vegetativa reduce la efectividad</p>
+                <p><strong>Sobre-entrenamiento:</strong> Aplicar demasiadas técnicas simultáneamente puede estresar excesivamente las plantas</p>
+                <p><strong>Ataduras demasiado apretadas:</strong> Pueden cortar la circulación y dañar permanentemente las ramas</p>
+                <p><strong>Neglicencia post-entrenamiento:</strong> Las plantas entrenadas requieren mantenimiento continuo durante todo el ciclo</p>
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

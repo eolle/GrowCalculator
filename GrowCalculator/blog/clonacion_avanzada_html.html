@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clonación Avanzada: Preservación y Propagación Genética</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Clonación Avanzada</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Preservación y Propagación Genética para Cultivadores Profesionales</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 20 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La clonación permite preservar fenotipos excepcionales indefinidamente, manteniendo características genéticas exactas de plantas madre superiores. Esta técnica es fundamental para operaciones comerciales y cultivadores que buscan consistencia absoluta en sus cosechas.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/clones/clone.jpg" alt="Laboratorio de clonación profesional con plantas madre y esquejes en diferentes etapas" class="content-image">
+                <p class="image-caption">Laboratorio de clonación profesional con plantas madre y esquejes en diferentes etapas</p>
+            </div>
+
+            <p class="content-text">
+                Dominar las técnicas avanzadas de clonación no solo garantiza la preservación de genéticas excepcionales, sino que también permite el escalado comercial y la optimización de espacios de cultivo mediante la producción continua de material vegetal uniforme y de alta calidad.
+            </p>
+        </section>
+
+        <!-- Selección de Plantas Madre -->
+        <section class="content-section">
+            <h2 class="section-title">Selección de Plantas Madre Superiores</h2>
+            
+            <p class="content-text">
+                La selección de plantas madre es el fundamento de cualquier programa de clonación exitoso. Una madre excepcional puede proporcionar miles de clones durante años, convirtiendo esta decisión inicial en la más importante del proceso.
+            </p>
+
+            <h3 class="subsection-title">Criterios de Evaluación Profesional</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🌿 Vigor Vegetativo</h4>
+                    <p>Crecimiento rápido y uniforme bajo diversas condiciones ambientales. La planta debe mostrar resistencia al estrés y capacidad de recuperación rápida tras podas o manipulaciones.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🛡️ Resistencia Natural</h4>
+                    <p>Tolerancia excepcional a estrés hídrico, térmico y nutricional. Las mejores madres mantienen su vigor incluso en condiciones subóptimas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📈 Productividad Consistente</h4>
+                    <p>Rendimientos consistentes superiores a 500g/m² en cultivo indoor, con capacidad de mantener estos niveles a lo largo de múltiples ciclos.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🧪 Calidad Química Superior</h4>
+                    <p>Perfiles cannabinoides y terpénicos excepcionales que se mantienen estables a través de generaciones de clones.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Prueba de Estabilidad Genética</h3>
+                <p>Las candidatas a plantas madre deben someterse a pruebas de estrés controlado para evaluar su tendencia al hermafroditismo. Solo plantas que mantengan su sexo bajo condiciones adversas califican como madres de élite.</p>
+            </div>
+
+            <h3 class="subsection-title">Mantenimiento de Plantas Madre</h3>
+            
+            <p class="content-text">
+                El mantenimiento adecuado de las plantas madre es crucial para garantizar la producción continua de material vegetal de alta calidad. Las condiciones específicas deben mantenerse de forma constante.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Rango Óptimo</th>
+                        <th>Descripción</th>
+                        <th>Impacto en Clones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fotoperiodo</strong></td>
+                        <td>18/6 - 20/4</td>
+                        <td>Horas luz/oscuridad para vegetativo perpetuo</td>
+                        <td>Vigor y velocidad de enraizamiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperatura</strong></td>
+                        <td>22-26°C</td>
+                        <td>Constante día y noche</td>
+                        <td>Metabolismo y salud general</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Humedad Relativa</strong></td>
+                        <td>60-70%</td>
+                        <td>Para crecimiento vigoroso</td>
+                        <td>Turgencia y desarrollo foliar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nutrición EC</strong></td>
+                        <td>1.0-1.2 mS/cm</td>
+                        <td>Rica en nitrógeno (200-250 ppm N)</td>
+                        <td>Reservas energéticas en esquejes</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/clones/clones5.jpg" alt="Cuarto de plantas madre con sistema de iluminación LED y control ambiental" class="content-image">
+                <p class="image-caption">Cuarto de plantas madre con sistema de iluminación LED y control ambiental</p>
+            </div>
+        </section>
+
+        <!-- Técnicas de Clonación -->
+        <section class="content-section">
+            <h2 class="section-title">Técnicas de Clonación Profesional</h2>
+            
+            <h3 class="subsection-title">Selección de Esquejes de Calidad</h3>
+            
+            <p class="content-text">
+                La selección adecuada del material vegetal es fundamental para el éxito del proceso de clonación. No todos los cortes tienen la misma capacidad de enraizamiento y desarrollo posterior.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>📅 Edad del Material</h4>
+                    <p>Ramas de 4-6 semanas de crecimiento vegetativo. Este material tiene el equilibrio perfecto entre juventud celular y reservas energéticas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📍 Zona de Corte</h4>
+                    <p>Internudos medios, evitando puntas demasiado tiernas o ramas demasiado maduras y leñosas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📏 Longitud Óptima</h4>
+                    <p>10-15cm con 3-4 nudos. Esta longitud proporciona suficiente área de enraizamiento y reservas energéticas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📐 Grosor Ideal</h4>
+                    <p>3-5mm de diámetro para reservas energéticas adecuadas sin comprometer la velocidad de enraizamiento.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Preparación Profesional del Esqueje</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Corte en bisel a 45°:</strong> Realizado bajo agua corriente fría para prevenir embolia gaseosa en el sistema vascular de la planta.
+                </div>
+                <div class="step-item">
+                    <strong>Eliminación foliar estratégica:</strong> Reducir hojas grandes al 50% para minimizar transpiración mientras se mantiene capacidad fotosintética.
+                </div>
+                <div class="step-item">
+                    <strong>Raspado ligero del tallo:</strong> Exposición del cambium en la zona de enraizamiento para acelerar la formación de raíces adventicias.
+                </div>
+                <div class="step-item">
+                    <strong>Aplicación de hormona:</strong> IBA 0.1-0.3% para estimulación radicular óptima sin toxicidad por sobredosis.
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/clones/successful-cloning-roots.jpg" alt="Secuencia fotográfica del proceso de preparación de esquejes paso a paso" class="content-image">
+                <p class="image-caption">Secuencia fotográfica del proceso de preparación de esquejes paso a paso</p>
+            </div>
+        </section>
+
+        <!-- Medios de Enraizamiento -->
+        <section class="content-section">
+            <h2 class="section-title">Medios de Enraizamiento Profesionales</h2>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Medio</th>
+                        <th>Ventajas</th>
+                        <th>Desventajas</th>
+                        <th>Tasa de Éxito</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Lana de Roca</strong></td>
+                        <td>Esterilidad, retención hídrica controlable, pH neutro</td>
+                        <td>Requiere preparación previa, no biodegradable</td>
+                        <td>85-95%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jiffy Pellets</strong></td>
+                        <td>Facilidad de uso, transplante sin estrés</td>
+                        <td>Menos control sobre nutrición, más caro</td>
+                        <td>80-90%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Perlita/Vermiculita</strong></td>
+                        <td>Excelente oxigenación, reutilizable</td>
+                        <td>Requiere riego más frecuente</td>
+                        <td>75-85%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sistemas Aeropónicos</strong></td>
+                        <td>Enraizamiento más rápido, raíces superiores</td>
+                        <td>Mayor inversión inicial, dependiente de tecnología</td>
+                        <td>90-98%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Preparación Específica de Medios</h3>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🧱 Lana de Roca</h4>
+                    <p><strong>Preparación:</strong> Remojar 12-24h en solución pH 5.5, EC 0.4 mS/cm</p>
+                    <p><strong>Manejo:</strong> Riego cada 2-3 días, evitando encharcamiento que puede causar pudrición</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌿 Jiffy Pellets</h4>
+                    <p><strong>Composición:</strong> Turba de sphagnum comprimida con red biodegradable</p>
+                    <p><strong>Hidratación:</strong> Agua tibia pH 6.0, sin nutrientes las primeras 2 semanas</p>
+                </div>
+                <div class="info-card">
+                    <h4>💨 Perlita/Vermiculita</h4>
+                    <p><strong>Mezcla:</strong> 70% perlita fina, 30% vermiculita para equilibrio perfecto</p>
+                    <p><strong>Ventajas:</strong> Máxima oxigenación radicular, completamente reutilizable</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌊 Propagación en Gel</h4>
+                    <p><strong>Composición natural:</strong> Aloe vera, extracto de sauce (ácido salicílico), miel</p>
+                    <p><strong>Ventajas:</strong> 100% orgánico, estimula defensas naturales de la planta</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sistemas de Propagación -->
+        <section class="content-section">
+            <h2 class="section-title">Sistemas de Propagación Avanzados</h2>
+            
+            <h3 class="subsection-title">Cámaras de Humedad Controlada</h3>
+            
+            <p class="content-text">
+                Las cámaras de humedad proporcionan el ambiente controlado necesario para maximizar las tasas de enraizamiento manteniendo condiciones óptimas durante las fases críticas del proceso.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Días 1-7</th>
+                        <th>Días 8-14</th>
+                        <th>Días 15+</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Humedad Relativa</strong></td>
+                        <td>85-95%</td>
+                        <td>70-80%</td>
+                        <td>60-70%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperatura</strong></td>
+                        <td>24-26°C</td>
+                        <td>23-25°C</td>
+                        <td>22-24°C</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Iluminación PPFD</strong></td>
+                        <td>100-200</td>
+                        <td>200-400</td>
+                        <td>400-600</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ventilación</strong></td>
+                        <td>Mínima</td>
+                        <td>Cada 30 min</td>
+                        <td>Continua suave</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Sistemas Aeropónicos de Alta Eficiencia</h3>
+            
+            <p class="content-text">
+                Los sistemas aeropónicos representan la tecnología más avanzada en propagación, ofreciendo las mejores tasas de éxito y los tiempos de enraizamiento más rápidos disponibles.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Especificaciones Técnicas Aeropónicas</h3>
+                <p><strong>Nebulización:</strong> Ciclos de 5 segundos ON / 10 minutos OFF</p>
+                <p><strong>Solución nutritiva:</strong> EC 0.6-0.8 mS/cm, pH 5.8</p>
+                <p><strong>Ventajas:</strong> Enraizamiento en 5-7 días, sistema radicular superior</p>
+                <p><strong>Temperatura solución:</strong> 20-22°C para máxima oxigenación</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/clones/clones-aero-cloner-done-rooting.jpg" alt="Sistema aeropónico profesional con nebulizadores y control automatizado" class="content-image">
+                <p class="image-caption">Sistema aeropónico profesional con nebulizadores y control automatizado</p>
+            </div>
+        </section>
+
+        <!-- Protocolos de Enraizamiento -->
+        <section class="content-section">
+            <h2 class="section-title">Protocolos de Enraizamiento Optimizados</h2>
+            
+            <h3 class="subsection-title">Fase Crítica: Primeros 3 Días</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>💧 Humedad Máxima</h4>
+                    <p>95% HR constante para prevenir deshidratación mientras la planta desarrolla capacidad de absorción radicular.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🚿 Solo Nebulización</h4>
+                    <p>Nebulización foliar con agua pH 6.0, evitando saturación del medio de enraizamiento.</p>
+                </div>
+                <div class="info-card">
+                    <h4>💡 Luz Suave</h4>
+                    <p>12-16 horas a 100-150 PPFD con fuentes LED o CFL para minimizar estrés.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌡️ Temperatura Estable</h4>
+                    <p>25°C día / 23°C noche para optimizar actividad metabólica sin estrés térmico.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Desarrollo: Días 4-10</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Reducción gradual de humedad:</strong> Desde 95% hasta 80% HR para estimular desarrollo radicular y aclimatación progresiva.
+                </div>
+                <div class="step-item">
+                    <strong>Primera nutrición:</strong> Solución nutritiva muy diluida EC 0.4 mS/cm para apoyar metabolismo sin sobrecargar sistema inmaduro.
+                </div>
+                <div class="step-item">
+                    <strong>Incremento lumínico:</strong> 200-300 PPFD progresivamente para estimular fotosíntesis sin estrés lumínico.
+                </div>
+                <div class="step-item">
+                    <strong>Ventilación controlada:</strong> Intercambio de aire cada 30 minutos para prevenir estancamiento sin resecar ambiente.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Aclimatación Final: Días 10-14</h3>
+            
+            <p class="content-text">
+                Esta fase prepara los clones para su transición al ambiente de cultivo definitivo, asegurando que puedan mantener su vigor una vez transplantados.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🌬️ Aclimatación Ambiental</h4>
+                    <p>HR ambiente (60-70%) para preparar las plantas para condiciones normales de cultivo.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🧪 Nutrición Completa</h4>
+                    <p>EC 0.8-1.0 mS/cm con perfil nutricional completo para sostener crecimiento vigoroso.</p>
+                </div>
+                <div class="info-card">
+                    <h4>☀️ Iluminación Normal</h4>
+                    <p>400-600 PPFD equivalente a condiciones de cultivo vegetativo estándar.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌱 Criterio de Transplante</h4>
+                    <p>Raíces blancas de 2-3cm de longitud con crecimiento activo de nuevas puntas.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Punto crítico:</strong> El transplante prematuro es una de las principales causas de pérdida de clones. Esperar a que el sistema radicular esté completamente establecido garantiza supervivencia del 95%+.
+            </div>
+        </section>
+
+        <!-- Optimización de Tasas de Éxito -->
+        <section class="content-section">
+            <h2 class="section-title">Optimización de Tasas de Éxito</h2>
+            
+            <h3 class="subsection-title">Factores Ambientales Críticos</h3>
+            
+            <p class="content-text">
+                Los pequeños detalles en el control ambiental pueden marcar la diferencia entre un éxito del 70% y uno del 95%. La consistencia es clave para resultados profesionales.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🌡️ Estabilidad Térmica</h4>
+                    <p>Variaciones menores a 2°C. Las fluctuaciones térmicas reducen significativamente las tasas de éxito al estresar los esquejes durante la fase crítica.</p>
+                </div>
+                <div class="info-card">
+                    <h4>💧 Calidad del Agua</h4>
+                    <p>TDS inferior a 100 ppm, libre de cloro y cloraminas. El agua de calidad es fundamental para evitar toxicidad en tejidos sensibles.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🧼 Higiene Absoluta</h4>
+                    <p>Esterilización rigurosa de herramientas, manos y superficies con alcohol isopropílico al 70% antes de cada manipulación.</p>
+                </div>
+                <div class="info-card">
+                    <h4>⚡ Energía Constante</h4>
+                    <p>Sistemas de respaldo para mantener iluminación y ventilación durante cortes de energía que podrían comprometer lotes completos.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Aditivos Beneficiosos Probados</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Aditivo</th>
+                        <th>Concentración</th>
+                        <th>Beneficio Principal</th>
+                        <th>Momento de Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Vitamina B1 (Tiamina)</strong></td>
+                        <td>10-50 ppm</td>
+                        <td>Reduce shock de transplante</td>
+                        <td>Primera semana de enraizamiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ácido Salicílico</strong></td>
+                        <td>0.1 mM</td>
+                        <td>Estimula sistema inmune natural</td>
+                        <td>Tratamiento pre-corte y durante enraizamiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Micorrizas</strong></td>
+                        <td>Según fabricante</td>
+                        <td>Mejora establecimiento post-transplante</td>
+                        <td>Durante transplante a medio definitivo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Agua de Coco</strong></td>
+                        <td>10-20% dilución</td>
+                        <td>Hormonas naturales de crecimiento</td>
+                        <td>Nebulización foliar días 3-7</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/clones/successful-cloning-roots (1).jpg" alt="Comparativa de clones tratados con diferentes aditivos mostrando tasas de enraizamiento" class="content-image">
+                <p class="image-caption">Comparativa de clones tratados con diferentes aditivos mostrando tasas de enraizamiento</p>
+            </div>
+        </section>
+
+        <!-- Resolución de Problemas -->
+        <section class="content-section">
+            <h2 class="section-title">Diagnóstico y Resolución de Problemas</h2>
+            
+            <h3 class="subsection-title">Problemas Comunes y Soluciones</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Síntomas</th>
+                        <th>Causa Probable</th>
+                        <th>Solución Inmediata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marchitez Persistente</strong></td>
+                        <td>Hojas caídas después de 48h</td>
+                        <td>Exceso de transpiración vs absorción</td>
+                        <td>Incrementar humedad al 95%, reducir temperatura foliar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pudrición del Tallo</strong></td>
+                        <td>Base negra y blanda</td>
+                        <td>Exceso de humedad, patógenos fúngicos</td>
+                        <td>Aplicar peróxido de hidrógeno 0.1%, mejorar ventilación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Enraizamiento Lento</strong></td>
+                        <td>Sin raíces después de 14 días</td>
+                        <td>Temperatura baja, falta de oxígeno</td>
+                        <td>Calor de fondo 26-28°C, mejorar drenaje del medio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Amarillamiento Foliar</strong></td>
+                        <td>Hojas amarillas desde la base</td>
+                        <td>Deficiencia nutricional o pH incorrecto</td>
+                        <td>Ajustar pH a 5.8-6.2, nutrición diluida EC 0.4</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Prevención de Patógenos</h3>
+            
+            <div class="highlight-box">
+                <h3>Protocolo de Sanitización</h3>
+                <p><strong>Herramientas:</strong> Alcohol isopropílico 70% entre cada corte</p>
+                <p><strong>Superficies:</strong> Solución de lejía 1:10 diariamente</p>
+                <p><strong>Aire:</strong> Filtración HEPA y luz UV-C en sistemas de ventilación</p>
+                <p><strong>Agua:</strong> Filtración por ósmosis inversa y esterilización UV</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>Alerta temprana:</strong> El olor dulzón o la aparición de manchas oscuras son indicadores tempranos de problemas fúngicos. La intervención inmediata puede salvar lotes completos.
+            </div>
+        </section>
+
+        <!-- Escalado Comercial -->
+        <section class="content-section">
+            <h2 class="section-title">Escalado para Producción Comercial</h2>
+            
+            <h3 class="subsection-title">Sistemas Automatizados</h3>
+            
+            <p class="content-text">
+                La producción comercial requiere sistemas que minimicen la intervención manual mientras mantienen la precisión necesaria para altas tasas de éxito. La automatización es clave para la rentabilidad.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🤖 Nebulización Temporizada</h4>
+                    <p>Controladores programables con sensores de humedad que ajustan automáticamente los ciclos según las condiciones ambientales en tiempo real.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔥 Calor de Fondo</h4>
+                    <p>Sistemas de resistencias eléctricas con termostatos precisos (±0.5°C) para mantener temperatura radicular óptima independiente del ambiente.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📱 Monitoreo Remoto</h4>
+                    <p>Sistemas de alerta que notifican desviaciones críticas vía SMS/email, permitiendo intervención inmediata 24/7.</p>
+                </div>
+                <div class="info-card">
+                    <h4>📊 Registro de Datos</h4>
+                    <p>Logs automáticos de todos los parámetros para análisis posterior y optimización continua de procesos.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Números de Producción Masiva</h3>
+            
+            <p class="content-text">
+                Las instalaciones comerciales optimizadas pueden alcanzar niveles de producción impresionantes manteniendo estándares de calidad profesional.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Escala de Operación</th>
+                        <th>Producción Semanal</th>
+                        <th>Eficiencia Espacial</th>
+                        <th>Tasa de Éxito Esperada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Pequeña Comercial</strong></td>
+                        <td>500-1,000 clones</td>
+                        <td>100-150 esquejes/m²</td>
+                        <td>85-90%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mediana Comercial</strong></td>
+                        <td>2,000-5,000 clones</td>
+                        <td>150-200 esquejes/m²</td>
+                        <td>90-95%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gran Comercial</strong></td>
+                        <td>5,000-10,000 clones</td>
+                        <td>200+ esquejes/m²</td>
+                        <td>95-98%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Rotación Continua Optimizada</h3>
+                <p><strong>Nuevos lotes:</strong> Cada 3-4 días para producción continua</p>
+                <p><strong>Tiempo total:</strong> 14-21 días desde corte hasta transplante</p>
+                <p><strong>Capacidad instalada:</strong> 4-6 lotes simultáneos en diferentes fases</p>
+                <p><strong>Eficiencia máxima:</strong> >95% de tasas de éxito en operaciones optimizadas</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/room.jpg" alt="Instalación comercial de clonación con múltiples cámaras en diferentes fases de producción" class="content-image">
+                <p class="image-caption">Instalación comercial de clonación con múltiples cámaras en diferentes fases de producción</p>
+            </div>
+        </section>
+
+        <!-- Conservación Genética -->
+        <section class="content-section">
+            <h2 class="section-title">Conservación Genética Avanzada</h2>
+            
+            <h3 class="subsection-title">Bancos de Germoplasma</h3>
+            
+            <p class="content-text">
+                La conservación a largo plazo de material genético valioso requiere técnicas especializadas que van más allá del mantenimiento tradicional de plantas madre.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>❄️ Criopreservación</h4>
+                    <p>Almacenamiento a -196°C en nitrógeno líquido permite conservación indefinida de tejidos vegetales con viabilidad superior al 90% tras décadas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🧪 Cultivo in Vitro</h4>
+                    <p>Micropropagación en medios estériles elimina patógenos y permite multiplicación rápida de material libre de virus en espacios mínimos.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔄 Rejuvenecimiento</h4>
+                    <p>Técnicas para revertir senescencia en plantas madre envejecidas, restaurando vigor juvenil y capacidad de producción de esquejes.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔬 Análisis Genético</h4>
+                    <p>Marcadores moleculares para verificar estabilidad genética y detectar deriva genética en poblaciones clonales a largo plazo.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Protocolos de Conservación</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Duración</th>
+                        <th>Viabilidad</th>
+                        <th>Aplicación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cultivo Lento</strong></td>
+                        <td>6-12 meses</td>
+                        <td>95%</td>
+                        <td>Conservación temporal, reducción de mantenimiento</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Criopreservación</strong></td>
+                        <td>Décadas</td>
+                        <td>90%</td>
+                        <td>Conservación permanente, backup genético</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cultivo in Vitro</strong></td>
+                        <td>2-5 años</td>
+                        <td>98%</td>
+                        <td>Multiplicación rápida, limpieza de patógenos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liofilización</strong></td>
+                        <td>10+ años</td>
+                        <td>70-80%</td>
+                        <td>Almacenamiento simple, costo reducido</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Consideración crítica:</strong> La diversidad genética es fundamental para la supervivencia a largo plazo. Mantener múltiples líneas genéticas reduce el riesgo de pérdida catastrófica por enfermedades o deriva genética.
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Maestría en Clonación: El Camino hacia la Excelencia</h2>
+            
+            <p class="content-text">
+                La clonación avanzada representa mucho más que una simple técnica de propagación; es la puerta de entrada a la consistencia absoluta, la preservación genética y la optimización comercial. Dominar estos procesos permite a los cultivadores mantener y mejorar continuamente sus mejores genéticas.
+            </p>
+
+            <p class="content-text">
+                La inversión en sistemas profesionales, el control riguroso de parámetros ambientales y la implementación de protocolos estandarizados no solo mejoran las tasas de éxito, sino que establecen las bases para operaciones escalables y rentables a largo plazo.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Principios Fundamentales para el Éxito</h3>
+                <p><strong>Selección rigurosa:</strong> Solo las mejores madres merecen ser preservadas</p>
+                <p><strong>Consistencia absoluta:</strong> Los pequeños detalles determinan el éxito profesional</p>
+                <p><strong>Higiene impecable:</strong> La prevención supera siempre a la cura</p>
+                <p><strong>Monitoreo continuo:</strong> Los datos guían la optimización constante</p>
+                <p><strong>Paciencia estratégica:</strong> Respetar los tiempos biológicos garantiza calidad</p>
+            </div>
+
+            <p class="content-text">
+                La clonación profesional requiere una combinación única de conocimiento científico, habilidad técnica y atención meticulosa a los detalles. Los cultivadores que dominan estas técnicas obtienen ventajas competitivas significativas a través de la consistencia, eficiencia y calidad superior de su material vegetal.
+            </p>
+
+            <p class="content-text">
+                Con las técnicas y protocolos presentados en esta guía, tienes las herramientas necesarias para establecer operaciones de clonación de nivel profesional, capaces de preservar y multiplicar tus mejores genéticas con tasas de éxito superiores al 95%.
+            </p>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/armario.jpg" alt="Instalación completa de clonación profesional mostrando todas las fases del proceso integradas" class="content-image">
+                <p class="image-caption">Instalación completa de clonación profesional mostrando todas las fases del proceso integradas</p>
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(46, 204, 113, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #2ecc71; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

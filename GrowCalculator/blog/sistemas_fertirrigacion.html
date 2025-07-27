@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistemas de Fertirrigación: Precisión Automatizada</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Sistemas de Fertirrigación</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Precisión Automatizada para el Cultivo Profesional</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 15 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <img src="images/sistemas hidroponicos y riego/autopot hydro.webp" alt="Autopot" class="content-image">
+            
+            <h2 class="section-title">Evolución de la Nutrición Vegetal</h2>
+            <p class="content-text">
+                Los sistemas de fertirrigación automatizados han revolucionado el cultivo profesional, permitiendo una dosificación precisa de nutrientes y agua según las necesidades específicas de cada fase de crecimiento. Esta tecnología combina la eficiencia del riego por goteo con la precisión de la nutrición hidropónica, creando un ecosistema controlado que maximiza el potencial genético de las plantas.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Ventajas de la Automatización</h3>
+                <p><strong>Precisión:</strong> Control exacto de pH, EC y concentraciones nutritivas</p>
+                <p><strong>Consistencia:</strong> Eliminación de errores humanos en la dosificación</p>
+                <p><strong>Eficiencia:</strong> Optimización del uso de agua y nutrientes</p>
+                <p><strong>Escalabilidad:</strong> Capacidad para manejar operaciones de cualquier tamaño</p>
+            </div>
+        </section>
+
+        <!-- Componentes del Sistema -->
+        <section class="content-section">
+            <h2 class="section-title">Componentes del Sistema</h2>
+            
+            <img src="images/sistemas hidroponicos y riego/ebb.jpg" alt="Ebb & Flow" class="content-image">
+            
+            <p class="content-text">
+                Un sistema de fertirrigación automatizado está compuesto por múltiples subsistemas que trabajan en conjunto para proporcionar las condiciones nutritivas óptimas de manera continua y precisa.
+            </p>
+
+            <h3 class="subsection-title">Tanques de Concentrados</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Tanque A - Calcio y Micronutrientes Catiónicos</h4>
+                    <p>Contiene calcio y todos los micronutrientes con carga positiva. La separación evita precipitaciones y garantiza la estabilidad química de la solución concentrada.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tanque B - NPK y Micronutrientes Aniónicos</h4>
+                    <p>Alberga los macronutrientes principales y micronutrientes con carga negativa. Esta separación química es fundamental para la estabilidad del sistema.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tanque C - Ácidos para Ajuste de pH</h4>
+                    <p>Contiene ácidos concentrados (fosfórico, nítrico o sulfúrico) para el control automático del pH de la solución nutritiva final.</p>
+                </div>
+            </div>
+
+            <div class="tech-specs">
+                <h3>Especificaciones Técnicas de Tanques</h3>
+                <p><strong>Capacidad:</strong> 100-500L según el tamaño del cultivo y frecuencia de preparación</p>
+                <p><strong>Material:</strong> Polietileno de alta densidad resistente a productos químicos</p>
+                <p><strong>Accesorios:</strong> Indicadores de nivel, válvulas de drenaje y conexiones roscadas</p>
+                <p><strong>Ubicación:</strong> Área protegida de la luz solar para evitar proliferación de algas</p>
+            </div>
+
+            <h3 class="subsection-title">Sistema de Dosificación</h3>
+            
+            <p class="content-text">
+                Las bombas peristálticas de alta precisión (±2%) inyectan los concentrados en la línea principal de riego. Estos sistemas utilizan rodillos que comprimen mangueras flexibles, creando un flujo controlado sin contacto directo entre los componentes mecánicos y los químicos.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Caudal Típico</th>
+                        <th>Precisión</th>
+                        <th>Función</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bomba Tanque A</strong></td>
+                        <td>0.5-5 L/hora</td>
+                        <td>±2%</td>
+                        <td>Dosificación calcio y micros catiónicos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bomba Tanque B</strong></td>
+                        <td>1-8 L/hora</td>
+                        <td>±2%</td>
+                        <td>Dosificación NPK y micros aniónicos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bomba Ácido</strong></td>
+                        <td>0.1-2 L/hora</td>
+                        <td>±2%</td>
+                        <td>Control automático de pH</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Sensores de Monitoreo</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Sensor de pH - Electrodo de Vidrio</h4>
+                    <p>Electrodo de vidrio con compensación automática de temperatura. Precisión ±0.1 pH con calibración regular. Respuesta rápida y estabilidad a largo plazo en soluciones nutritivas.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Sensor EC - Conductividad de Cuatro Electrodos</h4>
+                    <p>Sistema de cuatro electrodos que elimina la polarización y proporciona lecturas precisas de conductividad eléctrica. Rango 0-5 mS/cm con compensación de temperatura.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Sensor de Temperatura - Termistor de Precisión</h4>
+                    <p>Termistor de alta precisión (±0.1°C) que permite compensación de temperatura para pH y EC, garantizando lecturas exactas en todas las condiciones climáticas.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Medidores de Caudal - Electromagnéticos</h4>
+                    <p>Sensores electromagnéticos para control volumétrico preciso. Sin partes móviles, resistentes a la corrosión y capaces de medir flujos desde 0.1 hasta 1000 L/min.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Controladores Programables</h3>
+            
+            <p class="content-text">
+                Las unidades PID (Proporcional-Integral-Derivativo) mantienen los parámetros dentro de rangos estrechos, compensando variaciones automáticamente. Estos sistemas de control avanzados aprenden los patrones del cultivo y anticipan las necesidades nutritivas.
+            </p>
+
+            <div class="tech-specs">
+                <h3>Características del Control PID</h3>
+                <p><strong>Proporcional:</strong> Respuesta inmediata a desviaciones del setpoint</p>
+                <p><strong>Integral:</strong> Corrección de errores acumulados a lo largo del tiempo</p>
+                <p><strong>Derivativo:</strong> Anticipación de tendencias para respuesta proactiva</p>
+                <p><strong>Precisión:</strong> Mantenimiento de pH ±0.1 y EC ±0.05 mS/cm</p>
+            </div>
+        </section>
+
+        <!-- Formulaciones de Concentrados -->
+        <section class="content-section">
+            <h2 class="section-title">Formulaciones de Concentrados</h2>
+            
+            <p class="content-text">
+                Las formulaciones de concentrados están diseñadas para proporcionar una nutrición completa y balanceada cuando se diluyen en proporciones específicas. Estas recetas han sido optimizadas para maximizar la solubilidad y estabilidad química.
+            </p>
+
+            <h3 class="subsection-title">Concentrado A (100x)</h3>
+            
+            <div class="formula-box">
+                <h3>Formulación por 100L de Agua Destilada</h3>
+                <p><strong>Nitrato de calcio:</strong> 15 kg - Aporta calcio y nitrógeno nítrico</p>
+                <p><strong>Sulfato de magnesio:</strong> 8 kg - Fuente de magnesio y azufre</p>
+                <p><strong>Quelato de hierro (EDDHA):</strong> 800g - Hierro estable en pH alto</p>
+                <p><strong>Quelato de manganeso:</strong> 400g - Manganeso biodisponible</p>
+                <p><strong>Quelato de zinc:</strong> 200g - Zinc protegido contra precipitación</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>Orden de mezcla crítico:</strong> Disolver completamente cada componente antes de añadir el siguiente. El nitrato de calcio siempre debe disolverse primero para evitar precipitaciones con fosfatos o sulfatos.
+            </div>
+
+            <h3 class="subsection-title">Concentrado B (100x)</h3>
+            
+            <div class="formula-box">
+                <h3>Formulación por 100L de Agua Destilada</h3>
+                <p><strong>Fosfato monopotásico:</strong> 5 kg - Fósforo y potasio en forma soluble</p>
+                <p><strong>Nitrato de potasio:</strong> 12 kg - Potasio y nitrógeno nítrico</p>
+                <p><strong>Sulfato de potasio:</strong> 8 kg - Potasio adicional y azufre</p>
+                <p><strong>Ácido bórico:</strong> 300g - Boro en forma directamente asimilable</p>
+                <p><strong>Molibdato de sodio:</strong> 50g - Molibdeno para fijación de nitrógeno</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Nutriente</th>
+                        <th>Concentrado A</th>
+                        <th>Concentrado B</th>
+                        <th>Función Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Calcio (Ca)</strong></td>
+                        <td>✓</td>
+                        <td>-</td>
+                        <td>Estructura celular, transporte</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Magnesio (Mg)</strong></td>
+                        <td>✓</td>
+                        <td>-</td>
+                        <td>Centro de clorofila</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Potasio (K)</strong></td>
+                        <td>-</td>
+                        <td>✓</td>
+                        <td>Osmorregulación, enzimas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fósforo (P)</strong></td>
+                        <td>-</td>
+                        <td>✓</td>
+                        <td>Energía, floración</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Micronutrientes</strong></td>
+                        <td>Fe, Mn, Zn</td>
+                        <td>B, Mo</td>
+                        <td>Catalizadores enzimáticos</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Programación de Fases -->
+        <section class="content-section">
+            <h2 class="section-title">Programación de Fases</h2>
+            
+            <p class="content-text">
+                Cada fase del ciclo de crecimiento requiere ajustes específicos en la concentración nutritiva, pH y frecuencia de riego. La programación automatizada permite transiciones suaves entre fases sin estrés para las plantas.
+            </p>
+
+            <h3 class="subsection-title">Fase Vegetativa (18/6 Fotoperiodo)</h3>
+            
+            <div class="phase-box">
+                <h3>Parámetros Vegetativos</h3>
+                <p><strong>EC objetivo:</strong> 1.2-1.4 mS/cm - Balance entre crecimiento y eficiencia</p>
+                <p><strong>pH objetivo:</strong> 5.8-6.0 - Óptimo para absorción de nitrógeno</p>
+                <p><strong>Frecuencia:</strong> 3-4 riegos diarios - Mantiene humedad constante</p>
+                <p><strong>Volumen:</strong> 10-15% del volumen del contenedor por riego</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Focus Nutricional Vegetativo</h4>
+                    <p><strong>Nitrógeno elevado:</strong> Desarrollo de masa foliar y estructura</p>
+                    <p><strong>Fósforo moderado:</strong> Desarrollo radicular robusto</p>
+                    <p><strong>Potasio estándar:</strong> Funciones metabólicas básicas</p>
+                </div>
+                <div class="info-card">
+                    <h4>Micronutrientes Críticos</h4>
+                    <p><strong>Hierro:</strong> Síntesis de clorofila y fotosíntesis</p>
+                    <p><strong>Manganeso:</strong> Activación enzimática</p>
+                    <p><strong>Zinc:</strong> Crecimiento apical y hormonal</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Transición (12/12 Primeras 2 Semanas)</h3>
+            
+            <div class="phase-box">
+                <h3>Parámetros de Transición</h3>
+                <p><strong>EC objetivo:</strong> 1.4-1.6 mS/cm - Incremento gradual</p>
+                <p><strong>Ajuste gradual:</strong> Incrementar K, reducir N progresivamente</p>
+                <p><strong>Frecuencia:</strong> 4-5 riegos diarios - Mayor demanda hídrica</p>
+                <p><strong>Monitoreo intensivo:</strong> Cambios hormonales críticos</p>
+            </div>
+
+            <p class="content-text">
+                Durante la transición, las plantas experimentan cambios hormonales significativos que requieren ajustes nutritivos precisos. El aumento gradual del potasio y la reducción del nitrógeno deben sincronizarse con los cambios en el fotoperiodo.
+            </p>
+
+            <h3 class="subsection-title">Floración (12/12 Después Semana 2)</h3>
+            
+            <div class="phase-box">
+                <h3>Parámetros de Floración</h3>
+                <p><strong>EC objetivo:</strong> 1.6-1.8 mS/cm (pico semana 5-6)</p>
+                <p><strong>Ajuste nutricional:</strong> Ratio N:P:K de 1:3:4</p>
+                <p><strong>Reducción gradual:</strong> Disminuir EC desde semana 7</p>
+                <p><strong>Flush final:</strong> Solo agua las últimas 1-2 semanas</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Semana Floración</th>
+                        <th>EC (mS/cm)</th>
+                        <th>Ratio N:P:K</th>
+                        <th>Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1-2</strong></td>
+                        <td>1.4-1.5</td>
+                        <td>2:2:3</td>
+                        <td>Transición gradual</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3-4</strong></td>
+                        <td>1.6-1.7</td>
+                        <td>1:2:3</td>
+                        <td>Formación de flores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5-6</strong></td>
+                        <td>1.7-1.8</td>
+                        <td>1:3:4</td>
+                        <td>Pico de floración</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7-8</strong></td>
+                        <td>1.4-1.6</td>
+                        <td>1:2:3</td>
+                        <td>Maduración</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9+</strong></td>
+                        <td>0.0</td>
+                        <td>Solo agua</td>
+                        <td>Flush final</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Estrategias de Riego -->
+        <section class="content-section">
+            <h2 class="section-title">Estrategias de Riego</h2>
+            
+            <p class="content-text">
+                La elección de la estrategia de riego impacta directamente en la eficiencia del uso de agua y nutrientes, así como en el desarrollo radicular y la salud general de las plantas. Cada método tiene ventajas específicas según las condiciones del cultivo.
+            </p>
+
+            <h3 class="subsection-title">Riego por Demanda</h3>
+            
+            <p class="content-text">
+                Los sensores de peso en las macetas activan el riego cuando la humedad del sustrato desciende al 30-40%. Este método representa la forma más eficiente de conservar agua y nutrientes, proporcionando exactamente lo que las plantas necesitan en el momento preciso.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Ventajas del Sistema por Demanda</h4>
+                    <p><strong>Máxima eficiencia:</strong> Zero desperdicio de agua y nutrientes</p>
+                    <p><strong>Adaptación automática:</strong> Responde a cambios climáticos</p>
+                    <p><strong>Prevención de estrés:</strong> Evita tanto sequía como encharcamiento</p>
+                    <p><strong>Datos precisos:</strong> Monitoreo del consumo real por planta</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tecnología de Sensores</h4>
+                    <p><strong>Células de carga:</strong> Precisión de ±2g en macetas de 20L</p>
+                    <p><strong>Transmisión inalámbrica:</strong> Comunicación con controlador central</p>
+                    <p><strong>Batería de larga duración:</strong> 6-12 meses de autonomía</p>
+                    <p><strong>Calibración automática:</strong> Compensación por crecimiento</p>
+                </div>
+            </div>
+
+            <div class="tech-specs">
+                <h3>Configuración del Sistema por Demanda</h3>
+                <p><strong>Umbral de activación:</strong> Pérdida del 30-40% del peso de saturación</p>
+                <p><strong>Volumen de riego:</strong> Retorno al 90-95% de capacidad</p>
+                <p><strong>Tiempo mínimo entre riegos:</strong> 2-4 horas según fase</p>
+                <p><strong>Compensación nocturna:</strong> Reducción del 50% en consumo</p>
+            </div>
+
+            <h3 class="subsection-title">Riego Temporizado</h3>
+            
+            <p class="content-text">
+                Los riegos cortos y frecuentes (5-10 minutos cada 2-4 horas) mantienen una humedad constante sin saturar el sustrato. Este método es más predecible y fácil de programar, siendo ideal para cultivadores que prefieren control manual sobre automatización completa.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Fase</th>
+                        <th>Frecuencia</th>
+                        <th>Duración</th>
+                        <th>Volumen por Riego</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Vegetativo Temprano</strong></td>
+                        <td>Cada 6 horas</td>
+                        <td>3-5 minutos</td>
+                        <td>5-8% volumen maceta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vegetativo Tardío</strong></td>
+                        <td>Cada 4 horas</td>
+                        <td>5-8 minutos</td>
+                        <td>8-12% volumen maceta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Floración Temprana</strong></td>
+                        <td>Cada 3 horas</td>
+                        <td>8-12 minutos</td>
+                        <td>12-15% volumen maceta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Floración Tardía</strong></td>
+                        <td>Cada 2-3 horas</td>
+                        <td>10-15 minutos</td>
+                        <td>15-20% volumen maceta</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Drenaje y Recirculación</h3>
+            
+            <p class="content-text">
+                Los sistemas cerrados recapturan el 15-30% de drenaje, ajustan automáticamente la concentración y recirculan la solución. Esta tecnología puede alcanzar eficiencias hídricas superiores al 90%, siendo esencial para operaciones comerciales y cultivos en regiones con restricciones de agua.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Beneficios de la Recirculación</h3>
+                <p><strong>Eficiencia hídrica >90%:</strong> Aprovechamiento máximo del agua</p>
+                <p><strong>Reducción de costos:</strong> Menor consumo de fertilizantes</p>
+                <p><strong>Control ambiental:</strong> Eliminación de escorrentías</p>
+                <p><strong>Monitoreo avanzado:</strong> Análisis del consumo por nutriente</p>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Sistema de Recaptación</h4>
+                    <p>Bandejas de drenaje individuales o colectivas canalizan el exceso hacia tanques de recuperación. Filtros de 50 micras eliminan partículas orgánicas antes del reacondicionamiento.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Reacondicionamiento Automático</h4>
+                    <p>Sistemas inteligentes analizan la composición del drenaje y calculan automáticamente las adiciones necesarias para restaurar la concentración objetivo.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Control de Calidad</h4>
+                    <p>Monitoreo continuo de pH, EC y oxígeno disuelto en el sistema de recirculación. Descarte automático cuando los parámetros salen de rango seguro.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mantenimiento Predictivo -->
+        <section class="content-section">
+            <h2 class="section-title">Mantenimiento Predictivo</h2>
+            
+            <p class="content-text">
+                Un programa de mantenimiento predictivo previene fallos del sistema y garantiza la precisión continua de las mediciones. La calibración regular y el monitoreo proactivo son esenciales para el funcionamiento óptimo del sistema de fertirrigación.
+            </p>
+
+            <h3 class="subsection-title">Calibración de Sensores</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Calibración de pH</h4>
+                    <p><strong>Frecuencia:</strong> Semanal obligatoria</p>
+                    <p><strong>Soluciones buffer:</strong> pH 4.0 y 7.0 certificadas</p>
+                    <p><strong>Procedimiento:</strong> Enjuague, calibración de dos puntos</p>
+                    <p><strong>Criterio de reemplazo:</strong> Desviación >0.2 pH</p>
+                </div>
+                <div class="info-card">
+                    <h4>Calibración de EC</h4>
+                    <p><strong>Frecuencia:</strong> Quincenal</p>
+                    <p><strong>Solución estándar:</strong> 1.41 mS/cm a 25°C</p>
+                    <p><strong>Verificación:</strong> Múltiples puntos de calibración</p>
+                    <p><strong>Limpieza:</strong> Enjuague con agua destilada</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Importancia crítica:</strong> Sensores descalibrados pueden causar toxicidades o deficiencias severas. La calibración regular es una inversión en la salud del cultivo y la calidad del producto final.
+            </div>
+
+            <h3 class="subsection-title">Prevención de Obstrucciones</h3>
+            
+            <p class="content-text">
+                Los sistemas de fertirrigación son susceptibles a obstrucciones por precipitados minerales, materia orgánica y crecimiento de algas. Un programa preventivo mantiene los flujos óptimos y extiende la vida útil del equipamiento.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Filtración Multicapa</h4>
+                    <p>Filtros de 50-100 micras en líneas principales capturan partículas antes de llegar a los emisores. Sistemas de autolimpieza o backwash automatizado reducen el mantenimiento manual.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Limpieza Química Preventiva</h4>
+                    <p>Ácido cítrico al 2% mensualmente disuelve depósitos minerales en goteros y tuberías. Tratamiento con hipoclorito sódico elimina biofilms y material orgánico.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Inspección de Emisores</h4>
+                    <p>Verificación semanal del caudal de goteros individuales. Reemplazo inmediato de emisores con variación >10% del caudal nominal.</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Componente</th>
+                        <th>Frecuencia</th>
+                        <th>Procedimiento</th>
+                        <th>Criterio de Reemplazo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Filtros Principales</strong></td>
+                        <td>Mensual</td>
+                        <td>Backwash o reemplazo</td>
+                        <td>Pérdida de presión >0.5 bar</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mangueras Peristálticas</strong></td>
+                        <td>Trimestral</td>
+                        <td>Inspección visual</td>
+                        <td>Grietas o deformación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electrodos pH</strong></td>
+                        <td>Semestral</td>
+                        <td>Limpieza ácida</td>
+                        <td>Respuesta lenta >30 seg</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sensores EC</strong></td>
+                        <td>Anual</td>
+                        <td>Limpieza profunda</td>
+                        <td>Deriva >5% entre calibraciones</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Monitoreo de Datos</h3>
+            
+            <p class="content-text">
+                Los sistemas modernos registran parámetros cada minuto, creando una base de datos histórica invaluable para la optimización de protocolos. El análisis de tendencias permite identificar problemas antes de que afecten el cultivo.
+            </p>
+
+            <div class="tech-specs">
+                <h3>Capacidades de Monitoreo Avanzado</h3>
+                <p><strong>Frecuencia de registro:</strong> Cada 30-60 segundos para parámetros críticos</p>
+                <p><strong>Almacenamiento local:</strong> Mínimo 12 meses de datos históricos</p>
+                <p><strong>Comunicación remota:</strong> Acceso vía internet y aplicaciones móviles</p>
+                <p><strong>Alertas automáticas:</strong> Notificaciones inmediatas de desviaciones</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Beneficios del Análisis de Datos</h3>
+                <p><strong>Optimización continua:</strong> Ajuste fino basado en resultados históricos</p>
+                <p><strong>Detección temprana:</strong> Identificación de tendencias problemáticas</p>
+                <p><strong>Trazabilidad completa:</strong> Registro de todas las variables de cultivo</p>
+                <p><strong>Mejora genética:</strong> Correlación entre nutrición y expresión fenotípica</p>
+            </div>
+        </section>
+
+        <!-- ROI de la Automatización -->
+        <section class="content-section">
+            <h2 class="section-title">ROI de la Automatización</h2>
+            
+            <p class="content-text">
+                La inversión en sistemas de fertirrigación automatizados se justifica tanto por los ahorros operativos como por las mejoras en rendimiento y calidad. El análisis del retorno de inversión debe considerar factores tangibles e intangibles a largo plazo.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Inversión Inicial</h4>
+                    <p><strong>Sistema básico:</strong> €3,000-5,000 para 50m²</p>
+                    <p><strong>Sistema avanzado:</strong> €5,000-8,000 con recirculación</p>
+                    <p><strong>Instalación:</strong> €1,000-2,000 según complejidad</p>
+                    <p><strong>Capacitación:</strong> €500-1,000 para operadores</p>
+                </div>
+                <div class="info-card">
+                    <h4>Ahorros Operativos</h4>
+                    <p><strong>Mano de obra:</strong> 60-80% reducción en tiempo de riego</p>
+                    <p><strong>Agua:</strong> 30-50% menor consumo vs riego manual</p>
+                    <p><strong>Fertilizantes:</strong> 20-40% mayor eficiencia nutritiva</p>
+                    <p><strong>Energía:</strong> Optimización de bombas y sistemas</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Beneficio</th>
+                        <th>Cuantificación</th>
+                        <th>Tiempo de Retorno</th>
+                        <th>Impacto a Largo Plazo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ahorro Mano de Obra</strong></td>
+                        <td>2-4 horas diarias</td>
+                        <td>12-18 meses</td>
+                        <td>Escalabilidad operativa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mejora Rendimiento</strong></td>
+                        <td>15-25% incremento</td>
+                        <td>6-12 meses</td>
+                        <td>Consistencia de producción</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calidad Premium</strong></td>
+                        <td>10-30% precio superior</td>
+                        <td>3-6 meses</td>
+                        <td>Diferenciación de mercado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Eficiencia Recursos</strong></td>
+                        <td>30-50% ahorro agua/nutrientes</td>
+                        <td>18-24 meses</td>
+                        <td>Sostenibilidad ambiental</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Factores Intangibles</h3>
+                <p><strong>Tranquilidad:</strong> Monitoreo 24/7 sin intervención humana</p>
+                <p><strong>Consistencia:</strong> Eliminación de errores humanos</p>
+                <p><strong>Escalabilidad:</strong> Capacidad de crecimiento sin proporción linear de personal</p>
+                <p><strong>Profesionalización:</strong> Datos objetivos para toma de decisiones</p>
+                <p><strong>Competitividad:</strong> Ventaja tecnológica en el mercado</p>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Retorno Típico en Operaciones Comerciales</h4>
+                    <p>En instalaciones de 200m² o más, el retorno de inversión típico es de 18-24 meses considerando únicamente ahorros tangibles. Los beneficios intangibles pueden reducir este período a 12-18 meses.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Escalabilidad y Crecimiento</h4>
+                    <p>Los sistemas modulares permiten expansión gradual sin obsolescencia del equipamiento existente. La inversión inicial se amortiza más rápidamente al expandir operaciones.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Valor Residual</h4>
+                    <p>Equipamiento bien mantenido retiene 60-70% de su valor después de 5 años. La tecnología es transferible entre ubicaciones y cultivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">El Futuro de la Nutrición Vegetal</h2>
+            
+            <p class="content-text">
+                Los sistemas de fertirrigación automatizados representan la evolución natural del cultivo profesional hacia la precisión, eficiencia y sostenibilidad. Esta tecnología no solo mejora los resultados inmediatos, sino que establece las bases para operaciones escalables y competitivas a largo plazo.
+            </p>
+
+            <p class="content-text">
+                La integración de sensores avanzados, control automático y análisis de datos transforma el cultivo de un arte empírico en una ciencia exacta. Los cultivadores que adopten estas tecnologías no solo obtendrán mejores resultados, sino que establecerán ventajas competitivas sostenibles en un mercado cada vez más exigente.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Principios para la Implementación Exitosa</h3>
+                <p><strong>Planificación integral:</strong> Diseño del sistema según objetivos específicos</p>
+                <p><strong>Calidad de componentes:</strong> Inversión en equipamiento confiable</p>
+                <p><strong>Capacitación adecuada:</strong> Personal competente en operación y mantenimiento</p>
+                <p><strong>Monitoreo continuo:</strong> Uso de datos para optimización constante</p>
+                <p><strong>Mantenimiento preventivo:</strong> Programa estructurado de cuidado del sistema</p>
+            </div>
+
+            <p class="content-text">
+                La automatización en fertirrigación no reemplaza la experiencia del cultivador, sino que la amplifica exponencialmente. Los sistemas proporcionan las herramientas para implementar estrategias nutritivas sofisticadas con precisión y consistencia imposibles de lograr manualmente. El resultado es un cultivo más productivo, eficiente y sostenible que representa el estándar de la industria moderna.
+            </p>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

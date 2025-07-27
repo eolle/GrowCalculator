@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustratos Hidropónicos vs Orgánicos: La Guía Definitiva del Cultivador</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Sustratos Hidropónicos vs Orgánicos</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">La Eterna Decisión del Cultivador: Pros y Contras</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 15 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La elección del medio de cultivo representa una de las decisiones más fundamentales que debe tomar cualquier cultivador de cannabis. Esta decisión no solo determina el sabor y la potencia del producto final, sino que también influye directamente en la velocidad de crecimiento, el rendimiento total y la complejidad del sistema de cultivo que necesitarás implementar.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/comparacion%20micorrizas.jpg" alt="Comparativa visual de diferentes tipos de sustratos" class="content-image">
+                <p class="image-caption">Comparativa visual de diferentes tipos de sustratos</p>
+            </div>
+
+            <p class="content-text">
+                Cada método tiene ventajas específicas según los objetivos del cultivador, su nivel de experiencia, el tiempo disponible para dedicar al cultivo y los recursos económicos. En esta guía completa, analizaremos ambos enfoques desde una perspectiva técnica y práctica para ayudarte a tomar la decisión más informada.
+            </p>
+        </section>
+
+        <!-- Hidroponía -->
+        <section class="content-section">
+            <h2 class="section-title">Hidroponía: Velocidad y Control Absoluto</h2>
+            
+            <p class="content-text">
+                La hidroponía representa la máxima expresión del control tecnológico en el cultivo de cannabis. Este sistema permite manipular con precisión milimétrica cada aspecto de la nutrición vegetal, resultando en un crecimiento acelerado y rendimientos superiores cuando se maneja correctamente.
+            </p>
+
+            <h3 class="subsection-title">Sistemas Hidropónicos Principales</h3>
+            
+            <div class="system-list">
+                <div class="system-item">
+                    <h4>DWC (Deep Water Culture)</h4>
+                    <p>Las raíces permanecen suspendidas en una solución nutritiva oxigenada constantemente. Este sistema ofrece el crecimiento más rápido pero requiere monitoreo continuo de pH, EC y oxígeno disuelto. Ideal para cultivadores experimentados que buscan máximo rendimiento.</p>
+                </div>
+                <div class="system-item">
+                    <h4>NFT (Nutrient Film Technique)</h4>
+                    <p>Una película fina de nutrientes fluye constantemente por canales inclinados donde se desarrollan las raíces. Excelente para cultivos comerciales por su eficiencia en el uso de agua y nutrientes, aunque vulnerable a interrupciones en el flujo.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Ebb and Flow (Flujo y Reflujo)</h4>
+                    <p>Sistema de inundación y drenaje periódicos que combina las ventajas de la hidroponía con mayor estabilidad. Las plantas se riegan con solución nutritiva en intervalos programados, permitiendo oxigenación natural entre ciclos.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Aeroponía</h4>
+                    <p>Las raíces permanecen suspendidas en el aire y se alimentan mediante nebulización nutritiva. Ofrece el crecimiento más explosivo pero requiere equipamiento sofisticado y experiencia técnica avanzada.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/clones/successful-cloning-roots.jpg" alt="Estructura de raíces en sustratos hidropónicos vs orgánicos" class="content-image">
+                <p class="image-caption">Estructura de raíces en sustratos hidropónicos vs orgánicos</p>
+            </div>
+
+            <h3 class="subsection-title">Ventajas y Desafíos de la Hidroponía</h3>
+            
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card pros-card">
+                    <h4>✅ Ventajas Hidropónicas</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🚀</span>
+                            <strong>Crecimiento acelerado:</strong> 30-50% más rápido que sustratos orgánicos debido a la disponibilidad inmediata de nutrientes
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🎯</span>
+                            <strong>Control preciso:</strong> pH y EC ajustables instantáneamente para condiciones óptimas
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">📈</span>
+                            <strong>Rendimientos superiores:</strong> 20-40% más producción por planta en manos expertas
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🛡️</span>
+                            <strong>Menos plagas:</strong> Ambiente menos propicio para insectos terrestres y hongos del suelo
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Desafíos Hidropónicos</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc3545;">⚠️</span>
+                            <strong>Dependencia tecnológica:</strong> Fallos del sistema pueden ser catastróficos en pocas horas
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc3545;">📚</span>
+                            <strong>Curva de aprendizaje:</strong> Requiere conocimiento técnico avanzado y experiencia
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc3545;">💡</span>
+                            <strong>Costos operativos:</strong> Electricidad para bombas, oxigenadores y sistemas de control
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #dc3545;">👃</span>
+                            <strong>Calidad organoléptica:</strong> Posible pérdida de complejidad de terpenos y sabores
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cultivo Orgánico -->
+        <section class="content-section">
+            <h2 class="section-title">Cultivo Orgánico: Sabor y Sostenibilidad</h2>
+            
+            <p class="content-text">
+                El cultivo orgánico representa la filosofía más natural y sostenible del cannabis, priorizando la creación de un ecosistema complejo que nutre las plantas de manera gradual y equilibrada. Este enfoque no solo produce flores con perfiles de terpenos superiores, sino que también contribuye a la salud del medio ambiente y la sostenibilidad a largo plazo.
+            </p>
+
+            <h3 class="subsection-title">Sustratos Orgánicos Premium</h3>
+            
+            <div class="recipe-box">
+                <h3>Mezcla Base Recomendada</h3>
+                <p><strong>Composición ideal para máxima calidad:</strong></p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li><strong>40% Turba de sphagnum:</strong> Base ácida con excelente retención de agua y aireación</li>
+                    <li><strong>30% Compost de alta calidad:</strong> Aporta nutrientes de liberación lenta y microorganismos</li>
+                    <li><strong>20% Perlita:</strong> Mejora el drenaje y previene compactación</li>
+                    <li><strong>10% Vermiculita:</strong> Retiene nutrientes y mejora la capacidad de intercambio catiónico</li>
+                </ul>
+                <p><strong>Enriquecimiento recomendado:</strong> Guano de murciélago (fósforo), harina de huesos (calcio), micorrizas beneficiosas (Glomus intraradices) y bacterias promotoras del crecimiento.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/micorrizas,trichoderma%20,microorganismos%20sustrato/humus.jpg" alt="Ingredientes del sustrato orgánico premium con proporciones visuales" class="content-image">
+                <p class="image-caption">Ingredientes del sustrato orgánico premium con proporciones visuales</p>
+            </div>
+
+            <h3 class="subsection-title">Ventajas del Cultivo Orgánico</h3>
+            
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card pros-card">
+                    <h4>🌿 Beneficios Orgánicos</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🌸</span>
+                            <strong>Perfil de terpenos superior:</strong> Mayor complejidad aromática y gustativa por mineralización gradual
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🛡️</span>
+                            <strong>Tampón natural:</strong> El sustrato amortigua fluctuaciones de pH automáticamente
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">🦠</span>
+                            <strong>Ecosistema beneficioso:</strong> Microorganismos mejoran absorción y protegen contra patógenos
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #28a745;">♻️</span>
+                            <strong>Sostenibilidad:</strong> Menor impacto ambiental y reutilización del sustrato
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>⚖️ Consideraciones</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffc107;">⏳</span>
+                            <strong>Crecimiento más lento:</strong> Los nutrientes se liberan gradualmente según la actividad microbiana
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffc107;">🎯</span>
+                            <strong>Control limitado:</strong> Menos capacidad de ajustes rápidos en la nutrición
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffc107;">🐛</span>
+                            <strong>Posibles plagas:</strong> El sustrato orgánico puede atraer insectos beneficiosos y perjudiciales
+                        </li>
+                        <li style="margin: 10px 0; padding-left: 20px; position: relative;">
+                            <span style="position: absolute; left: 0; color: #ffc107;">📦</span>
+                            <strong>Espacio requerido:</strong> Necesita contenedores más grandes para desarrollo óptimo
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Nutrición Orgánica Avanzada</h3>
+            
+            <p class="content-text">
+                La nutrición orgánica se basa en fertilizantes de liberación gradual que alimentan principalmente a los microorganismos del sustrato, quienes a su vez procesan y entregan los nutrientes a las plantas en formas fácilmente asimilables.
+            </p>
+
+            <div class="system-list">
+                <div class="system-item">
+                    <h4>Emulsión de Pescado</h4>
+                    <p>Rica en nitrógeno orgánico y aminoácidos. Se aplica diluida (5-10ml/L) durante la fase vegetativa. Los microorganismos descomponen las proteínas liberando nitrógeno gradualmente.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Extracto de Kelp</h4>
+                    <p>Aporta micronutrientes, hormonas vegetales naturales y polisacáridos que estimulan la actividad microbiana. Especialmente beneficioso durante transiciones de fase.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Melaza sin Sulfito</h4>
+                    <p>Alimenta directamente a los microorganismos beneficiosos, especialmente bacterias fijadoras de nitrógeno. Mejora la estructura del sustrato y la retención de nutrientes.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Manejo de la Vida Microbiana</h3>
+            
+            <div class="highlight-box">
+                <h3>Inoculación Estratégica</h3>
+                <p>Inocula el sustrato con <strong>micorrizas (Glomus intraradices)</strong> y <strong>bacterias beneficiosas (Bacillus subtilis)</strong>. Estos microorganismos establecen relaciones simbióticas que mejoran significativamente la absorción de nutrientes, especialmente fósforo, y protegen contra patógenos del suelo.</p>
+                <p><strong>Aplicación:</strong> 1-2g de micorrizas por litro de sustrato durante el trasplante, aplicando directamente sobre las raíces.</p>
+            </div>
+        </section>
+
+        <!-- Sistemas Híbridos -->
+        <section class="content-section">
+            <h2 class="section-title">Sistemas Híbridos: Lo Mejor de Ambos Mundos</h2>
+            
+            <p class="content-text">
+                Los cultivadores más innovadores han desarrollado sistemas híbridos que combinan las ventajas de ambos enfoques, buscando maximizar tanto el rendimiento como la calidad organoléptica. Estos sistemas representan la evolución natural del cultivo de cannabis.
+            </p>
+
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card pros-card">
+                    <h4>🔄 Hidroponía con Nutrientes Orgánicos</h4>
+                    <p>Utiliza sistemas hidropónicos tradicionales pero alimenta las plantas con extractos orgánicos líquidos. Combina la velocidad de la hidroponía con algunos beneficios de los nutrientes orgánicos.</p>
+                    <p><strong>Ventajas:</strong> Control preciso + nutrientes más complejos</p>
+                    <p><strong>Desafíos:</strong> Riesgo de obstrucciones y fermentación</p>
+                </div>
+
+                <div class="pros-cons-card pros-card">
+                    <h4>🌱 Orgánico con Fertirrigación Precisa</h4>
+                    <p>Mantiene sustrato orgánico pero implementa sistemas de riego automatizado con nutrientes líquidos orgánicos dosificados con precisión.</p>
+                    <p><strong>Ventajas:</strong> Sabor orgánico + control mejorado</p>
+                    <p><strong>Desafíos:</strong> Costo elevado de nutrientes orgánicos líquidos</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                [Imagen 4: Comparativa de rendimiento y calidad entre los tres sistemas]
+            </div>
+        </section>
+
+        <!-- Comparativa Técnica -->
+        <section class="content-section">
+            <h2 class="section-title">Comparativa Técnica Detallada</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>Hidroponía</th>
+                        <th>Orgánico</th>
+                        <th>Híbrido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Velocidad de Crecimiento</strong></td>
+                        <td>Muy Alta (100-150%)</td>
+                        <td>Moderada (100%)</td>
+                        <td>Alta (120-130%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rendimiento por m²</strong></td>
+                        <td>600-800g</td>
+                        <td>400-600g</td>
+                        <td>500-700g</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Calidad de Terpenos</strong></td>
+                        <td>Buena</td>
+                        <td>Excelente</td>
+                        <td>Muy Buena</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dificultad Técnica</strong></td>
+                        <td>Alta</td>
+                        <td>Media</td>
+                        <td>Muy Alta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inversión Inicial</strong></td>
+                        <td>€500-2000</td>
+                        <td>€100-500</td>
+                        <td>€800-3000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costos Operativos</strong></td>
+                        <td>Altos</td>
+                        <td>Bajos</td>
+                        <td>Muy Altos</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tiempo de Mantenimiento</strong></td>
+                        <td>2-3h/día</td>
+                        <td>30min/día</td>
+                        <td>1-2h/día</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tolerancia a Errores</strong></td>
+                        <td>Muy Baja</td>
+                        <td>Alta</td>
+                        <td>Baja</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sostenibilidad</strong></td>
+                        <td>Baja</td>
+                        <td>Muy Alta</td>
+                        <td>Media</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Factores de Decisión Clave</h3>
+                <p><strong>Experiencia:</strong> Principiantes deberían comenzar con orgánico para desarrollar fundamentos sólidos</p>
+                <p><strong>Objetivo:</strong> Rendimiento máximo = Hidroponía | Calidad premium = Orgánico | Balance = Híbrido</p>
+                <p><strong>Recursos:</strong> Considerar tiempo disponible, presupuesto y espacio de cultivo</p>
+                <p><strong>Mercado:</strong> El cannabis orgánico premium alcanza precios 20-40% superiores</p>
+            </div>
+        </section>
+
+        <!-- Recomendaciones por Perfil -->
+        <section class="content-section">
+            <h2 class="section-title">Recomendaciones por Perfil de Cultivador</h2>
+            
+            <p class="content-text">
+                La elección del sistema ideal depende principalmente de tu experiencia, objetivos, recursos disponibles y preferencias personales. Cada perfil de cultivador tiene necesidades específicas que se adaptan mejor a diferentes enfoques.
+            </p>
+
+            <div class="cultivator-profiles">
+                <div class="profile-card">
+                    <h4>🌱 Principiantes</h4>
+                    <p><strong>Recomendación:</strong> Sustrato orgánico con nutrientes simples</p>
+                    <p><strong>Razón:</strong> Mayor tolerancia a errores, aprendizaje gradual de fundamentos, menor inversión inicial</p>
+                    <p><strong>Kit básico:</strong> Tierra premium + fertilizantes orgánicos líquidos + pH kit</p>
+                </div>
+
+                <div class="profile-card">
+                    <h4>🔬 Técnicos</h4>
+                    <p><strong>Recomendación:</strong> Hidroponía para máximo control y producción</p>
+                    <p><strong>Razón:</strong> Aprovecha conocimientos técnicos, permite experimentación precisa, rendimientos superiores</p>
+                    <p><strong>Kit avanzado:</strong> DWC o NFT + medidores digitales + automatización</p>
+                </div>
+
+                <div class="profile-card">
+                    <h4>🍷 Connoisseurs</h4>
+                    <p><strong>Recomendación:</strong> Orgánico para máxima calidad organoléptica</p>
+                    <p><strong>Razón:</strong> Prioriza sabor y aroma sobre rendimiento, valora sostenibilidad, aprecia complejidad</p>
+                    <p><strong>Kit premium:</strong> Living soil + nutrientes artesanales + micorrizas selectas</p>
+                </div>
+
+                <div class="profile-card">
+                    <h4>🏭 Comerciales</h4>
+                    <p><strong>Recomendación:</strong> Híbrido optimizado para rendimiento y calidad</p>
+                    <p><strong>Razón:</strong> Balance entre eficiencia productiva y calidad de mercado, escalabilidad</p>
+                    <p><strong>Kit profesional:</strong> Coco + fertirrigación automatizada + monitoreo remoto</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guía de Implementación -->
+        <section class="content-section">
+            <h2 class="section-title">Guía de Implementación Paso a Paso</h2>
+            
+            <h3 class="subsection-title">Transición de Orgánico a Hidroponía</h3>
+            
+            <div class="system-list">
+                <div class="system-item">
+                    <h4>Fase 1: Preparación (Semanas 1-2)</h4>
+                    <p>Investigación exhaustiva, selección de sistema, adquisición de equipamiento básico. Practica con medidores de pH y EC usando agua del grifo.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Fase 2: Sistema Piloto (Semanas 3-4)</h4>
+                    <p>Monta un sistema pequeño (1-2 plantas) para familiarizarte con los procesos. Cultiva variedades resistentes y de crecimiento rápido.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Fase 3: Escalado (Semanas 5-8)</h4>
+                    <p>Expande gradualmente el sistema basándote en la experiencia adquirida. Implementa automatización básica y sistemas de respaldo.</p>
+                </div>
+                <div class="system-item">
+                    <h4>Fase 4: Optimización (Semanas 9+)</h4>
+                    <p>Ajuste fino de parámetros, experimentación con diferentes nutrientes, implementación de tecnologías avanzadas de monitoreo.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Mejorando un Sistema Orgánico</h3>
+            
+            <div class="recipe-box">
+                <h3>Upgrade Progresivo del Sustrato</h3>
+                <p><strong>Nivel 1:</strong> Tierra comercial + fertilizantes orgánicos básicos</p>
+                <p><strong>Nivel 2:</strong> Mezcla propia + compost casero + micorrizas comerciales</p>
+                <p><strong>Nivel 3:</strong> Living soil + té de compost + inoculación microbiana avanzada</p>
+                <p><strong>Nivel 4:</strong> Sustrato vivo permanente + rotación de cultivos de cobertura</p>
+            </div>
+
+            <div class="image-placeholder">
+                [Imagen 5: Timeline de implementación con hitos clave y equipamiento necesario]
+            </div>
+        </section>
+
+        <!-- Errores Comunes -->
+        <section class="content-section">
+            <h2 class="section-title">Errores Comunes y Cómo Evitarlos</h2>
+            
+            <h3 class="subsection-title">Errores en Hidroponía</h3>
+            
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Cambios Drásticos de pH</h4>
+                    <p><strong>Problema:</strong> Ajustar pH de 7.5 a 5.5 de una vez</p>
+                    <p><strong>Consecuencia:</strong> Shock nutricional y bloqueo de absorción</p>
+                    <p><strong>Solución:</strong> Ajustes graduales de 0.5 unidades por día máximo</p>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Sobrealimentación</h4>
+                    <p><strong>Problema:</strong> EC superior a 2.5 mS/cm pensando en "más es mejor"</p>
+                    <p><strong>Consecuencia:</strong> Quemado de nutrientes y estrés osmótico</p>
+                    <p><strong>Solución:</strong> Comenzar con EC 1.2 e incrementar gradualmente</p>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Falta de Oxigenación</h4>
+                    <p><strong>Problema:</strong> Bombas de aire insuficientes o mal dimensionadas</p>
+                    <p><strong>Consecuencia:</strong> Pudrición radicular y muerte de plantas</p>
+                    <p><strong>Solución:</strong> 1 litro/minuto de aire por cada 4 litros de solución</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Errores en Cultivo Orgánico</h3>
+            
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Sustrato Demasiado Rico</h4>
+                    <p><strong>Problema:</strong> Exceso de compost fresco o fertilizantes orgánicos</p>
+                    <p><strong>Consecuencia:</strong> Quemado de nitrógeno en plantones jóvenes</p>
+                    <p><strong>Solución:</strong> Compost bien curado mínimo 6 meses</p>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Riego Excesivo</h4>
+                    <p><strong>Problema:</strong> Mantener sustrato constantemente húmedo</p>
+                    <p><strong>Consecuencia:</strong> Asfixia radicular y hongos patógenos</p>
+                    <p><strong>Solución:</strong> Ciclo húmedo-seco, test del dedo 5cm profundidad</p>
+                </div>
+
+                <div class="pros-cons-card cons-card">
+                    <h4>❌ Error: Negligencia del pH</h4>
+                    <p><strong>Problema:</strong> Asumir que el sustrato orgánico auto-regula el pH</p>
+                    <p><strong>Consecuencia:</strong> Bloqueos nutricionales invisibles hasta floración</p>
+                    <p><strong>Solución:</strong> Monitoreo mensual del pH del sustrato</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Costos y ROI -->
+        <section class="content-section">
+            <h2 class="section-title">Análisis de Costos y Retorno de Inversión</h2>
+            
+            <p class="content-text">
+                Entender los costos reales de cada sistema es crucial para tomar una decisión informada. No solo debemos considerar la inversión inicial, sino también los costos operativos continuos y el potencial retorno de la inversión.
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Orgánico (4 plantas)</th>
+                        <th>Hidropónico (4 plantas)</th>
+                        <th>Híbrido (4 plantas)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Inversión Inicial</strong></td>
+                        <td>€200-400</td>
+                        <td>€800-1500</td>
+                        <td>€1200-2000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Nutrientes/Ciclo</strong></td>
+                        <td>€30-50</td>
+                        <td>€60-100</td>
+                        <td>€80-120</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Electricidad/Mes</strong></td>
+                        <td>€40-60</td>
+                        <td>€80-120</td>
+                        <td>€100-150</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rendimiento Esperado</strong></td>
+                        <td>400-600g</td>
+                        <td>600-900g</td>
+                        <td>500-800g</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo por Gramo</strong></td>
+                        <td>€0.80-1.20</td>
+                        <td>€1.50-2.50</td>
+                        <td>€2.00-3.00</td>
+                    </tr>
+                    <tr>
+                        <td><strong>ROI (12 meses)</strong></td>
+                        <td>400-800%</td>
+                        <td>200-500%</td>
+                        <td>150-400%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Factores Ocultos del Costo</h3>
+                <p><strong>Tiempo personal:</strong> Valoriza tu tiempo a €15-25/hora para cálculos reales</p>
+                <p><strong>Fallos y pérdidas:</strong> Considera 10-30% de pérdida en primeros cultivos</p>
+                <p><strong>Upgrades inevitables:</strong> Reserva 20% del presupuesto para mejoras</p>
+                <p><strong>Valor de mercado:</strong> Cannabis orgánico premium: €8-12/g | Hidropónico: €6-10/g</p>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: Tu Camino Hacia la Excelencia</h2>
+            
+            <p class="content-text">
+                La decisión entre hidroponía y cultivo orgánico no tiene una respuesta universal correcta. Cada sistema tiene su lugar en el espectro del cultivo de cannabis, y la elección ideal depende de tus circunstancias específicas, objetivos y filosofía personal.
+            </p>
+
+            <div class="image-placeholder">
+                [Imagen 6: Infografía final con árbol de decisión para elegir el sistema ideal]
+            </div>
+
+            <div class="pros-cons-grid">
+                <div class="pros-cons-card pros-card">
+                    <h4>🎯 Elige Hidroponía Si...</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✅ Priorizas rendimiento y velocidad</li>
+                        <li>✅ Disfrutas de la tecnología y control preciso</li>
+                        <li>✅ Tienes experiencia técnica previa</li>
+                        <li>✅ Puedes dedicar tiempo diario al monitoreo</li>
+                        <li>✅ El presupuesto no es limitante</li>
+                    </ul>
+                </div>
+
+                <div class="pros-cons-card pros-card">
+                    <h4>🌿 Elige Orgánico Si...</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>✅ Valoras calidad y sostenibilidad</li>
+                        <li>✅ Prefieres métodos naturales</li>
+                        <li>✅ Eres principiante o tienes tiempo limitado</li>
+                        <li>✅ Buscas menor inversión inicial</li>
+                        <li>✅ Te interesa la filosofía del cultivo natural</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Recomendación Final</h3>
+                <p><strong>Para principiantes:</strong> Comienza con orgánico, domina los fundamentos, luego experimenta con hidroponia si te atrae</p>
+                <p><strong>Para experimentados:</strong> Prueba sistemas híbridos que combinen lo mejor de ambos mundos</p>
+                <p><strong>Para comerciales:</strong> Evalúa tu mercado objetivo - premium orgánico vs. volumen hidropónico</p>
+                <p><strong>Para todos:</strong> La excelencia viene de la dedicación y el aprendizaje continuo, no del sistema elegido</p>
+            </div>
+
+            <p class="content-text">
+                Recuerda que el mejor sistema es aquel que puedes manejar consistentemente con excelencia. Un cultivo orgánico bien ejecutado siempre superará a un sistema hidropónico mal gestionado, y viceversa. La clave del éxito radica en entender profundamente el método elegido y ejecutarlo con pasión y precisión.
+            </p>
+
+            <div class="recipe-box">
+                <h3>Tu Próximo Paso</h3>
+                <p>Independientemente del sistema que elijas, comienza con una escala pequeña, documenta todo meticulosamente, y no tengas miedo de experimentar gradualmente. La comunidad cannábica es generosa con el conocimiento - conecta con otros cultivadores y nunca dejes de aprender.</p>
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota Legal:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="font-size: 0.9em; color: #6c757d; margin-top: 15px;">
+                    🌱 Cultiva con conocimiento, cosecha con orgullo 🌱
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
+                

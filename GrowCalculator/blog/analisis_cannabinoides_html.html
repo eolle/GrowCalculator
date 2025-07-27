@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Cannabinoides: Guía Completa para Entender tu Cannabis | GrowCalculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Descubre cómo analizar cannabinoides y terpenos en cannabis. Guía completa sobre THC, CBD, CBG, CBN y efectos séquito. Análisis HPLC y GC-MS para cultivadores profesionales.">
+    <meta name="keywords" content="análisis cannabinoides, THC, CBD, terpenos cannabis, HPLC, GC-MS, efectos séquito, cannabis medicinal, cultivo cannabis, cannabinoides menores">
+    <meta name="author" content="GrowCalculator">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.growcalculator.es/blog/analisis-cannabinoides">
+    <meta property="og:title" content="Análisis de Cannabinoides: Guía Completa para Entender tu Cannabis">
+    <meta property="og:description" content="Descubre cómo analizar cannabinoides y terpenos en cannabis. Guía completa sobre THC, CBD, CBG, CBN y efectos séquito.">
+    <meta property="og:image" content="https://www.growcalculator.es/images/cannabinoides-analysis.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.growcalculator.es/blog/analisis-cannabinoides">
+    <meta property="twitter:title" content="Análisis de Cannabinoides: Guía Completa para Entender tu Cannabis">
+    <meta property="twitter:description" content="Descubre cómo analizar cannabinoides y terpenos en cannabis. Guía completa sobre THC, CBD, CBG, CBN y efectos séquito.">
+    <meta property="twitter:image" content="https://www.growcalculator.es/images/cannabinoides-analysis.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.growcalculator.es/blog/analisis-cannabinoides">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Análisis de Cannabinoides: Guía Completa para Entender tu Cannabis",
+      "description": "Descubre cómo analizar cannabinoides y terpenos en cannabis. Guía completa sobre THC, CBD, CBG, CBN y efectos séquito.",
+      "image": "https://www.growcalculator.es/images/cannabinoides-analysis.jpg",
+      "author": {
+        "@type": "Organization",
+        "name": "GrowCalculator"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GrowCalculator",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.growcalculator.es/images/logo.png"
+        }
+      },
+      "datePublished": "2025-01-15",
+      "dateModified": "2025-01-15",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.growcalculator.es/blog/analisis-cannabinoides"
+      }
+    }
+    </script>
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Análisis de Cannabinoides</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Entendiendo tu Producto: La Guía Definitiva para Análisis Químico de Cannabis</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 12 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <h2 class="section-title">¿Qué son los Cannabinoides?</h2>
+            <p class="content-text">
+                El análisis de cannabinoides y terpenos proporciona información objetiva sobre potencia, perfil de efectos y calidad del cannabis. Esta información es crucial para uso medicinal y optimización de futuros cultivos. Comprender la química de tu cannabis te permite tomar decisiones informadas sobre consumo, dosificación y técnicas de cultivo.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/cannabinoides/cannabino.jpg" alt="Laboratorio de análisis con equipos HPLC y muestras de cannabis etiquetadas" class="content-image">
+                <p class="image-caption">Laboratorio de análisis con equipos HPLC y muestras de cannabis etiquetadas</p>
+            </div>
+
+            <p class="content-text">
+                Más allá de simplemente conocer el porcentaje de THC, un análisis completo revela el perfil único de cada variedad, incluyendo cannabinoides menores y terpenos que modulan los efectos y determinan las características organolépticas del producto final.
+            </p>
+        </section>
+
+        <!-- Cannabinoides Principales -->
+        <section class="content-section">
+            <h2 class="section-title">Cannabinoides Principales</h2>
+            
+            <p class="content-text">
+                Los cannabinoides son los compuestos químicos únicos del cannabis que interactúan con el sistema endocannabinoide humano, produciendo los efectos terapéuticos y psicoactivos característicos de la planta.
+            </p>
+
+            <h3 class="subsection-title">THC (Tetrahidrocannabinol)</h3>
+            
+            <p class="content-text">
+                El THC es el principal compuesto psicoactivo del cannabis, responsable del característico "high" que experimentan los usuarios. Su concentración y forma química (ácida o descarboxilada) determinan en gran medida la potencia percibida del producto.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Características Principales</h4>
+                    <p><strong>Psicoactividad:</strong> Alto nivel de efectos mentales<br>
+                    <strong>Rango típico:</strong> 15-30% en variedades modernas<br>
+                    <strong>Forma ácida:</strong> THCA (no psicoactivo hasta activación)</p>
+                </div>
+                <div class="info-card">
+                    <h4>Factores que Afectan la Concentración</h4>
+                    <p><strong>Genética:</strong> Potencial máximo de la variedad<br>
+                    <strong>Condiciones de cultivo:</strong> Luz, nutrientes, CO₂<br>
+                    <strong>Timing de cosecha:</strong> Madurez de tricomas</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">CBD (Cannabidiol)</h3>
+            
+            <p class="content-text">
+                El CBD ha ganado reconocimiento mundial por sus propiedades terapéuticas sin efectos psicoactivos. Además de sus beneficios propios, el CBD modula los efectos del THC, creando experiencias más equilibradas y controlables.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Sinergia THC:CBD</h3>
+                <p><strong>1:1 (THC:CBD):</strong> Efectos equilibrados, reducción de ansiedad</p>
+                <p><strong>2:1 (THC:CBD):</strong> Psicoactividad moderada con propiedades terapéuticas</p>
+                <p><strong>1:2 (THC:CBD):</strong> Efectos principalmente terapéuticos con mínima psicoactividad</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Ratio THC:CBD</th>
+                        <th>Efectos Dominantes</th>
+                        <th>Uso Recomendado</th>
+                        <th>Ejemplos de Variedades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>20:1</strong></td>
+                        <td>Fuertemente psicoactivo</td>
+                        <td>Recreativo, estimulación creativa</td>
+                        <td>OG Kush, White Widow</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4:1</strong></td>
+                        <td>Psicoactivo con relajación</td>
+                        <td>Alivio del dolor, relajación</td>
+                        <td>Girl Scout Cookies</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1:1</strong></td>
+                        <td>Equilibrado</td>
+                        <td>Uso medicinal diurno</td>
+                        <td>Harlequin, Cannatonic</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1:20</strong></td>
+                        <td>Terapéutico no psicoactivo</td>
+                        <td>Pediatría, uso laboral</td>
+                        <td>Charlotte's Web, ACDC</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Cannabinoides Menores -->
+        <section class="content-section">
+            <h2 class="section-title">Cannabinoides Menores: Los Modificadores Sutiles</h2>
+            
+            <p class="content-text">
+                Aunque presentes en concentraciones más bajas, los cannabinoides menores juegan roles cruciales en el perfil de efectos general. Estos compuestos están ganando atención por sus propiedades únicas y su contribución al efecto séquito.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/kanabinoidy-chemicke-vzorce.jpg" alt="Infografía mostrando estructuras químicas de cannabinoides menores y sus efectos" class="content-image">
+                <p class="image-caption">Infografía mostrando estructuras químicas de cannabinoides menores y sus efectos</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>CBG (Cannabigerol)</h4>
+                    <p><strong>Función:</strong> Precursor de otros cannabinoides<br>
+                    <strong>Efectos:</strong> Energizantes, claridad mental<br>
+                    <strong>Concentración típica:</strong> 0.1-2%<br>
+                    <strong>Nota:</strong> "Célula madre" de los cannabinoides</p>
+                </div>
+                <div class="info-card">
+                    <h4>CBN (Cannabinol)</h4>
+                    <p><strong>Origen:</strong> Degradación del THC por luz/calor<br>
+                    <strong>Efectos:</strong> Sedantes, inductor del sueño<br>
+                    <strong>Concentración típica:</strong> 0.1-3%<br>
+                    <strong>Indicador:</strong> Calidad de almacenamiento</p>
+                </div>
+                <div class="info-card">
+                    <h4>CBC (Cannabicromeno)</h4>
+                    <p><strong>Propiedades:</strong> Antiinflamatorias y neuroprotectoras<br>
+                    <strong>Efectos:</strong> Modulación del dolor<br>
+                    <strong>Concentración típica:</strong> 0.1-1%<br>
+                    <strong>Sinergia:</strong> Potencia efectos de THC y CBD</p>
+                </div>
+                <div class="info-card">
+                    <h4>THCV (Tetrahidrocannabivarina)</h4>
+                    <p><strong>Característica única:</strong> Supresor del apetito<br>
+                    <strong>Efectos:</strong> Energizantes, claridad mental<br>
+                    <strong>Concentración típica:</strong> 0.1-5%<br>
+                    <strong>Origen geográfico:</strong> Variedades africanas</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Degradación y almacenamiento:</strong> Los cannabinoides menores son especialmente sensibles a la luz, el calor y el oxígeno. Un almacenamiento inadecuado puede alterar significativamente su perfil, afectando los efectos terapéuticos.
+            </div>
+        </section>
+
+        <!-- Perfil de Terpenos -->
+        <section class="content-section">
+            <h2 class="section-title">Perfil de Terpenos: Los Arquitectos del Aroma y Efectos</h2>
+            
+            <p class="content-text">
+                Los terpenos son compuestos aromáticos volátiles que no solo proporcionan los característicos aromas del cannabis, sino que también modulan y potencian los efectos de los cannabinoides a través del fenómeno conocido como efecto séquito.
+            </p>
+
+            <h3 class="subsection-title">Terpenos Dominantes</h3>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🍋 Limoneno</h4>
+                    <p><strong>Aroma:</strong> Cítrico fresco, limón<br>
+                    <strong>Efectos:</strong> Elevador del ánimo, antidepresivo<br>
+                    <strong>Concentración típica:</strong> 0.5-3%<br>
+                    <strong>También presente en:</strong> Cáscaras de cítricos, enebro</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌿 Mirceno</h4>
+                    <p><strong>Aroma:</strong> Terroso, herbal, clavo<br>
+                    <strong>Efectos:</strong> Sedante, relajante muscular<br>
+                    <strong>Concentración típica:</strong> 0.5-4%<br>
+                    <strong>También presente en:</strong> Mango, lúpulo, tomillo</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌲 Pineno</h4>
+                    <p><strong>Aroma:</strong> Pino, bosque, trementina<br>
+                    <strong>Efectos:</strong> Mejora memoria y concentración<br>
+                    <strong>Concentración típica:</strong> 0.3-2%<br>
+                    <strong>También presente en:</strong> Coníferas, romero, albahaca</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌸 Linalool</h4>
+                    <p><strong>Aroma:</strong> Floral, lavanda, especiado<br>
+                    <strong>Efectos:</strong> Relajante, ansiolítico, sedante<br>
+                    <strong>Concentración típica:</strong> 0.2-1.5%<br>
+                    <strong>También presente en:</strong> Lavanda, cilantro, laurel</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌶️ Cariofileno</h4>
+                    <p><strong>Aroma:</strong> Especiado, pimienta, clavo<br>
+                    <strong>Efectos:</strong> Antiinflamatorio, analgésico<br>
+                    <strong>Concentración típica:</strong> 0.3-2.5%<br>
+                    <strong>Particularidad:</strong> Único terpeno que activa receptores CB2</p>
+                </div>
+                <div class="info-card">
+                    <h4>🍃 Humuleno</h4>
+                    <p><strong>Aroma:</strong> Terroso, madera, lúpulo<br>
+                    <strong>Efectos:</strong> Supresor del apetito, antibacteriano<br>
+                    <strong>Concentración típica:</strong> 0.2-1%<br>
+                    <strong>También presente en:</strong> Lúpulo, salvia, ginseng</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>El Efecto Séquito</h3>
+                <p>La interacción sinérgica entre cannabinoides y terpenos produce efectos únicos que son superiores a la suma de componentes individuales. Esta sinergia explica por qué variedades con perfiles cannabinoides similares pueden tener efectos completamente diferentes.</p>
+                
+                <p><strong>Ejemplo práctico:</strong> Una variedad con 20% THC y alto limoneno tendrá efectos más energizantes que otra con el mismo THC pero alto mirceno, que será más sedante.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/MainCannabinoidGraphic_-AS-copy-02.webp" alt="Cromatograma GC-MS mostrando picos de diferentes terpenos con identificación y cuantificación" class="content-image">
+                <p class="image-caption">Cromatograma GC-MS mostrando picos de diferentes terpenos con identificación y cuantificación</p>
+            </div>
+        </section>
+
+        <!-- Métodos de Análisis -->
+        <section class="content-section">
+            <h2 class="section-title">Métodos de Análisis: Precisión y Tecnología</h2>
+            
+            <p class="content-text">
+                La elección del método de análisis depende de tus objetivos específicos, presupuesto y nivel de precisión requerido. Cada técnica tiene ventajas y limitaciones únicas que es importante entender.
+            </p>
+
+            <h3 class="subsection-title">Cromatografía Líquida de Alta Resolución (HPLC)</h3>
+            
+            <p class="content-text">
+                La HPLC es considerada el estándar oro para el análisis de cannabinoides debido a su capacidad de analizar compuestos tanto en su forma ácida (THCA, CBDA) como descarboxilada (THC, CBD) sin alterar su estructura química.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>✅ Ventajas</h4>
+                    <p>• Análisis de cannabinoides ácidos<br>
+                    • No hay degradación térmica<br>
+                    • Alta precisión (±2%)<br>
+                    • Cuantificación precisa de CBD y CBG</p>
+                </div>
+                <div class="info-card">
+                    <h4>❌ Limitaciones</h4>
+                    <p>• No analiza terpenos volátiles<br>
+                    • Equipamiento costoso<br>
+                    • Requiere preparación compleja de muestras<br>
+                    • Tiempo de análisis: 20-45 minutos</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Cromatografía de Gases (GC-MS)</h3>
+            
+            <p class="content-text">
+                La GC-MS utiliza calor para vaporizar los compuestos, lo que la hace ideal para el análisis de terpenos pero convierte automáticamente los cannabinoides ácidos en sus formas activas.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>✅ Ventajas</h4>
+                    <p>• Análisis completo de terpenos<br>
+                    • Identificación de compuestos desconocidos<br>
+                    • Alta sensibilidad para volátiles<br>
+                    • Biblioteca extensa de compuestos</p>
+                </div>
+                <div class="info-card">
+                    <h4>❌ Limitaciones</h4>
+                    <p>• Conversión THCA → THC por calor<br>
+                    • Pérdida de algunos terpenos volátiles<br>
+                    • No diferencia formas ácidas<br>
+                    • Temperatura puede degradar compuestos</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Aplicación Principal</th>
+                        <th>Precisión</th>
+                        <th>Costo por Muestra</th>
+                        <th>Tiempo de Análisis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HPLC</strong></td>
+                        <td>Cannabinoides ácidos y neutros</td>
+                        <td>±2% principales</td>
+                        <td>€50-100</td>
+                        <td>20-45 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GC-MS</strong></td>
+                        <td>Terpenos y cannabinoides totales</td>
+                        <td>±5% volátiles</td>
+                        <td>€75-150</td>
+                        <td>30-60 min</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HPLC + GC-MS</strong></td>
+                        <td>Análisis completo</td>
+                        <td>±2-5% combinado</td>
+                        <td>€120-200</td>
+                        <td>60-90 min</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Kits de Análisis Casero</h3>
+            
+            <p class="content-text">
+                Los analizadores portátiles han democratizado el acceso al análisis de cannabis, permitiendo a cultivadores caseros obtener información básica sobre sus productos sin necesidad de laboratorios especializados.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Análisis Portátil</h4>
+                    <p>Dispositivos compactos que permiten análisis básico de THC y CBD en campo. Precisión limitada pero útil para decisiones rápidas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Kits de Tiras Reactivas</h4>
+                    <p>Método más económico para detección cualitativa. Útil para verificar presencia de cannabinoides específicos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Artículos Relacionados -->
+        <section class="content-section">
+            <h2 class="section-title">Artículos Relacionados</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4><a href="cannabis_medicinal.html" style="color: #667eea; text-decoration: none;">Cannabis Medicinal</a></h4>
+                    <p>Descubre los beneficios terapéuticos del cannabis y cómo utilizarlo para diferentes condiciones médicas.</p>
+                </div>
+                <div class="info-card">
+                    <h4><a href="nutricion_avanzada.html" style="color: #667eea; text-decoration: none;">Nutrición Avanzada</a></h4>
+                    <p>Aprende técnicas avanzadas de nutrición para maximizar el rendimiento y calidad de tu cultivo.</p>
+                </div>
+                <div class="info-card">
+                    <h4><a href="genetica_cannabis_html.html" style="color: #667eea; text-decoration: none;">Genética del Cannabis</a></h4>
+                    <p>Entiende los fundamentos de la genética y cómo seleccionar las mejores variedades para tu cultivo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #6c757d;">
+                    📚 <strong>Próximos artículos:</strong> Cannabis Medicinal • Clonación Avanzada • Control Biológico • Nutrición de Precisión
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

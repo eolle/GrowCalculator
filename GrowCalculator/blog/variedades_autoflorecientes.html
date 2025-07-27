@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variedades Autoflorecientes: Guía Completa | GrowCalculator</title>
+    <meta name="description" content="Guía completa sobre variedades autoflorecientes de cannabis. Maximiza la genética ruderalis para cultivos rápidos y eficientes.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--green-medium);
+            transform: translateY(-2px);
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .article-content ul {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--green-soft);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 2px solid var(--green-medium);
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+
+        <header class="article-header">
+            <h1>🌿 Variedades Autoflorecientes</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p>Guía Completa para Maximizar Genética Ruderalis</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>15 min lectura</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <article class="article-content">
+            <div class="share-buttons">
+                <a href="#" class="share-btn share-whatsapp" onclick="shareWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="#" class="share-btn share-facebook" onclick="shareFacebook()">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="#" class="share-btn share-twitter" onclick="shareTwitter()">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="#" class="share-btn share-telegram" onclick="shareTelegram()">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+            </div>
+
+            <h2>Variedades Autoflorecientes: Maximizando Genética Ruderalis</h2>
+            
+            <div class="highlight-box">
+                <h3>La evolución de las automáticas</h3>
+                <p>Las variedades autoflorecientes han evolucionado dramáticamente desde sus inicios. Las genéticas modernas combinan la independencia del fotoperiodo de <em>Cannabis ruderalis</em> con la potencia y productividad de variedades fotodependientes premium.</p>
+            </div>
+            
+            <h3>Ventajas del cultivo automático</h3>
+            
+            <h4>Independencia del fotoperiodo</h4>
+            <p>Las automáticas florecen basándose en edad cronológica (generalmente 3-4 semanas) independientemente del ciclo lumínico. Esto permite:</p>
+            <ul>
+                <li><strong>Cosechas múltiples:</strong> 3-4 ciclos anuales vs 2 con fotodependientes</li>
+                <li><strong>Flexibilidad lumínica:</strong> 18-20 horas de luz durante todo el ciclo</li>
+                <li><strong>Menos equipamiento:</strong> Sin necesidad de temporizadores complejos</li>
+            </ul>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">75-90</span>
+                    <div class="stat-label">Días desde semilla hasta cosecha</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3-4</span>
+                    <div class="stat-label">Cosechas anuales posibles</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">18-20h</span>
+                    <div class="stat-label">Horas de luz diarias</div>
+                </div>
+            </div>
+            
+            <h4>Ciclo acelerado</h4>
+            <p>Desde semilla hasta cosecha en 75-90 días permite rotación rápida y cash flow constante en operaciones comerciales.</p>
+            
+            <h4>Resistencia natural</h4>
+            <p>La genética ruderalis aporta resistencia a estrés ambiental, plagas y fluctuaciones de temperatura superiores a variedades tradicionales.</p>
+            
+            <h3>Selección de genética superior</h3>
+            
+            <h4>Generaciones de mejoramiento</h4>
+            <ul>
+                <li><strong>F1-F3:</strong> Primeras generaciones, alta variabilidad</li>
+                <li><strong>F4-F6:</strong> Estabilización de características</li>
+                <li><strong>F7+:</strong> Genéticas estables con uniformidad >90%</li>
+            </ul>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Características premium</h4>
+                    <p>Busca variedades con:</p>
+                    <ul>
+                        <li><strong>Altura controlada:</strong> 60-100cm para optimización del espacio</li>
+                        <li><strong>Densidad de cogollos:</strong> Estructura compacta tipo "main cola"</li>
+                        <li><strong>Contenido cannabinoide:</strong> >20% THC o CBD según objetivos</li>
+                        <li><strong>Perfil terpénico:</strong> Diversidad aromática comparable a fotodependientes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Técnicas específicas para automáticas</h3>
+            
+            <h4>Germinación directa</h4>
+            <p>Germina directamente en contenedor final para evitar estrés de trasplante. Las automáticas no tienen tiempo para recuperarse de shock radicular.</p>
+            
+            <h4>Contenedores optimizados</h4>
+            <ul>
+                <li><strong>Volumen mínimo:</strong> 10-15L para desarrollo radicular completo</li>
+                <li><strong>Forma:</strong> Contenedores altos favorecen desarrollo de raíz pivotante</li>
+                <li><strong>Drenaje:</strong> Excelente drenaje previene problemas radiculares</li>
+            </ul>
+            
+            <h4>Nutrición adaptada</h4>
+            <ul>
+                <li><strong>Semanas 1-2:</strong> Agua pura o EC muy baja (0.3-0.4 mS/cm)</li>
+                <li><strong>Semanas 3-5:</strong> Incremento gradual hasta EC 1.2-1.4 mS/cm</li>
+                <li><strong>Semanas 6-8:</strong> Mantener niveles, evitar sobre-fertilización</li>
+                <li><strong>Semanas 9+:</strong> Reducción gradual y flush final</li>
+            </ul>
+            
+            <h3>Optimización del espacio</h3>
+            
+            <h4>Densidad de plantación</h4>
+            <p>Las automáticas permiten mayor densidad que fotodependientes debido a su tamaño controlado:</p>
+            <ul>
+                <li><strong>Indoor:</strong> 9-16 plantas/m² según variedad</li>
+                <li><strong>Outdoor:</strong> 4-6 plantas/m² para desarrollo completo</li>
+                <li><strong>Greenhouse:</strong> 6-9 plantas/m² optimizando luz natural</li>
+            </ul>
+            
+            <h4>Técnicas de entrenamiento</h4>
+            <ul>
+                <li><strong>LST temprano:</strong> Aplicar desde semana 2-3 para maximizar producción</li>
+                <li><strong>Defoliación selectiva:</strong> Eliminar hojas que bloquean cogollos</li>
+                <li><strong>Lollipopping:</strong> Limpiar ramas bajas para concentrar energía</li>
+                <li><strong>Supercropping:</strong> Solo en variedades robustas, con precaución</li>
+            </ul>
+            
+            <h3>Rendimientos esperados</h3>
+            <p>Variedades premium pueden producir 80-150g por planta indoor con técnicas optimizadas, alcanzando 400-600g/m² con alta densidad de plantación.</p>
+            
+            <div class="highlight-box">
+                <h4>Consejos finales</h4>
+                <p><strong>Paciencia:</strong> Las automáticas tienen su propio ritmo, no las fuerces</p>
+                <p><strong>Consistencia:</strong> Mantén condiciones estables durante todo el ciclo</p>
+                <p><strong>Observación:</strong> Cada variedad puede requerir ajustes específicos</p>
+                <p><strong>Documentación:</strong> Registra todo para optimizar futuros cultivos</p>
+            </div>
+        </article>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html> 

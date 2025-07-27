@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Integrado de Enfermedades Fúngicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Control Integrado de Enfermedades Fúngicas</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Protección Avanzada para Cultivos de Cannabis</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 18 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Profesional</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                Las enfermedades fúngicas representan la mayor amenaza para cultivos de cannabis indoor, especialmente en condiciones de alta humedad. Un enfoque de Manejo Integrado de Plagas (MIP) que combine prevención, detección temprana y tratamientos específicos es esencial para mantener cultivos productivos y saludables.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/imagenes articulos/enfermedades fungicas/Mildius-hongo-cannabis.jpg" alt="Hongos" class="content-image">
+            </div>
+
+            <p class="content-text">
+                La epidemiología de hongos en cannabis indoor está directamente relacionada con factores ambientales controlables. Comprender estos patógenos y sus ciclos de vida permite implementar estrategias preventivas efectivas que pueden reducir pérdidas del 30-50% típico a menos del 5% en sistemas bien manejados.
+            </p>
+
+            <div class="warning-box">
+                <strong>Impacto económico:</strong> Las enfermedades fúngicas pueden destruir cosechas completas en días. La implementación de programas preventivos representa una fracción del costo de las pérdidas por enfermedad.
+            </div>
+        </section>
+
+        <!-- Principales Patógenos -->
+        <section class="content-section">
+            <h2 class="section-title">Principales Patógenos Fúngicos</h2>
+            
+            <p class="content-text">
+                Cada patógeno fúngico tiene características específicas de desarrollo, dispersión y daño. Conocer estos aspectos permite diseñar estrategias de control precisas y efectivas para cada amenaza específica.
+            </p>
+
+            <div class="pathogen-card">
+                <img src="images/imagenes articulos/enfermedades fungicas/botritys 5.jpg" alt="Botrytis" class="content-image">
+                <h4>🦠 Botrytis cinerea (Moho Gris)</h4>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Condiciones Favorables</h4>
+                        <p><strong>Humedad Relativa:</strong> >60%<br>
+                        <strong>Temperatura:</strong> 15-25°C<br>
+                        <strong>Ambiente:</strong> Poca circulación de aire</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Síntomas Característicos</h4>
+                        <p><strong>Iniciales:</strong> Manchas marrones en hojas<br>
+                        <strong>Avanzados:</strong> Podredumbre gris en cogollos<br>
+                        <strong>Crítico:</strong> Esporulación masiva</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Dispersión y Daño</h4>
+                        <p><strong>Vectores:</strong> Esporas aéreas, heridas<br>
+                        <strong>Factores:</strong> Alta densidad foliar<br>
+                        <strong>Resultado:</strong> Pérdida total de cogollos</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pathogen-card">
+                <img src="images/imagenes articulos/enfermedades fungicas/oidio-marihuana.jpg" alt="Oidio" class="content-image">
+                <h4>🦠 Powdery Mildew (Oidio)</h4>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Agentes Causales</h4>
+                        <p><strong>Especies:</strong> Golovinomyces cichoracearum<br>
+                        <strong>También:</strong> Podosphaera macularis<br>
+                        <strong>Característica:</strong> Obligadamente parásitos</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Desarrollo de Síntomas</h4>
+                        <p><strong>Inicial:</strong> Polvo blanco superficial<br>
+                        <strong>Progresión:</strong> Deformación foliar<br>
+                        <strong>Impacto:</strong> Reducción fotosíntesis 40-60%</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Condiciones Óptimas</h4>
+                        <p><strong>HR:</strong> 50-70% (superficie seca)<br>
+                        <strong>Temperatura:</strong> 20-30°C<br>
+                        <strong>Expansión:</strong> Muy rápida</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pathogen-card">
+                <h4>🦠 Fusarium spp.</h4>
+                <div class="parameter-list">
+                    <div class="parameter-item">
+                        <h4>Especies Principales</h4>
+                        <p><strong>F. oxysporum:</strong> Marchitez vascular específica<br>
+                        <strong>F. solani:</strong> Podredumbre radicular y del tallo<br>
+                        <strong>F. verticillioides:</strong> Infecciones sistémicas</p>
+                    </div>
+                    <div class="parameter-item">
+                        <h4>Síntomas Diagnósticos</h4>
+                        <p><strong>Marchitez vascular:</strong> Amarillamiento unilateral progresivo<br>
+                        <strong>Corte transversal:</strong> Oscurecimiento vascular característico<br>
+                        <strong>Progresión:</strong> De abajo hacia arriba en la planta</p>
+                    </div>
+                    <div class="parameter-item">
+                        <h4>Transmisión y Persistencia</h4>
+                        <p><strong>Fuentes:</strong> Suelo/agua contaminados, heridas radiculares<br>
+                        <strong>Supervivencia:</strong> Años en sustrato como clamidosporas<br>
+                        <strong>Control:</strong> Muy difícil una vez establecido</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pathogen-card">
+                <h4>🦠 Pythium spp. (Damping-off)</h4>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h4>Condiciones Críticas</h4>
+                        <p><strong>Factor clave:</strong> Exceso de humedad del sustrato<br>
+                        <strong>Temperatura:</strong> 20-30°C óptima<br>
+                        <strong>Oxigenación:</strong> Deficiente en la zona radicular</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Síntomas Característicos</h4>
+                        <p><strong>Plántulas:</strong> Tallos ennegrecidos y blandos<br>
+                        <strong>Raíces:</strong> Podredumbre marrón progresiva<br>
+                        <strong>Plantas adultas:</strong> Marchitez súbita</p>
+                    </div>
+                    <div class="info-card">
+                        <h4>Prevención Esencial</h4>
+                        <p><strong>Drenaje:</strong> Adecuado y constante<br>
+                        <strong>Oxigenación:</strong> Radicular suficiente<br>
+                        <strong>Tratamiento:</strong> Difícil post-infección</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/imagenes articulos/enfermedades fungicas/oidio-marihuana.jpg" alt="Oidio" class="content-image">
+            </div>
+        </section>
+
+        <!-- Estrategias Preventivas -->
+        <section class="content-section">
+            <h2 class="section-title">Estrategias Preventivas</h2>
+            
+            <img src="images/imagenes articulos/enfermedades fungicas/fusarium.jpg" alt="Fusarium" class="content-image">
+            
+            <p class="content-text">
+                La prevención representa el 80% del éxito en el control de enfermedades fúngicas. Un ambiente desfavorable para los patógenos es la primera y más efectiva línea de defensa, reduciendo drásticamente la necesidad de tratamientos correctivos.
+            </p>
+
+            <h3 class="subsection-title">Control Ambiental Preciso</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Rango Óptimo</th>
+                        <th>Crítico para</th>
+                        <th>Método de Control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Humedad Relativa</strong></td>
+                        <td>&lt;50% en floración</td>
+                        <td>Botrytis, Oidio</td>
+                        <td>Deshumidificadores, ventilación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Circulación de Aire</strong></td>
+                        <td>0.5-1.0 m/s</td>
+                        <td>Todos los patógenos</td>
+                        <td>Ventiladores circuladores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Temperatura Foliar</strong></td>
+                        <td>2-3°C &lt; ambiente</td>
+                        <td>Condensación</td>
+                        <td>Ventilación, extracción</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gradiente Térmico</strong></td>
+                        <td>&lt;5°C día/noche</td>
+                        <td>Punto de rocío</td>
+                        <td>Calefacción nocturna</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Punto de Rocío: El Factor Crítico</h3>
+                <p>Cuando la temperatura de superficie foliar se acerca al punto de rocío, se forma condensación que favorece la germinación de esporas. Mantener la temperatura foliar 2-3°C por encima del punto de rocío es crítico para la prevención.</p>
+            </div>
+
+            <h3 class="subsection-title">Higiene Cultural Estricta</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Sustrato Estéril</h4>
+                    <p><strong>Esterilización por vapor:</strong> 82°C por 30 minutos elimina todos los patógenos<br>
+                    <strong>Tratamiento térmico seco:</strong> 85°C por 24 horas para sustratos comerciales<br>
+                    <strong>Verificación:</strong> Cultivos microbiológicos post-tratamiento</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Desinfección de Herramientas</h4>
+                    <p><strong>Alcohol 70%:</strong> Desinfección entre plantas durante podas<br>
+                    <strong>Hipoclorito de sodio 0.5%:</strong> Para herramientas de corte contaminadas<br>
+                    <strong>Rotación:</strong> Múltiples juegos de herramientas para continuidad</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Manejo de Material Vegetal</h4>
+                    <p><strong>Eliminación inmediata:</strong> Todo tejido enfermo fuera del cultivo<br>
+                    <strong>Doble bolsa:</strong> Material infectado en bolsas selladas<br>
+                    <strong>Desinfección post-manejo:</strong> Manos y herramientas después de cada intervención</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Diseño Preventivo del Cultivo</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Espaciamiento Estratégico</h4>
+                    <p>Separación suficiente entre plantas (mínimo 60cm) permite circulación de aire adecuada y reduce la transmisión de esporas entre plantas adyacentes.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Podas Sanitarias</h4>
+                    <p>Eliminación sistemática de hojas inferiores que tocan el sustrato, ramas internas sin luz, y material vegetal senescente.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Gestión de Drenaje</h4>
+                    <p>Sistemas de drenaje que evitan encharcamientos, bandejas elevadas, y pendientes adecuadas para evacuación de excesos hídricos.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Filtración de Aire</h4>
+                    <p>Filtros HEPA en sistemas de ventilación eliminan esporas del aire de entrada, reduciendo la presión de inóculo externa.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="enfermedades fungicas/botritys 5.jpg" alt="Síntomas de botrytis en cogollos de cannabis" class="content-image">
+                <p class="image-caption">Síntomas avanzados de botrytis (moho gris) en cogollos de cannabis</p>
+            </div>
+        </section>
+
+        <!-- Detección Temprana -->
+        <section class="content-section">
+            <h2 class="section-title">Detección Temprana</h2>
+            
+            <p class="content-text">
+                La detección temprana permite intervenciones cuando los patógenos están en sus etapas iniciales, más vulnerables y antes de que se establezcan poblaciones significativas. Un sistema de monitoreo estructurado es esencial para el éxito a largo plazo.
+            </p>
+
+            <h3 class="subsection-title">Inspección Sistemática</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Protocolo de Inspección</h4>
+                    <p><strong>Frecuencia:</strong> Diaria durante floración, cada 2-3 días en vegetativo<br>
+                    <strong>Horario:</strong> Mañana temprano cuando síntomas son más visibles<br>
+                    <strong>Ruta:</strong> Sistemática, misma secuencia cada inspección</p>
+                </div>
+                <div class="info-card">
+                    <h4>Zonas Críticas</h4>
+                    <p><strong>Interior del dosel:</strong> Donde la humedad se acumula<br>
+                    <strong>Contacto sustrato-planta:</strong> Zona de mayor riesgo de Pythium<br>
+                    <strong>Puntas de ramas:</strong> Primeros síntomas de estrés</p>
+                </div>
+                <div class="info-card">
+                    <h4>Herramientas Especializadas</h4>
+                    <p><strong>Lupa 10x:</strong> Para síntomas incipientes invisibles a simple vista<br>
+                    <strong>Linterna LED:</strong> Iluminación dirigida para inspección detallada<br>
+                    <strong>Cámara macro:</strong> Documentación fotográfica para seguimiento</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Documentación y Seguimiento</h4>
+                    <p><strong>Registro fotográfico:</strong> Imágenes fechadas de síntomas sospechosos para seguimiento de progresión<br>
+                    <strong>Mapeo del cultivo:</strong> Ubicación exacta de plantas afectadas<br>
+                    <strong>Base de datos:</strong> Historial de incidencias para identificar patrones</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Indicadores Ambientales Predictivos</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Dataloggers Avanzados</h4>
+                    <p>Monitoreo continuo cada 5 minutos de temperatura y humedad con alertas automáticas cuando las condiciones favorecen el desarrollo fúngico.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Cálculo de Punto de Rocío</h4>
+                    <p>Sistemas que calculan automáticamente el punto de rocío y alertan cuando la temperatura se acerca peligrosamente a este valor crítico.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Modelos Predictivos</h4>
+                    <p>Software especializado que calcula el riesgo de infección basado en datos ambientales históricos y condiciones actuales.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Trampas de Esporas</h3>
+            
+            <p class="content-text">
+                Las trampas de esporas permiten cuantificar la presión de inóculo en el ambiente antes de que aparezcan síntomas visibles, proporcionando una ventana de oportunidad para intervenciones preventivas.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Técnica</th>
+                        <th>Frecuencia</th>
+                        <th>Interpretación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Placas Petri</strong></td>
+                        <td>Agar PDA expuesto 15 min</td>
+                        <td>Semanal</td>
+                        <td>Conteo de colonias por ubicación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Identificación Morfológica</strong></td>
+                        <td>Microscopía de colonias</td>
+                        <td>Por detección</td>
+                        <td>Especie específica del patógeno</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cuantificación</strong></td>
+                        <td>UFC/m³ de aire</td>
+                        <td>Análisis post-incubación</td>
+                        <td>Umbral de riesgo de infección</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Interpretación de resultados:</strong> >100 UFC/m³ indica alta presión de inóculo y riesgo elevado de infección. >500 UFC/m³ requiere intervención inmediata.
+            </div>
+
+            <div class="image-placeholder">
+                <img src="enfermedades fungicas/fusarium.jpg" alt="Síntomas de fusarium en tallos de cannabis" class="content-image">
+                <p class="image-caption">Síntomas de fusarium en tallos y raíces de plantas de cannabis</p>
+            </div>
+        </section>
+
+        <!-- Tratamientos Biológicos -->
+        <section class="content-section">
+            <h2 class="section-title">Tratamientos Biológicos</h2>
+            
+            <p class="content-text">
+                Los tratamientos biológicos representan la primera línea de defensa activa, aprovechando antagonistas naturales para controlar patógenos sin residuos químicos. Su eficacia depende de la aplicación preventiva y condiciones ambientales favorables para los microorganismos beneficiosos.
+            </p>
+
+            <h3 class="subsection-title">Microorganismos Antagonistas</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Trichoderma harzianum</h4>
+                    <p><strong>Mecanismo:</strong> Competencia por espacio y nutrientes, antibiosis<br>
+                    <strong>Efectivo contra:</strong> Fusarium, Pythium, Rhizoctonia<br>
+                    <strong>Aplicación:</strong> Drench radicular, 2-4g/L cada 15 días</p>
+                </div>
+                <div class="info-card">
+                    <h4>Bacillus subtilis</h4>
+                    <p><strong>Mecanismo:</strong> Producción de antibióticos naturales (iturina, surfactina)<br>
+                    <strong>Efectivo contra:</strong> Oidio, Botrytis, bacterias<br>
+                    <strong>Aplicación:</strong> Foliar, 1-2g/L cada 7-10 días</p>
+                </div>
+                <div class="info-card">
+                    <h4>Streptomyces griseoviridis</h4>
+                    <p><strong>Mecanismo:</strong> Control específico mediante metabolitos secundarios<br>
+                    <strong>Efectivo contra:</strong> Pythium, Fusarium<br>
+                    <strong>Aplicación:</strong> Incorporación al sustrato, 1-2g/L de agua</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Timing de Aplicación Biológica</h3>
+                <p><strong>Preventivo:</strong> Cada 2-3 semanas durante crecimiento activo<br>
+                <strong>Post-estrés:</strong> Después de podas, trasplantes o fluctuaciones ambientales<br>
+                <strong>Incompatibilidades:</strong> No aplicar con fungicidas químicos (7 días de separación mínima)</p>
+            </div>
+
+            <h3 class="subsection-title">Productos Comerciales Biológicos</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Serenade ASO (Bacillus subtilis QST713)</h4>
+                    <p><strong>Concentración:</strong> 1-2% v/v en aplicación foliar<br>
+                    <strong>Frecuencia:</strong> Cada 7-14 días según presión de enfermedad<br>
+                    <strong>Compatibilidad:</strong> Mezclable con la mayoría de nutrientes foliares</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>RootShield (Trichoderma harzianum T-22)</h4>
+                    <p><strong>Aplicación radicular:</strong> 0.5-1g/L en agua de riego<br>
+                    <strong>Establecimiento:</strong> Requiere 7-10 días para colonización efectiva<br>
+                    <strong>Persistencia:</strong> 4-6 semanas en condiciones óptimas</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Cease (Bacillus subtilis cepa QST713)</h4>
+                    <p><strong>Modo dual:</strong> Aplicación foliar y radicular<br>
+                    <strong>Concentración:</strong> 0.5-2% según severidad de síntomas<br>
+                    <strong>Resistencia:</strong> Muy baja probabilidad de desarrollo de resistencia</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Extractos Vegetales y Compuestos Naturales</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Principio Activo</th>
+                        <th>Concentración</th>
+                        <th>Efectividad Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Aceite de Neem</strong></td>
+                        <td>Azadiractina</td>
+                        <td>0.5-1% v/v</td>
+                        <td>Oidio, prevención general</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Extracto de Ajo</strong></td>
+                        <td>Compuestos azufrados</td>
+                        <td>1-2% v/v</td>
+                        <td>Botrytis, bacterias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Té de Compost</strong></td>
+                        <td>Microorganismos diversos</td>
+                        <td>Dilución 1:10</td>
+                        <td>Fortalecimiento general</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bicarbonato de Potasio</strong></td>
+                        <td>Cambio de pH superficial</td>
+                        <td>0.5-1% p/v</td>
+                        <td>Oidio específicamente</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-placeholder">
+                <img src="enfermedades fungicas/pythium.webp" alt="Daños por pythium en raíces de cannabis" class="content-image">
+                <p class="image-caption">Daños causados por pythium en raíces de cannabis</p>
+            </div>
+        </section>
+
+        <!-- Tratamientos Químicos -->
+        <section class="content-section">
+            <h2 class="section-title">Tratamientos Químicos de Rescate</h2>
+            
+            <p class="content-text">
+                Los fungicidas químicos se reservan para situaciones de emergencia cuando los tratamientos biológicos no han sido suficientes. Su uso debe ser estratégico, considerando resistencias, residuos y fitotoxicidad.
+            </p>
+
+            <div class="danger-box">
+                <strong>Uso responsable:</strong> Los fungicidas químicos deben usarse solo cuando otros métodos han fallado y siguiendo estrictamente las etiquetas. Considerar siempre los períodos de carencia para consumo.
+            </div>
+
+            <h3 class="subsection-title">Fungicidas Sistémicos</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Propiconazol</h4>
+                    <p><strong>Grupo químico:</strong> Triazol sistémico<br>
+                    <strong>Mecanismo:</strong> Inhibición de síntesis de ergosterol<br>
+                    <strong>Efectivo contra:</strong> Oidio, Botrytis<br>
+                    <strong>Concentración:</strong> 0.1-0.2% v/v</p>
+                </div>
+                <div class="info-card">
+                    <h4>Myclobutanil</h4>
+                    <p><strong>Espectro:</strong> Amplio, preventivo y curativo<br>
+                    <strong>Residualidad:</strong> 14-21 días<br>
+                    <strong>Riesgo de resistencia:</strong> Alto con uso repetido<br>
+                    <strong>Aplicación:</strong> Máximo 2 aplicaciones por ciclo</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tebuconazol</h4>
+                    <p><strong>Acción:</strong> Sistémico preventivo y curativo<br>
+                    <strong>Penetración:</strong> Excelente en tejidos vegetales<br>
+                    <strong>Limitación:</strong> Período de carencia largo<br>
+                    <strong>Uso:</strong> Solo en vegetativo/pre-floración</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Fungicidas de Contacto</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Compuestos de Cobre</h4>
+                    <p><strong>Productos:</strong> Sulfato de cobre, oxicloruro de cobre<br>
+                    <strong>Ventajas:</strong> Amplio espectro, bajo costo, bajo riesgo de resistencia<br>
+                    <strong>Limitaciones:</strong> Fitotoxicidad en altas concentraciones, acumulación en tejidos</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Azufre Elemental</h4>
+                    <p><strong>Forma tradicional:</strong> Fungicida más antiguo conocido<br>
+                    <strong>Específico para:</strong> Oidio principalmente<br>
+                    <strong>Aplicación:</strong> Polvo o suspensión, no usar con temperaturas >32°C</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Ditiocarbamatos</h4>
+                    <p><strong>Ejemplo:</strong> Mancozeb para control amplio espectro<br>
+                    <strong>Aplicación:</strong> Cobertura completa necesaria<br>
+                    <strong>Frecuencia:</strong> Repetir cada 7-14 días según etiqueta</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Manejo de Resistencias</h3>
+            
+            <div class="highlight-box">
+                <h3>Estrategias Anti-Resistencia</h3>
+                <p><strong>Mezclas de tanque:</strong> Combinar fungicidas con diferentes modos de acción<br>
+                <strong>Rotaciones sistemáticas:</strong> Alternar principios activos cada 2-3 aplicaciones<br>
+                <strong>Códigos FRAC:</strong> Usar clasificación internacional para planificar rotaciones<br>
+                <strong>Refugios:</strong> Mantener áreas sin tratar para preservar poblaciones sensibles</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Código FRAC</th>
+                        <th>Modo de Acción</th>
+                        <th>Ejemplos</th>
+                        <th>Riesgo de Resistencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>G1</strong></td>
+                        <td>Inhibición de síntesis de ergosterol</td>
+                        <td>Propiconazol, Myclobutanil</td>
+                        <td>Alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M1</strong></td>
+                        <td>Multisitio (cobre)</td>
+                        <td>Sulfato de cobre</td>
+                        <td>Muy bajo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M2</strong></td>
+                        <td>Multisitio (azufre)</td>
+                        <td>Azufre elemental</td>
+                        <td>Muy bajo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>M3</strong></td>
+                        <td>Multisitio (ditiocarbamatos)</td>
+                        <td>Mancozeb</td>
+                        <td>Bajo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-placeholder">
+                <img src="enfermedades fungicas/hojas-oidio-cannabis.webp" alt="Oidio en hojas de cannabis" class="content-image">
+                <p class="image-caption">Oidio (powdery mildew) en hojas de cannabis</p>
+            </div>
+        </section>
+
+        <!-- Programa Integrado -->
+        <section class="content-section">
+            <h2 class="section-title">Programa Integrado Estacional</h2>
+            
+            <p class="content-text">
+                La integración temporal de todas las estrategias de control maximiza la eficacia mientras minimiza costos y riesgos. Cada etapa del cultivo requiere énfasis específicos basados en la susceptibilidad de la planta y las condiciones ambientales.
+            </p>
+
+            <h3 class="subsection-title">Fases del Programa</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Fase Vegetativa (Semanas 1-8)</h4>
+                    <p><strong>Énfasis:</strong> Prevención biológica y establecimiento ambiental<br>
+                    <strong>Tratamientos:</strong> Trichoderma cada 2 semanas, Bacillus mensual<br>
+                    <strong>Monitoreo:</strong> Cada 2-3 días, enfoque en condiciones radiculares</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Pre-floración (Semanas 9-10)</h4>
+                    <p><strong>Intensificación:</strong> Máximo control preventivo antes de floración<br>
+                    <strong>Último momento:</strong> Para fungicidas sistémicos si es necesario<br>
+                    <strong>Preparación:</strong> Optimización ambiental para floración</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Floración Temprana (Semanas 11-14)</h4>
+                    <p><strong>Control crítico:</strong> Máximo riesgo de Botrytis<br>
+                    <strong>Ambiente:</strong> HR <45%, circulación máxima<br>
+                    <strong>Tratamientos:</strong> Solo productos seguros para consumo</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Floración Tardía (Semanas 15+)</h4>
+                    <p><strong>Restricciones:</strong> Solo tratamientos con período de carencia cumplido<br>
+                    <strong>Enfoque:</strong> Control ambiental estricto<br>
+                    <strong>Emergencia:</strong> Remoción selectiva de material afectado</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Umbrales de Tratamiento</h3>
+            
+            <div class="treatment-levels">
+                <div class="level-card level-0">
+                    <h4>Nivel 0: Sin Síntomas</h4>
+                    <p><strong>Estado:</strong> Plantas sanas<br>
+                    <strong>Acción:</strong> Solo prevención<br>
+                    <strong>Tratamientos:</strong> Biológicos rutinarios</p>
+                </div>
+                <div class="level-card level-1">
+                    <h4>Nivel 1: <5% Afectadas</h4>
+                    <p><strong>Estado:</strong> Síntomas incipientes<br>
+                    <strong>Acción:</strong> Tratamientos biológicos intensivos<br>
+                    <strong>Monitoreo:</strong> Diario</p>
+                </div>
+                <div class="level-card level-2">
+                    <h4>Nivel 2: 5-15% Afectadas</h4>
+                    <p><strong>Estado:</strong> Infección establecida<br>
+                    <strong>Acción:</strong> Combinación bio + químico<br>
+                    <strong>Urgencia:</strong> Intervención 24-48h</p>
+                </div>
+                <div class="level-card level-3">
+                    <h4>Nivel 3: >15% Afectadas</h4>
+                    <p><strong>Estado:</strong> Emergencia fitosanitaria<br>
+                    <strong>Acción:</strong> Tratamiento químico intensivo<br>
+                    <strong>Decisión:</strong> Evaluar viabilidad del cultivo</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Resultados Esperados del MIP</h3>
+                <p><strong>Reducción de pérdidas:</strong> De 30-50% típico a <5% en sistemas bien manejados<br>
+                <strong>Calidad del producto:</strong> Significativamente mejorada por menor estrés<br>
+                <strong>Sostenibilidad:</strong> Menor dependencia de fungicidas químicos<br>
+                <strong>Costo-beneficio:</strong> ROI positivo en 1-2 ciclos de implementación</p>
+            </div>
+
+            <div class="image-placeholder">
+                <img src="deficiencias/tabla-de-carencias-838x1024.jpg" alt="Tabla de carencias y síntomas en cannabis" class="content-image">
+                <p class="image-caption">Tabla visual de carencias y síntomas en plantas de cannabis</p>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Implementación Exitosa del MIP Fúngico</h2>
+            
+            <p class="content-text">
+                El Manejo Integrado de Plagas fúngicas representa un cambio de paradigma desde la reacción hacia la prevención proactiva. Su implementación exitosa requiere comprensión científica, disciplina operacional y adaptación continua basada en observación sistemática.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Pilares del Éxito</h4>
+                    <p><strong>Control ambiental:</strong> Base fundamental del programa<br>
+                    <strong>Detección temprana:</strong> Intervención cuando es más efectiva<br>
+                    <strong>Diversidad de enfoques:</strong> Múltiples mecanismos de control<br>
+                    <strong>Adaptación continua:</strong> Ajuste basado en resultados</p>
+                </div>
+                <div class="info-card">
+                    <h4>Inversión vs Retorno</h4>
+                    <p><strong>Costo inicial:</strong> Equipamiento de monitoreo y control ambiental<br>
+                    <strong>Ahorro:</strong> Reducción drástica de pérdidas por enfermedad<br>
+                    <strong>Calidad:</strong> Producto final superior y más consistente<br>
+                    <strong>Amortización:</strong> Típicamente 1-2 ciclos de cultivo</p>
+                </div>
+                <div class="info-card">
+                    <h4>Escalabilidad</h4>
+                    <p><strong>Cultivos pequeños:</strong> Métodos manuales y observación directa<br>
+                    <strong>Operaciones medianas:</strong> Automatización parcial y protocolos<br>
+                    <strong>Cultivos comerciales:</strong> Sistemas completamente automatizados<br>
+                    <strong>Principios:</strong> Universales independiente de escala</p>
+                </div>
+            </div>
+
+            <p class="content-text">
+                La transición hacia un sistema MIP efectivo no ocurre de la noche a la mañana. Requiere paciencia para permitir que los ecosistemas microbianos beneficiosos se establezcan, disciplina para mantener protocolos de higiene, y persistencia para ajustar estrategias basándose en los resultados observados.
+            </p>
+
+            <div class="warning-box">
+                <strong>Compromiso a largo plazo:</strong> El MIP fúngico es más efectivo como sistema integrado que como medidas aisladas. Su máxima eficacia se alcanza después de varios ciclos de implementación consistente.
+            </div>
+
+            <p class="content-text">
+                Los cultivadores que implementan programas MIP completos reportan no solo reducciones dramáticas en pérdidas por enfermedades, sino también mejoras en vigor general de las plantas, consistencia de producción y calidad organoléptica del producto final. La inversión en prevención se traduce directamente en cultivos más rentables y sostenibles.
+            </p>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(238, 90, 36, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis y uso de pesticidas.
+            </p>
+            <div style="border-top: 2px solid rgba(255, 107, 107, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #ff6b6b; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

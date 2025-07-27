@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED vs HPS: La Revolución Lumínica en el Cultivo Indoor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>LED vs HPS</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">La Revolución Lumínica en el Cultivo Indoor: Guía Definitiva para Elegir tu Sistema de Iluminación</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 10 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>💡</span>
+                    <span>Nivel: Intermedio</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La iluminación representa el 40% del éxito en cualquier cultivo indoor. Durante décadas, las lámparas de sodio de alta presión (HPS) dominaron el mercado, pero los LED han revolucionado completamente el panorama del cultivo de cannabis en interior, ofreciendo eficiencia energética superior y control espectral preciso.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/armario,salas,luz/cultivo-de-marihuana-invernaderos-armarios-de-cultivo-armario-de-cultivo-dark-street-wide-v30.jpg" alt="LED vs HPS" class="content-image">
+            </div>
+
+            <p class="content-text">
+                La elección entre LED y HPS no es solo una cuestión de preferencia personal, sino una decisión técnica que afectará directamente a la calidad de tus cosechas, el consumo energético y la viabilidad económica de tu cultivo a largo plazo.
+            </p>
+        </section>
+
+        <!-- Comparativa Principal -->
+        <section class="content-section">
+            <h2 class="section-title">LED vs HPS: El Enfrentamiento Definitivo</h2>
+            
+            <div class="vs-comparison">
+                <div class="info-card">
+                    <h4>🔥 Lámparas HPS (High Pressure Sodium)</h4>
+                    <p><strong>Tecnología tradicional:</strong> Probada durante décadas<br>
+                    <strong>Espectro:</strong> Dominado por amarillo/naranja (2100K)<br>
+                    <strong>Generación de calor:</strong> Alta, requiere ventilación extra<br>
+                    <strong>Costo inicial:</strong> Bajo (€50-150 por lámpara)</p>
+                </div>
+                
+                <div class="vs-divider">VS</div>
+                
+                <div class="info-card">
+                    <h4>💎 Paneles LED (Light Emitting Diode)</h4>
+                    <p><strong>Tecnología moderna:</strong> Innovación constante<br>
+                    <strong>Espectro:</strong> Espectro completo ajustable<br>
+                    <strong>Generación de calor:</strong> Baja, mayor control climático<br>
+                    <strong>Costo inicial:</strong> Alto (€200-800 por panel)</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/room.jpg" alt="Sala LED" class="content-image">
+            </div>
+        </section>
+
+        <!-- Análisis Técnico Detallado -->
+        <section class="content-section">
+            <h2 class="section-title">Análisis Técnico: Los Números que Importan</h2>
+            
+            <p class="content-text">
+                Para tomar una decisión informada, es crucial entender las especificaciones técnicas que realmente impactan en el rendimiento de tu cultivo. Aquí analizamos los datos más relevantes basados en mediciones reales de laboratorio.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Especificación</th>
+                        <th>LED Moderno</th>
+                        <th>HPS Tradicional</th>
+                        <th>Ventaja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Eficiencia Lumínica</strong></td>
+                        <td>2.5-3.0 μmol/J</td>
+                        <td>1.7-1.9 μmol/J</td>
+                        <td>LED (+47%)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Generación de Calor</strong></td>
+                        <td>60% menos calor</td>
+                        <td>Referencia base</td>
+                        <td>LED</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vida Útil</strong></td>
+                        <td>50,000 horas</td>
+                        <td>10,000 horas</td>
+                        <td>LED (5x más)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Control Espectral</strong></td>
+                        <td>Ajuste preciso por canal</td>
+                        <td>Espectro fijo</td>
+                        <td>LED</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Costo Energético Mensual*</strong></td>
+                        <td>€25-40</td>
+                        <td>€50-75</td>
+                        <td>LED (-50%)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p style="font-size: 0.9em; color: #6c757d;">*Basado en cultivo 12/12h, tarifa eléctrica 0.25€/kWh</p>
+
+            <div class="tech-specs">
+                <h4>📊 Datos Clave de Rendimiento</h4>
+                <p><strong>PPFD Óptimo:</strong> 800-1200 μmol/m²/s durante floración</p>
+                <p><strong>Penetración lumínica:</strong> LED 60-80cm vs HPS 80-100cm</p>
+                <p><strong>Uniformidad de distribución:</strong> LED 85-95% vs HPS 70-80%</p>
+                <p><strong>DLI recomendado:</strong> 35-50 mol/m²/día para máximo rendimiento</p>
+            </div>
+        </section>
+
+        <!-- Ventajas Específicas -->
+        <section class="content-section">
+            <h2 class="section-title">Ventajas Específicas de Cada Tecnología</h2>
+            
+            <h3 class="subsection-title">💎 Sistemas LED Modernos</h3>
+            
+            <p class="content-text">
+                Los LED han evolucionado dramáticamente en la última década, pasando de ser una curiosidad tecnológica a convertirse en la opción preferida de cultivadores profesionales por razones muy específicas.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>⚡ Eficiencia Energética</h4>
+                    <p>Los LED consumen hasta un 50% menos energía que las HPS para producir la misma cantidad de luz útil para las plantas. Esto se traduce en facturas eléctricas significativamente menores y menor huella de carbono.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🌡️ Control Térmico Superior</h4>
+                    <p>La baja generación de calor permite mantener las luces más cerca de las plantas sin riesgo de quemaduras, maximizando la penetración lumínica y permitiendo mejor control del clima de cultivo.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🎨 Espectro Personalizable</h4>
+                    <p>Los LED permiten ajustar diferentes canales espectrales (azul, rojo, blanco, UV, IR) para optimizar cada fase del cultivo, desde germinación hasta floración avanzada.</p>
+                </div>
+                <div class="info-card">
+                    <h4>⏱️ Longevidad Excepcional</h4>
+                    <p>Con una vida útil de 50,000 horas, un panel LED puede durar 5-7 años de uso intensivo, eliminando el costo y la molestia de reemplazos frecuentes de bombillas.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">🔥 Lámparas HPS Tradicionales</h3>
+            
+            <p class="content-text">
+                Aunque los LED han ganado popularidad, las HPS mantienen ciertas ventajas que las hacen atractivas para situaciones específicas y cultivadores con necesidades particulares.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>💰 Inversión Inicial Baja</h4>
+                    <p>El costo inicial de una configuración HPS completa es significativamente menor, haciendo que sea accesible para cultivadores principiantes o con presupuestos limitados.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔥 Calor Aprovechable</h4>
+                    <p>En climas fríos, el calor generado por las HPS puede ser beneficioso, reduciendo la necesidad de calefacción adicional durante los meses más fríos del año.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏗️ Penetración Profunda</h4>
+                    <p>Las HPS tienen excelente penetración en el dosel vegetal, siendo efectivas en plantas muy densas o sistemas SCROG con múltiples niveles de follaje.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔧 Simplicidad Técnica</h4>
+                    <p>Sistema "plug and play" sin necesidad de configuraciones complejas. Fácil reemplazo de componentes y amplia disponibilidad de repuestos a nivel mundial.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consideración importante:</strong> Aunque las HPS tienen menor costo inicial, el gasto energético adicional y los reemplazos frecuentes de bombillas pueden hacer que sean más costosas a largo plazo.
+            </div>
+        </section>
+
+        <!-- Recomendaciones Prácticas -->
+        <section class="content-section">
+            <h2 class="section-title">Recomendaciones Prácticas por Tipo de Cultivo</h2>
+            
+            <p class="content-text">
+                La elección entre LED y HPS debe basarse en tu situación específica, considerando el tamaño del cultivo, presupuesto disponible, experiencia técnica y objetivos a largo plazo.
+            </p>
+
+            <div class="recommendation-box">
+                <h3>🏠 Cultivos Pequeños (1-2m²)</h3>
+                <p><strong>Recomendación:</strong> Paneles LED de 300-600W</p>
+                <p><strong>Razones:</strong> Menor generación de calor facilita el control climático en espacios reducidos. Los paneles LED eliminan la necesidad de sistemas de ventilación complejos y costosos.</p>
+                <p><strong>Productos sugeridos:</strong> LED quantum boards, paneles COB, o sistemas modulares</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🏭 Cultivos Medianos (3-6m²)</h3>
+                <p><strong>Recomendación:</strong> Combinación LED + HPS o LED de alta potencia</p>
+                <p><strong>Razones:</strong> En este tamaño, tanto LED como HPS son viables. La elección depende del presupuesto inicial y los costos energéticos locales.</p>
+                <p><strong>Estrategia híbrida:</strong> LED para crecimiento + HPS para floración puede maximizar beneficios</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🏢 Cultivos Grandes (6m²+)</h3>
+                <p><strong>Recomendación:</strong> Sistemas LED comerciales o HPS con alta eficiencia</p>
+                <p><strong>Razones:</strong> A gran escala, el ahorro energético de LED se vuelve crítico. Sin embargo, HPS puede ser viable si el costo eléctrico es bajo.</p>
+                <p><strong>Consideración:</strong> Evaluar ROI a 3-5 años incluyendo costos energéticos y de reemplazo</p>
+            </div>
+
+            <h3 class="subsection-title">📏 Guía de Distancias y Potencias</h3>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Área de Cultivo</th>
+                        <th>LED Recomendado</th>
+                        <th>HPS Equivalente</th>
+                        <th>Distancia LED</th>
+                        <th>Distancia HPS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>60x60cm</strong></td>
+                        <td>200-300W</td>
+                        <td>400W</td>
+                        <td>30-45cm</td>
+                        <td>45-60cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>80x80cm</strong></td>
+                        <td>300-450W</td>
+                        <td>600W</td>
+                        <td>35-50cm</td>
+                        <td>50-70cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>100x100cm</strong></td>
+                        <td>450-600W</td>
+                        <td>600-1000W</td>
+                        <td>40-60cm</td>
+                        <td>60-80cm</td>
+                    </tr>
+                    <tr>
+                        <td><strong>120x120cm</strong></td>
+                        <td>600-800W</td>
+                        <td>1000W</td>
+                        <td>45-65cm</td>
+                        <td>70-90cm</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/room.jpg" alt="Sala de cultivo con iluminación LED optimizada" class="content-image">
+                <p class="image-caption">Sala de cultivo profesional con distribución óptima de iluminación LED</p>
+            </div>
+        </section>
+
+        <!-- Análisis Económico -->
+        <section class="content-section">
+            <h2 class="section-title">Análisis Económico: ROI a Largo Plazo</h2>
+            
+            <p class="content-text">
+                Para tomar una decisión verdaderamente informada, es esencial analizar los costos totales de propiedad durante la vida útil del sistema, no solo el precio de compra inicial.
+            </p>
+
+            <h3 class="subsection-title">💰 Cálculo de Costos Totales (5 años)</h3>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>LED 600W - Costo Total</h4>
+                    <p><strong>Inversión inicial:</strong> €600<br>
+                    <strong>Consumo energético:</strong> €1,095 (5 años)<br>
+                    <strong>Reemplazos:</strong> €0<br>
+                    <strong>Ventilación extra:</strong> €0<br>
+                    <strong>TOTAL:</strong> €1,695</p>
+                </div>
+                <div class="info-card">
+                    <h4>HPS 600W - Costo Total</h4>
+                    <p><strong>Inversión inicial:</strong> €200<br>
+                    <strong>Consumo energético:</strong> €1,825 (5 años)<br>
+                    <strong>Reemplazos bombillas:</strong> €150<br>
+                    <strong>Ventilación extra:</strong> €300<br>
+                    <strong>TOTAL:</strong> €2,475</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>💡 Punto de Equilibrio</h3>
+                <p>El LED se paga a sí mismo en aproximadamente 18-24 meses de uso intensivo, considerando todos los costos asociados. A partir del segundo año, el ahorro es puro beneficio.</p>
+                
+                <p><strong>Ahorro anual después del punto de equilibrio:</strong> €156 con LED vs HPS equivalente</p>
+            </div>
+
+            <h3 class="subsection-title">📈 Factores que Afectan el ROI</h3>
+
+            <div class="tech-specs">
+                <h4>Variables Críticas en el Análisis</h4>
+                <p><strong>Costo de electricidad local:</strong> Varía de €0.10-0.35/kWh según país/región</p>
+                <p><strong>Horas de uso anuales:</strong> 12h/día = 4,380h/año (cultivo continuo)</p>
+                <p><strong>Eficiencia del sistema:</strong> LED pierde 10% eficiencia en 5 años vs HPS 20%</p>
+                <p><strong>Costos de refrigeración:</strong> HPS requiere 30-50% más ventilación</p>
+            </div>
+        </section>
+
+        <!-- Conclusiones -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: La Decisión Inteligente</h2>
+            
+            <p class="content-text">
+                Aunque la inversión inicial en LED es mayor, el ahorro energético, la longevidad excepcional y el control preciso del espectro hacen que sea la opción más rentable y técnicamente superior a largo plazo para cultivadores serios.
+            </p>
+
+            <div class="highlight-box">
+                <h3>🎯 Recomendación Final</h3>
+                <p><strong>Para cultivadores nuevos:</strong> Comenzar con HPS para aprender los fundamentos, luego migrar a LED cuando tengas experiencia y presupuesto.</p>
+                
+                <p><strong>Para cultivadores experimentados:</strong> LED es la inversión inteligente. El control espectral y la eficiencia energética justifican completamente el costo inicial.</p>
+                
+                <p><strong>Para operaciones comerciales:</strong> LED es prácticamente obligatorio debido a los ahorros operativos y la consistencia de resultados.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consideración final:</strong> Independientemente de la tecnología elegida, la calidad del driver/balasto, la uniformidad de distribución y el mantenimiento adecuado son factores más importantes que la marca específica del equipo.
+            </div>
+
+            <p class="content-text">
+                La revolución LED en el cultivo indoor no es solo una tendencia temporal, sino una evolución natural hacia sistemas más eficientes, controlables y sostenibles. La inversión en tecnología LED moderna representa una apuesta segura por el futuro de tu cultivo.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cultivo-de-marihuana-invernaderos-armarios-de-cultivo-armario-de-cultivo-dark-street-wide-v30.jpg" alt="Cultivo indoor con iluminación profesional" class="content-image">
+                <p class="image-caption">Cultivo indoor profesional mostrando el desarrollo óptimo bajo iluminación controlada</p>
+            </div>
+
+            <div class="recommendation-box">
+                <h3>🔧 Próximos Pasos Recomendados</h3>
+                <p><strong>1. Evalúa tu situación actual:</strong> Espacio, presupuesto, experiencia</p>
+                <p><strong>2. Calcula tu ROI específico:</strong> Usa tus tarifas eléctricas locales</p>
+                <p><strong>3. Considera la transición gradual:</strong> Puedes combinar ambas tecnologías inicialmente</p>
+                <p><strong>4. Invierte en medición:</strong> PAR meter para optimizar cualquier sistema</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

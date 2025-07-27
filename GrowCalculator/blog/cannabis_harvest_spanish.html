@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosecha y Curado de Cannabis: La Guía Definitiva para la Perfección</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Cosecha y Curado de Cannabis</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">La Guía Definitiva para Alcanzar la Perfección en tus Cultivos</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 15 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La cosecha y el curado representan el momento culminante de todo el proceso de cultivo de cannabis. Después de meses de cuidadoso cultivo, estos pasos finales determinarán la calidad, potencia y perfil de efectos de tu producto final. Un timing perfecto en la cosecha y un curado meticuloso pueden transformar una buena cosecha en un producto excepcional.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/collita.png" alt="Vista panorámica de plantas de cannabis listas para cosechar mostrando colas desarrolladas" class="content-image">
+                <p class="image-caption">Vista panorámica de plantas de cannabis listas para cosechar mostrando colas desarrolladas</p>
+            </div>
+
+            <p class="content-text">
+                Entender los indicadores de madurez, dominar las técnicas de cosecha y aplicar métodos profesionales de secado y curado no solo maximizará la calidad de tu cannabis, sino que también preservará los delicados terpenos y cannabinoides que proporcionan los efectos únicos de cada variedad.
+            </p>
+        </section>
+
+        <!-- El Timing Perfecto de la Cosecha -->
+        <section class="content-section">
+            <h2 class="section-title">El Arte del Timing Perfecto</h2>
+            
+            <p class="content-text">
+                Determinar el momento exacto de la cosecha es una habilidad que separa a los cultivadores novatos de los expertos. El timing no solo afecta la potencia, sino que también define completamente el perfil de efectos que experimentará el usuario final.
+            </p>
+
+            <h3 class="subsection-title">Lectura de Tricomas: Tu Guía Principal</h3>
+            
+            <p class="content-text">
+                Los tricomas son pequeñas estructuras cristalinas que cubren las flores y hojas del cannabis. Estas glándulas resinosas contienen la mayoría de los cannabinoides y terpenos, y su apariencia cambia a medida que la planta madura, proporcionando señales visuales precisas sobre el momento óptimo de cosecha.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/tricomas.webp" alt="Comparativa microscópica de tricomas transparentes, lechosos y ámbar con descripciones" class="content-image">
+                <p class="image-caption">Comparativa microscópica de tricomas transparentes, lechosos y ámbar con descripciones</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Estado del Tricoma</th>
+                        <th>Apariencia</th>
+                        <th>Perfil de Efectos</th>
+                        <th>Recomendación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Transparentes</strong></td>
+                        <td>Cristalinos como vidrio</td>
+                        <td>Efecto cerebral energético, estimulante</td>
+                        <td>Cosecha temprana para sativas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lechosos</strong></td>
+                        <td>Blancos opacos</td>
+                        <td>Equilibrio perfecto entre cuerpo y mente</td>
+                        <td>Momento ideal para la mayoría</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ámbar</strong></td>
+                        <td>Amarillo-marrón translúcido</td>
+                        <td>Efecto corporal relajante, sedante</td>
+                        <td>Perfecto para índicas medicinales</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Fórmula del Timing Óptimo</h3>
+                <p><strong>20% ámbar:</strong> Efecto energético y cerebral, ideal para uso diurno</p>
+                <p><strong>50% ámbar:</strong> Equilibrio perfecto entre efectos cerebrales y corporales</p>
+                <p><strong>70% ámbar:</strong> Efecto predominantemente corporal y relajante, perfecto para uso nocturno</p>
+            </div>
+
+            <h3 class="subsection-title">Herramientas Esenciales para la Evaluación</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Microscopio de Bolsillo 60x-100x</h4>
+                    <p>Herramienta fundamental para examinar tricomas con precisión. Los modelos con LED integrado proporcionan la iluminación necesaria para una evaluación precisa.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Lupa con LED</h4>
+                    <p>Alternativa accesible para inspección general. Aunque menos precisa que el microscopio, permite una evaluación rápida del estado general de madurez.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Medidor TDS</h4>
+                    <p>Esencial para medir la efectividad del lavado de raíces final, asegurando la eliminación completa de nutrientes residuales.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Técnicas de Cosecha -->
+        <section class="content-section">
+            <h2 class="section-title">Técnicas Profesionales de Cosecha</h2>
+            
+            <p class="content-text">
+                La técnica de cosecha que elijas puede influir significativamente en la calidad final de tu producto. Entender las diferencias entre los métodos disponibles te permitirá tomar la decisión más adecuada para tu situación específica.
+            </p>
+
+            <h3 class="subsection-title">Cosecha Escalonada: Maximizando el Potencial</h3>
+            
+            <p class="content-text">
+                La cosecha escalonada reconoce que diferentes partes de la planta maduran a ritmos distintos. Las colas superiores, que reciben más luz directa, suelen estar listas 7-10 días antes que las partes inferiores de la planta.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/cosecha etapas.png" alt="Diagrama de planta mostrando las tres fases de cosecha escalonada con zonas marcadas" class="content-image">
+                <p class="image-caption">Diagrama de planta mostrando las tres fases de cosecha escalonada con zonas marcadas</p>
+            </div>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Primera cosecha:</strong> Corta las colas superiores cuando alcancen tu perfil de tricomas deseado. Estas suelen ser las más potentes y desarrolladas.
+                </div>
+                <div class="step-item">
+                    <strong>Segunda cosecha (7-10 días después):</strong> Cosecha la parte media de la planta, que habrá tenido tiempo adicional para desarrollar tricomas más maduros.
+                </div>
+                <div class="step-item">
+                    <strong>Cosecha final:</strong> Las colas inferiores, ahora con acceso a más luz, habrán alcanzado su máximo potencial de desarrollo.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Ventajas de la Cosecha Escalonada</h3>
+                <p>Esta técnica puede aumentar el rendimiento total hasta un 15-20% al permitir que las partes menos desarrolladas de la planta alcancen su máximo potencial. Además, obtienes diferentes perfiles de efectos de una sola planta.</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consideración importante:</strong> La cosecha completa sacrifica algo de potencial de rendimiento por conveniencia y uniformidad en el producto final.
+            </div>
+        </section>
+
+        <!-- Proceso de Secado -->
+        <section class="content-section">
+            <h2 class="section-title">Secado Profesional: Preservando la Calidad</h2>
+            
+            <p class="content-text">
+                El secado es un proceso crítico que debe equilibrar la eliminación de humedad con la preservación de terpenos volátiles. Un secado demasiado rápido degrada la calidad, mientras que uno demasiado lento puede provocar problemas de moho.
+            </p>
+
+            <h3 class="subsection-title">Condiciones Ambientales Óptimas</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Temperatura: 18-22°C</h4>
+                    <p>Temperatura constante que permite un secado lento y uniforme, preservando los terpenos más volátiles que se perderían a temperaturas más altas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Humedad: 50-60%</h4>
+                    <p>Rango ideal que previene el secado excesivamente rápido mientras minimiza el riesgo de desarrollo de hongos y bacterias.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Circulación de Aire</h4>
+                    <p>Flujo suave e indirecto que asegura intercambio de aire sin resecar las flores. Evita dirigir ventiladores directamente a las plantas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Oscuridad Completa</h4>
+                    <p>La luz UV degrada tanto THC como terpenos. Un ambiente completamente oscuro preserva la potencia y el perfil aromático.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/curado.jpg" alt="Cuarto de secado profesional con plantas colgadas y sistema de control ambiental" class="content-image">
+                <p class="image-caption">Cuarto de secado profesional con plantas colgadas y sistema de control ambiental</p>
+            </div>
+
+            <h3 class="subsection-title">Métodos de Secado Comparados</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Descripción</th>
+                        <th>Ventajas</th>
+                        <th>Desventajas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ramas Completas</strong></td>
+                        <td>Secado de ramas enteras sin manicurar</td>
+                        <td>Máxima retención de terpenos, secado más lento y uniforme</td>
+                        <td>Requiere más espacio, proceso más largo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manicurado Húmedo</strong></td>
+                        <td>Manicurado antes del secado</td>
+                        <td>Más rápido, menos espacio requerido</td>
+                        <td>Pérdida de terpenos, secado menos uniforme</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Manicurado Seco</strong></td>
+                        <td>Manicurado después del secado</td>
+                        <td>Máxima calidad, mejor preservación</td>
+                        <td>Más trabajo, proceso más complejo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Prueba de Secado Completado</h3>
+                <p>Las ramas pequeñas deben quebrar con un sonido audible ("clic") cuando el secado esté completo. Los tallos principales deben doblarse pero no quebrar completamente. Este proceso típicamente toma entre 7-14 días.</p>
+            </div>
+        </section>
+
+        <!-- Curado Profesional -->
+        <section class="content-section">
+            <h2 class="section-title">Curado: La Transformación Final</h2>
+            
+            <p class="content-text">
+                El curado es donde ocurre la verdadera magia. Durante este proceso, las enzimas naturales de la planta descomponen la clorofila residual y otros compuestos que pueden afectar negativamente el sabor, mientras que los terpenos se desarrollan y concentran.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/curados.jpg" alt="Frascos de vidrio con cannabis curado y packs Boveda para control de humedad" class="content-image">
+                <p class="image-caption">Frascos de vidrio con cannabis curado y packs Boveda para control de humedad</p>
+            </div>
+
+            <h3 class="subsection-title">Primeras Dos Semanas Críticas</h3>
+            
+            <p class="content-text">
+                Esta fase inicial es crucial para establecer las condiciones que permitirán un curado exitoso. Los frascos deben llenarse al 75% de su capacidad para permitir suficiente intercambio de aire.
+            </p>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Llenado de frascos:</strong> Utiliza frascos de vidrio hermético, llenándolos al 75% de capacidad para permitir intercambio de gases adecuado.
+                </div>
+                <div class="step-item">
+                    <strong>Apertura diaria:</strong> Abre los frascos 15-30 minutos cada día para permitir intercambio de gases y liberación de humedad excesiva.
+                </div>
+                <div class="step-item">
+                    <strong>Control de humedad:</strong> La humedad relativa dentro del frasco debe estabilizarse entre 60-65% para un curado óptimo.
+                </div>
+                <div class="step-item">
+                    <strong>Monitoreo constante:</strong> Inspecciona diariamente en busca de signos de moho o humedad excesiva, especialmente en las primeras semanas.
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Curado Extendido: Desarrollando la Excelencia</h3>
+            
+            <p class="content-text">
+                Después de las primeras dos semanas, el proceso de curado se vuelve más pasivo pero no menos importante. La paciencia durante esta fase es recompensada con un producto superior en todos los aspectos.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Cronología del Curado</h3>
+                <p><strong>Semanas 1-2:</strong> Apertura diaria, estabilización de humedad</p>
+                <p><strong>Semanas 3-8:</strong> Apertura 2-3 veces por semana, desarrollo de sabores</p>
+                <p><strong>Meses 2-6:</strong> Apertura semanal opcional, refinamiento máximo</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Control de Humedad Boveda</h4>
+                    <p>Los packs Boveda 62% son sistemas bidireccionales que absorben o liberan humedad según sea necesario, manteniendo automáticamente la humedad relativa óptima.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Curado Premium</h4>
+                    <p>Algunas variedades premium continúan mejorando durante 6 meses o más de curado, desarrollando complejidad aromática y suavidad incomparables.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Análisis de Cannabinoides -->
+        <section class="content-section">
+            <h2 class="section-title">Análisis de Cannabinoides: Entendiendo tu Producto</h2>
+            
+            <p class="content-text">
+                El análisis químico proporciona información objetiva crucial sobre la potencia, perfil de efectos y calidad de tu cannabis. Esta información es especialmente valiosa para uso medicinal y para optimizar futuros cultivos.
+            </p>
+
+            <h3 class="subsection-title">Cannabinoides Principales</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Cannabinoide</th>
+                        <th>Características</th>
+                        <th>Rango Típico</th>
+                        <th>Efectos Principales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>THC</strong></td>
+                        <td>Principal compuesto psicoactivo</td>
+                        <td>15-30%</td>
+                        <td>Euforia, relajación, alivio del dolor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CBD</strong></td>
+                        <td>No psicoactivo, terapéutico</td>
+                        <td>0.1-20%</td>
+                        <td>Antiinflamatorio, ansiolítico, anticonvulsivo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CBG</strong></td>
+                        <td>Precursor de otros cannabinoides</td>
+                        <td>0.1-2%</td>
+                        <td>Energizante, antibacteriano</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CBN</strong></td>
+                        <td>Producto de degradación del THC</td>
+                        <td>0.1-3%</td>
+                        <td>Sedante, inductor del sueño</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/Flavour.png" alt="Cromatograma mostrando picos de diferentes cannabinoides con interpretación de resultados" class="content-image">
+                <p class="image-caption">Cromatograma mostrando picos de diferentes cannabinoides con interpretación de resultados</p>
+            </div>
+
+            <h3 class="subsection-title">Perfil de Terpenos</h3>
+            
+            <p class="content-text">
+                Los terpenos son compuestos aromáticos que no solo proporcionan el característico olor del cannabis, sino que también modulan y potencian los efectos de los cannabinoides a través del denominado "efecto séquito".
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Limoneno</h4>
+                    <p><strong>Aroma:</strong> Cítrico fresco<br>
+                    <strong>Efectos:</strong> Elevador del ánimo, energizante, antidepresivo<br>
+                    <strong>También presente en:</strong> Cáscaras de cítricos</p>
+                </div>
+                <div class="info-card">
+                    <h4>Mirceno</h4>
+                    <p><strong>Aroma:</strong> Terroso, herbal<br>
+                    <strong>Efectos:</strong> Sedante, relajante muscular<br>
+                    <strong>También presente en:</strong> Mango, lúpulo</p>
+                </div>
+                <div class="info-card">
+                    <h4>Pineno</h4>
+                    <p><strong>Aroma:</strong> Pino, bosque<br>
+                    <strong>Efectos:</strong> Mejora memoria, concentración<br>
+                    <strong>También presente en:</strong> Coníferas, romero</p>
+                </div>
+                <div class="info-card">
+                    <h4>Linalool</h4>
+                    <p><strong>Aroma:</strong> Floral, lavanda<br>
+                    <strong>Efectos:</strong> Relajante, ansiolítico<br>
+                    <strong>También presente en:</strong> Lavanda, cilantro</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>El Efecto Séquito</h3>
+                <p>La interacción sinérgica entre cannabinoides y terpenos produce efectos únicos que son superiores a la suma de componentes individuales. Esta sinergia explica por qué variedades con perfiles cannabinoides similares pueden tener efectos completamente diferentes.</p>
+            </div>
+
+            <h3 class="subsection-title">Métodos de Análisis</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Método</th>
+                        <th>Aplicación</th>
+                        <th>Precisión</th>
+                        <th>Costo Aproximado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HPLC</strong></td>
+                        <td>Cannabinoides ácidos (THCA, CBDA)</td>
+                        <td>±2% cannabinoides principales</td>
+                        <td>€50-100 por muestra</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GC-MS</strong></td>
+                        <td>Terpenos y cannabinoides descarboxilados</td>
+                        <td>±5% compuestos volátiles</td>
+                        <td>€75-150 por muestra</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kits Caseros</strong></td>
+                        <td>Estimación básica de potencia</td>
+                        <td>±10-15%</td>
+                        <td>€30-200 por kit</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Limitaciones de kits caseros:</strong> Aunque convenientes, los analizadores portátiles tienen menor precisión que los análisis de laboratorio y pueden no detectar algunos compuestos menores importantes.
+            </div>
+        </section>
+
+        <!-- Indicadores de Calidad Premium -->
+        <section class="content-section">
+            <h2 class="section-title">Indicadores de Calidad Premium</h2>
+            
+            <p class="content-text">
+                Reconocer los signos de un curado completado y una calidad premium te permitirá evaluar objetivamente el éxito de tu proceso y establecer estándares para futuros cultivos.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Aroma Desarrollado</h4>
+                    <p>Los terpenos alcanzan su máxima expresión después de un curado adecuado. El aroma debe ser complejo, limpio y sin rastros de clorofila o "verdor".</p>
+                </div>
+                <div class="info-card">
+                    <h4>Combustión Suave</h4>
+                    <p>El humo no debe raspar la garganta. Una combustión áspera indica curado insuficiente o presencia de nutrientes residuales.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Ceniza Blanca</h4>
+                    <p>La ceniza debe ser blanca o gris muy claro, indicando lavado completo y curado adecuado. Ceniza oscura sugiere nutrientes residuales.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Textura Óptima</h4>
+                    <p>Las flores deben ser ligeramente esponjosas al tacto, no demasiado secas ni húmedas. Deben quebrar limpiamente sin desmoronarse.</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Control de Calidad y Seguridad</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Estándar Mínimo</th>
+                        <th>Método de Verificación</th>
+                        <th>Riesgo si se Excede</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Humedad</strong></td>
+                        <td>&lt;12% contenido de agua</td>
+                        <td>Medidor de humedad digital</td>
+                        <td>Desarrollo de moho, degradación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metales Pesados</strong></td>
+                        <td>&lt;10 ppm total</td>
+                        <td>Análisis ICP-MS</td>
+                        <td>Toxicidad, problemas de salud</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microorganismos</strong></td>
+                        <td>Ausencia de patógenos</td>
+                        <td>Cultivo microbiológico</td>
+                        <td>Infecciones, problemas respiratorios</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pesticidas</strong></td>
+                        <td>No detectables</td>
+                        <td>GC-MS/LC-MS</td>
+                        <td>Toxicidad aguda y crónica</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Solución de Problemas Comunes -->
+        <section class="content-section">
+            <h2 class="section-title">Solución de Problemas Comunes</h2>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Problema</th>
+                        <th>Síntomas</th>
+                        <th>Causa Probable</th>
+                        <th>Solución</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Secado Demasiado Rápido</strong></td>
+                        <td>Flores crujientes en 3-4 días</td>
+                        <td>Temperatura alta, humedad baja</td>
+                        <td>Reducir temperatura, aumentar humedad, mejorar circulación</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Desarrollo de Moho</strong></td>
+                        <td>Manchas grises/blancas peludas</td>
+                        <td>Humedad excesiva, poca ventilación</td>
+                        <td>Descartar material afectado, mejorar flujo de aire</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sabor a Heno</strong></td>
+                        <td>Aroma vegetal durante curado</td>
+                        <td>Secado demasiado rápido, curado inadecuado</td>
+                        <td>Extender curado, usar packs Boveda, paciencia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Combustión Áspera</strong></td>
+                        <td>Humo irritante, ceniza oscura</td>
+                        <td>Lavado insuficiente, curado incompleto</td>
+                        <td>Extender curado, verificar último lavado de raíces</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Importante:</strong> Si detectas moho durante el curado, inspecciona inmediatamente todo el lote. El moho puede propagarse rápidamente en condiciones de alta humedad y arruinar una cosecha completa.
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: El Camino hacia la Maestría</h2>
+            
+            <p class="content-text">
+                Dominar el arte de la cosecha y curado de cannabis requiere paciencia, observación detallada y comprensión de los procesos bioquímicos involucrados. Cada paso, desde la evaluación de tricomas hasta el curado final, influye directamente en la calidad, potencia y perfil de efectos del producto final.
+            </p>
+
+            <p class="content-text">
+                La inversión en herramientas de calidad, el establecimiento de condiciones ambientales controladas y la documentación meticulosa de cada proceso no solo mejorará tus resultados actuales, sino que también construirá una base de conocimiento que te permitirá perfeccionar continuamente tu técnica.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Puntos Clave para Recordar</h3>
+                <p><strong>El timing es crucial:</strong> Los tricomas son tu mejor indicador de madurez</p>
+                <p><strong>Paciencia en el secado:</strong> 7-14 días a temperaturas controladas</p>
+                <p><strong>El curado es transformación:</strong> Mínimo 4-8 semanas para calidad premium</p>
+                <p><strong>La documentación es poder:</strong> Registra todo para replicar éxitos</p>
+                <p><strong>Calidad sobre cantidad:</strong> Un gramo perfecto vale más que diez mediocres</p>
+            </div>
+
+            <p class="content-text">
+                Recuerda que cada variedad, cada ambiente y cada cultivador pueden requerir ajustes específicos en estos procesos generales. La maestría viene con la experiencia, la experimentación cuidadosa y la atención constante a los detalles que distinguen un producto excepcional de uno meramente bueno.
+            </p>
+
+            <p class="content-text">
+                Con las técnicas y conocimientos presentados en esta guía, tienes las herramientas necesarias para transformar tu cosecha en un producto de calidad profesional que honre todo el trabajo invertido durante el cultivo.
+            </p>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(102, 126, 234, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #667eea; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

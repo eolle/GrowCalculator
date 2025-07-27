@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genética y Fenotipos: Selección para Cultivo Indoor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Genética y Fenotipos</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Selección Inteligente para Cultivo Indoor</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 12 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La selección genética específica para cultivo indoor representa la diferencia entre un cultivo promedio y una producción excepcional. Las características genéticas determinan no solo la altura y estructura de tus plantas, sino también el tiempo de floración, la resistencia a condiciones controladas y, en última instancia, la calidad y cantidad de tu cosecha.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/cannabinoides/cannabino.jpg" alt="Setup de área de madres con sistema de esquejes" class="content-image">
+                <p class="image-caption">Setup de área de madres con sistema de esquejes para preservación genética</p>
+            </div>
+
+            <div class="success-box">
+                <strong>Ventaja económica:</strong> Una planta madre bien mantenida puede proporcionar cientos de esquejes durante su vida útil, eliminando la necesidad de comprar semillas constantemente.
+            </div>
+        </section>
+
+        <!-- Hibridación casera -->
+        <section class="content-section">
+            <h2 class="section-title">Hibridación Casera</h2>
+            
+            <p class="content-text">
+                Para cultivadores avanzados, la creación de cruces propios representa la frontera final en el control genético. Este proceso permite desarrollar variedades específicamente adaptadas a tus condiciones de cultivo y preferencias personales.
+            </p>
+
+            <h3 class="subsection-title">Fundamentos de la Hibridación</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4><span class="genetics-icon">♂️</span>Selección del Padre</h4>
+                    <p><strong>Características deseadas:</strong> Vigor, resistencia, potencia<br>
+                    <strong>Polen viable:</strong> Producción abundante y de calidad<br>
+                    <strong>Genética probada:</strong> Historial conocido de descendencia<br>
+                    <strong>Complementariedad:</strong> Aporta lo que falta en la madre</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">♀️</span>Selección de la Madre</h4>
+                    <p><strong>Fenotipo excepcional:</strong> Tu mejor planta disponible<br>
+                    <strong>Producción de semillas:</strong> Capacidad de formar semillas viables<br>
+                    <strong>Salud reproductiva:</strong> Sin hermafroditismo previo<br>
+                    <strong>Características dominantes:</strong> Rasgos que deseas preservar</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Proceso de Polinización</h4>
+                    <p><strong>Timing:</strong> 3-4 semanas después del inicio de floración<br>
+                    <strong>Preparación:</strong> Aislar plantas para evitar polinización cruzada<br>
+                    <strong>Aplicación:</strong> Pincel suave para transferir polen a pistilos<br>
+                    <strong>Marcado:</strong> Identificar ramas polinizadas claramente</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Desarrollo de Semillas</h4>
+                    <p><strong>Maduración:</strong> 4-6 semanas post-polinización<br>
+                    <strong>Indicadores:</strong> Semillas marrones, cálices hinchados<br>
+                    <strong>Cosecha:</strong> Recolección manual cuidadosa<br>
+                    <strong>Almacenamiento:</strong> Lugar fresco, seco, oscuro hasta 5 años</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Estabilización de Líneas</h3>
+            
+            <p class="content-text">
+                La creación de una variedad estable requiere múltiples generaciones de selección. Cada generación (F1, F2, F3...) presenta diferentes niveles de uniformidad y expresión de características deseadas.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Generación</th>
+                        <th>Uniformidad</th>
+                        <th>Variabilidad</th>
+                        <th>Objetivo</th>
+                        <th>Proceso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>F1</strong></td>
+                        <td>Alta</td>
+                        <td>Baja</td>
+                        <td>Vigor híbrido</td>
+                        <td>Cruce inicial P1 x P2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>F2</strong></td>
+                        <td>Media</td>
+                        <td>Alta</td>
+                        <td>Segregación caracteres</td>
+                        <td>F1 x F1 (autofecundación)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>F3-F5</strong></td>
+                        <td>Aumentando</td>
+                        <td>Disminuyendo</td>
+                        <td>Estabilización</td>
+                        <td>Selección dirigida</td>
+                    </tr>
+                    <tr>
+                        <td><strong>F6+</strong></td>
+                        <td>Muy alta</td>
+                        <td>Mínima</td>
+                        <td>Línea estable</td>
+                        <td>Mantenimiento</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Proyecto a largo plazo:</strong> Desarrollar una línea estable requiere 3-5 años y múltiples ciclos de cultivo. Es un compromiso serio que requiere espacio, tiempo y dedicación constante.
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/kanabinoidy-chemicke-vzorce.jpg" alt="Diagrama de flujo del proceso de hibridación y estabilización genética" class="content-image">
+                <p class="image-caption">Diagrama de flujo del proceso de hibridación y estabilización genética</p>
+            </div>
+        </section>
+
+        <!-- Consideraciones ambientales -->
+        <section class="content-section">
+            <h2 class="section-title">Adaptación al Ambiente Indoor</h2>
+            
+            <p class="content-text">
+                El ambiente indoor presenta características únicas que influyen en la expresión genética. Comprender cómo diferentes genéticas responden a las condiciones controladas te permite optimizar tanto la selección de variedades como las condiciones de cultivo.
+            </p>
+
+            <h3 class="subsection-title">Factores Ambientales Clave</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Espacio Vertical</h4>
+                    <p><strong>Limitación principal:</strong> Altura máxima 150-200 cm típicamente<br>
+                    <strong>Genéticas ideales:</strong> Índicas y híbridos compactos<br>
+                    <strong>Técnicas necesarias:</strong> Entrenamiento para sativas<br>
+                    <strong>Planificación:</strong> Triplicación altura en floración</p>
+                </div>
+                <div class="info-card">
+                    <h4>Iluminación Artificial</h4>
+                    <p><strong>Intensidad constante:</strong> Sin variaciones estacionales<br>
+                    <strong>Espectro controlado:</strong> Optimizado para cada fase<br>
+                    <strong>Penetración limitada:</strong> Favorece estructuras compactas<br>
+                    <strong>Calor generado:</strong> Considera tolerancia térmica</p>
+                </div>
+                <div class="info-card">
+                    <h4>Control Climático</h4>
+                    <p><strong>Temperatura estable:</strong> Menos estrés térmico<br>
+                    <strong>Humedad controlada:</strong> Prevención problemas fúngicos<br>
+                    <strong>Ventilación forzada:</strong> Fortalece estructura planta<br>
+                    <strong>CO2 suplementario:</strong> Potencia crecimiento</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Expresión Genética bajo Estrés</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Estrés Térmico</h4>
+                    <p><strong>Respuesta genética:</strong> Varía significativamente entre variedades<br>
+                    <strong>Índicas:</strong> Generalmente más tolerantes a calor<br>
+                    <strong>Sativas:</strong> Mejor adaptación a temperaturas altas<br>
+                    <strong>Selección:</strong> Observar rendimiento durante olas de calor</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Estrés Hídrico</h4>
+                    <p><strong>Tolerancia:</strong> Rasgo hereditario importante<br>
+                    <strong>Indicadores:</strong> Marchitamiento, tiempo recuperación<br>
+                    <strong>Selección:</strong> Plantas que mantienen turgencia más tiempo<br>
+                    <strong>Ventaja:</strong> Menor dependencia del riego preciso</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Estrés Nutricional</h4>
+                    <p><strong>Eficiencia:</strong> Algunas genéticas requieren menos nutrientes<br>
+                    <strong>Tolerancia:</strong> Resistencia a sobre-fertilización<br>
+                    <strong>Recuperación:</strong> Velocidad ante deficiencias<br>
+                    <strong>Estabilidad:</strong> Rendimiento consistente en rangos amplios</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optimización por espacios -->
+        <section class="content-section">
+            <h2 class="section-title">Optimización por Tipo de Espacio</h2>
+            
+            <h3 class="subsection-title">Espacios Pequeños (< 1m²)</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Recomendaciones Genéticas</h4>
+                    <p><strong>Autoflorecientes:</strong> Cycle rápido, tamaño controlado<br>
+                    <strong>Índicas puras:</strong> Northern Lights, Hindu Kush<br>
+                    <strong>SOG:</strong> Muchas plantas pequeñas<br>
+                    <strong>Entrenamiento mínimo:</strong> LST suave únicamente</p>
+                </div>
+                <div class="info-card">
+                    <h4>Estrategias de Cultivo</h4>
+                    <p><strong>Densidad:</strong> 16-25 plantas por m²<br>
+                    <strong>Vegetativo corto:</strong> 2-3 semanas máximo<br>
+                    <strong>Una cola principal:</strong> Sin entrenamiento lateral<br>
+                    <strong>Rotación rápida:</strong> Múltiples cosechas anuales</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Espacios Medianos (1-4 m²)</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Flexibilidad Genética</h4>
+                    <p><strong>Híbridos balanceados:</strong> 50/50 índica-sativa ideales<br>
+                    <strong>Técnicas avanzadas:</strong> SCROG, LST, mainlining<br>
+                    <strong>Período vegetativo:</strong> 4-6 semanas permite desarrollo<br>
+                    <strong>Experimentación:</strong> Espacio para probar variedades nuevas</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Estrategia SCROG</h4>
+                    <p><strong>Variedades ideales:</strong> Ramificación abundante<br>
+                    <strong>Tiempo crucial:</strong> Inicio entrenamiento semana 3-4<br>
+                    <strong>Altura malla:</strong> 20-30 cm sobre macetas<br>
+                    <strong>Llenado:</strong> 70-80% antes cambio a floración</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Espacios Grandes (> 4 m²)</h3>
+            
+            <p class="content-text">
+                Los espacios grandes permiten explorar el potencial completo de genéticas sativa y híbridos de gran tamaño. Aquí la selección genética puede enfocarse más en calidad y características específicas que en limitaciones de espacio.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Enfoque</th>
+                        <th>Variedades Recomendadas</th>
+                        <th>Técnica Principal</th>
+                        <th>Plantas por m²</th>
+                        <th>Tiempo Vegetativo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Calidad Premium</strong></td>
+                        <td>Sativas puras, landraces</td>
+                        <td>Desarrollo natural</td>
+                        <td>1-2</td>
+                        <td>8-12 semanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Producción Masiva</strong></td>
+                        <td>Híbridos alto rendimiento</td>
+                        <td>SCROG múltiple</td>
+                        <td>4-6</td>
+                        <td>4-6 semanas</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Diversidad</strong></td>
+                        <td>Mix variedades</td>
+                        <td>Técnicas mixtas</td>
+                        <td>Variable</td>
+                        <td>Variable</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/room.jpg" alt="Comparativa de diferentes configuraciones de cultivo según tamaño del espacio" class="content-image">
+                <p class="image-caption">Comparativa de diferentes configuraciones de cultivo según tamaño del espacio</p>
+            </div>
+        </section>
+
+        <!-- Monitoreo y documentación -->
+        <section class="content-section">
+            <h2 class="section-title">Monitoreo y Documentación Genética</h2>
+            
+            <p class="content-text">
+                El seguimiento meticuloso de cada planta y variedad es fundamental para el éxito a largo plazo. Una documentación detallada permite identificar patrones, optimizar técnicas y tomar decisiones informadas para futuros cultivos.
+            </p>
+
+            <h3 class="subsection-title">Sistema de Registro</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Información Básica</h4>
+                    <p><strong>Identificación:</strong> Código único por planta<br>
+                    <strong>Genética:</strong> Banco, variedad, generación<br>
+                    <strong>Fechas:</strong> Germinación, trasplantes, floración<br>
+                    <strong>Fotografías:</strong> Semanales desde múltiples ángulos</p>
+                </div>
+                <div class="info-card">
+                    <h4>Datos de Desarrollo</h4>
+                    <p><strong>Mediciones:</strong> Altura, ancho, número ramas<br>
+                    <strong>Salud:</strong> Problemas, tratamientos aplicados<br>
+                    <strong>Respuesta:</strong> Reacción a técnicas de entrenamiento<br>
+                    <strong>Ambiente:</strong> Condiciones durante cada fase</p>
+                </div>
+                <div class="info-card">
+                    <h4>Resultados Finales</h4>
+                    <p><strong>Rendimiento:</strong> Peso húmedo y seco por planta<br>
+                    <strong>Calidad:</strong> Potencia, aroma, sabor, efectos<br>
+                    <strong>Eficiencia:</strong> Gramos por watt, por día<br>
+                    <strong>Evaluación:</strong> Puntuación general 1-10</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Herramientas de Monitoreo</h4>
+                    <p><strong>Aplicaciones móviles:</strong> Cannabis-specific grow apps<br>
+                    <strong>Hojas de cálculo:</strong> Templates personalizables<br>
+                    <strong>Fotografía:</strong> Cámara con fecha/hora automática<br>
+                    <strong>Instrumentos:</strong> Regla, balanza, microscopio digital</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Análisis de Datos</h4>
+                    <p><strong>Tendencias:</strong> Identificar patrones de rendimiento<br>
+                    <strong>Correlaciones:</strong> Factores que influyen en calidad<br>
+                    <strong>Comparativas:</strong> Rendimiento entre variedades<br>
+                    <strong>Optimización:</strong> Ajustes basados en evidencia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consejos avanzados -->
+        <section class="content-section">
+            <h2 class="section-title">Consejos Avanzados para Selección Genética</h2>
+            
+            <h3 class="subsection-title">Lectura de Características Genéticas</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Indicadores Tempranos</h4>
+                    <p><strong>Cotiledones:</strong> Tamaño indica vigor inicial<br>
+                    <strong>Primeras hojas:</strong> Forma predice estructura final<br>
+                    <strong>Internudos:</strong> Distancia temprana es indicativa<br>
+                    <strong>Velocidad:</strong> Crecimiento inicial correlaciona con final</p>
+                </div>
+                <div class="info-card">
+                    <h4>Señales de Calidad</h4>
+                    <p><strong>Tallo grueso:</strong> Indica capacidad de soporte<br>
+                    <strong>Hojas simétricas:</strong> Genética estable<br>
+                    <strong>Color uniforme:</strong> Salud y vigor<br>
+                    <strong>Respuesta al estrés:</strong> Resistencia natural</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Técnicas de Pre-selección</h4>
+                    <p><strong>Germinación:</strong> Velocidad y uniformidad iniciales<br>
+                    <strong>Primeras 2 semanas:</strong> Descarte ejemplares débiles<br>
+                    <strong>Respuesta lumínica:</strong> Adaptación a intensidad<br>
+                    <strong>Raíz principal:</strong> Desarrollo del sistema radicular</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Evaluación Durante Floración</h4>
+                    <p><strong>Timing:</strong> Sincronización del cambio reproductivo<br>
+                    <strong>Stretch:</strong> Factor de multiplicación altura<br>
+                    <strong>Distribución flores:</strong> Uniformidad en toda la planta<br>
+                    <strong>Maduración:</strong> Sincronía en desarrollo tricomas</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Paciencia requerida:</strong> La evaluación completa de un fenotipo solo se puede realizar después de curar la cosecha. Las decisiones apresuradas pueden llevar a descartar genéticas excepcionales.
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Dominando la Selección Genética</h2>
+            
+            <p class="content-text">
+                La selección genética inteligente es la base de todo cultivo exitoso. Más allá de simplemente elegir variedades populares, entender cómo diferentes genéticas se expresan en tu ambiente específico te permite optimizar cada aspecto de tu producción.
+            </p>
+
+            <p class="content-text">
+                El proceso de selección, evaluación y preservación de genéticas superiores requiere tiempo, paciencia y observación detallada. Sin embargo, los resultados justifican completamente el esfuerzo: plantas perfectamente adaptadas a tus condiciones, rendimientos consistentes y calidad superior.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Claves del Éxito Genético</h3>
+                <p><strong>Diversidad inicial:</strong> Prueba múltiples variedades para encontrar la ideal</p>
+                <p><strong>Documentación rigurosa:</strong> Registra todo para aprender y mejorar</p>
+                <p><strong>Paciencia:</strong> La selección genética es un proceso de largo plazo</p>
+                <p><strong>Preservación:</strong> Mantén las mejores genéticas mediante esquejes</p>
+                <p><strong>Experimentación:</strong> No temas probar nuevas combinaciones y técnicas</p>
+            </div>
+
+            <div class="success-box">
+                <strong>Resultado final:</strong> Los cultivadores que dominan la selección genética pueden lograr rendimientos de 600-800g/m² con calidad excepcional, superando consistentemente las expectativas de sus variedades.
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Para Principiantes</h4>
+                    <p>Comienza con índicas estables y fáciles. Aprende a leer las plantas antes de experimentar con genéticas complejas.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Para Intermedios</h4>
+                    <p>Experimenta con fenotipos diferentes de la misma variedad. Documenta todo y comienza a mantener madres.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Para Avanzados</h4>
+                    <p>Inicia proyectos de hibridación. Desarrolla líneas propias adaptadas a tus condiciones específicas.</p>
+                </div>
+            </div>
+
+            <p class="content-text">
+                La genética es la base, pero tu habilidad para seleccionar, evaluar y preservar las mejores características determinará la calidad final de tus cosechas. Cada cultivo es una oportunidad de aprender y mejorar tu comprensión de estas plantas extraordinarias.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/MainCannabinoidGraphic_-AS-copy-02.webp" alt="Galería final mostrando la evolución de selección genética a lo largo de múltiples generaciones" class="content-image">
+                <p class="image-caption">Galería final mostrando la evolución de selección genética a lo largo de múltiples generaciones</p>
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(30, 60, 114, 0.1), rgba(42, 82, 152, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(30, 60, 114, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #1e3c72; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #6c757d;">
+                    📚 <strong>Próximos artículos:</strong> Técnicas de Entrenamiento • Nutrición Avanzada • Control de Plagas • Sistemas de Riego
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>Imagen 1: Comparativa visual de diferentes fenotipos de cannabis en ambiente indoor]
+            </div>
+
+            <p class="content-text">
+                Entender la genética del cannabis y saber seleccionar las variedades correctas maximiza el potencial de tu espacio de cultivo. No todas las genéticas son iguales, y elegir la adecuada para tus condiciones específicas puede incrementar significativamente tus rendimientos y la calidad del producto final.
+            </p>
+
+            <div class="success-box">
+                <strong>Clave del éxito:</strong> Una selección genética inteligente puede aumentar el rendimiento por metro cuadrado hasta un 40% comparado con variedades no optimizadas para indoor.
+            </div>
+        </section>
+
+        <!-- Entendiendo la genética -->
+        <section class="content-section">
+            <h2 class="section-title">Entendiendo la Genética del Cannabis</h2>
+            
+            <p class="content-text">
+                El cannabis presenta una diversidad genética extraordinaria que se manifiesta en características observables llamadas fenotipos. Estos fenotipos resultan de la interacción entre la genética heredada (genotipo) y las condiciones ambientales de cultivo.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🧬</span>Genética Índica</h4>
+                    <p><strong>Origen:</strong> Montañas del Hindu Kush<br>
+                    <strong>Características:</strong> Estructura compacta, hojas anchas<br>
+                    <strong>Floración:</strong> 7-9 semanas típicamente<br>
+                    <strong>Ideal para:</strong> Espacios limitados en altura</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🌿</span>Genética Sativa</h4>
+                    <p><strong>Origen:</strong> Regiones ecuatoriales<br>
+                    <strong>Características:</strong> Estructura alta, hojas finas<br>
+                    <strong>Floración:</strong> 9-14 semanas<br>
+                    <strong>Desafío:</strong> Requiere control de altura</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🔄</span>Híbridos</h4>
+                    <p><strong>Ventaja:</strong> Combinan lo mejor de ambos mundos<br>
+                    <strong>Variabilidad:</strong> Dominancia hacia uno u otro lado<br>
+                    <strong>Estabilidad:</strong> Depende de la selección parental<br>
+                    <strong>Versatilidad:</strong> Adaptables a diferentes condiciones</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/Clones-small-jpg.webp" alt="Diagrama genético mostrando herencia de características principales" class="content-image">
+                <p class="image-caption">Diagrama genético mostrando herencia de características principales</p>
+            </div>
+        </section>
+
+        <!-- Variedades ideales para indoor -->
+        <section class="content-section">
+            <h2 class="section-title">Variedades Ideales para Indoor</h2>
+            
+            <h3 class="subsection-title">Índicas Dominantes</h3>
+            
+            <p class="content-text">
+                Las variedades con dominancia índica representan la opción más práctica para espacios indoor limitados. Su estructura naturalmente compacta y tiempos de floración más cortos las convierten en las favoritas de cultivadores con experiencia.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Variedad</th>
+                        <th>Tiempo Floración</th>
+                        <th>Altura Indoor</th>
+                        <th>Rendimiento</th>
+                        <th>Dificultad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Northern Lights</strong></td>
+                        <td>7-8 semanas</td>
+                        <td>60-100 cm</td>
+                        <td>400-500 g/m²</td>
+                        <td>Fácil</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Blueberry</strong></td>
+                        <td>8-9 semanas</td>
+                        <td>80-120 cm</td>
+                        <td>350-450 g/m²</td>
+                        <td>Fácil-Medio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Granddaddy Purple</strong></td>
+                        <td>8-9 semanas</td>
+                        <td>90-130 cm</td>
+                        <td>450-550 g/m²</td>
+                        <td>Medio</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Características de las Índicas</h4>
+                    <p><strong>Estructura:</strong> Internudos cortos, ramas laterales robustas<br>
+                    <strong>Ventajas indoor:</strong> Aprovechamiento eficiente del espacio vertical<br>
+                    <strong>Control de altura:</strong> Mínimas técnicas de entrenamiento necesarias<br>
+                    <strong>Resistencia:</strong> Mayor tolerancia a fluctuaciones ambientales</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Sativas Adaptadas</h3>
+            
+            <p class="content-text">
+                Aunque las sativas puras presentan desafíos en indoor, existen variedades con herencia sativa que han sido seleccionadas específicamente para adaptarse a espacios controlados, ofreciendo los efectos característicos sativa con estructura más manejable.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Amnesia Haze</h4>
+                    <p><strong>Genética:</strong> 70% Sativa / 30% Índica<br>
+                    <strong>Floración:</strong> 10-12 semanas<br>
+                    <strong>Manejo:</strong> SCROG recomendado<br>
+                    <strong>Rendimiento:</strong> 500-600 g/m² con técnica</p>
+                </div>
+                <div class="info-card">
+                    <h4>Jack Herer</h4>
+                    <p><strong>Genética:</strong> 55% Sativa / 45% Índica<br>
+                    <strong>Floración:</strong> 9-11 semanas<br>
+                    <strong>Altura:</strong> Control necesario desde vegetativo<br>
+                    <strong>Calidad:</strong> Excepcional potencia y sabor</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Técnicas necesarias:</strong> Las sativas requieren técnicas de entrenamiento agresivas como SCROG, LST o supercropping para controlar su altura y maximizar el rendimiento en espacios limitados.
+            </div>
+
+            <div class="image-container">
+                <img src="images/armario,salas,luz/armario.jpg" alt="Técnicas de entrenamiento aplicadas a variedades sativa en indoor" class="content-image">
+                <p class="image-caption">Técnicas de entrenamiento aplicadas a variedades sativa en indoor</p>
+            </div>
+
+            <h3 class="subsection-title">Variedades Autoflorecientes</h3>
+            
+            <p class="content-text">
+                Las autoflorecientes han revolucionado el cultivo indoor gracias a su independencia del fotoperiodo y ciclos más cortos. Aunque históricamente ofrecían menores rendimientos, las nuevas generaciones han mejorado significativamente.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Ventajas de las Autoflorecientes</h4>
+                    <p><strong>Ciclo completo:</strong> 10-12 semanas desde semilla<br>
+                    <strong>Fotoperiodo:</strong> No dependen de cambios lumínicos<br>
+                    <strong>Múltiples cosechas:</strong> 4-5 ciclos anuales posibles<br>
+                    <strong>Simplicidad:</strong> Ideal para principiantes</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Desventajas a Considerar</h4>
+                    <p><strong>Rendimiento:</strong> Generalmente menor por planta individual<br>
+                    <strong>Sin madres:</strong> Imposibilidad de mantener genética específica<br>
+                    <strong>Menos control:</strong> Timing fijo, no se puede extender vegetativo<br>
+                    <strong>Costo semillas:</strong> Necesidad de semillas para cada ciclo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluación fenotípica -->
+        <section class="content-section">
+            <h2 class="section-title">Evaluación Fenotípica</h2>
+            
+            <p class="content-text">
+                La evaluación fenotípica es el proceso mediante el cual identificamos y seleccionamos las plantas con características superiores dentro de una misma variedad. Cada semilla, incluso de la misma genética, puede expresar variaciones que resulten en plantas notablemente diferentes.
+            </p>
+
+            <h3 class="subsection-title">Criterios de Selección</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4><span class="genetics-icon">💪</span>Vigor Vegetativo</h4>
+                    <p><strong>Crecimiento:</strong> Rápido y uniforme desde plántula<br>
+                    <strong>Color:</strong> Verde intenso y saludable<br>
+                    <strong>Resistencia:</strong> Recuperación rápida ante estrés<br>
+                    <strong>Indicador:</strong> Mayor biomasa en menor tiempo</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🏗️</span>Estructura</h4>
+                    <p><strong>Ramificación:</strong> Distribución equilibrada de ramas<br>
+                    <strong>Internudos:</strong> Distancia apropiada para tu espacio<br>
+                    <strong>Simetría:</strong> Crecimiento ordenado y predecible<br>
+                    <strong>Adaptabilidad:</strong> Respuesta positiva al entrenamiento</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🛡️</span>Resistencia</h4>
+                    <p><strong>Plagas:</strong> Menor susceptibilidad a insectos<br>
+                    <strong>Hongos:</strong> Resistencia a moho y mildiu<br>
+                    <strong>Estrés:</strong> Tolerancia a fluctuaciones ambientales<br>
+                    <strong>Estabilidad:</strong> Consistencia bajo presión</p>
+                </div>
+                <div class="info-card">
+                    <h4><span class="genetics-icon">🌸</span>Producción</h4>
+                    <p><strong>Densidad:</strong> Cogollos compactos y pesados<br>
+                    <strong>Distribución:</strong> Flores uniformes en toda la planta<br>
+                    <strong>Resina:</strong> Producción abundante de tricomas<br>
+                    <strong>Rendimiento:</strong> Peso final por metro cuadrado</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/clones/clone.jpg" alt="Comparativa visual de diferentes fenotipos mostrando criterios de selección" class="content-image">
+                <p class="image-caption">Comparativa visual de diferentes fenotipos mostrando criterios de selección</p>
+            </div>
+
+            <h3 class="subsection-title">Técnicas de Selección</h3>
+            
+            <p class="content-text">
+                Para identificar fenotipos superiores, es esencial cultivar múltiples semillas de la misma variedad simultáneamente. Esto permite una comparación directa bajo las mismas condiciones ambientales, revelando las diferencias genéticas genuinas.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Protocolo de Selección</h4>
+                    <p><strong>Número mínimo:</strong> 6-10 semillas por variedad para selección efectiva<br>
+                    <strong>Condiciones uniformes:</strong> Mismo sustrato, luz, nutrición para todas<br>
+                    <strong>Documentación:</strong> Fotos semanales y mediciones precisas<br>
+                    <strong>Etiquetado:</strong> Sistema claro de identificación por planta</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Parámetros a Registrar</h4>
+                    <p><strong>Vegetativo:</strong> Altura, número de ramas, color, vigor general<br>
+                    <strong>Floración:</strong> Tiempo de inicio, desarrollo de flores, resistencia<br>
+                    <strong>Cosecha:</strong> Peso húmedo/seco, densidad, aroma, potencia<br>
+                    <strong>Post-cosecha:</strong> Curado, sabor final, efectos</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Criterios de Descarte</h4>
+                    <p><strong>Crecimiento lento:</strong> Plantas que no siguen el ritmo del grupo<br>
+                    <strong>Susceptibilidad:</strong> Primeras en mostrar problemas de plagas/hongos<br>
+                    <strong>Estructura deficiente:</strong> Ramificación pobre o crecimiento irregular<br>
+                    <strong>Baja producción:</strong> Rendimiento significativamente inferior</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mantenimiento de genética -->
+        <section class="content-section">
+            <h2 class="section-title">Mantenimiento de Genética</h2>
+            
+            <p class="content-text">
+                Una vez identificados los fenotipos excepcionales, preservarlos mediante esquejes se convierte en una prioridad. Esta práctica permite mantener las características deseadas de forma indefinida, asegurando cosechas consistentes y predecibles.
+            </p>
+
+            <h3 class="subsection-title">Plantas Madre</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Selección de Madres</h4>
+                    <p><strong>Criterios:</strong> Mejor fenotipo según evaluación completa<br>
+                    <strong>Salud:</strong> Planta vigorosa sin signos de estrés<br>
+                    <strong>Edad:</strong> Después de confirmar calidad en primera cosecha<br>
+                    <strong>Genética:</strong> Representativa del fenotipo deseado</p>
+                </div>
+                <div class="info-card">
+                    <h4>Condiciones de Mantenimiento</h4>
+                    <p><strong>Fotoperiodo:</strong> 18/6 horas luz/oscuridad constante<br>
+                    <strong>Temperatura:</strong> 22-25°C día, 18-20°C noche<br>
+                    <strong>Humedad:</strong> 60-70% para crecimiento saludable<br>
+                    <strong>Nutrición:</strong> NPK balanceado, EC 1.2-1.6 mS/cm</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Cuidados Específicos</h4>
+                    <p><strong>Poda regular:</strong> Mantener tamaño manejable y estimular crecimiento<br>
+                    <strong>Renovación:</strong> Esquejes de la propia madre cada 6-12 meses<br>
+                    <strong>Monitoreo salud:</strong> Inspección regular de plagas y deficiencias<br>
+                    <strong>Espacio dedicado:</strong> Área separada del ciclo de producción</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Producción de Esquejes</h4>
+                    <p><strong>Material:</strong> Ramas de 10-15 cm con 3-4 nudos<br>
+                    <strong>Corte:</strong> 45° bajo nudo, herramientas esterilizadas<br>
+                    <strong>Enraizamiento:</strong> Sustrato ligero, humedad alta, luz suave<br>
+                    <strong>Tiempo:</strong> 10-21 días según variedad y condiciones</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/clones/clones5.jpg" alt="Sistema de mantenimiento de plantas madre y producción de esquejes" class="content-image">
+                <p class="image-caption">Sistema de mantenimiento de plantas madre y producción de esquejes</p>
+            </div>

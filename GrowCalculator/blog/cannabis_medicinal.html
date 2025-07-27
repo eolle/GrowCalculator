@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cannabis Medicinal: Formulaciones y Concentraciones Específicas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Cannabis Medicinal</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Formulaciones y Concentraciones Específicas para Uso Terapéutico</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 15 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>🏥</span>
+                    <span>Nivel: Médico-Científico</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <h2 class="section-title">Fitoquímica Medicinal del Cannabis</h2>
+            
+            <p class="content-text">
+                El cannabis medicinal requiere una comprensión profunda de perfiles cannabinoides específicos, ratios terapéuticos y métodos de administración precisos. Diferentes condiciones médicas responden óptimamente a formulaciones cannabinoides particulares, lo que hace esencial el conocimiento detallado de cada compuesto activo y sus interacciones sinérgicas.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/kanabinoidy-chemicke-vzorce.jpg" alt="Estructura molecular de los principales cannabinoides medicinales" class="content-image">
+                <p class="image-caption">Estructura molecular de los principales cannabinoides medicinales</p>
+            </div>
+
+            <p class="content-text">
+                La medicina cannabinoide moderna se basa en la personalización de tratamientos según el perfil individual del paciente, la condición específica a tratar y la respuesta terapéutica observada. Esta aproximación científica maximiza los beneficios terapéuticos mientras minimiza los efectos secundarios no deseados.
+            </p>
+        </section>
+
+        <!-- Cannabinoides Principales -->
+        <section class="content-section">
+            <h2 class="section-title">Cannabinoides Medicinales Principales</h2>
+            
+            <p class="content-text">
+                Cada cannabinoide presenta un perfil farmacológico único con propiedades terapéuticas específicas. El conocimiento detallado de estos compuestos permite formulaciones precisas para condiciones médicas particulares.
+            </p>
+
+            <!-- THC -->
+            <div class="cannabinoid-card">
+                <h3>THC (Δ9-Tetrahidrocannabinol)</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Propiedades:</strong>
+                        <span>Psicoactivo, analgésico potente, antiemético, estimulante del apetito, relajante muscular</span>
+                    </li>
+                    <li>
+                        <strong>Indicaciones:</strong>
+                        <span>Dolor crónico refractario, náuseas oncológicas, pérdida de apetito, glaucoma, espasticidad</span>
+                    </li>
+                    <li>
+                        <strong>Dosis terapéutica:</strong>
+                        <span>2.5-20mg según tolerancia individual y condición específica</span>
+                    </li>
+                    <li>
+                        <strong>Efectos secundarios:</strong>
+                        <span>Ansiedad, taquicardia transitoria, deterioro psicomotor temporal, xerostomía</span>
+                    </li>
+                    <li>
+                        <strong>Consideraciones:</strong>
+                        <span>Desarrollo de tolerancia, interacciones con depresores del SNC, contraindicado en psicosis</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CBD -->
+            <div class="cannabinoid-card">
+                <h3>CBD (Cannabidiol)</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Propiedades:</strong>
+                        <span>No psicoactivo, antiinflamatorio, ansiolítico, anticonvulsivo, neuroprotector</span>
+                    </li>
+                    <li>
+                        <strong>Indicaciones:</strong>
+                        <span>Epilepsia refractaria, trastornos de ansiedad, inflamación crónica, dolor neuropático</span>
+                    </li>
+                    <li>
+                        <strong>Dosis:</strong>
+                        <span>10-200mg diarios según condición, con titulación gradual desde dosis bajas</span>
+                    </li>
+                    <li>
+                        <strong>Ventajas:</strong>
+                        <span>Sin efectos psicoactivos, amplio perfil de seguridad, bien tolerado a largo plazo</span>
+                    </li>
+                    <li>
+                        <strong>Metabolismo:</strong>
+                        <span>Inhibidor del CYP3A4, puede potenciar otros medicamentos, vida media 18-32 horas</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CBG -->
+            <div class="cannabinoid-card">
+                <h3>CBG (Cannabigerol)</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Características:</strong>
+                        <span>Precursor biosintético de otros cannabinoides, levemente psicoactivo en dosis altas</span>
+                    </li>
+                    <li>
+                        <strong>Propiedades:</strong>
+                        <span>Antibacteriano de amplio espectro, neuroprotector, estimulante del apetito suave</span>
+                    </li>
+                    <li>
+                        <strong>Aplicaciones:</strong>
+                        <span>Infecciones bacterianas resistentes, glaucoma, enfermedades neurodegenerativas</span>
+                    </li>
+                    <li>
+                        <strong>Concentraciones:</strong>
+                        <span>2-15% en variedades especializadas, requiere cosecha temprana para máxima concentración</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CBN -->
+            <div class="cannabinoid-card">
+                <h3>CBN (Cannabinol)</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Origen:</strong>
+                        <span>Producto de degradación del THC por oxidación térmica y temporal</span>
+                    </li>
+                    <li>
+                        <strong>Efectos:</strong>
+                        <span>Potente sedante, inductor natural del sueño, analgésico suave, relajante muscular</span>
+                    </li>
+                    <li>
+                        <strong>Indicaciones:</strong>
+                        <span>Insomnio crónico, trastornos del sueño, dolor nocturno</span>
+                    </li>
+                    <li>
+                        <strong>Obtención:</strong>
+                        <span>Envejecimiento controlado de material rico en THC, decarboxilación prolongada</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/MainCannabinoidGraphic_-AS-copy-02.webp" alt="Gráfico comparativo de efectos terapéuticos de los principales cannabinoides" class="content-image">
+                <p class="image-caption">Gráfico comparativo de efectos terapéuticos de los principales cannabinoides</p>
+            </div>
+        </section>
+
+        <!-- Ratios Terapéuticos -->
+        <section class="content-section">
+            <h2 class="section-title">Ratios Terapéuticos Específicos</h2>
+            
+            <p class="content-text">
+                La proporción entre diferentes cannabinoides determina el perfil terapéutico y los efectos clínicos observados. Estos ratios han sido estudiados extensivamente para condiciones médicas específicas.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Ratio 1:1 THC:CBD</h4>
+                    <div class="ratio-badge">Equilibrado</div>
+                    <p><strong>Indicaciones primarias:</strong> Dolor crónico multimodal, artritis inflamatoria, fibromialgia</p>
+                    <p><strong>Beneficios:</strong> El CBD modula y suaviza los efectos psicoactivos del THC, proporcionando alivio sin intoxicación severa</p>
+                    <p><strong>Dosificación inicial:</strong> 2.5mg de cada componente, titulación cada 3-7 días</p>
+                    <p><strong>Población objetivo:</strong> Pacientes que necesitan analgesia potente manteniendo funcionalidad diurna</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Ratio 20:1 CBD:THC</h4>
+                    <div class="ratio-badge">Alto CBD</div>
+                    <p><strong>Aplicaciones:</strong> Epilepsia pediátrica, trastornos de ansiedad, inflamación sistémica</p>
+                    <p><strong>Ventajas:</strong> Efectos psicoactivos mínimos o ausentes, compatible con actividades diarias</p>
+                    <p><strong>Concentraciones típicas:</strong> 100-200mg CBD : 5-10mg THC diarios</p>
+                    <p><strong>Población objetivo:</strong> Pacientes sensibles al THC, uso pediátrico, profesionales activos</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Alto THC (>20%)</h4>
+                    <div class="ratio-badge">THC Dominante</div>
+                    <p><strong>Indicaciones:</strong> Cáncer avanzado (náuseas, caquexia), dolor intratable, espasticidad severa</p>
+                    <p><strong>Precauciones:</strong> Riesgo de tolerancia, dependencia psicológica, deterioro cognitivo temporal</p>
+                    <p><strong>Monitoreo requerido:</strong> Evaluación regular de efectos secundarios y funcionalidad</p>
+                    <p><strong>Administración:</strong> Titulación muy gradual desde dosis mínimas efectivas</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Principio del Efecto Séquito</h3>
+                <p>La combinación de múltiples cannabinoides, terpenos y flavonoides produce efectos terapéuticos superiores a los componentes individuales. Este sinergismo natural optimiza la eficacia médica mientras reduce efectos adversos.</p>
+            </div>
+        </section>
+
+        <!-- Variedades Medicinales -->
+        <section class="content-section">
+            <h2 class="section-title">Variedades Medicinales Específicas</h2>
+            
+            <p class="content-text">
+                Las variedades medicinales han sido seleccionadas específicamente por sus perfiles cannabinoides y propiedades terapéuticas. Cada variedad representa años de mejoramiento genético dirigido hacia aplicaciones médicas concretas.
+            </p>
+
+            <h3 class="subsection-title">Variedades para Epilepsia (Alto CBD)</h3>
+            
+            <div class="strain-grid">
+                <div class="strain-card">
+                    <h4>Charlotte's Web</h4>
+                    <p><strong>Ratio:</strong> 20:1 CBD:THC</p>
+                    <p><strong>THC:</strong> <0.3%</p>
+                    <p><strong>Características:</strong> Pionera en epilepsia infantil, mínimos efectos psicoactivos</p>
+                    <p><strong>Aplicación:</strong> Síndrome de Dravet, síndrome de Lennox-Gastaut</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>ACDC</h4>
+                    <p><strong>Ratio:</strong> 14:1 CBD:THC</p>
+                    <p><strong>THC:</strong> 1-6%</p>
+                    <p><strong>Características:</strong> Estable genéticamente, producción consistente de CBD</p>
+                    <p><strong>Aplicación:</strong> Epilepsia, ansiedad, inflamación crónica</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>Harlequin</h4>
+                    <p><strong>Ratio:</strong> 5:2 CBD:THC</p>
+                    <p><strong>Características:</strong> Balance moderado, claridad mental preservada</p>
+                    <p><strong>Aplicación:</strong> Dolor con componente inflamatorio, uso diurno</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/cannabino.jpg" alt="Comparativa visual de plantas de variedades alto CBD vs alto THC" class="content-image">
+                <p class="image-caption">Comparativa visual de plantas de variedades alto CBD vs alto THC</p>
+            </div>
+
+            <h3 class="subsection-title">Variedades para Dolor Crónico (Balanceadas)</h3>
+            
+            <div class="strain-grid">
+                <div class="strain-card">
+                    <h4>Cannatonic</h4>
+                    <p><strong>Ratio:</strong> 1:1 CBD:THC</p>
+                    <p><strong>Características:</strong> Efectos perfectamente equilibrados, inicio suave</p>
+                    <p><strong>Aplicación:</strong> Dolor neuropático, artritis, migrañas</p>
+                    <p><strong>Terpenos dominantes:</strong> Mirceno, β-cariofileno</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>Dancehall</h4>
+                    <p><strong>Ratio:</strong> 3:1 CBD:THC</p>
+                    <p><strong>Características:</strong> Analgesia potente con claridad mental</p>
+                    <p><strong>Aplicación:</strong> Dolor diurno, fibromialgia</p>
+                    <p><strong>Ventaja:</strong> Funcionalidad preservada</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>Critical Mass CBD</h4>
+                    <p><strong>Ratio:</strong> 1:1 CBD:THC</p>
+                    <p><strong>Características:</strong> Alta productividad, perfiles terpénicos antiinflamatorios</p>
+                    <p><strong>Aplicación:</strong> Dolor crónico, inflamación sistémica</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Variedades para Cáncer (Alto THC)</h3>
+            
+            <div class="strain-grid">
+                <div class="strain-card">
+                    <h4>Rick Simpson Oil Strains</h4>
+                    <p><strong>THC:</strong> >25%</p>
+                    <p><strong>Características:</strong> Espectro completo, máxima potencia</p>
+                    <p><strong>Aplicación:</strong> Caquexia, náuseas severas, dolor intratable</p>
+                    <p><strong>Administración:</strong> Aceites concentrados, titulación muy gradual</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>White Widow</h4>
+                    <p><strong>THC:</strong> 18-25%</p>
+                    <p><strong>Características:</strong> Potente estimulante del apetito, euforizante</p>
+                    <p><strong>Aplicación:</strong> Pérdida de peso oncológica, depresión</p>
+                </div>
+                
+                <div class="strain-card">
+                    <h4>Northern Lights</h4>
+                    <p><strong>Características:</strong> Fuertemente sedante, anti-náuseas</p>
+                    <p><strong>Aplicación:</strong> Insomnio oncológico, náuseas nocturnas</p>
+                    <p><strong>Consideración:</strong> Uso preferentemente vespertino</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consideración clínica importante:</strong> Las variedades alto THC requieren desarrollo progresivo de tolerancia y monitoreo médico estricto para prevenir efectos adversos y optimizar beneficios terapéuticos.
+            </div>
+        </section>
+
+        <!-- Consideraciones Clínicas -->
+        <section class="content-section">
+            <h2 class="section-title">Consideraciones Clínicas y Farmacológicas</h2>
+            
+            <p class="content-text">
+                El uso médico del cannabis requiere comprensión profunda de farmacocinética, interacciones medicamentosas y monitoreo clínico apropiado para maximizar beneficios terapéuticos y minimizar riesgos.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Farmacocinética</h4>
+                    <p><strong>Vía oral:</strong> Inicio 30-120 min, duración 4-8 h, metabolismo hepático</p>
+                    <p><strong>Vía sublingual:</strong> Inicio 15-45 min, duración 2-4 h, absorción directa</p>
+                    <p><strong>Vía inhalada:</strong> Inicio 1-3 min, duración 1-3 h, biodisponibilidad 10-35%</p>
+                    <p><strong>Vía tópica:</strong> Efecto local, absorción sistémica mínima</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Interacciones Medicamentosas</h4>
+                    <p><strong>CYP3A4:</strong> CBD inhibe, puede potenciar otros fármacos</p>
+                    <p><strong>Warfarina:</strong> Aumento del INR, monitoreo estricto requerido</p>
+                    <p><strong>Benzodiazepinas:</strong> Potenciación sedante, reducir dosis</p>
+                    <p><strong>Antiepilépticos:</strong> Interacciones complejas, ajuste individual</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Contraindicaciones</h4>
+                    <p><strong>Absolutas:</strong> Psicosis activa, embarazo, lactancia</p>
+                    <p><strong>Relativas:</strong> Enfermedad cardiovascular severa, trastorno bipolar</p>
+                    <p><strong>Precauciones:</strong> Conducción de vehículos, operación de maquinaria</p>
+                    <p><strong>Edad:</strong> Evitar uso recreativo en menores de 25 años</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Monitoreo Clínico</h4>
+                    <p><strong>Inicial:</strong> Evaluación cada 1-2 semanas durante titulación</p>
+                    <p><strong>Mantenimiento:</strong> Seguimiento mensual, ajustes según respuesta</p>
+                    <p><strong>Parámetros:</strong> Eficacia, efectos adversos, funcionalidad</p>
+                    <p><strong>Laboratorio:</strong> Función hepática si uso prolongado</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Condición Médica</th>
+                        <th>Ratio Recomendado</th>
+                        <th>Dosis Inicial</th>
+                        <th>Titulación</th>
+                        <th>Dosis Mantenimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Epilepsia Refractaria</strong></td>
+                        <td>20:1 CBD:THC</td>
+                        <td>1-2 mg/kg CBD</td>
+                        <td>Semanal +1-2 mg/kg</td>
+                        <td>5-20 mg/kg CBD</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dolor Crónico</strong></td>
+                        <td>1:1 CBD:THC</td>
+                        <td>2.5 mg c/u</td>
+                        <td>Cada 3-7 días</td>
+                        <td>5-20 mg c/u BID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cáncer (Náuseas)</strong></td>
+                        <td>Alto THC</td>
+                        <td>2.5 mg THC</td>
+                        <td>Cada 2-3 días</td>
+                        <td>5-10 mg TID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ansiedad</strong></td>
+                        <td>CBD puro</td>
+                        <td>10 mg CBD</td>
+                        <td>Semanal +10 mg</td>
+                        <td>25-75 mg BID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Insomnio</strong></td>
+                        <td>CBN dominante</td>
+                        <td>2.5 mg CBN</td>
+                        <td>Cada 3-5 días</td>
+                        <td>5-15 mg HS</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="highlight-box">
+                <h3>Principios de Prescripción Médica</h3>
+                <p><strong>Inicio bajo, titulación lenta:</strong> "Start low, go slow" - principio fundamental para minimizar efectos adversos</p>
+                <p><strong>Individualización:</strong> Cada paciente requiere ajuste personalizado basado en respuesta y tolerancia</p>
+                <p><strong>Documentación:</strong> Registro detallado de dosis, efectos y evolución clínica</p>
+                <p><strong>Educación:</strong> Información completa al paciente sobre efectos esperados y precauciones</p>
+            </div>
+        </section>
+
+        <!-- Métodos de Administración -->
+        <section class="content-section">
+            <h2 class="section-title">Métodos de Administración y Formulaciones</h2>
+            
+            <p class="content-text">
+                La vía de administración determina el inicio, duración e intensidad de los efectos terapéuticos. Cada método tiene ventajas específicas según la condición médica y las necesidades del paciente.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Aceites Sublinguales</h4>
+                    <p><strong>Ventajas:</strong> Dosificación precisa, inicio predecible, discreción</p>
+                    <p><strong>Inicio:</strong> 15-45 minutos</p>
+                    <p><strong>Duración:</strong> 2-4 horas</p>
+                    <p><strong>Biodisponibilidad:</strong> 13-35%</p>
+                    <p><strong>Indicado para:</strong> Dolor crónico, ansiedad, epilepsia</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Cápsulas Orales</h4>
+                    <p><strong>Ventajas:</strong> Dosificación exacta, duración prolongada, sin sabor</p>
+                    <p><strong>Inicio:</strong> 30-120 minutos</p>
+                    <p><strong>Duración:</strong> 4-8 horas</p>
+                    <p><strong>Biodisponibilidad:</strong> 6-20%</p>
+                    <p><strong>Indicado para:</strong> Dolor persistente, insomnio, condiciones crónicas</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Vaporizadores</h4>
+                    <p><strong>Ventajas:</strong> Inicio rápido, control de dosis, sin combustión</p>
+                    <p><strong>Inicio:</strong> 1-3 minutos</p>
+                    <p><strong>Duración:</strong> 1-3 horas</p>
+                    <p><strong>Biodisponibilidad:</strong> 10-35%</p>
+                    <p><strong>Indicado para:</strong> Crisis de dolor, náuseas agudas, titulación</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Tópicos</h4>
+                    <p><strong>Ventajas:</strong> Efecto localizado, sin psicoactividad sistémica</p>
+                    <p><strong>Inicio:</strong> 15-30 minutos</p>
+                    <p><strong>Duración:</strong> 2-4 horas</p>
+                    <p><strong>Aplicación:</strong> Dolor articular, inflamación local, dermatitis</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cannabinoides/Clones-small-jpg.webp" alt="Comparativa de biodisponibilidad y farmacocinética por vía de administración" class="content-image">
+                <p class="image-caption">Comparativa de biodisponibilidad y farmacocinética por vía de administración</p>
+            </div>
+
+            <h3 class="subsection-title">Formulaciones Avanzadas</h3>
+            
+            <div class="cannabinoid-card">
+                <h3>Nanoemulsiones</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Tecnología:</strong>
+                        <span>Partículas <100 nm para absorción mejorada</span>
+                    </li>
+                    <li>
+                        <strong>Ventajas:</strong>
+                        <span>Biodisponibilidad aumentada 3-5x, inicio más rápido, menor variabilidad</span>
+                    </li>
+                    <li>
+                        <strong>Aplicaciones:</strong>
+                        <span>Condiciones que requieren absorción consistente y predecible</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="cannabinoid-card">
+                <h3>Sistemas de Liberación Sostenida</h3>
+                <ul class="properties-list">
+                    <li>
+                        <strong>Mecanismo:</strong>
+                        <span>Matrices poliméricas que controlan la liberación temporal</span>
+                    </li>
+                    <li>
+                        <strong>Beneficios:</strong>
+                        <span>Reducción de frecuencia de dosificación, niveles plasmáticos estables</span>
+                    </li>
+                    <li>
+                        <strong>Indicaciones:</strong>
+                        <span>Dolor crónico 24h, condiciones que requieren niveles constantes</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Calidad y Estandarización -->
+        <section class="content-section">
+            <h2 class="section-title">Control de Calidad y Estandarización</h2>
+            
+            <p class="content-text">
+                La medicina cannabinoide requiere productos farmacéuticos que cumplan estándares rigurosos de calidad, consistencia y seguridad. La estandarización es esencial para resultados terapéuticos reproducibles.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Especificación</th>
+                        <th>Método de Análisis</th>
+                        <th>Importancia Clínica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Potencia Cannabinoides</strong></td>
+                        <td>±10% valor declarado</td>
+                        <td>HPLC/GC-MS</td>
+                        <td>Dosificación precisa y reproducible</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pesticidas</strong></td>
+                        <td>Por debajo límites USP</td>
+                        <td>LC-MS/MS</td>
+                        <td>Seguridad del paciente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Metales Pesados</strong></td>
+                        <td>Pb <0.5ppm, Cd <0.2ppm</td>
+                        <td>ICP-MS</td>
+                        <td>Prevención toxicidad crónica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Microbiología</strong></td>
+                        <td>Ausencia patógenos</td>
+                        <td>Cultivo/qPCR</td>
+                        <td>Prevención infecciones</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Solventes Residuales</strong></td>
+                        <td>Clase 1: <20ppm</td>
+                        <td>GC-HS</td>
+                        <td>Seguridad a largo plazo</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <strong>Certificación GMP requerida:</strong> Los productos de cannabis medicinal deben producirse bajo Buenas Prácticas de Manufactura farmacéutica para garantizar calidad, seguridad y eficacia consistentes.
+            </div>
+        </section>
+
+        <!-- Investigación y Futuro -->
+        <section class="content-section">
+            <h2 class="section-title">Investigación Actual y Perspectivas Futuras</h2>
+            
+            <p class="content-text">
+                La investigación en cannabis medicinal avanza rápidamente, revelando nuevos cannabinoides, mecanismos de acción y aplicaciones terapéuticas. Los desarrollos actuales prometen tratamientos más específicos y efectivos.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Cannabinoides Menores</h4>
+                    <p><strong>THCV:</strong> Supresor del apetito, anticonvulsivo, potencial antidiabético</p>
+                    <p><strong>CBC:</strong> Antiinflamatorio, antimicrobiano, neurprotector</p>
+                    <p><strong>CBDV:</strong> Anticonvulsivo, potencial en autismo y epilepsia</p>
+                    <p><strong>Delta-8-THC:</strong> Psicoactividad reducida, antiemético potente</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Nuevas Indicaciones</h4>
+                    <p><strong>Trastorno del Espectro Autista:</strong> Estudios prometedores con CBD</p>
+                    <p><strong>Alzheimer:</strong> Neuroprotección y reducción de neuroinflamación</p>
+                    <p><strong>Diabetes:</strong> Mejora de sensibilidad a insulina con THCV</p>
+                    <p><strong>Adicciones:</strong> Reducción de craving con CBD</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Tecnologías Emergentes</h4>
+                    <p><strong>Biosíntesis:</strong> Producción de cannabinoides en levaduras</p>
+                    <p><strong>Nanotecnología:</strong> Sistemas de liberación dirigida</p>
+                    <p><strong>Personalización:</strong> Farmacogenómica cannabinoide</p>
+                    <p><strong>Combinaciones:</strong> Sinergia con otros fitofármacos</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Medicina de Precisión Cannabinoide</h3>
+                <p>El futuro del cannabis medicinal apunta hacia tratamientos personalizados basados en genética individual, perfil metabólico y respuesta específica a diferentes cannabinoides y terpenos.</p>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: Hacia una Medicina Cannabinoide Científica</h2>
+            
+            <p class="content-text">
+                El cannabis medicinal ha evolucionado desde remedios tradicionales hacia una disciplina médica rigurosa basada en evidencia científica. La comprensión molecular de los cannabinoides y sus mecanismos de acción permite tratamientos precisos y seguros.
+            </p>
+
+            <p class="content-text">
+                La individualización de tratamientos, basada en ratios específicos de cannabinoides, métodos de administración apropiados y monitoreo clínico estricto, representa el estándar actual de la medicina cannabinoide. Esta aproximación científica maximiza beneficios terapéuticos mientras minimiza riesgos.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Principios Fundamentales</h4>
+                    <p><strong>Evidencia científica:</strong> Decisiones basadas en investigación rigurosa</p>
+                    <p><strong>Individualización:</strong> Tratamientos adaptados al paciente específico</p>
+                    <p><strong>Calidad farmacéutica:</strong> Productos estandarizados y seguros</p>
+                    <p><strong>Monitoreo continuo:</strong> Seguimiento de eficacia y seguridad</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>Futuro de la Disciplina</h4>
+                    <p><strong>Investigación expansiva:</strong> Nuevos cannabinoides y aplicaciones</p>
+                    <p><strong>Tecnología avanzada:</strong> Sistemas de liberación innovadores</p>
+                    <p><strong>Regulación madura:</strong> Marcos legales científicamente informados</p>
+                    <p><strong>Aceptación médica:</strong> Integración en práctica clínica estándar</p>
+                </div>
+            </div>
+
+            <p class="content-text">
+                La medicina cannabinoide representa una de las áreas más prometedoras de la farmacología moderna, ofreciendo opciones terapéuticas para condiciones previamente difíciles de tratar. El conocimiento científico riguroso y la aplicación clínica responsable son claves para realizar este potencial terapéutico.
+            </p>
+
+            <div class="warning-box">
+                <strong>Compromiso profesional:</strong> El uso medicinal del cannabis requiere formación médica especializada, seguimiento de protocolos establecidos y actualización continua del conocimiento científico.
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));">
+            <div class="warning-box" style="margin-bottom: 30px;">
+                <strong>Aviso Médico Importante:</strong> Esta información tiene fines educativos únicamente y no constituye consejo médico. El cannabis medicinal debe ser prescrito y supervisado por profesionales médicos calificados. Consulte siempre con su médico antes de iniciar cualquier tratamiento cannabinoide.
+            </div>
+            
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota Legal:</strong> Asegúrese de cumplir con todas las leyes locales y nacionales sobre cannabis medicinal. Las regulaciones varían significativamente entre jurisdicciones.
+            </p>
+            
+            <div style="border-top: 2px solid rgba(39, 174, 96, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más información médica y científica sobre cannabis, consulte fuentes académicas reconocidas y 
+                    <a href="https://www.growcalculator.es/blog" style="color: #27ae60; text-decoration: none;">
+                        recursos especializados en fitomedicina
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
+                    

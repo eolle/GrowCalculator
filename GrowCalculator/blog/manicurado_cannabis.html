@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnicas de Manicurado: Manual vs Mecánico - Guía Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Técnicas de Manicurado</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Manual vs Mecánico: Guía Profesional para Maximizar Calidad y Eficiencia</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 18 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Intermedio-Avanzado</span>
+                </div>
+                <div class="meta-item">
+                    <span>💼</span>
+                    <span>Aplicación: Comercial</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                El manicurado determina la presentación final y valor comercial del cannabis. Un manicurado preciso incrementa la apariencia, preserva tricomas y elimina material vegetal innecesario, mejorando tanto el valor estético como la experiencia de consumo.
+            </p>
+            
+            <img src="images/manicurado mecanico/cortar-marihuana-peladoras-cogollos-tecnocultivo-672x367-1.webp" alt="Máquina de manicurado mecánico en acción" class="content-image">
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">15-25%</span>
+                    <div class="stat-label">Del tiempo total de post-cosecha</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40-60%</span>
+                    <div class="stat-label">Del valor final del producto</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">25-35g/h</span>
+                    <div class="stat-label">Velocidad manual experto</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">200-500g/h</span>
+                    <div class="stat-label">Velocidad mecánica</div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>Clave del éxito:</strong> El manicurado representa 15-25% del tiempo total de post-cosecha pero determina 40-60% del valor final del producto en mercados competitivos.
+            </div>
+        </section>
+
+        <!-- Timing del manicurado -->
+        <section class="content-section">
+            <h2 class="section-title">Timing del Manicurado</h2>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🌿 Wet Trimming (Manicurado húmedo)</h4>
+                    <p><strong>Momento:</strong> Inmediatamente después del corte, planta fresca</p>
+                    <p><strong>Ventajas:</strong> Material más fácil de cortar, hojas menos adheridas</p>
+                    <p><strong>Desventajas:</strong> Tricomas más vulnerables, secado más rápido</p>
+                    <p><strong>Aplicación:</strong> Climas húmedos, espacios de secado limitados</p>
+                </div>
+                <div class="info-card">
+                    <h4>🍂 Dry Trimming (Manicurado seco)</h4>
+                    <p><strong>Momento:</strong> Después del secado, humedad 10-15%</p>
+                    <p><strong>Ventajas:</strong> Mejor preservación de tricomas, secado más lento</p>
+                    <p><strong>Desventajas:</strong> Hojas más adheridas, mayor tiempo de procesado</p>
+                    <p><strong>Resultado:</strong> Calidad superior, especialmente para consumo premium</p>
+                </div>
+            </div>
+
+            <img src="images/manicurado mecanico/tijeras  manicurado.jpg" alt="Tijeras especializadas para manicurado manual" class="content-image">
+        </section>
+
+        <!-- Técnicas de manicurado manual -->
+        <section class="content-section">
+            <h2 class="section-title">Técnicas de Manicurado Manual</h2>
+            
+            <h3 class="subsection-title">Herramientas Especializadas</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Herramienta</th>
+                        <th>Características</th>
+                        <th>Uso Específico</th>
+                        <th>Mantenimiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Tijeras de manicurado</strong></td>
+                        <td>Puntas finas, acero inoxidable, 5-7cm</td>
+                        <td>Cortes de precisión en cogollos</td>
+                        <td>Alcohol isopropílico 99%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tijeras de poda</strong></td>
+                        <td>Hojas gruesas, cortes de ramas principales</td>
+                        <td>Eliminación de ramas y tallos gruesos</td>
+                        <td>Limpieza tras cada sesión</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tijeras curvas</strong></td>
+                        <td>Para trabajar contornos naturales</td>
+                        <td>Seguir la forma natural del cogollo</td>
+                        <td>Lubricación regular</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Técnica de Corte Profesional</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Ángulo de Corte</h4>
+                    <p><strong>Posición:</strong> 45° siguiendo contorno natural del cogollo<br>
+                    <strong>Precisión:</strong> Eliminar solo hojas sin tricomas visibles<br>
+                    <strong>Conservación:</strong> Mantener hojas azucaradas con tricomas<br>
+                    <strong>Velocidad:</strong> 20-40g material procesado por hora (manual experto)</p>
+                </div>
+            </div>
+
+            <img src="images/manicurado mecanico/tijera-manicurado.webp" alt="Tijera de manicurado de precisión" class="content-image">
+
+            <h3 class="subsection-title">Niveles de Manicurado</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Rough Trim (Manicurado básico)</h4>
+                    <p><strong>Objetivo:</strong> Eliminación rápida de material vegetal excesivo</p>
+                    <p><strong>Tiempo:</strong> 5-10 minutos por cogollo medio</p>
+                    <p><strong>Aplicación:</strong> Material para extracción, mercado no premium</p>
+                    <p><strong>Características:</strong> Conserva algunas hojas pequeñas</p>
+                </div>
+                <div class="info-card">
+                    <h4>Premium Trim (Manicurado premium)</h4>
+                    <p><strong>Objetivo:</strong> Máxima presentación visual y calidad</p>
+                    <p><strong>Tiempo:</strong> 15-30 minutos por cogollo medio</p>
+                    <p><strong>Detalle:</strong> Eliminación meticulosa de todo material no-floral</p>
+                    <p><strong>Aplicación:</strong> Producto top-shelf, mercado de alta gama</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manicurado mecánico -->
+        <section class="content-section">
+            <h2 class="section-title">Manicurado Mecánico</h2>
+            
+            <h3 class="subsection-title">Tipos de Máquinas</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Trimmer Bowl</h4>
+                    <p><strong>Funcionamiento:</strong> Cuchillas giratorias sobre rejilla<br>
+                    <strong>Capacidad:</strong> 1-3 libras por hora<br>
+                    <strong>Ventajas:</strong> Velocidad, consistencia básica<br>
+                    <strong>Limitaciones:</strong> Calidad inferior, pérdida de tricomas<br>
+                    <strong>Precio:</strong> €500-2,000</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Máquinas de Mesa</h4>
+                    <p><strong>Ejemplos:</strong> Twister T2, CenturionPro<br>
+                    <strong>Capacidad:</strong> 5-20 libras por hora según modelo<br>
+                    <strong>Características:</strong> Cuchillas ajustables, velocidad variable<br>
+                    <strong>Inversión:</strong> €8,000-25,000</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Sistemas Automatizados</h4>
+                    <p><strong>Integración:</strong> Transporte automático, clasificación por tamaño<br>
+                    <strong>Capacidad:</strong> 50-200 libras por hora<br>
+                    <strong>Aplicación:</strong> Operaciones comerciales grandes<br>
+                    <strong>Costo:</strong> €50,000-200,000+</p>
+                </div>
+            </div>
+
+            <img src="images/manicurado mecanico/trimming machine.webp" alt="Máquina de manicurado industrial" class="content-image">
+
+            <h3 class="subsection-title">Optimización Mecánica</h3>
+            
+            <div class="highlight-box">
+                <h3>Ajustes de Precisión</h3>
+                <p><strong>Velocidad de rotación:</strong> 10-30 RPM según dureza del material</p>
+                <p><strong>Presión de cuchillas:</strong> Mínima para preservar estructura</p>
+                <p><strong>Tiempo de procesado:</strong> 30-90 segundos por lote</p>
+                <p><strong>Calibración:</strong> Ajustes específicos por variedad y humedad</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Pre-procesado Óptimo</h4>
+                    <p><strong>Humedad óptima:</strong> 12-15% para corte mecánico eficiente</p>
+                    <p><strong>Tamaño uniforme:</strong> Cogollos similares para procesado consistente</p>
+                    <p><strong>Temperatura:</strong> Material a temperatura ambiente (20-22°C)</p>
+                    <p><strong>Limpieza previa:</strong> Eliminación manual de ramas grandes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Híbrido manual-mecánico -->
+        <section class="content-section">
+            <h2 class="section-title">Híbrido Manual-Mecánico</h2>
+            
+            <p class="content-text">
+                El enfoque híbrido combina la eficiencia del procesado mecánico inicial con el refinamiento manual final, ofreciendo un equilibrio óptimo entre productividad y calidad.
+            </p>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Procesado en Dos Fases</h4>
+                    <p><strong>Fase mecánica:</strong> Eliminación rápida 70-80% material vegetal<br>
+                    <strong>Fase manual:</strong> Refinamiento y detalles finales<br>
+                    <strong>Resultado:</strong> Eficiencia aumentada manteniendo calidad</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Grado de Calidad</th>
+                        <th>Proceso</th>
+                        <th>Tiempo por 100g</th>
+                        <th>Aplicación</th>
+                        <th>Valor de Mercado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Grado A</strong></td>
+                        <td>Solo manicurado manual premium</td>
+                        <td>4-6 horas</td>
+                        <td>Top-shelf, mercado premium</td>
+                        <td>100% valor base</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grado B</strong></td>
+                        <td>Híbrido con refinamiento manual</td>
+                        <td>2-3 horas</td>
+                        <td>Mercado medio-alto</td>
+                        <td>80-90% valor base</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Grado C</strong></td>
+                        <td>Mecánico para extracción</td>
+                        <td>0.5-1 hora</td>
+                        <td>Productos procesados</td>
+                        <td>50-70% valor base</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <img src="images/manicurado mecanico/trimpro-rotor_2615_1_.png" alt="Sistema TrimPro Rotor para manicurado mecánico" class="content-image">
+        </section>
+
+        <!-- Preservación de tricomas -->
+        <section class="content-section">
+            <h2 class="section-title">Preservación de Tricomas</h2>
+            
+            <p class="content-text">
+                Los tricomas contienen los compuestos más valiosos del cannabis. Su preservación durante el manicurado es crucial para mantener potencia, aroma y valor comercial del producto final.
+            </p>
+
+            <h3 class="subsection-title">Técnicas de Conservación</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Control Ambiental</h4>
+                    <p><strong>Temperatura:</strong> Mantener material frío (15-18°C) durante procesado</p>
+                    <p><strong>Humedad:</strong> 45-55% HR en área de trabajo</p>
+                    <p><strong>Manejo suave:</strong> Mínima manipulación de superficies florales</p>
+                    <p><strong>Herramientas limpias:</strong> Evitar acumulación de resina en cuchillas</p>
+                </div>
+                <div class="info-card">
+                    <h4>Colección de Kief</h4>
+                    <p><strong>Bandejas:</strong> Superficies lisas para recolectar tricomas caídos</p>
+                    <p><strong>Tamices:</strong> Mallas 75-120μ para separar diferentes grados</p>
+                    <p><strong>Almacenamiento:</strong> Contenedores herméticos inmediatamente</p>
+                    <p><strong>Valor agregado:</strong> Kief puede valer 50-80% del valor floral</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Punto crítico:</strong> Los tricomas se vuelven más frágiles con temperaturas altas y manipulación excesiva. El control ambiental es esencial para preservar el máximo contenido de cannabinoides y terpenos.
+            </div>
+
+            <img src="images/manicurado mecanico/peladora industrial.jpg" alt="Peladora industrial para manicurado a gran escala" class="content-image">
+        </section>
+
+        <!-- Productividad y costos -->
+        <section class="content-section">
+            <h2 class="section-title">Productividad y Costos</h2>
+            
+            <h3 class="subsection-title">Análisis de Tiempos</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>💪 Manicurado Manual</h4>
+                    <p><strong>Velocidad promedio:</strong> 25-35g/hora trabajador experimentado</p>
+                    <p><strong>Costo laboral:</strong> €15-25/hora según ubicación</p>
+                    <p><strong>Costo por gramo:</strong> €0.50-1.00 mano de obra</p>
+                    <p><strong>Calidad:</strong> Excelente para mercado premium</p>
+                </div>
+                <div class="info-card">
+                    <h4>⚙️ Manicurado Mecánico</h4>
+                    <p><strong>Velocidad:</strong> 200-500g/hora según equipo</p>
+                    <p><strong>Costo operativo:</strong> €0.05-0.15/gramo (amortización + energía)</p>
+                    <p><strong>Mano de obra:</strong> 1 operador para 5-10x producción manual</p>
+                    <p><strong>Calidad:</strong> Adecuada para volumen, inferior en detalle</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">ROI del Equipamiento</h3>
+            
+            <div class="cost-box">
+                <strong>Análisis económico:</strong> Punto de equilibrio: 100-300 kg procesados según precio equipo. Ahorro anual: €20,000-100,000 en operaciones comerciales. Factores: Volumen procesado, costo laboral local, exigencias calidad.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">100-300kg</span>
+                    <div class="stat-label">Punto de equilibrio equipamiento</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">€20k-100k</span>
+                    <div class="stat-label">Ahorro anual operaciones comerciales</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5-10x</span>
+                    <div class="stat-label">Mayor producción vs manual</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">€0.05-0.15</span>
+                    <div class="stat-label">Costo por gramo mecánico</div>
+                </div>
+            </div>
+
+            <img src="images/manicurado mecanico/tijeras  manicurado.jpg" alt="Set completo de tijeras para manicurado profesional" class="content-image">
+        </section>
+
+        <!-- Control de calidad -->
+        <section class="content-section">
+            <h2 class="section-title">Control de Calidad</h2>
+            
+            <h3 class="subsection-title">Estándares de Manicurado</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Criterios de Evaluación</h4>
+                    <p><strong>Uniformidad:</strong> Consistencia en nivel de manicurado<br>
+                    <strong>Preservación:</strong> Mantenimiento de estructura floral natural<br>
+                    <strong>Limpieza:</strong> Ausencia de material vegetal innecesario<br>
+                    <strong>Tricomas:</strong> Minimización de pérdida durante procesado</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Inspección Final</h4>
+                    <p><strong>Revisión visual:</strong> 100% del material procesado<br>
+                    <strong>Clasificación:</strong> Separación por calidad y tamaño<br>
+                    <strong>Retoque:</strong> Corrección manual de defectos menores<br>
+                    <strong>Documentación:</strong> Registro de pesos y tiempos por lote</p>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Estándar Premium</th>
+                        <th>Estándar Comercial</th>
+                        <th>Método de Evaluación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Hojas visibles</strong></td>
+                        <td>0% hojas sin tricomas</td>
+                        <td><5% material vegetal</td>
+                        <td>Inspección visual 10x lupa</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Forma del cogollo</strong></td>
+                        <td>Contorno natural preservado</td>
+                        <td>Forma reconocible</td>
+                        <td>Evaluación morfológica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pérdida tricomas</strong></td>
+                        <td><5% pérdida estimada</td>
+                        <td><15% pérdida aceptable</td>
+                        <td>Análisis kief recolectado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Densidad</strong></td>
+                        <td>Estructura compacta</td>
+                        <td>Densidad media aceptable</td>
+                        <td>Peso/volumen ratio</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <img src="images/manicurado mecanico/trimming machine.webp" alt="Máquina de manicurado en operación" class="content-image">
+        </section>
+
+        <!-- Capacitación del personal -->
+        <section class="content-section">
+            <h2 class="section-title">Capacitación del Personal</h2>
+            
+            <p class="content-text">
+                La calidad del manicurado depende en gran medida de la habilidad y experiencia del personal. Un programa de capacitación estructurado es esencial para mantener estándares consistentes y maximizar la eficiencia operativa.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🎓 Programa de Entrenamiento Básico</h4>
+                    <p><strong>Duración:</strong> 2-4 horas entrenamiento inicial</p>
+                    <p><strong>Contenido:</strong> Técnicas de corte, uso de herramientas, estándares de calidad</p>
+                    <p><strong>Práctica:</strong> Supervisión directa primeras 8 horas</p>
+                    <p><strong>Evaluación:</strong> Test práctico con material de prueba</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏆 Especialización Premium</h4>
+                    <p><strong>Duración:</strong> 20-40 horas para manicurado premium</p>
+                    <p><strong>Avanzado:</strong> Técnicas de preservación de tricomas</p>
+                    <p><strong>Calidad:</strong> Estándares top-shelf y mercado de lujo</p>
+                    <p><strong>Certificación:</strong> Evaluación continua y mejora</p>
+                </div>
+            </div>
+
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Curva de Aprendizaje</h4>
+                    <p><strong>Semana 1:</strong> 15-20g/hora (principiante con supervisión)<br>
+                    <strong>Mes 1:</strong> 25-30g/hora (trabajador competente)<br>
+                    <strong>Mes 3:</strong> 30-40g/hora (trabajador experimentado)<br>
+                    <strong>Incremento:</strong> 50-100% productividad con experiencia</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Cross-Training y Flexibilidad</h4>
+                    <p><strong>Rotación:</strong> Entrenamiento en múltiples técnicas<br>
+                    <strong>Flexibilidad:</strong> Adaptación a diferentes variedades<br>
+                    <strong>Backup:</strong> Personal capacitado para cubrir ausencias<br>
+                    <strong>Especialización:</strong> Desarrollo de expertos internos</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Métricas de Rendimiento del Personal</h3>
+                <p><strong>KPI Velocidad:</strong> Gramos procesados por hora por trabajador</p>
+                <p><strong>KPI Calidad:</strong> Porcentaje de producto que cumple estándares</p>
+                <p><strong>KPI Eficiencia:</strong> Ratio material aprovechable vs desperdicio</p>
+                <p><strong>Evaluación:</strong> Revisión mensual y feedback constructivo</p>
+            </div>
+
+            <img src="images/manicurado mecanico/trimpro-rotor_2615_1_.png" alt="Sistema TrimPro Rotor - Tecnología avanzada de manicurado" class="content-image">
+        </section>
+
+        <!-- Tecnología emergente -->
+        <section class="content-section">
+            <h2 class="section-title">Tecnología Emergente</h2>
+            
+            <p class="content-text">
+                La industria del cannabis está evolucionando rápidamente con nuevas tecnologías que prometen revolucionar el proceso de manicurado. Estas innovaciones buscan combinar la precisión del trabajo manual con la eficiencia de la automatización.
+            </p>
+
+            <h3 class="subsection-title">Visión Artificial y IA</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🤖 Sistemas de Visión por Computadora</h4>
+                    <p><strong>Reconocimiento:</strong> Identificación automática de material vegetal vs floral</p>
+                    <p><strong>Precisión:</strong> Detección de tricomas y estructuras valiosas</p>
+                    <p><strong>Clasificación:</strong> Separación automática por calidad</p>
+                    <p><strong>Estado:</strong> En desarrollo, primeros prototipos comerciales</p>
+                </div>
+                <div class="info-card">
+                    <h4>🔬 Machine Learning</h4>
+                    <p><strong>Aprendizaje:</strong> Optimización continua basada en resultados</p>
+                    <p><strong>Personalización:</strong> Ajustes específicos por variedad</p>
+                    <p><strong>Predicción:</strong> Estimación de calidad pre-procesado</p>
+                    <p><strong>Eficiencia:</strong> Reducción de desperdicios y errores</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Robótica Colaborativa</h3>
+            
+            <div class="parameter-list">
+                <div class="parameter-item">
+                    <h4>Brazos Robóticos de Precisión</h4>
+                    <p><strong>Movimiento:</strong> 6+ grados de libertad para maniobrabilidad<br>
+                    <strong>Sensores:</strong> Retroalimentación táctil y visual en tiempo real<br>
+                    <strong>Herramientas:</strong> Intercambio automático de implementos de corte<br>
+                    <strong>Colaboración:</strong> Trabajo conjunto con operadores humanos</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Ventajas de la Robótica</h4>
+                    <p><strong>Consistencia:</strong> Calidad uniforme sin fatiga<br>
+                    <strong>Documentación:</strong> Registro detallado de cada corte<br>
+                    <strong>Escalabilidad:</strong> Operación 24/7 en operaciones grandes<br>
+                    <strong>Trazabilidad:</strong> Control total del proceso de manicurado</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Consideración importante:</strong> Aunque prometedoras, estas tecnologías aún están en desarrollo. La inversión inicial es significativa y requiere personal especializado para operación y mantenimiento.
+            </div>
+
+            <img src="images/manicurado mecanico/peladora industrial.jpg" alt="Peladora industrial - Sistema de manicurado a gran escala" class="content-image">
+        </section>
+
+        <!-- Consideraciones legales y comerciales -->
+        <section class="content-section">
+            <h2 class="section-title">Consideraciones Legales y Comerciales</h2>
+            
+            <h3 class="subsection-title">Cumplimiento Normativo</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>📋 Documentación Requerida</h4>
+                    <p><strong>Trazabilidad:</strong> Registro detallado de peso antes y después</p>
+                    <p><strong>Personal:</strong> Identificación de trabajadores autorizados</p>
+                    <p><strong>Desperdicios:</strong> Contabilización y disposición del material vegetal</p>
+                    <p><strong>Tiempos:</strong> Registro de duración del proceso por lote</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏭 Estándares de Instalación</h4>
+                    <p><strong>Higiene:</strong> Protocolos de limpieza y sanitización</p>
+                    <p><strong>Seguridad:</strong> Acceso controlado y cámaras de vigilancia</p>
+                    <p><strong>Ventilación:</strong> Control de partículas y olores</p>
+                    <p><strong>Almacenamiento:</strong> Condiciones controladas pre y post-procesado</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Posicionamiento de Mercado</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Segmento de Mercado</th>
+                        <th>Método Recomendado</th>
+                        <th>Nivel de Manicurado</th>
+                        <th>Premium de Precio</th>
+                        <th>Volumen Típico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Ultra Premium</strong></td>
+                        <td>Manual exclusivo</td>
+                        <td>Perfecto (30+ min/cogollo)</td>
+                        <td>+200-300%</td>
+                        <td>Lotes pequeños</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Premium</strong></td>
+                        <td>Manual estándar</td>
+                        <td>Excelente (15-20 min/cogollo)</td>
+                        <td>+100-150%</td>
+                        <td>Producción media</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comercial Alto</strong></td>
+                        <td>Híbrido manual-mecánico</td>
+                        <td>Bueno (5-10 min/cogollo)</td>
+                        <td>+50-75%</td>
+                        <td>Volumen alto</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comercial Estándar</strong></td>
+                        <td>Mecánico optimizado</td>
+                        <td>Aceptable (2-3 min/cogollo)</td>
+                        <td>Precio base</td>
+                        <td>Volumen muy alto</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cost-box">
+                <strong>Estrategia de precios:</strong> El manicurado premium puede justificar incrementos de precio de 100-300% en mercados especializados. La diferenciación por calidad de manicurado es una ventaja competitiva sostenible.
+            </div>
+
+            <img src="images/manicurado mecanico/cortar-marihuana-peladoras-cogollos-tecnocultivo-672x367-1.webp" alt="Resultado final - Cogollos manicurados con máquina" class="content-image">
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Maximizando el Valor a Través del Manicurado</h2>
+            
+            <p class="content-text">
+                La elección entre manicurado manual y mecánico no es simplemente una decisión técnica, sino una estrategia comercial que define el posicionamiento de tu producto en el mercado. Cada método tiene su lugar en el ecosistema del cannabis, desde producciones artesanales premium hasta operaciones comerciales de gran volumen.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Factores Clave para la Decisión</h3>
+                <p><strong>Volumen de producción:</strong> Cantidades pequeñas favorecen manual, grandes volúmenes requieren mecánico</p>
+                <p><strong>Mercado objetivo:</strong> Premium exige manual, comercial puede ser mecánico</p>
+                <p><strong>Recursos disponibles:</strong> Capital inicial vs costos operativos continuos</p>
+                <p><strong>Diferenciación:</strong> Cómo el manicurado apoya tu propuesta de valor única</p>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>🎯 Para Operaciones Pequeñas</h4>
+                    <p>Enfócate en el manicurado manual premium. La inversión en tiempo se compensa con precios significativamente superiores y construcción de marca artesanal.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🏭 Para Operaciones Comerciales</h4>
+                    <p>Considera el enfoque híbrido: mecánico para el grueso del trabajo, manual para el refinamiento final y productos premium.</p>
+                </div>
+                <div class="info-card">
+                    <h4>🚀 Para Expansión Futura</h4>
+                    <p>Planifica la escalabilidad desde el inicio. Sistemas que funcionan para 10kg pueden no ser viables para 100kg.</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>Resultado final:</strong> El manicurado representa una oportunidad única para agregar valor significativo con inversión relativamente menor. Dominando estas técnicas, puedes transformar material base en productos premium que comandean precios superiores en el mercado.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">300%</span>
+                    <div class="stat-label">Incremento potencial de precio con manicurado premium</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6-12</span>
+                    <div class="stat-label">Meses para ROI en equipamiento mecánico</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">85%</span>
+                    <div class="stat-label">De la decisión de compra basada en apariencia</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40-60%</span>
+                    <div class="stat-label">Del valor final determinado por manicurado</div>
+                </div>
+            </div>
+
+            <p class="content-text">
+                El futuro del manicurado está en la integración inteligente de tecnología con artesanía humana. Las operaciones más exitosas serán aquellas que encuentren el equilibrio perfecto entre eficiencia operativa y calidad premium, adaptándose continuamente a las demandas cambiantes del mercado.
+            </p>
+
+            <div class="warning-box">
+                <strong>Inversión en excelencia:</strong> El manicurado de calidad requiere inversión en herramientas, capacitación y tiempo. Sin embargo, esta inversión se recupera múltiples veces a través de precios premium y lealtad del cliente en mercados competitivos.
+            </div>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(39, 174, 96, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota:</strong> Este artículo tiene fines educativos únicamente. Asegúrate de cumplir con todas las leyes locales sobre cultivo y procesamiento de cannabis.
+            </p>
+            <div style="border-top: 2px solid rgba(46, 204, 113, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías de cultivo profesional, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #27ae60; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #6c757d;">
+                    📚 <strong>Próximos artículos:</strong> Técnicas de Secado • Control de Calidad Post-Cosecha • Almacenamiento a Largo Plazo • Análisis de Laboratorio
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>

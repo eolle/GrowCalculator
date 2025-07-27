@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracción de Resina: Hash, Rosin y Técnicas Modernas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --green-dark: #2D5016;
+            --green-darker: #1B4332;
+            --green-medium: #40916C;
+            --green-light: #52B788;
+            --yellow-accent: #F59E0B;
+            --yellow-accent-alt: #FF8500;
+            --white: #FFFFFF;
+            --gray-dark: #2D3748;
+            --green-very-dark: #1A1A1A;
+            --green-soft: #D8F3DC;
+            --yellow-soft: #FFF3CD;
+            --ocre-bg: #FFE5B4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--ocre-bg);
+            min-height: 100vh;
+            color: var(--gray-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .article-header {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--yellow-accent);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .article-content h2 {
+            color: var(--green-dark);
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            border-bottom: 2px solid var(--yellow-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h3 {
+            color: var(--green-medium);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: var(--yellow-soft);
+            border-left: 4px solid var(--yellow-accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .data-table tr:hover {
+            background-color: var(--green-soft);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: var(--green-soft);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-top: 4px solid var(--green-medium);
+        }
+
+        .info-card h4 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box::before {
+            content: '⚠️ ';
+            font-size: 1.2rem;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--yellow-accent);
+            color: var(--green-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: var(--green-light);
+            color: var(--white);
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: var(--light-gray);
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            
+            .article-meta {
+                gap: 1rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .share-whatsapp {
+            background: #25D366;
+        }
+
+        .share-facebook {
+            background: #1877F2;
+        }
+
+        .share-twitter {
+            background: #1DA1F2;
+        }
+
+        .share-telegram {
+            background: #0088cc;
+        }
+
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        }
+        /* Google Translate Widget Styles */
+        .translate-widget {
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .translate-widget .goog-te-gadget {
+            background: rgba(255, 255, 255, 0.9) !important;
+            border: 2px solid var(--green-medium) !important;
+            border-radius: 50px !important;
+            padding: 0.5rem 1rem !important;
+            font-size: 0.9rem !important;
+            color: var(--green-dark) !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            backdrop-filter: blur(5px) !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .translate-widget .goog-te-gadget .goog-te-gadget-simple {
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .translate-widget .goog-te-gadget a {
+            color: var(--green-dark) !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.5rem 1rem !important;
+            border-radius: 50px !important;
+            transition: all 0.3s ease !important;
+        }
+
+        .translate-widget .goog-te-gadget a:hover {
+            background: rgba(64, 145, 108, 0.1) !important;
+            transform: translateY(-2px) !important;
+        }
+
+        /* Hide Google Translate banner and improve styling */
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        .goog-te-menu-frame {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 8px !important;
+        }
+
+        /* Ensure all content is translatable */
+        body {
+            -webkit-translate: no;
+            translate: no;
+        }
+
+        /* Style the language selector dropdown */
+        .goog-te-menu2 {
+            border: 1px solid #ccc !important;
+            border-radius: 8px !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        .goog-te-menu2-item {
+            padding: 8px 12px !important;
+            border-bottom: 1px solid #eee !important;
+        }
+
+        .goog-te-menu2-item:hover {
+            background-color: #f5f5f5 !important;
+        }
+
+        /* Responsive styles for translate widget */
+        @media (max-width: 768px) {
+            .translate-widget {
+                margin: 0.5rem 0;
+            }
+            
+            .translate-widget .goog-te-gadget {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+                width: 100% !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
+            }
+            
+            .translate-widget .goog-te-gadget a {
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.8rem !important;
+            }
+        }
+
+    </style>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,fr,de,it,pt,ru,ja,ko,zh-CN,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                gaTrack: true,
+                gaId: 'G-LLRTFTH5W6',
+                multilanguagePage: true,
+                gaTrack: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Additional Translate Functionality -->
+    <script>
+        // Debug function to check if Google Translate is loading
+        function checkGoogleTranslate() {
+            console.log('Checking Google Translate...');
+            const translateElement = document.getElementById('google_translate_element');
+            if (translateElement) {
+                console.log('Translate element found:', translateElement);
+                console.log('Translate element content:', translateElement.innerHTML);
+            } else {
+                console.log('Translate element NOT found');
+            }
+            
+            // Check if Google Translate script is loaded
+            if (typeof google !== 'undefined' && google.translate) {
+                console.log('Google Translate API loaded successfully');
+            } else {
+                console.log('Google Translate API NOT loaded');
+            }
+        }
+        
+        // Enhanced translation functionality
+        function enhanceTranslation() {
+            // Wait for Google Translate to be fully loaded
+            setTimeout(() => {
+                const translateElement = document.querySelector('.goog-te-gadget');
+                if (translateElement) {
+                    // Add custom styling to make it more visible
+                    translateElement.style.display = 'inline-block';
+                    translateElement.style.margin = '0 auto';
+                    
+                    // Ensure the widget is properly centered
+                    const widget = document.getElementById('google_translate_element');
+                    if (widget) {
+                        widget.style.textAlign = 'center';
+                        widget.style.display = 'block';
+                    }
+                    
+                    console.log('Google Translate widget enhanced and ready');
+                }
+            }, 2000);
+        }
+        
+        // Function to ensure all content is translatable
+        function ensureTranslatableContent() {
+            // Add translate attributes to dynamic content
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'childList') {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) { // Element node
+                                // Ensure new content is translatable
+                                if (!node.hasAttribute('translate')) {
+                                    node.setAttribute('translate', 'yes');
+                                }
+                                
+                                // Check child elements
+                                const elements = node.querySelectorAll('*');
+                                elements.forEach(function(element) {
+                                    if (!element.hasAttribute('translate')) {
+                                        element.setAttribute('translate', 'yes');
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Start observing
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+
+            console.log('Translation observer started - all content will be translatable');
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, checking Google Translate...');
+            setTimeout(checkGoogleTranslate, 1000);
+            enhanceTranslation();
+        });
+        
+        // Check again after a longer delay
+        setTimeout(checkGoogleTranslate, 3000);
+        
+        // Start the translation observer
+        setTimeout(ensureTranslatableContent, 3000);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <a href="blog.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Volver al Blog
+        </a>
+        <!-- Header del artículo -->
+        <header class="article-header">
+            <h1>Extracción de Resina</h1>
+
+            <!-- Google Translate Widget -->
+            <div id="google_translate_element" class="translate-widget"></div>
+
+            <p class="subtitle">Hash, Rosin y Técnicas Modernas de Concentración</p>
+            <div class="article-meta">
+                <div class="meta-item">
+                    <span>📅</span>
+                    <span>Publicado: Julio 2025</span>
+                </div>
+                <div class="meta-item">
+                    <span>⏱️</span>
+                    <span>Lectura: 18 min</span>
+                </div>
+                <div class="meta-item">
+                    <span>📊</span>
+                    <span>Nivel: Avanzado</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Introducción -->
+        <section class="content-section">
+            <p class="content-text">
+                La extracción de resina representa el arte de concentrar cannabinoides y terpenos, creando productos con potencias 3-6 veces superiores al material vegetal original. Las técnicas modernas no solo incrementan la potencia, sino que también preservan perfiles terpénicos complejos manteniendo una pureza excepcional que era impensable hace apenas una década.
+            </p>
+            
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/tricomas.webp" alt="Comparativa visual de cannabis flower vs diferentes tipos de extracciones con niveles de THC" class="content-image">
+                <p class="image-caption">Comparativa visual de cannabis flower vs diferentes tipos de extracciones con niveles de THC</p>
+            </div>
+
+            <p class="content-text">
+                Desde los métodos tradicionales de separación mecánica hasta las tecnologías más avanzadas de extracción con CO₂ supercrítico, cada técnica ofrece ventajas únicas en términos de pureza, rendimiento, preservación de terpenos y facilidad de producción. Entender estas diferencias es crucial para seleccionar el método más adecuado según tus objetivos específicos.
+            </p>
+
+            <div class="highlight-box">
+                <h3>La Revolución de los Concentrados</h3>
+                <p>La extracción moderna ha transformado el consumo de cannabis, permitiendo experiencias más puras, dosificación precisa y perfiles de efectos altamente específicos que van desde estimulantes cerebrales hasta relajantes corporales profundos.</p>
+            </div>
+        </section>
+
+        <!-- Clasificación de Métodos -->
+        <section class="content-section">
+            <h2 class="section-title">Clasificación de Métodos Extractivos</h2>
+            
+            <p class="content-text">
+                Los métodos de extracción se dividen fundamentalmente en dos categorías: extracciones mecánicas que utilizan fuerzas físicas para separar tricomas, y extracciones con solventes que disuelven selectivamente los compuestos deseados. Cada enfoque tiene ventajas distintivas en términos de pureza, seguridad y preservación de terpenos.
+            </p>
+
+            <h3 class="subsection-title">Extracciones Mecánicas</h3>
+            
+            <p class="content-text">
+                Los métodos mecánicos se basan en la separación física de los tricomas glandulares del material vegetal, utilizando diferencias de tamaño, densidad o propiedades físicas. Estos métodos no requieren solventes químicos, resultando en productos completamente naturales.
+            </p>
+
+            <div class="method-category">
+                <div class="method-item">
+                    <h4>Dry Sift (Tamizado en Seco)</h4>
+                    <p>Separación por tamizado utilizando mallas de micrones decrecientes. Método tradicional que preserva al máximo el perfil terpénico original mediante separación granulométrica de tricomas glandulares.</p>
+                </div>
+                <div class="method-item">
+                    <h4>Ice Water Hash (Bubble Hash)</h4>
+                    <p>Extracción con agua helada y agitación controlada. El frío fragiliza los tricomas mientras la diferencia de densidades permite separación por sedimentación, resultando en hash de pureza cristalina.</p>
+                </div>
+                <div class="method-item">
+                    <h4>Rosin (Prensado Térmico)</h4>
+                    <p>Prensado con calor y presión sin solventes. Combina temperatura controlada con presión hidráulica para licuar tricomas, separándolos del material vegetal mediante filtros de malla especializada.</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/mallas hash.jpg" alt="Diagrama comparativo de los tres métodos mecánicos con equipamiento y productos finales" class="content-image">
+                <p class="image-caption">Diagrama comparativo de los tres métodos mecánicos con equipamiento y productos finales</p>
+            </div>
+
+            <h3 class="subsection-title">Extracciones con Solventes</h3>
+            
+            <p class="content-text">
+                Los métodos con solventes utilizan líquidos o gases para disolver selectivamente cannabinoides y terpenos, permitiendo extracciones altamente eficientes y controladas. La purga posterior del solvente es crucial para obtener productos seguros y de alta calidad.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Hidrocarburos (BHO/PHO)</h4>
+                    <p><strong>Solventes:</strong> Butano, propano<br>
+                    <strong>Ventajas:</strong> Alta eficiencia, selectividad terpénica<br>
+                    <strong>Aplicación:</strong> Extracciones comerciales de alta potencia</p>
+                </div>
+                <div class="info-card">
+                    <h4>CO₂ Supercrítico</h4>
+                    <p><strong>Solvente:</strong> Dióxido de carbono presurizado<br>
+                    <strong>Ventajas:</strong> Sin residuos, extracción selectiva<br>
+                    <strong>Aplicación:</strong> Productos farmacéuticos y premium</p>
+                </div>
+                <div class="info-card">
+                    <h4>Etanol</h4>
+                    <p><strong>Solvente:</strong> Alcohol etílico<br>
+                    <strong>Ventajas:</strong> Seguro, método tradicional<br>
+                    <strong>Aplicación:</strong> Tinturas y FECO (Full Extract Cannabis Oil)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dry Sift -->
+        <section class="content-section">
+            <h2 class="section-title">Dry Sift: El Arte del Tamizado</h2>
+            
+            <p class="content-text">
+                El dry sift representa la forma más pura y tradicional de extracción de resina, basándose únicamente en la separación granulométrica de tricomas mediante mallas de diferentes micronajes. Este método preserva intacto el perfil terpénico original mientras permite clasificación por calidad.
+            </p>
+
+            <h3 class="subsection-title">Equipamiento Especializado</h3>
+            
+            <p class="content-text">
+                El éxito del dry sift depende crucialmente de la calidad y progresión de las mallas utilizadas. Una secuencia típica de mallas de micrones decrecientes permite separación precisa de diferentes tamaños de tricomas, desde cabezas glandulares completas hasta fragmentos rotos.
+            </p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Micrón (μ)</th>
+                        <th>Función</th>
+                        <th>Material Retenido</th>
+                        <th>Calidad Típica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>220μ</strong></td>
+                        <td>Filtro inicial</td>
+                        <td>Material vegetal grueso, tallos</td>
+                        <td>Separación primaria</td>
+                    </tr>
+                    <tr>
+                        <td><strong>160μ</strong></td>
+                        <td>Refinamiento</td>
+                        <td>Hojas pequeñas, tricomas grandes</td>
+                        <td>Pre-filtrado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>120μ</strong></td>
+                        <td>Clasificación</td>
+                        <td>Tricomas cabezas medianas</td>
+                        <td>Calidad comercial</td>
+                    </tr>
+                    <tr>
+                        <td><strong>90μ</strong></td>
+                        <td>Selección premium</td>
+                        <td>Tricomas cabezas completas</td>
+                        <td>1ª calidad - Premium</td>
+                    </tr>
+                    <tr>
+                        <td><strong>73μ</strong></td>
+                        <td>Ultra-refinado</td>
+                        <td>Cabezas seleccionadas</td>
+                        <td>Grado superior</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/extrayendo-resina-iceolator-waterhash.jpg" alt="Set completo de mallas de tamizado con ejemplos de material retenido en cada nivel" class="content-image">
+                <p class="image-caption">Set completo de mallas de tamizado con ejemplos de material retenido en cada nivel</p>
+            </div>
+
+            <h3 class="subsection-title">Técnica de Tamizado Profesional</h3>
+            
+            <p class="content-text">
+                La técnica adecuada de tamizado requiere condiciones ambientales controladas y movimientos específicos que maximicen la separación sin degradar los tricomas. La temperatura, humedad y tiempo de trabajo son factores críticos para obtener resultados consistentes.
+            </p>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Preparación del material:</strong> Cannabis seco y curado, almacenado a temperatura ambiente inferior a 18°C. La humedad residual debe estar entre 8-12% para fragilidad óptima de tricomas.
+                </div>
+                <div class="step-item">
+                    <strong>Acondicionamiento térmico:</strong> Enfriar material y mallas en refrigerador 2-4 horas antes del proceso para aumentar la fragilidad de las conexiones tricoma-planta.
+                </div>
+                <div class="step-item">
+                    <strong>Movimiento controlado:</strong> Movimientos circulares suaves y constantes, evitando agitación violenta que cause contaminación vegetal. Ritmo de 60-80 RPM manual.
+                </div>
+                <div class="step-item">
+                    <strong>Sesiones cortas:</strong> Trabajar en intervalos de 5-10 minutos para prevenir calentamiento por fricción y degradación de terpenos volátiles.
+                </div>
+                <div class="step-item">
+                    <strong>Recolección inmediata:</strong> Almacenar cada fracción por separado en recipientes herméticos para prevenir oxidación y pérdida de terpenos.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Clasificación de Calidad Dry Sift</h3>
+                <p><strong>1ª calidad:</strong> Pasa 120μ, retiene 90μ - Tricomas cabezas completas, color dorado claro</p>
+                <p><strong>2ª calidad:</strong> Pasa 90μ, retiene 73μ - Mezcla de cabezas y tallos, color más oscuro</p>
+                <p><strong>3ª calidad:</strong> Pasa 73μ - Tricomas rotos y contaminación vegetal, uso para cocción</p>
+            </div>
+
+            <div class="warning-box">
+                <strong>Control de temperatura crítico:</strong> Temperaturas superiores a 20°C hacen que los tricomas se vuelvan pegajosos y se adhieran a las mallas, reduciendo significativamente el rendimiento y pureza del producto final.
+            </div>
+        </section>
+
+        <!-- Ice Water Hash -->
+        <section class="content-section">
+            <h2 class="section-title">Ice Water Hash: Pureza Cristalina</h2>
+            
+            <p class="content-text">
+                El ice water hash, también conocido como bubble hash, representa la evolución moderna de las técnicas de extracción tradicionales. Este método utiliza agua helada para fragilizar tricomas mientras la agitación mecánica controlada los separa del material vegetal, aprovechando diferencias de densidad para obtener hash de pureza excepcional.
+            </p>
+
+            <h3 class="subsection-title">Principio Científico de Extracción</h3>
+            
+            <p class="content-text">
+                El agua helada (1-4°C) hace que las conexiones entre tricomas y material vegetal se vuelvan quebradizas, mientras que la diferencia de densidades específicas permite que los tricomas (más densos) sedimenten mientras el material vegetal (menos denso) permanece en suspensión. Este fenómeno físico es la base de la pureza excepcional del método.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Temperatura Crítica</h4>
+                    <p><strong>Rango óptimo:</strong> 1-4°C<br>
+                    <strong>Efecto:</strong> Fragiliza conexiones tricoma-planta<br>
+                    <strong>Monitoreo:</strong> Termómetro digital continuo</p>
+                </div>
+                <div class="info-card">
+                    <h4>Densidad Diferencial</h4>
+                    <p><strong>Tricomas:</strong> 1.3-1.5 g/cm³<br>
+                    <strong>Material vegetal:</strong> 0.8-1.1 g/cm³<br>
+                    <strong>Resultado:</strong> Sedimentación selectiva</p>
+                </div>
+                <div class="info-card">
+                    <h4>Tiempo de Contacto</h4>
+                    <p><strong>Hidratación inicial:</strong> 30 minutos<br>
+                    <strong>Agitación activa:</strong> 15-20 minutos<br>
+                    <strong>Sedimentación:</strong> 10 minutos</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/bho.jpg" alt="Diagrama del proceso de ice water hash mostrando separación por densidades en agua helada" class="content-image">
+                <p class="image-caption">Diagrama del proceso de ice water hash mostrando separación por densidades en agua helada</p>
+            </div>
+
+            <h3 class="subsection-title">Equipamiento Profesional</h3>
+            
+            <p class="content-text">
+                El equipamiento especializado para ice water hash ha evolucionado desde métodos artesanales hasta sistemas semi-automatizados que garantizan consistencia y máxima calidad. La inversión en equipamiento de calidad se refleja directamente en la pureza y rendimiento del producto final.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Máquina Extractora</h4>
+                    <p><strong>Velocidad óptima:</strong> 160-220 RPM<br>
+                    <strong>Duración:</strong> 15-20 minutos por ciclo<br>
+                    <strong>Ventajas:</strong> Agitación consistente, control de velocidad</p>
+                </div>
+                <div class="info-card">
+                    <h4>Sistema de Bolsas</h4>
+                    <p><strong>Secuencia completa:</strong> 220μ → 190μ → 160μ → 120μ → 90μ → 73μ → 45μ → 25μ<br>
+                    <strong>Material:</strong> Nylon de grado alimentario<br>
+                    <strong>Durabilidad:</strong> 200+ extracciones</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Protocolo Profesional Paso a Paso</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Hidratación preparatoria:</strong> Sumergir material vegetal en agua helada durante 30 minutos para permitir que se sature completamente y los tricomas se fragilicen por el frío extremo.
+                </div>
+                <div class="step-item">
+                    <strong>Agitación controlada:</strong> Operar la máquina extractora a 160 RPM durante 15-20 minutos. Monitorear temperatura constantemente, añadiendo hielo según necesidad para mantener 1-4°C.
+                </div>
+                <div class="step-item">
+                    <strong>Reposo para sedimentación:</strong> Permitir 10 minutos de reposo total para que los tricomas sedimenten completamente hacia el fondo mientras el material vegetal flota.
+                </div>
+                <div class="step-item">
+                    <strong>Filtrado secuencial:</strong> Procesar la mezcla a través de bolsas de micronaje decreciente, comenzando con 220μ para eliminar material vegetal grueso y terminando con 25μ para capturar tricomas más finos.
+                </div>
+                <div class="step-item">
+                    <strong>Recolección diferenciada:</strong> Recoger el material de cada bolsa por separado, etiquetando por micrón y hora de recolección para trazabilidad completa de calidad.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Clasificación por Micronaje</h3>
+                <p><strong>190-160μ:</strong> Calidad comercial, algunos contaminantes vegetales</p>
+                <p><strong>120-90μ:</strong> Calidad premium, tricomas cabezas mayoritariamente</p>
+                <p><strong>73-45μ:</strong> Calidad superior, máxima pureza de tricomas</p>
+                <p><strong>45-25μ:</strong> Ultra-premium, "full melt" - se derrite completamente al vaporizarse</p>
+            </div>
+
+            <h3 class="subsection-title">Secado Especializado</h3>
+            
+            <p class="content-text">
+                El secado del ice water hash es tan crítico como la extracción misma. Un secado inadecuado puede arruinar completamente un hash de calidad excepcional, mientras que la técnica correcta preserva terpenos y previene el desarrollo de moho durante el proceso.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Bandejas Especializadas</h4>
+                    <p><strong>Material:</strong> Acero inoxidable 316<br>
+                    <strong>Superficie:</strong> Papel pergamino antiadherente<br>
+                    <strong>Ventajas:</strong> No contaminación, fácil recolección</p>
+                </div>
+                <div class="info-card">
+                    <h4>Condiciones Ambientales</h4>
+                    <p><strong>Temperatura:</strong> 10-16°C constante<br>
+                    <strong>Humedad relativa:</strong> 45-55%<br>
+                    <strong>Duración:</strong> 3-7 días según grosor de capa</p>
+                </div>
+                <div class="info-card">
+                    <h4>Microclima Controlado</h4>
+                    <p><strong>Circulación:</strong> Flujo de aire indirecto<br>
+                    <strong>Luz:</strong> Oscuridad completa<br>
+                    <strong>Monitoreo:</strong> Higrómetro digital 24/7</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Riesgo de moho crítico:</strong> El hash húmedo es extremadamente susceptible al desarrollo de hongos. Humedad superior al 60% o temperatura superior a 18°C durante el secado puede resultar en pérdida total del producto.
+            </div>
+        </section>
+
+        <!-- Rosin -->
+        <section class="content-section">
+            <h2 class="section-title">Rosin: Extracción sin Solventes</h2>
+            
+            <p class="content-text">
+                La tecnología rosin ha revolucionado la extracción de cannabis al combinar calor controlado con presión hidráulica para licuar tricomas sin utilizar solventes químicos. Este método permite obtener concentrados de alta pureza con perfiles terpénicos intactos en cuestión de minutos, no días.
+            </p>
+
+            <h3 class="subsection-title">Tecnología de Prensado Hidráulico</h3>
+            
+            <p class="content-text">
+                Las prensas hidráulicas profesionales de 10-20 toneladas generan la presión necesaria para licuar tricomas mientras los filtros de malla especializados separan la resina del material vegetal. La combinación precisa de temperatura, presión y tiempo determina tanto el rendimiento como la calidad del producto final.
+            </p>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/extractor-de-bho-circuito-cerrado-2200g.jpg" alt="Prensa hidráulica profesional con platos calefactores y sistema de control de temperatura" class="content-image">
+                <p class="image-caption">Prensa hidráulica profesional con platos calefactores y sistema de control de temperatura</p>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Tipo de Material</th>
+                        <th>Temperatura (°C)</th>
+                        <th>Presión (PSI)</th>
+                        <th>Tiempo (segundos)</th>
+                        <th>Rendimiento Típico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Flower Rosin</strong></td>
+                        <td>85-95</td>
+                        <td>1,000-2,000</td>
+                        <td>90-180</td>
+                        <td>15-25%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hash Rosin</strong></td>
+                        <td>70-85</td>
+                        <td>500-1,500</td>
+                        <td>60-120</td>
+                        <td>60-80%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kief Rosin</strong></td>
+                        <td>75-90</td>
+                        <td>800-1,800</td>
+                        <td>120-240</td>
+                        <td>40-60%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Filtros y Micronajes</h3>
+            
+            <p class="content-text">
+                La selección del micrón correcto del filtro es crucial para equilibrar rendimiento y pureza. Filtros muy finos (25-37μ) producen rosin ultra-puro pero con rendimientos menores, mientras que filtros más abiertos (90-120μ) incrementan el rendimiento a expensas de algo de pureza.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>37-45μ: Ultra Premium</h4>
+                    <p><strong>Aplicación:</strong> Hash rosin de máxima calidad<br>
+                    <strong>Características:</strong> Pureza excepcional, color dorado claro<br>
+                    <strong>Rendimiento:</strong> Reducido pero calidad superior</p>
+                </div>
+                <div class="info-card">
+                    <h4>62-75μ: Premium</h4>
+                    <p><strong>Aplicación:</strong> Flower rosin de alta calidad<br>
+                    <strong>Características:</strong> Balance óptimo pureza/rendimiento<br>
+                    <strong>Rendimiento:</strong> Buen balance comercial</p>
+                </div>
+                <div class="info-card">
+                    <h4>90-120μ: Comercial</h4>
+                    <p><strong>Aplicación:</strong> Producciones de volumen<br>
+                    <strong>Características:</strong> Mayor rendimiento, pureza buena<br>
+                    <strong>Rendimiento:</strong> Máximo, ideal para reventa</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Técnicas de Optimización Avanzadas</h3>
+            
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Pre-prensado de "pucks":</strong> Crear discos uniformes de material antes del prensado principal mejora significativamente la distribución de presión y incrementa rendimientos hasta un 15%.
+                </div>
+                <div class="step-item">
+                    <strong>Precalentamiento controlado:</strong> Calentar los platos 30-60 segundos antes de aplicar presión máxima permite que los tricomas comiencen a licuarse gradualmente, reduciendo blow-outs.
+                </div>
+                <div class="step-item">
+                    <strong>Gradación de presión:</strong> Incremento progresivo desde 200 PSI hasta presión final en intervalos de 30 segundos previene rupturas de filtro y mejora la calidad de separación.
+                </div>
+                <div class="step-item">
+                    <strong>Enfriamiento inmediato:</strong> Recolectar el rosin mientras aún está caliente y enfriarlo rápidamente en superficie fría preserva terpenos volátiles y facilita la manipulación.
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Control de Temperatura y Terpenos</h3>
+                <p><strong>Temperaturas bajas (70-85°C):</strong> Preservan terpenos monoterpénicos volátiles como limoneno y pineno, resultando en sabores más complejos pero menores rendimientos.</p>
+                <p><strong>Temperaturas altas (100-120°C):</strong> Incrementan significativamente el rendimiento pero pueden degradar terpenos delicados, resultando en perfiles aromáticos más simples.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/Flavour.png" alt="Secuencia temporal del prensado rosin mostrando la evolución del producto durante la extracción" class="content-image">
+                <p class="image-caption">Secuencia temporal del prensado rosin mostrando la evolución del producto durante la extracción</p>
+            </div>
+        </section>
+
+        <!-- Procesado Post-Extracción -->
+        <section class="content-section">
+            <h2 class="section-title">Procesado Post-Extracción</h2>
+            
+            <p class="content-text">
+                El trabajo no termina con la extracción inicial. El procesado post-extracción determina la textura final, estabilidad y perfil organoléptico del concentrado. Las técnicas de curado y manipulación pueden transformar un rosin básico en un producto premium con características únicas.
+            </p>
+
+            <h3 class="subsection-title">Técnicas de Curado Especializado</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Cold Cure (Curado Frío)</h4>
+                    <p><strong>Temperatura:</strong> 4-7°C durante 2-6 semanas<br>
+                    <strong>Resultado:</strong> Textura cremosa tipo "badder"<br>
+                    <strong>Ventajas:</strong> Máxima preservación de terpenos</p>
+                </div>
+                <div class="info-card">
+                    <h4>Heat Cure (Curado Caliente)</h4>
+                    <p><strong>Temperatura:</strong> 43-60°C durante 24-48 horas<br>
+                    <strong>Resultado:</strong> Transformaciones aceleradas de consistencia<br>
+                    <strong>Ventajas:</strong> Proceso rápido, texturas específicas</p>
+                </div>
+                <div class="info-card">
+                    <h4>Whipping (Batido)</h4>
+                    <p><strong>Técnica:</strong> Agitación controlada introduce aire<br>
+                    <strong>Resultado:</strong> Texturas budder/wax esponjosas<br>
+                    <strong>Ventajas:</strong> Facilita dosificación y manipulación</p>
+                </div>
+            </div>
+
+            <h3 class="subsection-title">Purificación Adicional</h3>
+            
+            <p class="content-text">
+                Los concentrados pueden someterse a purificación adicional para eliminar impurezas residuales y refinar aún más el producto final. Estas técnicas son especialmente valiosas para material de partida de calidad variable.
+            </p>
+
+            <div class="step-list">
+                <div class="step-item">
+                    <strong>Winterización:</strong> Proceso con etanol a -40°C para eliminar lípidos y ceras, resultando en concentrados ultra-transparentes ideales para cartuchos de vapeo.
+                </div>
+                <div class="step-item">
+                    <strong>Filtración adicional:</strong> Uso de filtros PTFE 0.2μ para eliminar partículas microscópicas y clarificar el producto hasta transparencia óptica.
+                </div>
+                <div class="step-item">
+                    <strong>Descarboxilación controlada:</strong> Calentamiento preciso a 110°C durante 45 minutos para activar cannabinoides ácidos (THCA→THC) en productos comestibles.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Preservación de terpenos crítica:</strong> El almacenaje inmediato en recipientes herméticos a temperaturas controladas es esencial. Los terpenos más volátiles pueden perderse completamente en las primeras 24 horas si no se manejan adecuadamente.
+            </div>
+        </section>
+
+        <!-- Análisis de Calidad -->
+        <section class="content-section">
+            <h2 class="section-title">Control de Calidad y Análisis</h2>
+            
+            <p class="content-text">
+                El análisis objetivo de calidad es fundamental para evaluar el éxito de las extracciones y mantener consistencia entre lotes. Los métodos modernos de análisis permiten cuantificar pureza, potencia y perfil terpénico con precisión científica.
+            </p>
+
+            <h3 class="subsection-title">Parámetros de Calidad Visual</h3>
+            
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Parámetro</th>
+                        <th>Excelente</th>
+                        <th>Bueno</th>
+                        <th>Aceptable</th>
+                        <th>Problemático</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Color</strong></td>
+                        <td>Dorado claro translúcido</td>
+                        <td>Dorado medio</td>
+                        <td>Dorado oscuro/ámbar</td>
+                        <td>Marrón/negro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Textura</strong></td>
+                        <td>Consistente, sin grumos</td>
+                        <td>Mayormente uniforme</td>
+                        <td>Algunas irregularidades</td>
+                        <td>Muy heterogénea</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transparencia</strong></td>
+                        <td>Cristalina</td>
+                        <td>Translúcida</td>
+                        <td>Semi-opaca</td>
+                        <td>Opaca completamente</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contaminación</strong></td>
+                        <td>Ausente</td>
+                        <td>Trazas mínimas</td>
+                        <td>Visible pero limitada</td>
+                        <td>Contaminación evidente</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 class="subsection-title">Análisis Químico Profesional</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Potencia de Cannabinoides</h4>
+                    <p><strong>Método:</strong> HPLC de alta resolución<br>
+                    <strong>Parámetros:</strong> THC, CBD, CBG, CBN total<br>
+                    <strong>Rango típico:</strong> 60-90% cannabinoides totales</p>
+                </div>
+                <div class="info-card">
+                    <h4>Perfil Terpénico</h4>
+                    <p><strong>Método:</strong> GC-MS headspace<br>
+                    <strong>Detección:</strong> >40 terpenos identificables<br>
+                    <strong>Concentración:</strong> 2-8% terpenos totales</p>
+                </div>
+                <div class="info-card">
+                    <h4>Pureza y Contaminantes</h4>
+                    <p><strong>Residuos de solventes:</strong> <10 ppm<br>
+                    <strong>Metales pesados:</strong> <0.1 ppm<br>
+                    <strong>Microorganismos:</strong> Ausencia total</p>
+                </div>
+            </div>
+
+            <div class="image-container">
+                <img src="images/cosecha,resinas etc/curado.jpg" alt="Cromatograma típico de concentrado de cannabis mostrando picos de cannabinoides y terpenos" class="content-image">
+                <p class="image-caption">Cromatograma típico de concentrado de cannabis mostrando picos de cannabinoides y terpenos</p>
+            </div>
+        </section>
+
+        <!-- Seguridad y Consideraciones -->
+        <section class="content-section">
+            <h2 class="section-title">Seguridad y Consideraciones Legales</h2>
+            
+            <p class="content-text">
+                La extracción de concentrados, especialmente métodos con solventes, requiere protocolos de seguridad estrictos y cumplimiento de regulaciones locales. La seguridad personal y la calidad del producto dependen del seguimiento riguroso de estas directrices.
+            </p>
+
+            <h3 class="subsection-title">Protocolos de Seguridad</h3>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Equipamiento de Protección</h4>
+                    <p><strong>Respiratorio:</strong> Máscara con filtros químicos<br>
+                    <strong>Ocular:</strong> Gafas de seguridad selladas<br>
+                    <strong>Dérmico:</strong> Guantes nitrilo, ropa protectora</p>
+                </div>
+                <div class="info-card">
+                    <h4>Ventilación y Ambiente</h4>
+                    <p><strong>Extracción forzada:</strong> >10 cambios/hora<br>
+                    <strong>Detección gases:</strong> Sensores calibrados<br>
+                    <strong>Área controlada:</strong> Acceso restringido</p>
+                </div>
+                <div class="info-card">
+                    <h4>Manejo de Solventes</h4>
+                    <p><strong>Almacenamiento:</strong> Recipientes aprobados<br>
+                    <strong>Manipulación:</strong> Protocolos anti-chispa<br>
+                    <strong>Disposición:</strong> Gestión de residuos certificada</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>Riesgo de explosión:</strong> Los vapores de hidrocarburos son más pesados que el aire y se acumulan en áreas bajas. Nunca realizar extracciones BHO/PHO sin ventilación adecuada y detección de gases profesional.
+            </div>
+
+            <h3 class="subsection-title">Consideraciones Legales</h3>
+            
+            <p class="content-text">
+                Las regulaciones sobre extracción de cannabis varían significativamente entre jurisdicciones. Es fundamental verificar y cumplir con todas las leyes locales, estatales y federales aplicables antes de comenzar cualquier actividad de extracción.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Puntos Legales Clave</h3>
+                <p><strong>Licencias requeridas:</strong> Muchas jurisdicciones requieren licencias específicas para extracción</p>
+                <p><strong>Métodos permitidos:</strong> Algunas áreas prohíben extracciones con solventes inflamables</p>
+                <p><strong>Inspecciones:</strong> Prepararse para inspecciones regulares de seguridad y calidad</p>
+                <p><strong>Documentación:</strong> Mantener registros detallados de todos los procesos y materiales</p>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="content-section">
+            <h2 class="section-title">Conclusión: Maestría en la Concentración</h2>
+            
+            <p class="content-text">
+                La extracción de resina de cannabis ha evolucionado desde técnicas artesanales tradicionales hasta procesos científicos precisos que rivalizan con la industria farmacéutica en términos de pureza y consistencia. Cada método - desde el humble dry sift hasta las extracciones con CO₂ supercrítico - ofrece ventajas únicas para diferentes aplicaciones y mercados.
+            </p>
+
+            <p class="content-text">
+                El dominio de estas técnicas requiere comprensión tanto de los principios científicos subyacentes como de las sutilezas prácticas que distinguen un producto promedio de uno excepcional. La inversión en equipamiento de calidad, el desarrollo de protocolos estandarizados y el compromiso con la mejora continua son los pilares del éxito en este campo.
+            </p>
+
+            <div class="highlight-box">
+                <h3>Principios de Excelencia</h3>
+                <p><strong>Calidad del material:</strong> Los mejores concentrados provienen del mejor material vegetal</p>
+                <p><strong>Control de proceso:</strong> La consistencia requiere parámetros controlados y documentados</p>
+                <p><strong>Análisis objetivo:</strong> Los datos químicos guían la optimización mejor que la intuición</p>
+                <p><strong>Seguridad primero:</strong> Ningún producto vale la pena si compromete la seguridad</p>
+                <p><strong>Evolución continua:</strong> La industria avanza rápidamente, la educación debe ser permanente</p>
+            </div>
+
+            <p class="content-text">
+                La demanda de concentrados de cannabis de alta calidad continúa creciendo exponencialmente, impulsada tanto por consumidores recreativos sofisticados como por pacientes médicos que requieren dosificación precisa y efectos consistentes. Esta tendencia presenta oportunidades extraordinarias para aquellos que dominan las técnicas presentadas en esta guía.
+            </p>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h4>Futuro de la Industria</h4>
+                    <p>La automatización y tecnologías emergentes como extracción supercrítica y nano-emulsificación continuarán revolucionando el campo de los concentrados.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Oportunidades Comerciales</h4>
+                    <p>Los márgenes superiores de los concentrados premium hacen que la inversión en equipamiento y conocimiento especializado sea altamente rentable.</p>
+                </div>
+                <div class="info-card">
+                    <h4>Innovación Constante</h4>
+                    <p>Nuevas técnicas como live resin, sauce y crystalline continúan expandiendo las posibilidades de productos únicos y diferenciados.</p>
+                </div>
+            </div>
+
+            <p class="content-text">
+                Recuerda que la extracción de concentrados es tanto arte como ciencia. Mientras que los principios técnicos proporcionan la base, la experiencia, intuición y pasión por la excelencia son lo que transforma procesos mecánicos en productos verdaderamente excepcionales que definen el futuro de la industria del cannabis.
+            </p>
+        </section>
+
+        <!-- Footer del artículo -->
+        <footer class="content-section" style="text-align: center; background: linear-gradient(135deg, rgba(255, 154, 158, 0.1), rgba(254, 207, 239, 0.1));">
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Advertencia de Seguridad:</strong> Las extracciones con solventes requieren equipamiento profesional y protocolos de seguridad estrictos. Este artículo tiene fines educativos únicamente.
+            </p>
+            <p style="font-size: 0.9em; color: #6c757d; margin-bottom: 20px;">
+                <strong>Nota Legal:</strong> Asegúrate de cumplir con todas las leyes locales sobre extracción y procesamiento de cannabis antes de implementar cualquier técnica descrita.
+            </p>
+            <div style="border-top: 2px solid rgba(255, 154, 158, 0.2); padding-top: 20px; margin-top: 20px;">
+                <p style="font-weight: 600; color: #2c3e50;">
+                    Para más guías especializadas de extracción, visita 
+                    <a href="https://www.growcalculator.es/blog" style="color: #ff9a9e; text-decoration: none;">
+                        GrowCalculator.es/blog
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function shareWhatsApp() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://wa.me/?text=${text}%20${url}`, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+        }
+
+        function shareTwitter() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
+        }
+
+        function shareTelegram() {
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent(document.title);
+            window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
+
+            
